@@ -69,39 +69,6 @@
   color: var(--clr-dark-gray);
 }
 
-/* .input_group {
-  margin-bottom: 1.5rem;
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-color: var(--clr-main-gray);
-}
-
-.input_group:focus-within {
-  border-color: var(--clr-main-yellow);
-  transition: border-color 0.3s ease-in-out;
-}
-
-.input_group:focus-within label {
-  color: var(--clr-main-yellow);
-  transition: color 0.3s ease-in-out;
-}
-
-.input_group label {
-  display: block;
-}
-
-.input_group input {
-  width: 100%;
-  padding: 0.75rem 0;
-  border: none;
-  background: var(--clr-trasparent);
-  font-size: inherit;
-}
-
-.input_group input:focus {
-  outline: none;
-} */
-
 .form_btn_container {
   display: flex;
   justify-content: center;

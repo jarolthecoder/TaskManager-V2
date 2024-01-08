@@ -1,13 +1,24 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./AuthFormField.module.css";
+import { RenderWhen } from "../RenderWhen/RenderWhen";
 
 export const AuthFormField = (props) => {
-  const { label, id, type, name, value, onChange, fieldIcon, error, errorMessage, ...restOfProps } =
-    props;
-  
+  const {
+    label,
+    id,
+    type,
+    name,
+    value,
+    onChange,
+    fieldIcon,
+    error,
+    errorMessage,
+    ...restOfProps
+  } = props;
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -17,7 +28,7 @@ export const AuthFormField = (props) => {
   return (
     <div className={styles.input_group}>
       <label htmlFor={label}>{label}</label>
-      <div className={`${styles.form_input} ${ error ? styles.error : ""}`}>
+      <div className={`${styles.form_input} ${error ? styles.error : ""}`}>
         <input
           type={isPasswordVisible ? "text" : type}
           id={id}
@@ -31,14 +42,15 @@ export const AuthFormField = (props) => {
           onClick={type === "password" ? togglePasswordVisibility : null}
           style={{ cursor: type === "password" ? "pointer" : "default" }}
         >
-          {type === "password" && isPasswordVisible
-            ? "remove_red_eye"
-            : fieldIcon}
+          <RenderWhen
+            condition={type === "password" && isPasswordVisible}
+            fallback={fieldIcon}
+          >
+            remove_red_eye
+          </RenderWhen>
         </span>
       </div>
-      {error && (
-        <p className={styles.error}>{errorMessage}</p>
-      )}
+      {error && <p className={styles.error}>{errorMessage}</p>}
     </div>
   );
 };

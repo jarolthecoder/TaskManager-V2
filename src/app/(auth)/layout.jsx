@@ -2,13 +2,13 @@ import styles from "./auth.module.css";
 
 export default function AuthLayout({ children }) {
   return (
-    <div className={styles.main}>
-      <div className={styles.col_left}>
+    <main className={styles.main}>
+      <section className={styles.col_left}>
         <div className={styles.form_container}>
           {children}
         </div>
-      </div>
-      <div className={styles.col_right}>
+      </section>
+      <section className={styles.col_right}>
         <div className={styles.title}>
           <h2>Designed for task management</h2>
           <p>
@@ -16,7 +16,7 @@ export default function AuthLayout({ children }) {
             and take control of your day with ease!
           </p>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

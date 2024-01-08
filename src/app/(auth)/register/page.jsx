@@ -1,4 +1,4 @@
-import { Button } from "@/ui/components/Button/Button";
+import { Button, AuthFormField } from "@/ui/components";
 import styles from "../auth.module.css";
 import Link from "next/link";
 
@@ -8,27 +8,30 @@ export default function Register() {
       <h1>Get Started!</h1>
       <p>Create your account</p>
       <form action="" className={styles.auth_form}>
-        <div className={styles.input_group}>
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
-        </div>
-        <div className={styles.input_group}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
-        </div>
-        <div className={styles.input_group}>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" />
-        </div>
-        <div className={styles.input_group}>
-          <label htmlFor="confirm_password">Confirm Password</label>
-          <input type="password" id="confirm_password" />
-        </div>
+        <AuthFormField 
+          label="Full Name" 
+          type="text" 
+          id="fullName" 
+          name="fullName" 
+        />
+        <AuthFormField
+          label="Email"
+          type="email"
+          id="email"
+          name="email"
+          fieldIcon="alternate_email"
+        />
+        <AuthFormField
+          label="Password"
+          type="password"
+          id="password"
+          name="password"
+          fieldIcon="visibility_off"
+        />
         <Button title="Create account" />
       </form>
       <p>
-        Have an account? {" "}
-        <Link href="/login">Log in</Link>
+        Have an account? <Link href="/login">Log in</Link>
       </p>
     </>
   );
