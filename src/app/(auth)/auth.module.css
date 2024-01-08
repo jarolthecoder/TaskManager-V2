@@ -1,0 +1,112 @@
+.main {
+  width: 100%;
+  min-height: 100dvh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background: var(--clr-dark-blue);
+}
+
+.main p {
+  font-size: var(--fs-body);
+  color: var(--clr-main-gray);
+}
+
+.col_left h1,
+.col_right h2,
+.input_group input {
+  color: var(--clr-light-gray);
+}
+
+.col_left h1 {
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+
+.col_left,
+.col_right {
+  height: 100dvh;
+  padding: 4rem 3rem;
+}
+
+.col_left {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col_right {
+  width: 55%;
+  background: url(../../../public/task-manager-v2-landing.png) no-repeat;
+  background-size: cover;
+  background-position: bottom -100px center;
+  background-color: var(--clr-main-blue);
+}
+
+.title {
+  max-width: 500px;
+}
+
+.title h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Auth Form */
+.form_container {
+  width: 80%;
+  max-width: 600px;
+}
+.auth_form {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.form_container p,
+.input_group label {
+  color: var(--clr-dark-gray);
+}
+
+/* .input_group {
+  margin-bottom: 1.5rem;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: var(--clr-main-gray);
+}
+
+.input_group:focus-within {
+  border-color: var(--clr-main-yellow);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input_group:focus-within label {
+  color: var(--clr-main-yellow);
+  transition: color 0.3s ease-in-out;
+}
+
+.input_group label {
+  display: block;
+}
+
+.input_group input {
+  width: 100%;
+  padding: 0.75rem 0;
+  border: none;
+  background: var(--clr-trasparent);
+  font-size: inherit;
+}
+
+.input_group input:focus {
+  outline: none;
+} */
+
+.form_btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}

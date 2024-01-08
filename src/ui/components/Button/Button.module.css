@@ -1,0 +1,20 @@
+.btn {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: inherit;
+  font-weight: var(--fw-medium);
+  background: var(--clr-light-blue);
+  border-radius: var(--br-large);
+  color: var(--clr-main-yellow);
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--clr-main-yellow);
+  color: var(--clr-dark-blue);
+}
