@@ -11,10 +11,11 @@ export const AuthFormField = (props) => {
     id,
     type,
     name,
-    value,
     onChange,
     fieldIcon,
+    register,
     error,
+    errors,
     errorMessage,
     ...restOfProps
   } = props;
@@ -28,13 +29,20 @@ export const AuthFormField = (props) => {
   return (
     <div className={styles.input_group}>
       <label htmlFor={label}>{label}</label>
-      <div className={`${styles.form_input} ${error ? styles.error : ""}`}>
+      <div
+        className={`${styles.form_input} ${errors[name] ? styles.error : ""}`}
+      >
         <input
           type={isPasswordVisible ? "text" : type}
           id={id}
           name={name}
-          value={value}
           onChange={onChange}
+          {...register(id, {
+            required: {
+              value: true,
+              message: errorMessage,
+            },
+          })}
           {...restOfProps}
         />
         <span
@@ -50,7 +58,8 @@ export const AuthFormField = (props) => {
           </RenderWhen>
         </span>
       </div>
-      {error && <p className={styles.error}>{errorMessage}</p>}
+      {/* {error && <p className={styles.error}>{errorMessage}</p>} */}
+      <p className={styles.error}>{errors[name]?.message}</p>
     </div>
   );
 };
