@@ -49,7 +49,7 @@ export default function Register() {
           type="password"
           id="password"
           name="password"
-          fieldIcon="visibility_off"
+          fieldIcon="remove_red_eye"
           register={register}
           errors={errors}
         />
