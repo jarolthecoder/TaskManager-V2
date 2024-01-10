@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "@/app/utils/validations/authSchema";
+import { loginSchema } from "@/utils/validations/authSchema";
 
 export default function Login() {
 
