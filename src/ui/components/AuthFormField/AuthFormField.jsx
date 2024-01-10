@@ -37,12 +37,13 @@ export const AuthFormField = (props) => {
           id={id}
           name={name}
           onChange={onChange}
-          {...register(id, {
-            required: {
-              value: true,
-              message: errorMessage,
-            },
-          })}
+          {...register(id)}
+          // {...register(id, {
+          //   required: {
+          //     value: true,
+          //     message: errorMessage,
+          //   },
+          // })}
           {...restOfProps}
         />
         <span
@@ -54,12 +55,12 @@ export const AuthFormField = (props) => {
             condition={type === "password" && isPasswordVisible}
             fallback={fieldIcon}
           >
-            remove_red_eye
+            visibility_off
           </RenderWhen>
         </span>
       </div>
       {/* {error && <p className={styles.error}>{errorMessage}</p>} */}
-      <p className={styles.error}>{errors[name]?.message}</p>
+      <p className={styles.error}>{errors[name] && errors[name].message}</p>
     </div>
   );
 };
@@ -69,7 +70,6 @@ AuthFormField.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string.isRequired,
   name: PropTypes.string,
-  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   fieldIcon: PropTypes.string,
 };

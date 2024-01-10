@@ -8,17 +8,12 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
-const schema = yup.object().shape({
-  email: yup.string().required("Email is required"),
-  password: yup.string().required("Password is required"),
-});
+import { loginSchema } from "@/app/utils/validations/authSchema";
 
 export default function Login() {
 
   const form = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(loginSchema),
   });
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
@@ -46,7 +41,7 @@ export default function Login() {
           type="password"
           id="password"
           name="password"
-          fieldIcon="visibility_off"
+          fieldIcon="remove_red_eye"
           register={register}
           errors={errors}
         />
