@@ -13,15 +13,9 @@
   color: var(--clr-main-gray);
 }
 
-.col_left h1,
 .col_right h2,
 .input_group input {
   color: var(--clr-light-gray);
-}
-
-.col_left h1 {
-  font-size: 2.5rem;
-  line-height: 1.5;
 }
 
 .col_left,

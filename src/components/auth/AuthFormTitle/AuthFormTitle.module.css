@@ -1,0 +1,10 @@
+.title {
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color: var(--clr-light-gray);
+}
+
+.description {
+  font-size: var(--fs-body);
+  color: var(--clr-main-gray);
+}

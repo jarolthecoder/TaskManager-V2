@@ -1,0 +1,63 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Project A",
+      "tasks": [
+        {
+          "id": 101,
+          "title": "Task 1",
+          "description": "Complete task 1 for Project A",
+          "status": "In Progress",
+          "due_date": "2024-01-31",
+          "start_date": "2024-01-15",
+          "priority": "High"
+        },
+        {
+          "id": 102,
+          "title": "Task 2",
+          "description": "Review documentation for Project A",
+          "status": "Pending",
+          "due_date": "2024-02-15",
+          "start_date": "2024-01-25",
+          "priority": "Medium"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Project B",
+      "tasks": [
+        {
+          "id": 201,
+          "title": "Task 1",
+          "description": "Develop feature X for Project B",
+          "status": "Completed",
+          "due_date": "2024-02-10",
+          "start_date": "2024-01-20",
+          "priority": "High"
+        }
+      ]
+    }
+  ],
+  "independent_tasks": [
+    {
+      "id": 301,
+      "title": "Independent Task 1",
+      "description": "Complete independent task 1",
+      "status": "Pending",
+      "due_date": "2024-01-20",
+      "start_date": "2024-01-10",
+      "priority": "Medium"
+    },
+    {
+      "id": 302,
+      "title": "Independent Task 2",
+      "description": "Review documentation for independent task 2",
+      "status": "In Progress",
+      "due_date": "2024-02-05",
+      "start_date": "2024-01-30",
+      "priority": "Low"
+    }
+  ]
+}

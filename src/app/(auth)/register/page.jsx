@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import { Button, AuthFormField } from "@/ui/components";
+import { AuthFormField, AuthFormTitle } from "@/components/auth";
+import { Button } from "@/components/shared";
 import styles from "../auth.module.css";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -9,9 +10,8 @@ import { registerSchema } from "@/utils/validations/authSchema";
 import { DevTool } from "@hookform/devtools";
 
 export default function Register() {
-
   const form = useForm({
-    resolver: yupResolver(registerSchema)
+    resolver: yupResolver(registerSchema),
   });
 
   const { register, handleSubmit, formState } = form;
@@ -19,12 +19,14 @@ export default function Register() {
 
   const onSubmit = (data) => {
     console.log(data);
-  }
+  };
 
   return (
     <>
-      <h1>Get Started!</h1>
-      <p>Create your account</p>
+      <AuthFormTitle 
+        title="Get Started!" 
+        description="Create your account" 
+      />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_form}>
         <AuthFormField
           label="Full Name"
@@ -53,15 +55,6 @@ export default function Register() {
           register={register}
           errors={errors}
         />
-        {/* <AuthFormField
-          label="Confirm Password"
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          fieldIcon="visibility_off"
-          register={register}
-          errors={errors}
-        /> */}
         <Button type="submit" title="Create account" />
       </form>
       <p>

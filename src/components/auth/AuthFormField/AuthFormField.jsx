@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./AuthFormField.module.css";
-import { RenderWhen } from "../RenderWhen/RenderWhen";
+import { RenderWhen } from "@/components/shared";
 
 export const AuthFormField = (props) => {
   const {

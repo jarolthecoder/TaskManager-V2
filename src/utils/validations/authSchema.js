@@ -36,8 +36,4 @@ export const registerSchema = yup.object({
       passwordRegex,
       "Password must have at least one uppercase letter and include a special character"
     ),
-  // confirmPassword: yup
-  //   .string()
-  //   .required("Confirm password is required")
-  //   .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
