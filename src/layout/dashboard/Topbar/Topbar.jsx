@@ -1,6 +1,9 @@
+import styles from "./Topbar.module.css";
 
 export const Topbar = () => {
   return (
-    <div>Topbar</div>
-  )
-}
+    <header className={styles.main}>
+      <h2>Topbar</h2>
+    </header>
+  );
+};

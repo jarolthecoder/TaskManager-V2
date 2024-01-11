@@ -1,6 +1,9 @@
+import styles from "./Sidebar.module.css";
 
 export const Sidebar = () => {
   return (
-    <div>Sidebar</div>
-  )
-}
+    <aside className={styles.main}>
+      <h2>Sidebar</h2>
+    </aside>
+  );
+};

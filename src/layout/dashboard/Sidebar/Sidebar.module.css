@@ -1,0 +1,15 @@
+.main {
+  width: 225px;
+  background: var(--clr-main-blue);
+  border-left: 1px solid var(--clr-dark-blue);
+  grid-row: span 2;
+  position: fixed;
+  left: 0;
+  top: 0; 
+  bottom: 0; 
+  padding: 1.5rem;
+}
+
+.main h2 {
+  color: var(--clr-light-gray);
+}
