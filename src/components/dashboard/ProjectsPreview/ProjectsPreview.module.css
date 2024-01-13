@@ -1,0 +1,27 @@
+.main {
+  margin-top: 2rem;
+}
+
+.section_header,
+.section_body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section_body {
+  margin-top: 1rem;
+}
+
+.switch_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project_card {
+  width: 100%;
+  background: var(--clr-blueish-gray-main);
+}

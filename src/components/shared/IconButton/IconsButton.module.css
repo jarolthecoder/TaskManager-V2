@@ -1,0 +1,21 @@
+.icon_btn {
+  color: var(--clr-gray-light);
+}
+
+.icon_btn:hover {
+  color: var(--clr-yellow-main);
+}
+
+.icon_btn.filled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: var(--br-full);
+  background: var(--clr-blue-main);
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.icon_btn.filled:hover {
+  background: var(--clr-blue-dark);
+}

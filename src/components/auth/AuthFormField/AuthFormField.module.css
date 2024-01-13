@@ -5,13 +5,13 @@
 
 .input_group:focus-within label,
 .input_group:focus-within span {
-  color: var(--clr-main-yellow);
+  color: var(--clr-yellow-main);
   transition: color 0.3s ease-in-out;
 }
 
 .input_group label {
   display: block;
-  color: var(--clr-dark-gray);
+  color: var(--clr-gray-dark);
 }
 
 .form_input {
@@ -20,11 +20,11 @@
   align-items: center;
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: var(--clr-main-gray);
+  border-color: var(--clr-gray-main);
 }
 
 .form_input:focus-within {
-  border-color: var(--clr-main-yellow);
+  border-color: var(--clr-yellow-main);
   transition: border-color 0.3s ease-in-out;
 }
 
@@ -32,7 +32,7 @@
   width: 100%;
   padding: 0.75rem 0;
   border: none;
-  color: var(--clr-light-gray);
+  color: var(--clr-gray-light);
   background: var(--clr-trasparent);
   font-size: inherit;
 }
@@ -42,21 +42,21 @@
 }
 
 .form_input span {
-  color: var(--clr-light-gray);
+  color: var(--clr-gray-light);
 }
 
 /* Field error state */
 .form_input.error,
 .form_input.error:focus-within {
-  border-color: var(--clr-error-main);
+  border-color: var(--clr-red-main);
 }
 
 .form_input.error span {
-  color: var(--clr-error-main);
+  color: var(--clr-red-main);
 }
 
 .input_group .error {
-  color: var(--clr-error-main);
+  color: var(--clr-red-main);
   font-size: var(--fs-small);
   margin-top: 0.25rem;
 }

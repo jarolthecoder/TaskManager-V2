@@ -2,9 +2,9 @@
   margin-left: 225px;
   min-height: 100dvh;
   padding: 1.5rem;
-  background: var(--clr-dark-blue);
+  background: var(--clr-blue-dark);
 }
 
 .main h2 {
-  color: var(--clr-light-gray);
+  color: var(--clr-gray-light);
 }

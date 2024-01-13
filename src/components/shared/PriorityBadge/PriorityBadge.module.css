@@ -1,0 +1,22 @@
+.priority_badge {
+  padding: 0.25rem 1rem;
+  border-radius: var(--br-large);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  text-transform: capitalize;
+}
+
+.priority_badge.high {
+  background-color: var(--clr-red-dark);
+  color: var(--clr-red-main);
+}
+
+.priority_badge.medium {
+  background-color: var(--clr-yellow-dark);
+  color: var(--clr-yellow-main);
+}
+
+.priority_badge.low {
+  background-color: var(--clr-green-dark);
+  color: var(--clr-green-main);
+}

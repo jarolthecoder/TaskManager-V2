@@ -5,17 +5,17 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  background: var(--clr-dark-blue);
+  background: var(--clr-blue-dark);
 }
 
 .main p {
   font-size: var(--fs-body);
-  color: var(--clr-main-gray);
+  color: var(--clr-gray-main);
 }
 
 .col_right h2,
 .input_group input {
-  color: var(--clr-light-gray);
+  color: var(--clr-gray-light);
 }
 
 .col_left,
@@ -40,7 +40,7 @@
   background: url(../../../public/task-manager-v2-landing.png) no-repeat;
   background-size: cover;
   background-position: bottom -100px center;
-  background-color: var(--clr-main-blue);
+  background-color: var(--clr-blue-main);
 }
 
 .title {
@@ -64,7 +64,7 @@
 
 .form_container p,
 .input_group label {
-  color: var(--clr-dark-gray);
+  color: var(--clr-gray-dark);
 }
 
 .form_btn_container {

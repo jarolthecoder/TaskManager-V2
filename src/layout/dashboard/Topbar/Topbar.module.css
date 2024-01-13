@@ -1,6 +1,6 @@
 .main {
-  background: var(--clr-main-blue);
-  border-left: 1px solid var(--clr-dark-blue);
+  background: var(--clr-blueish-gray-dark);
+  border-left: 1px solid var(--clr-blue-dark);
   /* position: sticky;
   top: 0;
   right: 0; */
@@ -10,5 +10,5 @@
 }
 
 .main h2 {
-  color: var(--clr-light-gray);
+  color: var(--clr-gray-light);
 }

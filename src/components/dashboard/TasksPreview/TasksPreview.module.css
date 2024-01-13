@@ -1,0 +1,32 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.task_header,
+.task_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task_header {
+  margin-bottom: 1rem;
+}
+
+.task_description {
+  color: var(--clr-gray-main);
+}
+
+.add_task_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  text-transform: capitalize;
+}

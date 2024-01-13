@@ -7,14 +7,14 @@
   text-align: center;
   font-size: inherit;
   font-weight: var(--fw-medium);
-  background: var(--clr-light-blue);
+  background: var(--clr-blue-main);
   border-radius: var(--br-large);
-  color: var(--clr-main-yellow);
+  color: var(--clr-yellow-main);
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .btn:hover {
-  background: var(--clr-main-yellow);
-  color: var(--clr-dark-blue);
+  background: var(--clr-yellow-main);
+  color: var(--clr-blue-dark);
 }
