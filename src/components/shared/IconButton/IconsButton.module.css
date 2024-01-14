@@ -17,5 +17,6 @@
 }
 
 .icon_btn.filled:hover {
-  background: var(--clr-blue-dark);
+  color: var(--clr-blue-dark);
+  background: var(--clr-yellow-main);
 }
