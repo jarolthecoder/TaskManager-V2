@@ -1,4 +1,5 @@
 import { Card, IconButton, PriorityBadge } from "@/components/shared"
+import { AddTaskButton } from "..";
 import styles from "./TasksPreview.module.css";
 
 export const TasksPreview = () => {
@@ -25,8 +26,7 @@ export const TasksPreview = () => {
       })}
       <Card>
         <div className={styles.add_task_btn}>
-          <IconButton icon="add" variant="filled" />
-          <p>Add New Task</p>
+          <AddTaskButton />
         </div>
       </Card>
     </section>

@@ -28,7 +28,16 @@ export const Navigation = () => {
             <Link href={path}>{title}</Link>
           </li>
         ))}
-        
+        <div className={styles.divider}></div>
+        <li
+          className={`${styles.navlink} ${
+            currentRoute === "/login" ? styles.active : null
+          }`}
+          onClick={() => navigateTo("/login")}
+        >
+          <span className="material-icons">logout</span>
+          <Link href="/login">Logout</Link>
+        </li>
       </ul>
     </nav>
   );

@@ -1,11 +1,11 @@
 import styles from "./dashboard.module.css";
-import { DisplayPanel, Sidebar, Topbar } from "@/layout/dashboard";
+import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
 
 export default function DashboardLayout({ children }) {
   return (
     <main className={styles.main}>
-      <Sidebar />
-      <Topbar />
+      <SideBar />
+      <TopBar />
       <DisplayPanel>{children}</DisplayPanel>
     </main>
   );

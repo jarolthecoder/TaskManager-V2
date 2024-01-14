@@ -1,0 +1,33 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  color: var(--clr-gray-light);
+}
+
+.user_name,
+.user_role {
+  line-height: 1.25rem;
+}
+
+.user_role {
+  color: var(--clr-gray-dark);
+  font-size: var(--fs-small);
+}
+
+.user_img_container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--br-full);
+  background: var(--clr-yellow-fade);
+}
+
+.user_img {
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  font-size: 1.25rem;
+}

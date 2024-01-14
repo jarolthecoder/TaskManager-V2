@@ -1,16 +1,17 @@
 .main {
-  padding: 0 1rem 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   gap: 10px;
+  width: 100%;
+  padding: 0 1rem 1rem;
   color: var(--clr-gray-light);
 }
 
 .main p {
   font-weight: var(--fw-medium);
   font-size: 1.25rem;
-  padding-bottom: .35rem;
+  padding-bottom: .4rem;
 }
 
 .logo {

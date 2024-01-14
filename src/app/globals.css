@@ -49,6 +49,15 @@ ul {
   list-style-type: none;
 }
 
+input {
+  font-size: var(--fs-body);
+  color: var(--clr-gray-light);
+}
+
+input:focus {
+  outline: none;
+}
+
 button {
   border: none;
   background: none;
@@ -94,9 +103,9 @@ p {
 a {
   color: var(--clr-yellow-main);
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
 a:hover {
   text-decoration: underline;
-  transition: color 0.2s ease-in-out;
 }

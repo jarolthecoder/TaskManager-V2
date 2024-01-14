@@ -1,9 +1,15 @@
-import styles from "./Topbar.module.css";
+import { SearchBar, UserBar } from "@/components/shared";
+import styles from "./TopBar.module.css";
 
-export const Topbar = () => {
+export const TopBar = () => {
   return (
     <header className={styles.main}>
-      <h2>Topbar</h2>
+      <div className={styles.col_left}>
+        <SearchBar />
+      </div>
+      <div className={styles.col_right}>
+        <UserBar />
+      </div>
     </header>
   );
 };

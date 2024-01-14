@@ -1,12 +1,17 @@
-import { Navigation } from "@/components/dashboard";
-import styles from "./Sidebar.module.css";
-import { Logo } from "@/components/shared";
+import { AddTaskButton } from "@/components/dashboard";
+import { Card, Logo, Navigation } from "@/components/shared";
+import styles from "./SideBar.module.css";
 
-export const Sidebar = () => {
+export const SideBar = () => {
   return (
     <aside className={styles.main}>
       <Logo />
       <Navigation />
+      <div className={styles.add_task_container}>
+        <Card>
+          <AddTaskButton />
+        </Card>
+      </div>
     </aside>
   );
 };

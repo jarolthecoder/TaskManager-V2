@@ -1,0 +1,29 @@
+.main {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+  background: var(--clr-blue-dark);
+  border-radius: var(--br-small);
+  border: 1px solid #ffff0000;
+  transition: border-color ease 0.2s;
+}
+
+.search_field {
+  border: none;
+  outline: none;
+  background: inherit;
+  padding: 0 0.25rem;
+}
+
+.main span,
+.search_field::placeholder {
+  color: var(--clr-gray-dark);
+}
+
+.main:focus-within span {
+  color: var(--clr-yellow-main);
+}
+/* 
+.main:focus-within {
+  border-color: var(--clr-yellow-main);
+} */

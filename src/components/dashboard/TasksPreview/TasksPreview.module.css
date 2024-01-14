@@ -20,13 +20,3 @@
 .task_description {
   color: var(--clr-gray-main);
 }
-
-.add_task_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  text-transform: capitalize;
-}

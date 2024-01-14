@@ -1,15 +1,24 @@
 .main {
-  width: 225px;
-  background: var(--clr-blueish-gray-dark);
-  border-left: 1px solid var(--clr-blue-dark);
   grid-row: span 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
   position: fixed;
   left: 0;
   top: 0; 
   bottom: 0; 
+  width: 225px;
   padding: 1.5rem 0;
+  background: var(--clr-blueish-gray-dark);
+  border-left: 1px solid var(--clr-blue-dark);
 }
 
 .main h2 {
   color: var(--clr-gray-light);
+}
+
+.add_task_container {
+  width: 100%;
+  padding: 1rem;
 }
