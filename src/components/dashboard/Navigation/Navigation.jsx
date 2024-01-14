@@ -6,7 +6,12 @@ import { usePathname, useRouter } from "next/navigation";
 
 export const Navigation = () => {
 
+  const router = useRouter();
   const currentRoute = usePathname();
+
+  const navigateTo = (path) => {
+    router.push(path)
+  }
 
   return (
     <nav className={styles.navbar}>
@@ -17,11 +22,13 @@ export const Navigation = () => {
             className={`${styles.navlink} ${
               currentRoute === path ? styles.active : null
             }`}
+            onClick={() => navigateTo(path)}
           >
             <span className="material-icons">{linkIcon}</span>
             <Link href={path}>{title}</Link>
           </li>
         ))}
+        
       </ul>
     </nav>
   );
@@ -35,12 +42,12 @@ const navLinks = [
   },
   {
     title: "Tasks",
-    path: "/tasks",
+    path: "/dashboard/tasks",
     linkIcon: "view_list",
   },
   {
     title: "Projects",
-    path: "/projects",
+    path: "/dashboard/projects",
     linkIcon: "folder",
   },
 ];

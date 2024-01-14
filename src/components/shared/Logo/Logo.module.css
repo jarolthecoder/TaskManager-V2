@@ -1,0 +1,23 @@
+.main {
+  padding: 0 1rem 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 10px;
+  color: var(--clr-gray-light);
+}
+
+.main p {
+  font-weight: var(--fw-medium);
+  font-size: 1.25rem;
+  padding-bottom: .35rem;
+}
+
+.logo {
+  width: 50px;
+  max-width: 50px;
+  padding: .5rem;
+  background: var(--clr-yellow-fade);
+  border-radius: var(--br-small);
+  text-align: center;
+}
