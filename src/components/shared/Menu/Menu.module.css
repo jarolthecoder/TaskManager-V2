@@ -1,0 +1,10 @@
+.main {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  min-width: 175px;
+  height: auto;
+  background: var(--clr-blue-main);
+  border-radius: var(--br-small);
+  padding: .5rem 0;
+}

@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem;
+  color: var(--clr-gray-light);
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.main:hover {
+  background: var(--clr-blue-light);
+}

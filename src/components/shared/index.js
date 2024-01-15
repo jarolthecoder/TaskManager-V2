@@ -7,3 +7,5 @@ export  * from './Logo/Logo'
 export * from "./Navigation/Navigation";
 export * from './SearchBar/SearchBar'
 export * from './UserBar/UserBar'
+export * from './Menu/Menu'
+export * from "./MenuItem/MenuItem";
