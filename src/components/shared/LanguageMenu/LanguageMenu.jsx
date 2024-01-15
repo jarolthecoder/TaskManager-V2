@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useMenu } from "@/hooks/useMenu";
 import Image from 'next/image';
 import { Menu, MenuItem } from "..";
 import enFlag from "../../../../public/ic_flag_en.9a67c937.svg";
@@ -9,9 +9,7 @@ import frFlag from "../../../../public/ic_flag_fr.35afd52c.svg";
 import styles from './LanguageMenu.module.css'
 
 export const LanguageMenu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenu = () => setIsMenuOpen(prevState => !prevState);
+  const { isMenuOpen, handleMenu } = useMenu();
 
   return (
     <div className={styles.main}>
