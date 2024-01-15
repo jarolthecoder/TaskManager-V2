@@ -1,11 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import { Menu, MenuItem } from "..";
 import styles from "./UserMenu.module.css";
 import { useMenu } from "@/hooks/useMenu";
 
 export const UserMenu = () => {
-  const {isMenuOpen, handleMenu} = useMenu();
+  const refEl = useRef();
+  const {isMenuOpen, position, handleMenu} = useMenu(refEl);
 
   return (
     <div className={styles.main}>
@@ -15,12 +17,12 @@ export const UserMenu = () => {
       <div>
         <p className={styles.user_name}>
           Super User
-          <span className="material-icons" onClick={handleMenu}>
+          <span ref={refEl} className="material-icons" onClick={handleMenu}>
             arrow_drop_down
           </span>
         </p>
         <p className={styles.user_role}>Admin</p>
-        <Menu open={isMenuOpen}>
+        <Menu open={isMenuOpen} position={position}>
           {menuItems.map(({ label, icon }) => (
             <MenuItem key={label} onClick={handleMenu}>
               <span className="material-icons">{icon}</span>

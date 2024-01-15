@@ -1,7 +1,7 @@
 .main {
-  position: absolute;
+  /* position: absolute;
   top: 40px;
-  right: 0;
+  right: 0; */
   min-width: 175px;
   height: auto;
   background: var(--clr-blue-main);

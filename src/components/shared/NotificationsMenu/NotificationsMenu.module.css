@@ -1,9 +1,26 @@
 .notifications {
-  color: var(--clr-gray-dark);
+  position: relative;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
+  color: var(--clr-gray-main);
 }
 
 .notifications:hover {
   color: var(--clr-gray-light);
+}
+
+.notifications::before {
+  content: '3';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -5px;
+  right: -7px;
+  width: 20px;
+  height: 20px;
+  color: var(--clr-gray-light);
+  background: var(--clr-red-main);
+  border-radius: var(--br-full);
+  font-size: var(--fs-small);
 }

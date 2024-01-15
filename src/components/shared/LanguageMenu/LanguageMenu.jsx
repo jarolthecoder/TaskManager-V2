@@ -1,22 +1,27 @@
-'use client'
+"use client";
 
 import { useMenu } from "@/hooks/useMenu";
-import Image from 'next/image';
+import Image from "next/image";
 import { Menu, MenuItem } from "..";
 import enFlag from "../../../../public/ic_flag_en.9a67c937.svg";
 import deFlag from "../../../../public/ic_flag_de.7d35b6ca.svg";
 import frFlag from "../../../../public/ic_flag_fr.35afd52c.svg";
-import styles from './LanguageMenu.module.css'
+import { useRef } from "react";
 
 export const LanguageMenu = () => {
-  const { isMenuOpen, handleMenu } = useMenu();
+  const refEl = useRef();
+  const { isMenuOpen, position, handleMenu } = useMenu(refEl);
 
   return (
-    <div className={styles.main}>
-      <div className={styles.lang_btn} onClick={handleMenu}>
+    <>
+      <div
+        onClick={handleMenu}
+        ref={refEl}
+        style={{ cursor: "pointer" }}
+      >
         <Image src={enFlag} alt="England flag" />
       </div>
-      <Menu open={isMenuOpen}>
+      <Menu open={isMenuOpen} position={position}>
         {menuItems.map(({ label, icon }) => (
           <MenuItem key={label} onClick={handleMenu}>
             <Image src={icon} alt={`${label} flag`} />
@@ -24,12 +29,12 @@ export const LanguageMenu = () => {
           </MenuItem>
         ))}
       </Menu>
-    </div>
+    </>
   );
-}
+};
 
 const menuItems = [
-  { label: 'English', icon: enFlag },
-  { label: 'German', icon: deFlag },
-  { label: 'French', icon: frFlag }
-]
+  { label: "English", icon: enFlag },
+  { label: "German", icon: deFlag },
+  { label: "French", icon: frFlag },
+];

@@ -1,7 +1,3 @@
-.main {
-  position: relative;
-}
-
 .main,
 .user_name {
   display: flex;
