@@ -2,7 +2,7 @@
   /* position: absolute;
   top: 40px;
   right: 0; */
-  min-width: 175px;
+  min-width: 150px;
   height: auto;
   background: var(--clr-blue-main);
   border-radius: var(--br-small);

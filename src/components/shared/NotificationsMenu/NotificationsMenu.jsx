@@ -10,12 +10,14 @@ export const NotificationsMenu = () => {
    const { isMenuOpen, position, handleMenu } = useMenu(refEl);
   return (
     <>
-      <div className={styles.notifications} ref={refEl}>
-        <span className="material-icons" onClick={handleMenu}>
-          notifications
-        </span>
+      <div className={styles.notifications} ref={refEl} onClick={handleMenu}>
+        <span className="material-icons">notifications</span>
       </div>
-      <NotificationPanel open={isMenuOpen} position={position} handleMenu={handleMenu} />
+      <NotificationPanel
+        open={isMenuOpen}
+        position={position}
+        handleMenu={handleMenu}
+      />
     </>
   );
 }
