@@ -4,11 +4,19 @@
   align-items: center;
   gap: 1rem;
   padding: .5rem 0;
-  color: var(--clr-gray-light);
   transition: background 0.2s ease-in-out;
   cursor: pointer;
 }
 
+.main,
+.main a {
+  color: var(--clr-gray-light);
+}
+
 .main:hover {
   background: var(--clr-blue-light);
+}
+
+.main a:hover {
+  text-decoration: none;
 }

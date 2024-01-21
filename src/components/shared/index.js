@@ -9,3 +9,4 @@ export * from './SearchBar/SearchBar'
 export * from './UserBar/UserBar'
 export * from './Menu/Menu'
 export * from "./MenuItem/MenuItem";
+export * from './ProgressBar/ProgressBar'

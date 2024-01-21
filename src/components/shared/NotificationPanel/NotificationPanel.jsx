@@ -13,6 +13,7 @@ export const NotificationPanel = ({ open, position, handleMenu }) => {
           top,
           right,
           transform,
+          zIndex: 3
         }}
       >
         <div className={styles.panel_header}>
@@ -69,7 +70,7 @@ export const NotificationPanel = ({ open, position, handleMenu }) => {
           </ul>
         </div>
         <div className={styles.panel_footer}>
-          <Button title="View All" />
+          <Button title="View All" fullWidth />
         </div>
       </div>
     );

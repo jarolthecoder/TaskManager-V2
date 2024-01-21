@@ -1,5 +1,5 @@
-import { ProjectsPreview, TasksPreview } from "@/components/dashboard";
-import styles from "./Dashboard.module.css";
+import {Calendar, ProjectsPreview, TasksPreview } from "@/components/dashboard";
+import styles from "./dashboard.module.css";
 
 
 export default function Dashboard() {
@@ -8,9 +8,10 @@ export default function Dashboard() {
       <div className={styles.col_left}>
         <TasksPreview />
         <ProjectsPreview />
-      </div>
+        <Calendar />
+     </div>
       <div className={styles.col_right}>
-        
+        <Calendar />
       </div>
     </section>
   );

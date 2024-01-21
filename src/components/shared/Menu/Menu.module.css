@@ -7,4 +7,5 @@
   background: var(--clr-blue-main);
   border-radius: var(--br-small);
   padding: .5rem 0;
+  z-index: 2;
 }

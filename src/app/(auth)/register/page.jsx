@@ -23,10 +23,7 @@ export default function Register() {
 
   return (
     <>
-      <AuthFormTitle 
-        title="Get Started!" 
-        description="Create your account" 
-      />
+      <AuthFormTitle title="Get Started!" description="Create your account" />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_form}>
         <AuthFormField
           label="Full Name"
@@ -55,7 +52,7 @@ export default function Register() {
           register={register}
           errors={errors}
         />
-        <Button type="submit" title="Create account" />
+        <Button type="submit" title="Create account" fullWidth />
       </form>
       <p>
         Have an account? <Link href="/login">Log in</Link>

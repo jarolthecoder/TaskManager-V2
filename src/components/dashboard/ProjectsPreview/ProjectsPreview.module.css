@@ -1,5 +1,5 @@
 .main {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .section_header,
@@ -11,17 +11,75 @@
 }
 
 .section_body {
-  margin-top: 1rem;
-}
-
-.switch_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+  margin-top: 2rem;
 }
 
 .project_card {
   width: 100%;
+  padding: 1.5rem;
+  border-radius: var(--br-large);
   background: var(--clr-blueish-gray-main);
+  color: var(--clr-gray-light);
+}
+
+.project_time {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--clr-gray-main);
+}
+
+.project_body {
+  margin: 1.5rem 0;
+}
+
+.project_body,
+.project_time {
+  color: var(--clr-gray-main);
+}
+
+.progress_label,
+.project_time,
+.project_time span {
+  font-size: var(--fs-small);
+}
+
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--br-large);
+  background: var(--clr-blue-main);
+  position: relative;
+}
+
+.active_layover {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  /* padding: 0.75rem 1.25rem; */
+  width: 50%;
+  height: 100%;
+  background: var(--clr-yellow-main);
+  z-index: 1;
+  border-radius: var(--br-large);
+  transition: transform ease .3s;
+}
+
+.switch_btn {
+  position: relative;
+  z-index: 2;
+  padding: 0.75rem 1.25rem;
+  color: var(--clr-yellow-main);
+  border-radius: var(--br-large);
+  cursor: pointer;
+  transition: color linear .1s;
+}
+
+.switch_btn.active {
+  color: var(--clr-blue-dark);
+  /* background: var(--clr-yellow-main); */
 }

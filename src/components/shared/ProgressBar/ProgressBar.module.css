@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container {
+  height: 10px;
+  width: 100%;
+  background: var(--clr-blue-main);
+  border-radius: var(--br-small);
+}
+
+.filler {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--clr-yellow-main);
+}
+
+.label {
+  text-align: right;
+  padding-left: 1rem;
+  color: var(--clr-gray-main);
+}

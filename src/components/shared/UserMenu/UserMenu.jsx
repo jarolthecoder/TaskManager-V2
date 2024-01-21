@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Menu, MenuItem } from "..";
 import styles from "./UserMenu.module.css";
 import { useMenu } from "@/hooks/useMenu";
+import Link from "next/link";
 
 export const UserMenu = () => {
   const refEl = useRef();
@@ -23,10 +24,10 @@ export const UserMenu = () => {
         </p>
         <p className={styles.user_role}>Admin</p>
         <Menu open={isMenuOpen} position={position}>
-          {menuItems.map(({ label, icon }) => (
+          {menuItems.map(({ label, path, icon }) => (
             <MenuItem key={label} onClick={handleMenu}>
               <span className="material-icons">{icon}</span>
-              {label}
+              <Link href={path}>{label}</Link>
             </MenuItem>
           ))}
         </Menu>
@@ -36,9 +37,9 @@ export const UserMenu = () => {
 };
 
 const menuItems = [
-  { label: "Profile", icon: "person" },
-  { label: "Chat", icon: "question_answer" },
-  { label: "Tasks", icon: "list" },
-  { label: "Settings", icon: "settings" },
-  { label: "Logout", icon: "logout" },
+  { label: "Profile", path: "/", icon: "person" },
+  { label: "Chat", path: "/", icon: "question_answer" },
+  { label: "Tasks", path: "/", icon: "list" },
+  { label: "Settings", path: "/", icon: "settings" },
+  { label: "Logout", path: "/login", icon: "logout" },
 ];

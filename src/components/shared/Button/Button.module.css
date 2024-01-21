@@ -1,6 +1,5 @@
 .btn {
-  width: 100%;
-  padding: 16px;
+  padding: 16px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,4 +16,8 @@
 .btn:hover {
   background: var(--clr-yellow-main);
   color: var(--clr-blue-dark);
+}
+
+.width_full {
+  width: 100%;
 }

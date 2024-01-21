@@ -16,7 +16,7 @@ export const Navigation = () => {
   return (
     <nav className={styles.navbar}>
       <ul className={styles.links_list}>
-        {navLinks.map(({ path, title, linkIcon }, index) => (
+        {navLinks.map(({ path, label, icon }, index) => (
           <li
             key={index}
             className={`${styles.navlink} ${
@@ -24,8 +24,8 @@ export const Navigation = () => {
             }`}
             onClick={() => navigateTo(path)}
           >
-            <span className="material-icons">{linkIcon}</span>
-            <Link href={path}>{title}</Link>
+            <span className="material-icons">{icon}</span>
+            <Link href={path}>{label}</Link>
           </li>
         ))}
         <div className={styles.divider}></div>
@@ -45,18 +45,18 @@ export const Navigation = () => {
 
 const navLinks = [
   {
-    title: "Dashboard",
+    label: "Dashboard",
     path: "/dashboard",
-    linkIcon: "dashboard",
+    icon: "dashboard",
   },
   {
-    title: "Tasks",
+    label: "Tasks",
     path: "/dashboard/tasks",
-    linkIcon: "view_list",
+    icon: "view_list",
   },
   {
-    title: "Projects",
+    label: "Projects",
     path: "/dashboard/projects",
-    linkIcon: "folder",
+    icon: "folder",
   },
 ];

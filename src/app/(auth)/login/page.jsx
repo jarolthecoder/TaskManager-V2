@@ -25,9 +25,9 @@ export default function Login() {
 
   return (
     <>
-      <AuthFormTitle 
-        title="Welcome Back!" 
-        description="Enter your credentials to continue" 
+      <AuthFormTitle
+        title="Welcome Back!"
+        description="Enter your credentials to continue"
       />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_form}>
         <AuthFormField
@@ -49,8 +49,9 @@ export default function Login() {
           errors={errors}
         />
         <div className={styles.form_btn_container}>
-          <Button type="submit" title="Sign in" />
+          <Button type="submit" title="Sign in" fullWidth />
           <Button
+            fullWidth
             title={
               <>
                 Sign in with Google

@@ -1,7 +1,6 @@
 .main {
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 10px;
   background: var(--clr-blue-dark);
   position: relative;
 }
@@ -9,5 +8,6 @@
 .dashboard_container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 10px;
+  gap: 1.5rem;
+  height: 100%;
 }
