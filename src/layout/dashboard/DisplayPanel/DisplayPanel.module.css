@@ -1,6 +1,7 @@
 .main {
   margin-left: 225px;
-  min-height: 100dvh;
+  margin-top: 82px;
+  /* min-height: calc(100vh - 15rem); */
   padding: 1.5rem;
   background: var(--clr-blue-dark);
 }

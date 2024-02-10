@@ -5,3 +5,9 @@
 .customFc {
   font-size: 1rem !important;
 }
+
+.today {
+  background-color: #2299ee;
+  color: var(--clr-gray-light);
+  border: 1px solid #2299ee;
+}

@@ -136,6 +136,35 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/* Custom Calendar Styles */
+.rdp {
+  margin: 0 !important;
+  width: 100%;
+}
+
+.rdp .rdp-months {
+  justify-content: center;
+}
+
+.rdp .rdp-table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.rdp .rdp-month:last-child {
+  width: 100%;
+}
+
+.rdp .rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: var(--clr-blue-light);
+  color: var(--clr-gray-light);
+  border: 1px solid var(--clr-blue-main);
+}
+
+.rdp .rdp-day_selected:focus-visible, .rdp .rdp-day_selected:hover {
+  background-color: #14507b;
+  color: var(--clr-gray-light);
+}
 
 /* Custom React Full Calendar Styles */
 .fc a {

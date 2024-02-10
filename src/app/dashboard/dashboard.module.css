@@ -1,13 +1,16 @@
-.main {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  background: var(--clr-blue-dark);
-  position: relative;
+.header {
+  padding-bottom: 2rem;
 }
 
-.dashboard_container {
+.container {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1.5rem;
   height: 100%;
+}
+
+.calendar_card {
+  display: flex ;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
