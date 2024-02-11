@@ -24,9 +24,7 @@ export default function Dashboard() {
           </Card>
           <Card>
             <h2>Task's completition status</h2>
-            <div>
               <DoughnutChart />
-            </div>
           </Card>
         </div>
       </div>

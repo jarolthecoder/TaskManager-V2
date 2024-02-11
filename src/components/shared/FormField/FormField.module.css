@@ -1,0 +1,64 @@
+.input_group {
+  margin-bottom: 1.5rem;
+}
+
+.input_group:focus-within label,
+.input_group:focus-within span {
+  color: var(--clr-yellow-main);
+  transition: color .3s ease-in-out;
+}
+
+.input_group label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 700;
+  color: var(--clr-gray-light);
+}
+
+.form_input {
+  border: 1px solid var(--clr-trasparent);
+  border-radius: var(--br-small);
+  background: #060910;
+}
+
+.form_input:focus-within {
+  border-color: var(--clr-yellow-main);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form_input input,
+.form_input textarea {
+  width: 100%;
+  padding: .75rem;
+  border: none;
+  color: var(--clr-gray-main);
+  background: var(--clr-trasparent);
+}
+
+.form_input textarea {
+  resize: none;
+}
+
+.form_input textarea:focus {
+  outline: none;
+}
+
+.form_input span {
+  color: var(--clr-gray-light);
+}
+
+/* Field error state */
+.form_input.error,
+.form_input.error:focus-within {
+  border-color: var(--clr-red-main);
+}
+
+.form_input.error span {
+  color: var(--clr-red-main);
+}
+
+.input_group .error {
+  color: var(--clr-red-main);
+  font-size: var(--fs-small);
+  margin-top: .25rem;
+}

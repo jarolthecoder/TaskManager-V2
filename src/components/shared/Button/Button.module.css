@@ -1,13 +1,16 @@
-.btn {
-  padding: 16px 24px;
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn {
+  padding: 16px 24px;
   text-align: center;
   font-size: inherit;
   font-weight: var(--fw-medium);
   background: var(--clr-blue-main);
-  border-radius: var(--br-large);
+  border-radius: var(--br-small);
   color: var(--clr-yellow-main);
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
   cursor: pointer;
@@ -18,6 +21,18 @@
   color: var(--clr-blue-dark);
 }
 
-.width_full {
+.width_full .btn {
   width: 100%;
+}
+
+.align_center {
+  justify-content: center;
+}
+
+.align_left {
+  justify-content: flex-start;
+}
+
+.align_right {
+  justify-content: flex-end;
 }

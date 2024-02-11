@@ -1,0 +1,50 @@
+.main {
+  margin-bottom: 1.5rem;
+}
+
+.main:focus-within label,
+.main:focus-within span {
+  color: var(--clr-yellow-main);
+  transition: color .3s ease-in-out;
+}
+
+.main label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 700;
+  color: var(--clr-gray-light);
+}
+
+.select_input:focus-within {
+  border-color: var(--clr-yellow-main);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.select_input {
+  width: 100%;
+  padding: .75rem;
+  border: 1px solid var(--clr-trasparent);
+  border-radius: var(--br-small);
+  background: #060910;
+  color: var(--clr-gray-main);
+}
+
+.select_input span {
+  color: var(--clr-gray-light);
+}
+
+/* Field error state */
+.select_input.error,
+.select_input.error:focus-within {
+  border-color: var(--clr-red-main);
+}
+
+.select_input.error span {
+  color: var(--clr-red-main);
+}
+
+.main .error {
+  color: var(--clr-red-main);
+  font-size: var(--fs-small);
+  margin-top: .25rem;
+}

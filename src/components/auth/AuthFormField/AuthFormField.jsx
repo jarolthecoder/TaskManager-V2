@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import styles from "./AuthFormField.module.css";
 import { RenderWhen } from "@/components/shared";
 
-export const AuthFormField = (props) => {
-  const {
+export const AuthFormField = ({
     label,
     id,
     type,
@@ -18,7 +17,7 @@ export const AuthFormField = (props) => {
     errors,
     errorMessage,
     ...restOfProps
-  } = props;
+  }) => {
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 

@@ -2,7 +2,7 @@ import { Roboto} from 'next/font/google'
 import './globals.css'
 import "material-icons/iconfont/material-icons.css";
 
-const roboto = Roboto({ weight: ['400', '500'], subsets: ['latin'] })
+const roboto = Roboto({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
 export const metadata = {
     title: 'TaskManager V2',

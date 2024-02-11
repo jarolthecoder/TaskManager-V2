@@ -10,3 +10,6 @@ export * from './UserBar/UserBar'
 export * from './Menu/Menu'
 export * from "./MenuItem/MenuItem";
 export * from './ProgressBar/ProgressBar'
+export * from './Modal/Modal'
+export * from './FormField/FormField'
+export * from './Select/Select' 

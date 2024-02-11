@@ -9,7 +9,7 @@ export const ProjectCard = ({project}) => {
       <div className={styles.project_header}>
         <h3 className={styles.project_title}>{title}</h3>
         <p className={styles.project_time}>
-          <span class="material-icons">watch_later</span>
+          <span className="material-icons">watch_later</span>
           Ends {endDate}
         </p>
       </div>

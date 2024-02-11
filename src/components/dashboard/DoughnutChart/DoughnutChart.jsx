@@ -10,9 +10,9 @@ export const DoughnutChart = () => {
   // Doughnut chart settings
   const data = {
     labels: [
-      `${20} Completed Tasks`,
-      `${8} In Progress Tasks`,
-      `${5} Pending Tasks`,
+      `${20} Completed`,
+      `${8} In Progress`,
+      `${5} Pending`,
     ],
     datasets: [
       {
@@ -64,12 +64,14 @@ export const DoughnutChart = () => {
   };
 
   return (
-    <Doughnut
-      data={data}
-      options={options}
-      plugins={[plugin]}
-      width={200}
-      height={200}
-    />
+    <div style={{marginTop: '1rem'}}>
+      <Doughnut
+        data={data}
+        options={options}
+        plugins={[plugin]}
+        width={200}
+        height={200}
+      />
+    </div>
   );
 };
