@@ -1,12 +1,8 @@
 .main {
-  /* position: absolute;
-  top: 40px;
-  right: 0; */
   min-width: 150px;
   height: auto;
   background: var(--clr-blue-light);
   border: 1px solid #383f44;
   border-radius: var(--br-small);
   padding: .5rem 0;
-  z-index: 2;
 }

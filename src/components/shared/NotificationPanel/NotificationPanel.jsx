@@ -1,20 +1,10 @@
 import styles from "./NotificationPanel.module.css";
 import { Button } from "..";
 
-export const NotificationPanel = ({ open, position, handleMenu }) => {
-  if (open) {
-    const { top, right } = position;
-    const transform = `translate(-${right}px, ${top}px)`;
+export const NotificationPanel = ({ handleOpen }) => {
     return (
       <div
         className={styles.notifications_panel}
-        style={{
-          position: "absolute",
-          top,
-          right,
-          transform,
-          zIndex: 3
-        }}
       >
         <div className={styles.panel_header}>
           <h3>Notifications</h3>
@@ -22,7 +12,7 @@ export const NotificationPanel = ({ open, position, handleMenu }) => {
         </div>
         <div className={styles.panel_body}>
           <ul className={styles.notifications_list}>
-            <li className={styles.notification} onClick={handleMenu}>
+            <li className={styles.notification} onClick={handleOpen}>
               <div className={styles.notification_badge}>
                 <span className="material-icons">settings</span>
               </div>
@@ -37,7 +27,7 @@ export const NotificationPanel = ({ open, position, handleMenu }) => {
                 </p>
               </div>
             </li>
-            <li className={styles.notification} onClick={handleMenu}>
+            <li className={styles.notification} onClick={handleOpen}>
               <div className={`${styles.notification_badge} ${styles.blue}`}>
                 <span class="material-icons">textsms</span>
               </div>
@@ -52,7 +42,7 @@ export const NotificationPanel = ({ open, position, handleMenu }) => {
                 </p>
               </div>
             </li>
-            <li className={styles.notification} onClick={handleMenu}>
+            <li className={styles.notification} onClick={handleOpen}>
               <div className={`${styles.notification_badge} ${styles.red}`}>
                 <span class="material-icons">warning</span>
               </div>
@@ -74,5 +64,4 @@ export const NotificationPanel = ({ open, position, handleMenu }) => {
         </div>
       </div>
     );
-  }
 };

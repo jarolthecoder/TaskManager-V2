@@ -1,23 +1,24 @@
-'use client'
+"use client";
 
-import { useMenu } from '@/hooks/useMenu';
-import { NotificationPanel } from '../NotificationPanel/NotificationPanel';
-import styles from './NotificationsMenu.module.css'
-import { useRef } from 'react';
+import { NotificationPanel } from "../NotificationPanel/NotificationPanel";
+import { useRef } from "react";
+import { usePopper } from "@/hooks";
+import { Popper } from "..";
+import styles from "./NotificationsMenu.module.css";
 
 export const NotificationsMenu = () => {
-   const refEl = useRef();
-   const { isMenuOpen, position, handleMenu } = useMenu(refEl);
+  const refEl = useRef(null);
+  const popperRef = useRef(null);
+  const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
+
   return (
     <>
-      <div className={styles.notifications} ref={refEl} onClick={handleMenu}>
+      <div className={styles.notifications} ref={refEl} onClick={togglePopper}>
         <span className="material-icons">notifications</span>
       </div>
-      <NotificationPanel
-        open={isMenuOpen}
-        position={position}
-        handleMenu={handleMenu}
-      />
+      <Popper open={isPopperOpen} ref={popperRef}>
+        <NotificationPanel handleOpen={togglePopper} />
+      </Popper>
     </>
   );
-}
+};

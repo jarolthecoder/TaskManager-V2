@@ -25,14 +25,6 @@
   background: var(--clr-blue-dark);
 }
 
-.date_picker {
-  /* position: absolute; */
-  padding: .75rem;
-  border-radius: var(--br-small);
-  background: var(--clr-blue-light);
-  border: 1px solid #383f44;
-}
-
 .form_input:focus-within {
   border-color: var(--clr-yellow-main);
   transition: border-color 0.3s ease-in-out;
@@ -44,10 +36,6 @@
   padding: .75rem;
   color: var(--clr-gray-main);
   background: var(--clr-trasparent);
-}
-
-.date_picker_icon {
-  padding-right: .75rem;
 }
 
 .form_input span {
@@ -68,4 +56,16 @@
   color: var(--clr-red-main);
   font-size: var(--fs-small);
   margin-top: .25rem;
+}
+
+/* Date picker styles */
+.date_picker_container {
+  padding: .75rem;
+  border-radius: var(--br-small);
+  background: var(--clr-blue-light);
+  border: 1px solid #383f44;
+}
+
+.date_picker_icon {
+  padding-right: .75rem;
 }

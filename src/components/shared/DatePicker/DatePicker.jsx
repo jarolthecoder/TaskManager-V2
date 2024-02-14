@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { createPopper } from "@popperjs/core";
+import { useState, useRef } from "react";
 import PropTypes from "prop-types";
-import styles from "./DatePicker.module.css";
-import { parse, isValid, format } from "date-fns"; // Assuming you're using date-fns for date parsing and formatting
+import { isValid } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { usePopper } from "@/hooks";
 import { formatDate } from "@/utils/helpers/formatDate";
+import { Popper } from "..";
+import styles from "./DatePicker.module.css";
 
 export const DatePicker = ({
   label,
@@ -17,30 +17,15 @@ export const DatePicker = ({
   register,
   ...restOfProps
 }) => {
-
   const inputRef = useRef(null);
   const popperRef = useRef(null);
   const [selected, setSelected] = useState(null);
   const [inputValue, setInputValue] = useState("");
-   const { isPopperOpen, togglePopper } = usePopper(
-     inputRef,
-     popperRef,
-     {
-       placement: "bottom-start",
-       modifiers: [
-         {
-           name: "preventOverflow",
-           options: {
-             boundary: "viewport",
-           },
-         },
-       ],
-     }
-   );
+  const { isPopperOpen, togglePopper } = usePopper(inputRef, popperRef);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-    const date = formatDate(e.target.value, "PP")
+    const date = formatDate(e.target.value, "PP");
     if (isValid(date)) {
       setSelected(date);
     } else {
@@ -78,17 +63,23 @@ export const DatePicker = ({
           <span className="material-icons">event</span>
         </button>
       </div>
-      {isPopperOpen && (
-        <div
-          ref={popperRef}
-          className={styles.date_picker}>
+      <Popper open={isPopperOpen} ref={popperRef}>
+        <div className={styles.date_picker_container}>
           <DayPicker
             initialMonth={selected || new Date()}
             selected={selected}
             onDayClick={handleDaySelect}
           />
         </div>
-      )}
+      </Popper>
     </div>
   );
+};
+
+DatePicker.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  register: PropTypes.func,
 };

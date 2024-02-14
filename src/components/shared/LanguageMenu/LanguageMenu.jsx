@@ -1,34 +1,33 @@
 "use client";
 
-import { useMenu } from "@/hooks/useMenu";
+import { useRef } from "react";
+import { usePopper } from "@/hooks";
 import Image from "next/image";
-import { Menu, MenuItem } from "..";
+import { Menu, MenuItem, Popper } from "..";
 import enFlag from "../../../../public/ic_flag_en.9a67c937.svg";
 import deFlag from "../../../../public/ic_flag_de.7d35b6ca.svg";
 import frFlag from "../../../../public/ic_flag_fr.35afd52c.svg";
-import { useRef } from "react";
 
 export const LanguageMenu = () => {
-  const refEl = useRef();
-  const { isMenuOpen, position, handleMenu } = useMenu(refEl);
+  const refEl = useRef(null);
+  const popperRef = useRef(null);
+  const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
   return (
     <>
-      <div
-        onClick={handleMenu}
-        ref={refEl}
-        style={{ cursor: "pointer" }}
-      >
+      <button ref={refEl} onClick={togglePopper}>
         <Image src={enFlag} alt="England flag" />
-      </div>
-      <Menu open={isMenuOpen} position={position}>
-        {menuItems.map(({ label, icon }) => (
-          <MenuItem key={label} onClick={handleMenu}>
-            <Image src={icon} alt={`${label} flag`} />
-            {label}
-          </MenuItem>
-        ))}
-      </Menu>
+      </button>
+      <Popper open={isPopperOpen} ref={popperRef}>
+        <Menu>
+            {menuItems.map(({ label, icon }) => (
+              <MenuItem key={label} onClick={togglePopper}>
+                <Image src={icon} alt={`${label} flag`} />
+                {label}
+              </MenuItem>
+            ))}
+          </Menu>
+      </Popper>
     </>
   );
 };
