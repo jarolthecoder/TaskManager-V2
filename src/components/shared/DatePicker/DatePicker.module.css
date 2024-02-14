@@ -16,27 +16,38 @@
   color: var(--clr-gray-light);
 }
 
-.select:focus {
+.form_input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--clr-trasparent);
+  border-radius: var(--br-small);
+  background: var(--clr-blue-dark);
+}
+
+.date_picker {
+  /* position: absolute; */
+  padding: .75rem;
+  border-radius: var(--br-small);
+  background: var(--clr-blue-light);
+  border: 1px solid #383f44;
+}
+
+.form_input:focus-within {
   border-color: var(--clr-yellow-main);
   transition: border-color 0.3s ease-in-out;
 }
 
-/* .form_input {
+.form_input input {
   width: 100%;
-  padding: 1.02rem;
-  border: 1px solid var(--clr-trasparent);
-  border-radius: var(--br-small);
-  background: var(--clr-blue-dark);
-  color: var(--clr-gray-main);
-} */
-
-.select {
-  width: 100%;
+  border: none;
   padding: .75rem;
-  border: 1px solid var(--clr-trasparent);
-  border-radius: var(--br-small);
-  background: var(--clr-blue-dark);
-  color: var(--clr-gray-main);;
+  color: var(--clr-gray-main);
+  background: var(--clr-trasparent);
+}
+
+.date_picker_icon {
+  padding-right: .75rem;
 }
 
 .form_input span {

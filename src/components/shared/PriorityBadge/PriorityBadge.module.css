@@ -1,22 +1,30 @@
 .priority_badge {
-  padding: 0.25rem 1rem;
-  border-radius: var(--br-large);
+  padding: 0.1rem;
+  border-radius: var(--br-small);
   font-size: var(--fs-small);
   font-weight: var(--fw-medium);
   text-transform: capitalize;
+  width: 100%;
+  max-width: 90px;
+  text-align: center;
 }
 
+/* .priority_badge.high {
+  background-color: #42322D;
+  color: #E17F41;
+} */
+
 .priority_badge.high {
-  background-color: var(--clr-red-dark);
-  color: var(--clr-red-main);
+  background-color: #343333;
+  color: #9c9490;
 }
 
 .priority_badge.medium {
-  background-color: var(--clr-yellow-dark);
+  background-color: #423C31;
   color: var(--clr-yellow-main);
 }
 
 .priority_badge.low {
-  background-color: var(--clr-green-dark);
-  color: var(--clr-green-main);
+  background-color: #1F3E3E;
+  color: #15CAB0;
 }

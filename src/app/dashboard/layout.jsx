@@ -1,9 +1,9 @@
 
 import { Modal } from "@/components/shared";
 import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
-import { TaskForm } from "@/components/dashboard";
-import styles from "./dashboard.module.css";
 import { AppProvider } from "@/context/AppContext";
+import { AddTaskForm } from "@/components/tasks";
+import styles from "./dashboard.module.css";
 
 export default function DashboardLayout({ children }) {
 
@@ -11,7 +11,7 @@ export default function DashboardLayout({ children }) {
     <AppProvider>
       <main className={styles.main}>
         <Modal title="New Task">
-          <TaskForm />
+          <AddTaskForm />
         </Modal>
         <SideBar />
         <TopBar />

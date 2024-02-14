@@ -1,0 +1,113 @@
+.task_header,
+.task_title,
+.task_stat_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task_body {
+  margin: .5rem 0 0 0;
+  /* border-bottom: 1px solid var(--clr-gray-dark); */
+}
+
+/* .task_description {
+  height: 75px;
+  color: var(--clr-gray-main);
+  white-space: no-wrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+} */
+
+.task_description {
+  width: 100%;
+  height: 100px;
+  /* resize: vertical; */
+  min-width: 100%;
+  min-height: 75px;
+  max-width: 300px;
+  max-height: 300px;
+  border: none;
+  color: var(--clr-gray-main);
+  overflow: auto;
+  background: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom: 1px solid var(--clr-gray-dark);
+}
+
+/* .task_description:focus {
+  outline: none;
+  background: var(--clr-blue-dark);
+} */
+
+/* Let's get this party started */
+.task_description::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+/* Track */
+.task_description::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.487);  */
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+.task_description::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(52, 52, 52, 0.8); 
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  */
+}
+
+
+.task_stat_row {
+  margin-top: 0.75rem;
+}
+
+.task_footer p {
+  font-size: var(--fs-small);
+}
+
+/* If selected view is list */
+.list_item {
+  padding: 1.5rem 1.75rem;
+}
+
+.list_item .task_description {
+  width: 100%;
+  height: 50px;
+  /* resize: vertical; */
+  min-width: 100%;
+  min-height: 50px;
+  max-width: 300px;
+  max-height: 300px;
+  border: none;
+  color: var(--clr-gray-main);
+  overflow: auto;
+  background: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom: 1px solid var(--clr-gray-dark);
+}
+
+.list_item .task_footer p:not(.item_priority) {
+  font-size: var(--fs-regular);
+}
+
+.completed .task_description,
+.completed .task_header h3 {
+  text-decoration: line-through;
+}
+
+/* .list_item .priority_badge {
+  max-width: 100px !important;
+} */

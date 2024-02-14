@@ -26,22 +26,26 @@ export const Select = ({
   };
 
   return (
-    <div className={styles.main}>
+    <div className={styles.input_group}>
       <label htmlFor={id}>{label}</label>
-      <select
-        id={id}
-        name={name}
-        value={selectedValue}
-        className={styles.select_input}
-        onChange={handleSelectChange}
-      >
-        <option value="" disabled>Select an option</option>
-        {
-          options.map((option, index) => (
-            <option key={option.label} value={option.value}>{option.label}</option>
-          ))
-        }
-      </select>
+      <div className={styles.form_input}>
+        <select
+          id={id}
+          name={name}
+          value={selectedValue}
+          className={styles.select}
+          onChange={handleSelectChange}
+        >
+          <option value="" disabled>
+            Select an option
+          </option>
+          {options.map((option, index) => (
+            <option key={option.label} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

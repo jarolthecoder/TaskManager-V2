@@ -2,10 +2,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { taskSchema } from "@/utils/validations/taskSchema";
-import { FormField, Select, Button } from "@/components/shared";
+import { FormField, Select, Button, DatePicker } from "@/components/shared";
 import styles from "./TaskForm.module.css";
 
-export const TaskForm = () => {
+export const AddTaskForm = () => {
   const form = useForm({
     resolver: yupResolver(taskSchema),
   });
@@ -20,8 +20,8 @@ export const TaskForm = () => {
   ];
 
   const handleFormSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <form className={styles.task_form} onSubmit={handleFormSubmit}>
@@ -42,7 +42,15 @@ export const TaskForm = () => {
         register={register}
         errors={errors}
       />
-      <Select label="Priority" options={priorityOptions} />
+      <div className={styles.field_group}>
+        <DatePicker
+          label="Due Date"
+          id="dueDate"
+          name="dueDate"
+          register={register}
+        />
+        <Select label="Priority" options={priorityOptions} />
+      </div>
       <Button type="submit" title="Create Task" onClick={handleFormSubmit} />
     </form>
   );

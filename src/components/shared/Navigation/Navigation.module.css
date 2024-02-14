@@ -24,15 +24,14 @@
 
 .navlink a,
 .navlink span {
-  color: var(--clr-gray-dark);
+  color: var(--clr-gray-main);
   transition: color 0.2s ease-in-out;
 }
 
 .navlink.active {
-  background: var(--clr-blue-light);
+  background: var(--clr-blue-card);
   border-color: var(--clr-yellow-main);
 }
-
 
 .navlink:hover,
 .navlink:hover a,

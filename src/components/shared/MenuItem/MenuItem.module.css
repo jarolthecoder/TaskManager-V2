@@ -14,7 +14,7 @@
 }
 
 .main:hover {
-  background: var(--clr-blue-light);
+  background: #383f44;
 }
 
 .main a:hover {

@@ -6,7 +6,7 @@
 .container {
   height: 10px;
   width: 100%;
-  background: var(--clr-blue-main);
+  background: #383f44;
   border-radius: var(--br-small);
 }
 

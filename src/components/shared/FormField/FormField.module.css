@@ -18,7 +18,7 @@
 .form_input {
   border: 1px solid var(--clr-trasparent);
   border-radius: var(--br-small);
-  background: #060910;
+  background: var(--clr-blue-dark);
 }
 
 .form_input:focus-within {

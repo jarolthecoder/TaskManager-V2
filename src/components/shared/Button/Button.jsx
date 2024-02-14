@@ -7,10 +7,12 @@ export const Button = ({
   onClick,
   fullWidth,
   align = "left",
+  size = "medium",
   ...restOfProps
 }) => {
   const btnClasses = classNames(
     styles.btn,
+    size === "small" ? styles.small : styles.medium,
     classNames
   );
 

@@ -1,0 +1,62 @@
+
+.header {
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.header,
+.header_options {
+  display: flex ;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  height: 100%;
+}
+
+.container.grid_view {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.container.list_view {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+
+.add_task_btn {
+  border: 2px dashed var(--clr-blue-card);
+  border-radius: var(--br-small);
+  color: var(--clr-gray-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.select {
+  margin-left: .5rem;
+}
+
+.select_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .25rem;
+  border-radius: var(--br-small);
+  transition: color ease 0.1s, background ease 0.2s;
+}
+
+.select_btn {
+  cursor: pointer;
+}
+
+.select_btn:hover {
+  background: var(--clr-yellow-main);
+  color: var(--clr-blue-dark);
+}

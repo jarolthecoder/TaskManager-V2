@@ -1,0 +1,10 @@
+.task_form {
+  margin: 2rem 0 0 0;
+}
+
+.field_group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}

@@ -9,11 +9,7 @@ export const DoughnutChart = () => {
 
   // Doughnut chart settings
   const data = {
-    labels: [
-      `${20} Completed`,
-      `${8} In Progress`,
-      `${5} Pending`,
-    ],
+    labels: [`${20} Completed`, `${8} In Progress`, `${5} Pending`],
     datasets: [
       {
         data: [20, 8, 5],
@@ -37,6 +33,7 @@ export const DoughnutChart = () => {
         position: "right",
         boxWidth: 30,
         labels: {
+          textAlign: "left",
           boxWidth: 100, // adjust this value to change the width of the labels
           usePointStyle: true, // use custom shapes for the labels
           pointStyle: "circle", // specify the shape of the labels
@@ -44,7 +41,7 @@ export const DoughnutChart = () => {
           font: {
             size: 15,
           },
-          color: "#fff"
+          color: "#fff",
         },
       },
     },

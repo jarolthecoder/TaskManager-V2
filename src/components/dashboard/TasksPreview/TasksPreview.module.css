@@ -1,6 +1,18 @@
 .main {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
   gap: 1rem;
+}
+
+.add_task_btn {
+  border: 2px dashed var(--clr-blue-card);
+  border-radius: var(--br-small);
+  color: var(--clr-gray-light);
+}
+
+.add_task_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,7 +1,8 @@
 .notifications_panel {
   min-width: 400px;
   height: auto;
-  background: var(--clr-blue-main);
+  background: var(--clr-blue-light);
+  border: 1px solid #383f44;
   border-radius: var(--br-small);
   padding: 1rem 0;
   color: var(--clr-gray-main);
@@ -33,7 +34,7 @@
 }
 
 .notification:hover {
-  background: var(--clr-blue-light);
+  background: #383f44;
 }
 
 .notification:nth-child(1) {

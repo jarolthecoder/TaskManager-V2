@@ -1,16 +1,27 @@
-"use client"
+"use client";
 
 import { Card } from "@/components/shared";
-import styles from "./ProjectsPreview.module.css";
 import { ProjectCard } from "./ProjectCard";
 import { useState } from "react";
+import { projectsData } from "@/api/projectsData";
+import styles from "./ProjectsPreview.module.css";
 
 export const ProjectsPreview = () => {
+  const [activeView, setActiveView] = useState("Ongoing");
+  const [projects, setProjects] = useState(projectsData);
 
-  const [activeButton, setActiveButton] = useState("Ongoing");
+  const ongoingProjects = projectsData.filter(
+    (project) => project.progress > 0 && project.progress < 100
+  );
+  const pendingProjects = projectsData.filter(
+    (project) => project.progress === 0
+  );
 
-  const handleProjectsView = (button) => {
-    setActiveButton(button);
+  const handleProjectsView = (selectedView) => {
+    selectedView === "Ongoing"
+      ? setProjects(ongoingProjects)
+      : setProjects(pendingProjects);
+    setActiveView(selectedView);
   };
 
   return (
@@ -23,14 +34,14 @@ export const ProjectsPreview = () => {
               className={styles.active_layover}
               style={{
                 transform:
-                  activeButton === "Ongoing"
+                  activeView === "Ongoing"
                     ? "translate(0, -50%)"
                     : "translate(100%, -50%)",
               }}
             ></div>
             <p
               className={`${styles.switch_btn} ${
-                activeButton === "Ongoing" && styles.active
+                activeView === "Ongoing" && styles.active
               }`}
               onClick={() => handleProjectsView("Ongoing")}
             >
@@ -38,7 +49,7 @@ export const ProjectsPreview = () => {
             </p>
             <p
               className={`${styles.switch_btn} ${
-                activeButton === "Pending" && styles.active
+                activeView === "Pending" && styles.active
               }`}
               onClick={() => handleProjectsView("Pending")}
             >
@@ -55,22 +66,3 @@ export const ProjectsPreview = () => {
     </section>
   );
 };
-
-const projects = [
-  {
-    id: 1,
-    title: "Startup with design",
-    description: "Revamp the company website for a better user experience.",
-    endDate: "Feb 15 2024",
-    tasks: [],
-    progress: 78,
-  },
-  {
-    id: 2,
-    title: "Website Redesign",
-    description: "Revamp the company website for a better user experience.",
-    endDate: "Apr 7 2024",
-    tasks: [],
-    progress: 52,
-  },
-];

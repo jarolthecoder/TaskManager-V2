@@ -10,7 +10,7 @@
   bottom: 0; 
   width: 225px;
   padding: 1.5rem 0;
-  background: var(--clr-blueish-gray-dark);
+  background: var(--clr-blue-light);
   border-left: 1px solid var(--clr-blue-dark);
 }
 

@@ -1,0 +1,38 @@
+export const projectsData = [
+  {
+    id: 1,
+    title: "Startup with design",
+    description: "Revamp the company website for a better user experience.",
+    startDate: "Jan 15 2024",
+    endDate: "Feb 15 2024",
+    tasks: [],
+    progress: 78,
+  },
+  {
+    id: 2,
+    title: "Website Redesign",
+    description: "Revamp the company website for a better user experience.",
+    startDate: "Jan 15 2024",
+    endDate: "Apr 7 2024",
+    tasks: [],
+    progress: 52,
+  },
+  {
+    id: 3,
+    title: "Website Redesign",
+    description: "Revamp the company website for a better user experience.",
+    startDate: "Jan 15 2024",
+    endDate: "Apr 7 2024",
+    tasks: [],
+    progress: 52,
+  },
+  {
+    id: 4,
+    title: "Website Redesign",
+    description: "Revamp the company website for a better user experience.",
+    startDate: "Jan 15 2024",
+    endDate: "Apr 7 2024",
+    tasks: [],
+    progress: 0,
+  },
+];

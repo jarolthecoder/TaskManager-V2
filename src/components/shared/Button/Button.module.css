@@ -4,25 +4,34 @@
   align-items: center;
 }
 
+.container,
+.width_full .btn {
+  width: 100%;
+}
+
 .btn {
-  padding: 16px 24px;
   text-align: center;
   font-size: inherit;
   font-weight: var(--fw-medium);
-  background: var(--clr-blue-main);
+  background: var(--clr-btn-bg);
   border-radius: var(--br-small);
   color: var(--clr-yellow-main);
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
   cursor: pointer;
 }
 
+.btn.small {
+  padding: 8px 16px;
+}
+
+.btn.medium {
+  padding: 16px 24px;
+}
+
+
 .btn:hover {
   background: var(--clr-yellow-main);
   color: var(--clr-blue-dark);
-}
-
-.width_full .btn {
-  width: 100%;
 }
 
 .align_center {

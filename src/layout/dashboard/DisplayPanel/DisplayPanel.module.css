@@ -9,3 +9,17 @@
 .main h2 {
   color: var(--clr-gray-light);
 }
+
+.footer {
+  margin-top: 1.5rem;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_content p {
+   color: var(--clr-gray-main);
+}

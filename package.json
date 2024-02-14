@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@popperjs/core": "^2.11.8",
     "chart.js": "^4.4.1",
     "classnames": "^2.5.1",
     "date-fns": "^3.3.1",

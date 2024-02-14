@@ -1,0 +1,24 @@
+.table_main {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table_main>:not(caption)>*>* {
+    padding: .75rem .6rem;
+    border-bottom-width: 1px;
+}
+
+.table_head {
+  background: #282B2E;
+  border-top: 1px solid #383f44;
+  border-bottom: 1px solid #383f44;
+}
+
+.table_body tr {
+  border-bottom: 1px solid #383f44;
+}
+
+.table_head th:first-child,
+.table_body td:first-child {
+  padding-left: 1.75rem;
+}
