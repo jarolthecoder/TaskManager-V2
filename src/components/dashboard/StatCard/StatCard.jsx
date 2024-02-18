@@ -9,6 +9,8 @@ export const StatCard = ({ title, icon, stat }) => {
       ? styles.due_today
       : icon === "pending_actions"
       ? styles.pending
+      : icon === "moving"
+      ? styles.in_progress
       : styles.completed
   );
 

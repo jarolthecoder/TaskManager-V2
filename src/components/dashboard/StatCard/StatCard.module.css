@@ -30,25 +30,33 @@
 }
 
 .stat_icon.due_today {
-  background-color: rgba(255, 107, 147, 0.2);
+  background: var(--clr-task-due-bg);
 }
 
 .stat_icon.due_today span {
-  color: rgb(255, 107, 147);
+  color: var(--clr-task-due-text);
 }
 
 .stat_icon.pending {
-  background-color: rgba(255, 151, 119, 0.2);
+  background: var(--clr-task-pending-bg);
 }
 
 .stat_icon.pending span {
-  color: rgb(255, 151, 119);
+  color: var(--clr-task-pending-text);
+}
+
+.stat_icon.in_progress {
+  background: var(--clr-task-in-progress-bg);
+}
+
+.stat_icon.in_progress span {
+   color: var(--clr-task-in-progress-text);
 }
 
 .stat_icon.completed {
-  background-color: rgba(167, 152, 255, 0.2);
+  background: var(--clr-task-completed-bg);
 }
 
 .stat_icon.completed span {
-  color: rgb(167, 152, 255);
+  color: var(--clr-task-completed-text);
 }

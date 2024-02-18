@@ -7,9 +7,9 @@ export const SideBar = () => {
     <aside className={styles.main}>
       <Logo />
       <Navigation />
-      <div className={styles.add_task_container}>
+      {/* <div className={styles.add_task_container}>
         <AddTaskButton />
-      </div>
+      </div> */}
     </aside>
   );
 };

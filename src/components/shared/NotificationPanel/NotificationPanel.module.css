@@ -42,7 +42,7 @@
 
 .notification_title {
   color: var(--clr-primary-main);
-  font-weight: var(--fw-medium)
+  font-weight: var(--fw-medium);
 }
 
 .notification_description {

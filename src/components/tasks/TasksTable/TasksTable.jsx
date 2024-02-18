@@ -1,4 +1,4 @@
-import { PriorityBadge } from "../../shared";
+import { StatusBadge } from "..";
 import { formatDate } from "date-fns";
 import styles from "./TasksTable.module.css";
 
@@ -25,22 +25,17 @@ export const TasksTable = ({ tasks }) => {
               {task.dueDate === formattedToday ? "Today" : task.dueDate}
             </td>
             <td align="left">
-              <PriorityBadge priority={task.status} />
+              <StatusBadge status={task.status} />
             </td>
             <td align="left">
               <p
                 style={{
                   color:
-                    // task.priority === "High"
-                    //   ? "#E17F41"
-                    //   : task.priority === "Medium"
-                    //   ? "#f4c47c"
-                    //   : "#15CAB0",
                     task.priority === "High"
-                      ? "#f44336"
+                      ? "#E57373"
                       : task.priority === "Medium"
-                      ? "#f4c47c"
-                      : "#15CAB0",
+                      ? "#FFCC80"
+                      : "#56e3c2",
                 }}
               >
                 {task.priority}

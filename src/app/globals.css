@@ -1,7 +1,9 @@
 :root {
   /* Typography */
+  --fw-light: 300;
   --fw-regular: 400;
   --fw-medium: 500;
+  --fw-bold: 700;
 
   --fs-small: 0.825rem;
   --fs-body: 1rem;
@@ -22,8 +24,8 @@
   --fc-button-hover-border-color: var(--clr-trasparent);
   --fc-button-active-bg-color: var(--clr-yellow-main);
   --fc-button-active-border-color: var(--clr-trasparent);
-  
-  --fc-border-color: #262A3D;
+
+  --fc-border-color: #262a3d;
   --fc-daygrid-event-dot-width: 5px;
   --fc-today-bg-color: #242213;
 
@@ -72,7 +74,7 @@ button {
   border: none;
   background: none;
   cursor: pointer;
-  color: var(--clr-text-main)
+  color: var(--clr-text-main);
   /* text-transform: capitalize; */
 }
 
@@ -88,7 +90,7 @@ h3,
 h4 {
   font-weight: var(--fw-medium);
   text-transform: capitalize;
-  color: var(--clr-text-light)
+  color: var(--clr-text-light);
 }
 
 h1 {
@@ -106,6 +108,10 @@ h3 {
 
 h4 {
   font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.875rem;
 }
 
 p {
@@ -147,7 +153,8 @@ a:hover {
   border: 1px solid var(--clr-blue-main);
 }
 
-.rdp .rdp-day_selected:focus-visible, .rdp .rdp-day_selected:hover {
+.rdp .rdp-day_selected:focus-visible,
+.rdp .rdp-day_selected:hover {
   background-color: #14507b;
   color: var(--clr-gray-light);
 }
@@ -211,7 +218,7 @@ a:hover {
 .fc-daygrid-event {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  padding: .2rem .2rem .2rem .5rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.5rem;
   cursor: move !important;
 }
 
@@ -221,7 +228,7 @@ a:hover {
   text-overflow: ellipsis;
 }
 
-.fc-daygrid-event-harness a  {
+.fc-daygrid-event-harness a {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

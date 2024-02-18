@@ -3,28 +3,27 @@
 import { useContext, useRef } from "react";
 import { AppContext } from "@/context/AppContext";
 import { usePopper } from "@/hooks";
+import { useDispatch } from "react-redux";
+import { setSelectedTask } from "@/redux/features/tasks/tasksSlice";
 import {
   Card,
   IconButton,
   Menu,
   MenuItem,
   Popper,
-  PriorityBadge,
 } from "@/components/shared";
+import { TASKS } from "@/lib/constants";
 import classNames from "classnames";
 import styles from "./TaskCard.module.css";
-import { useDispatch } from "react-redux";
-import { setSelectedTask } from "@/redux/features/tasks/tasksSlice";
-import { TASKS } from "@/lib/constants";
 
-const { EDIT, DELETE} = TASKS;
+const { EDIT, DELETE } = TASKS;
 
 export const TaskCard = ({ task, selectedView, today }) => {
-   const taskClasses = classNames(
-     styles.task_card,
-     selectedView === "List" && styles.list_item,
-     task.status === "Completed" && styles.completed
-   );
+  const taskClasses = classNames(
+    styles.task_card,
+    selectedView === "List" && styles.list_item,
+    task.status === "Completed" && styles.completed
+  );
 
   const { id, title, description, status } = task;
   const isDueToday = task.dueDate === today;
@@ -36,25 +35,31 @@ export const TaskCard = ({ task, selectedView, today }) => {
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
   const handleSelectEdit = () => {
-    dispatch(setSelectedTask(task))
+    dispatch(setSelectedTask(task));
     handleTaskModal();
     setSelectedTaskAction(EDIT);
     togglePopper();
-  }
+  };
 
   const handleSelectDelete = () => {
-    dispatch(setSelectedTask(task))
+    dispatch(setSelectedTask(task));
     handleTaskModal();
     setSelectedTaskAction(DELETE);
-    togglePopper()
-  }
+    togglePopper();
+  };
 
   return (
     <Card key={id} className={taskClasses}>
       <div className={styles.task_header}>
-        <div className={styles.project_badge}>
-          <p>Web Design</p>
+        <div className={styles.task_title}>
+          <h4>{title}</h4>
         </div>
+        {/* <div className={styles.project_badge}>
+          <p>
+            {task.projectAssigned !== "" ? task.projectAssigned : "Unassigned"}
+          </p>
+        </div> */}
+
         <div ref={refEl}>
           <IconButton
             size="small"
@@ -76,22 +81,16 @@ export const TaskCard = ({ task, selectedView, today }) => {
         </Popper>
       </div>
       <div className={styles.task_body}>
-        <div className={styles.task_title}>
-          <h4>{title}</h4>
-        </div>
         <p className={styles.task_description}>{description}</p>
-        {/* Maybe */}
-        {/* <textarea
-          placeholder="Add a description..."
-          rows="3"
-          className={styles.task_description}
-        >
-          {description}
-        </textarea> */}
+        <div className={styles.project_badge_container}>
+          <span className={styles.project_badge}>
+            {task.projectAssigned !== "" ? task.projectAssigned : "Unassigned"}
+          </span>
+        </div>
       </div>
       <hr className={styles.divider} />
       <div className={styles.task_footer}>
-        <div className={styles.task_stat_row}>
+        {/* <div className={styles.task_stat_row}>
           <p>Priority</p>
           <p
             style={{
@@ -108,11 +107,15 @@ export const TaskCard = ({ task, selectedView, today }) => {
         </div>
         <div className={styles.task_stat_row}>
           <p>Status</p>
-          <PriorityBadge priority={status} className={styles.item_priority} />
-        </div>
+          <StatusBadge status={status} className={styles.item_priority} />
+        </div> */}
         <div className={styles.task_stat_row}>
-          <p>Due Date</p>
-          <p>{isDueToday ? "Today" : task.dueDate}</p>
+          <p className={styles.task_stat}>
+            <span className={`material-icons ${styles.stat_icon}`}>
+              schedule
+            </span>
+            {isDueToday ? "Today" : task.dueDate}
+          </p>
         </div>
       </div>
     </Card>

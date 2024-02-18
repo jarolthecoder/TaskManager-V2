@@ -4,7 +4,7 @@ import './colors.css'
 import "material-icons/iconfont/material-icons.css";
 import { ReduxProvider } from '@/redux/provider';
 
-const roboto = Roboto({ weight: ['400', '500', '700'], subsets: ['latin'] })
+const roboto = Roboto({ weight: ['300', '400', '500', '700'], subsets: ['latin'] })
 
 export const metadata = {
     title: 'TaskManager V2',

@@ -5,3 +5,5 @@ export * from "./TasksTable/TasksTable";
 export * from "./TaskActionsModal/TaskActionsModal";
 export * from "./TaskCard/TaskCard";
 export * from "./AddTaskButton/AddTaskButton";
+export * from "./TasksList/TasksList";
+export * from "./StatusBadge/StatusBadge";

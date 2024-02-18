@@ -10,6 +10,10 @@ export const StatsOfTheDay = ({tasks}) => {
     const completedItems = tasks
       .filter((task) => task.status === "Completed")
       .length.toString();
+    
+  const inProgressTasks = tasks.filter(
+    (task) => task.status === "In progress"
+  ).length.toString();
 
   const tasksStatsCard = [
     { title: "Due Today", icon: "today", stat: dueTodayItems },
@@ -17,6 +21,11 @@ export const StatsOfTheDay = ({tasks}) => {
       title: "Pending Tasks",
       icon: "pending_actions",
       stat: completedItems,
+    },
+    {
+      title: "In Progress",
+      icon: "moving",
+      stat: inProgressTasks,
     },
     {
       title: "Completed Tasks",

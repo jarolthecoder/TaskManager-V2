@@ -1,0 +1,25 @@
+.status_badge {
+  padding: 0.1rem;
+  border-radius: var(--br-small);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  text-transform: capitalize;
+  width: 100%;
+  max-width: 90px;
+  text-align: center;
+}
+
+.status_badge.pending {
+background-color: var(--clr-task-pending-bg);
+ color: var(--clr-task-pending-text);
+}
+
+.status_badge.in_progress {
+  background-color: var(--clr-task-in-progress-bg);
+   color: var(--clr-task-in-progress-text);
+}
+
+.status_badge.completed {
+  background-color: var(--clr-task-completed-bg);
+  color: var(--clr-task-completed-text);
+}

@@ -2,7 +2,6 @@ export * from "./Button/Button";
 export * from "./IconButton/IconButton";
 export * from "./RenderWhen/RenderWhen";
 export * from "./Card/Card";
-export * from "./PriorityBadge/PriorityBadge";
 export * from "./Logo/Logo";
 export * from "./Navigation/Navigation";
 export * from "./SearchBar/SearchBar";

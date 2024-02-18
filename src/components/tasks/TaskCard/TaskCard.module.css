@@ -1,6 +1,11 @@
 .task_card {
-  padding: 1.75rem 0;
-  grid-column-end: span 3;
+  padding: 1.15rem 0;
+}
+
+.task_header,
+.task_body,
+.task_footer {
+  padding: 0 1.5rem;
 }
 
 .task_header,
@@ -12,25 +17,38 @@
   gap: 1rem;
 }
 
-.task_header,
-.task_footer {
-  padding: 0 1.5rem;
+.task_title h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.task_body {
-  margin: 1.5rem 0 0.5rem 0;
-  padding: 0 1.5rem;
+.task_stat {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  /* font-size: var(--fs-small) */
+}
+
+
+.stat_icon {
+  font-size: 18px
 }
 
 .project_badge {
-  padding: 4px 16px;
+  display: inline-block;
+  max-width: 200px;
+  padding: 8px 12px;
+  margin: .5rem 0;
   background: var(--clr-primary-opacity);
   border-radius: 20px;
-}
-
-.project_badge p {
+  text-transform: capitalize;
   color: var(--clr-primary-light);
   font-size: var(--fs-small);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .task_title {
@@ -48,14 +66,9 @@
 
 .task_description {
   width: 100%;
-  height: 75px;
-  min-width: 100%;
-  min-height: 75px;
-  max-width: 300px;
-  max-height: 200px;
-  padding: .5rem .25rem 0 0;
+  padding: .5rem 0;
   border: none;
-  overflow: auto;
+  font-size: 15px;
 }
 
 .divider {
@@ -122,48 +135,15 @@
   font-size: var(--fs-regular);
 }
 
-.completed .task_description,
+/* .completed .task_description,
 .completed .task_header h3 {
   text-decoration: line-through;
-}
+} */
 
 .options_btn {
   text-align: left;
-  margin-right: -.5rem;
+  margin: -.5rem -.5rem 0 0;
 }
 /* .list_item .priority_badge {
   max-width: 100px !important;
 } */
-
-/* If decide to make description an editable textarea */
-/* .task_description {
-  height: 75px;
-  white-space: no-wrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  resize: vertical;
-} */
-
-/* .task_description:focus {
-  outline: none;
-  background: var(--clr-blue-dark);
-} */
-
-/* Media Queries */
-@media screen and (max-width: 1300px) {
-  .task_card {
-    grid-column-end: span 4;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .task_card {
-    grid-column-end: span 6;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .task_card {
-    grid-column-end: span 12;
-  }
-}

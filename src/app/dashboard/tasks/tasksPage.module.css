@@ -18,9 +18,11 @@
 
 .container.grid_view {
   display: grid;
-  grid-template-columns: repeat(12, minmax(auto, 100%));
+  grid-template-columns: repeat(12, minmax(auto, 1fr));
   grid-gap: 20px;
   height: 100%;
+  /* min-width: 600px;
+  overflow: auto; */
 }
 
 .container.list_view {
@@ -30,7 +32,7 @@
   height: 100%;
 }
 
-.add_task_btn {
+/* .add_task_btn {
   border: 2px dashed var(--clr-bg-card-main);
   border-radius: var(--br-small);
   display: flex;
@@ -39,7 +41,7 @@
   min-height: 275px;
   width: 100%;
   grid-column-end: span 3;
-}
+} */
 
 .container.list_view .add_task_btn {
   min-height: 200px;

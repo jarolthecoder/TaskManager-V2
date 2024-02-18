@@ -6,22 +6,22 @@
   --clr-primary-opacity: rgba(36, 153, 239, 0.2);
 
   /* Error */
-  --clr-error-main: #f44336;
-  --clr-error-light: #ef9a9a;
+  --clr-error-main: #EF5350;
+  --clr-error-light: #E57373;
   --clr-error-dark: #d32f2f;
-  --clr-error-opacity: rgba(244, 67, 54, 0.08);
+  --clr-error-opacity: rgba(211, 47, 47, 0.08);
 
   /* Warning */
-  --clr-warning-main: #ff9800;
-  --clr-warning-light: #fff176;
-  --clr-warning-dark: #fbc02d;
-  --clr-warning-opacity: rgba(255, 235, 59, 0.08);
+  --clr-warning-main: #FFA726;
+  --clr-warning-light: #FFCC80;
+  --clr-warning-dark: #ff9800;
+  --clr-warning-opacity: rgba(255, 152, 0, 0.08);
 
   /* Success */
-  --clr-success-main: #4caf50;
-  --clr-success-light: #aed581; 
-  --clr-success-dark: #689f38;
-  --clr-success-opacity: rgba(139, 195, 74, 0.08); 
+  --clr-success-main: #32b899; 
+  --clr-success-light: #56e3c2; 
+  --clr-success-dark: #1f3e3e;
+  --clr-success-opacity: rgba(31, 62, 62, 0.08); 
 
   /* Text */
   --clr-text-main: #b9c2cc;
@@ -41,11 +41,21 @@
   --clr-divider-dark: #282d31;
 
   /* Scrollbar */
-  --clr-scrollbar-track: #212529;
+  --clr-scrollbar-track: #171C24;
   --clr-scrollbar-thumb: #71787c;
   --clr-scrollbar-thumb-hover: #535659;
 
   --clr-trasparent: #00000000;
+
+  /* Task Status */
+  --clr-task-pending-bg: rgba(255, 151, 119, 0.2);
+  --clr-task-pending-text: rgb(255, 164, 136);
+  --clr-task-in-progress-bg: rgba(167, 152, 255, 0.2);
+  --clr-task-in-progress-text: rgb(188, 176, 255);
+  --clr-task-completed-bg: #1F3E3E;
+  --clr-task-completed-text: #56e3c2;
+  --clr-task-due-bg: rgba(255, 107, 147, 0.2);
+  --clr-task-due-text: rgb(255, 107, 147);
 }
 
  /* OLD Color Palette */
