@@ -53,6 +53,7 @@ export const AddTaskForm = () => {
       startDate: formatDate(new Date(), "PP"),
       dueDate: value.dueDate,
       priority: value.priority,
+      assignedTo: value.assignedTo === "" ? "Unassigned" : value.assignedTo,
     };
 
     dispatch(addTask(newTask));

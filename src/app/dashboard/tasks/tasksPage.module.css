@@ -1,5 +1,5 @@
 .header {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   width: 100%;
   color: var(--clr-text-light);
 }
@@ -10,10 +10,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-}
-
-.container {
-  height: 100%;
 }
 
 .container{

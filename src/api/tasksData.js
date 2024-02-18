@@ -8,7 +8,7 @@ export const tasksData = [
     startDate: "Feb 10, 2024",
     dueDate: "Feb 11, 2024",
     priority: "High",
-    projectAssigned: "Web Developement",
+    assignedTo: "Web Developement",
   },
   {
     id: "TSK-002",
@@ -18,7 +18,7 @@ export const tasksData = [
     startDate: "Feb 07 2024",
     dueDate: "Feb 13, 2024",
     priority: "Medium",
-    projectAssigned: "",
+    assignedTo: "Unassigned",
   },
   {
     id: "TSK-003",
@@ -28,7 +28,7 @@ export const tasksData = [
     startDate: "Feb 20, 2024",
     dueDate: "Mar 02, 2024",
     priority: "High",
-    projectAssigned: "Design",
+    assignedTo: "Design",
   },
   {
     id: "TSK-004",
@@ -38,7 +38,7 @@ export const tasksData = [
     startDate: "Feb 18, 2024",
     dueDate: "Mar 01, 2024",
     priority: "Low",
-    projectAssigned: "Other",
+    assignedTo: "Other stuff",
   },
   {
     id: "TSK-005",
@@ -48,6 +48,6 @@ export const tasksData = [
     startDate: "Feb 18, 2024",
     dueDate: "Feb 23, 2024",
     priority: "Low",
-    projectAssigned: "",
+    assignedTo: "Unassigned",
   },
 ];

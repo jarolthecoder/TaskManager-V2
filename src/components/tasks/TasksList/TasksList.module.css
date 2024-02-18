@@ -1,11 +1,10 @@
 .main {
-  padding: 1rem;
+  padding:1rem;
   background: var(--clr-bg-card-dark);
   border-radius: var(--br-small);
   grid-column-end: span 3;
 }
 
-.list_header,
 .list_body,
 .list_footer {
   padding: 0 .5rem;
@@ -13,8 +12,46 @@
 
 .list_header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  padding: 0 0 0.5rem .5rem;
+}
+
+.num_of_tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: .5rem;
+  width: 25px;
+  height: 25px;
+  border-radius: var(--br-small);
+  color: var(--clr-primary);
+}
+
+.num_of_tasks.pending {
+  background: var(--clr-task-pending-bg);
+  color: var(--clr-task-pending-text);
+}
+
+.num_of_tasks.in_progress {
+  background: var(--clr-task-in-progress-bg);
+  color: var(--clr-task-in-progress-text);
+}
+
+.num_of_tasks.completed {
+  background: var(--clr-task-completed-bg);
+  color: var(--clr-task-completed-text);
+}
+
+.num_of_tasks.due {
+  background: var(--clr-task-due-bg);
+  color: var(--clr-task-due-text);
+}
+
+.num_of_tasks.unassigned {
+  background: #2b313a;
+  color: var(--clr-text-main);
+
 }
 
 .list_body {
@@ -53,6 +90,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 250px;
+  min-height: 150px;
   width: 100%;
 }

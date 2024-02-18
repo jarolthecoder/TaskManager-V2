@@ -40,6 +40,11 @@
   --clr-divider-light: rgba(255, 255, 255, 0.08);
   --clr-divider-dark: #282d31;
 
+  /* Disabled */
+  --clr-disabled-main: #8A8C92;
+  --clr-disabled-light: #858a91;
+  --clr-disabled-dark: #2b313a;
+
   /* Scrollbar */
   --clr-scrollbar-track: #171C24;
   --clr-scrollbar-thumb: #71787c;

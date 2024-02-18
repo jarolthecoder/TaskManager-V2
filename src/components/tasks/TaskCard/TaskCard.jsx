@@ -25,7 +25,7 @@ export const TaskCard = ({ task, selectedView, today }) => {
     task.status === "Completed" && styles.completed
   );
 
-  const { id, title, description, status } = task;
+  const { id, title, description, status, assignedTo, dueDate } = task;
   const isDueToday = task.dueDate === today;
 
   const dispatch = useDispatch();
@@ -54,12 +54,6 @@ export const TaskCard = ({ task, selectedView, today }) => {
         <div className={styles.task_title}>
           <h4>{title}</h4>
         </div>
-        {/* <div className={styles.project_badge}>
-          <p>
-            {task.projectAssigned !== "" ? task.projectAssigned : "Unassigned"}
-          </p>
-        </div> */}
-
         <div ref={refEl}>
           <IconButton
             size="small"
@@ -83,38 +77,26 @@ export const TaskCard = ({ task, selectedView, today }) => {
       <div className={styles.task_body}>
         <p className={styles.task_description}>{description}</p>
         <div className={styles.project_badge_container}>
-          <span className={styles.project_badge}>
-            {task.projectAssigned !== "" ? task.projectAssigned : "Unassigned"}
+          <span
+            className={styles.project_badge}
+            style={{
+              background: task.assignedTo === "Unassigned" && "#2b313a",
+              color: task.assignedTo === "Unassigned" && "#858a91",
+              // opacity: task.assignedTo === "Unassigned" && "0.3",
+            }}
+          >
+            {assignedTo}
           </span>
         </div>
       </div>
       <hr className={styles.divider} />
       <div className={styles.task_footer}>
-        {/* <div className={styles.task_stat_row}>
-          <p>Priority</p>
-          <p
-            style={{
-              color:
-                task.priority === "High"
-                  ? "#E17F41"
-                  : task.priority === "Medium"
-                  ? "#f4c47c"
-                  : "#15CAB0",
-            }}
-          >
-            {task.priority}
-          </p>
-        </div>
-        <div className={styles.task_stat_row}>
-          <p>Status</p>
-          <StatusBadge status={status} className={styles.item_priority} />
-        </div> */}
         <div className={styles.task_stat_row}>
           <p className={styles.task_stat}>
             <span className={`material-icons ${styles.stat_icon}`}>
               schedule
             </span>
-            {isDueToday ? "Today" : task.dueDate}
+            {isDueToday ? "Today" : dueDate}
           </p>
         </div>
       </div>

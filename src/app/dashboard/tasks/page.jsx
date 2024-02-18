@@ -16,22 +16,20 @@ export default function TasksPage() {
   const { setSelectedTaskAction, handleTaskModal } = useContext(AppContext);
   const tasks = useSelector((state) => state.tasks.tasksList);
 
-  const completedTasks = tasks.filter(
-    (task) => task.status === "Completed"
-  );
-  const dueTodayTasks = tasks.filter(
-    (task) => task.dueDate === formattedToday
-  );
-  const pendingTasks = tasks.filter(
-    (task) => task.status === "Pending"
-  );
-  const unAssignedTasks = tasks.filter(
-    (task) => task.projectAssigned === ""
-  );
+  // Filtered tasks for columns
+  const completedTasks = tasks.filter((task) => task.status === "Completed");
+  const pendingTasks = tasks.filter((task) => task.status === "Pending");
+  const unAssignedTasks = tasks.filter((task) => task.assignedTo === "Unassigned");
+  const inProgressTasks = tasks.filter((task) => task.status === "In progress");
+  const dueTodayTasks = tasks.filter((task) => task.dueDate === formattedToday);
 
-  const inProgressTasks = tasks.filter( 
-    (task) => task.status === "In progress"
-  );
+  // Task list columns data
+  const taskListColumns = [
+    { title: "To Do", tasks: pendingTasks },
+    { title: "In Progress", tasks: inProgressTasks },
+    { title: "Completed", tasks: completedTasks },
+    { title: "Unassigned", tasks: unAssignedTasks },
+  ];
 
   const handleAddTask = () => {
     setSelectedTaskAction(ADD);
@@ -45,7 +43,7 @@ export default function TasksPage() {
         <div className={styles.header_options}>
           <Button
             fullWidth
-            label="Add New Task"
+            label="Add Task"
             color="accent"
             size="small"
             startIcon={<span className="material-icons">add</span>}
@@ -54,10 +52,13 @@ export default function TasksPage() {
         </div>
       </div>
       <div className={styles.container}>
-        <TasksList title="To Do" tasks={pendingTasks} />
-        <TasksList title="In Progress" tasks={inProgressTasks} />
-        <TasksList title="Completed" tasks={completedTasks} />
-        <TasksList title="Unassigned" tasks={unAssignedTasks} />
+        {taskListColumns.map((column) => (
+          <TasksList
+            key={column.title}
+            title={column.title}
+            tasks={column.tasks}
+          />
+        ))}
       </div>
     </section>
   );
