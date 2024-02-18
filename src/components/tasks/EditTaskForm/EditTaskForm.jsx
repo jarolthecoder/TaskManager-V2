@@ -55,6 +55,7 @@ export const EditTaskForm = () => {
       startDate: formatDate(new Date(), "PP"),
       dueDate: value.dueDate,
       priority: value.priority,
+      assignedTo: value.assignedTo,
     };
 
     dispatch(updateTask(updatedTask));

@@ -22,7 +22,7 @@ const tasksSlice = createSlice({
       state.selectedTask = action.payload;
     },
     addTask: (state, action) => {
-      state.tasksList.push(action.payload);
+      state.tasksList.unshift(action.payload);
     },
     updateTask: (state, action) => {
       const {id} = action.payload;

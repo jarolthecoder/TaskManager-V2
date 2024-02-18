@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { usePopper } from "@/hooks";
 import { Menu, Popper } from "..";
 import PropTypes from "prop-types";
@@ -24,12 +24,13 @@ export const InputSelect = ({
   const popperRef = useRef(null);
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
-  useEffect(() => {
-    togglePopper();
-  }, [value]);
-
   return (
-    <div ref={refEl} className={styles.select_group} {...restProps}>
+    <div
+      ref={refEl}
+      role="button"
+      className={styles.select_group}
+      {...restProps}
+    >
       <label htmlFor={id}>{label}</label>
       <div className={styles.select_input_container}>
         <input
@@ -37,17 +38,22 @@ export const InputSelect = ({
           id={id}
           name={name}
           className={styles.select_input}
+          onClick={togglePopper}
           placeholder={placeholder}
           readOnly
-          onClick={togglePopper}
-          {...register(id)}
+          {...register(name)}
         />
         <p className={styles.select_icon_btn} onClick={togglePopper}>
           <span className="material-icons">arrow_drop_down</span>
         </p>
       </div>
-      <Popper ref={popperRef} open={isPopperOpen}>
-        <Menu>{children}</Menu>
+      <Popper
+        ref={popperRef}
+        open={isPopperOpen}
+        fullWidth
+        onClose={togglePopper}
+      >
+        <Menu role="button">{children}</Menu>
       </Popper>
     </div>
   );

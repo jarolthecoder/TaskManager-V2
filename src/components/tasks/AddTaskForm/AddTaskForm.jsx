@@ -24,6 +24,20 @@ const priorityOptions = [
   { value: "High", label: "High" },
 ];
 
+const statusOptions = [
+  { value: "Pending", label: "Pending" },
+  { value: "In progress", label: "In progress" },
+  { value: "Completed", label: "Completed" },
+];
+
+const assignedToOptions = [
+  { value: "Other", label: "Stuff" },
+  { value: "Web Development", label: "Web Developement" },
+  { value: "Design", label: "Design" },
+];
+
+const formattedToday = formatDate(new Date(), "PP");
+
 export const AddTaskForm = () => {
   const { handleTaskModal } = useContext(AppContext);
 
@@ -31,6 +45,14 @@ export const AddTaskForm = () => {
 
   const form = useForm({
     resolver: yupResolver(taskSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+      dueDate: formattedToday,
+      priority: "",
+      status: "Pending",
+      assignedTo: "",
+    },
   });
 
   const { register, handleSubmit, formState, setValue } = form;
@@ -38,6 +60,14 @@ export const AddTaskForm = () => {
 
   const onPriorityChange = (value) => {
     setValue("priority", value);
+  };
+
+  const onStatusChange = (value) => {
+    setValue("status", value);
+  };
+
+  const onAssignedToChange = (value) => {
+    setValue("assignedTo", value);
   };
 
   const handleFormSubmit = (e) => {
@@ -49,12 +79,14 @@ export const AddTaskForm = () => {
       id: `TSK-${Math.floor(Math.random() * 1000)}`,
       title: value.title,
       description: value.description,
-      status: "Pending",
-      startDate: formatDate(new Date(), "PP"),
+      status: value.status,
+      startDate: formattedToday,
       dueDate: value.dueDate,
       priority: value.priority,
       assignedTo: value.assignedTo === "" ? "Unassigned" : value.assignedTo,
     };
+
+    console.log({ newTask })
 
     dispatch(addTask(newTask));
 
@@ -91,7 +123,7 @@ export const AddTaskForm = () => {
             placeholder="Select date"
             register={register}
             setValue={setValue}
-          />  
+          />
           <InputSelect
             label="Priority"
             id="priority"
@@ -105,6 +137,44 @@ export const AddTaskForm = () => {
                 key={option.label}
                 value={option.value}
                 onClick={() => onPriorityChange(option.value)}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </InputSelect>
+        </div>
+        <div className={styles.field_group}>
+          <InputSelect
+            label="Status"
+            id="status"
+            name="status"
+            placeholder="Select status"
+            register={register}
+            value={form.watch("status")}
+          >
+            {statusOptions.map((option) => (
+              <MenuItem
+                key={option.label}
+                value={option.value}
+                onClick={() => onStatusChange(option.value)}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </InputSelect>
+          <InputSelect
+            label="Project"
+            id="assigned-to"
+            name="assignedTo"
+            placeholder="Select project"
+            register={register}
+            value={form.watch("assignedTo")}
+          >
+            {assignedToOptions.map((option) => (
+              <MenuItem
+                key={option.label}
+                value={option.value}
+                onClick={() => onAssignedToChange(option.value)}
               >
                 {option.label}
               </MenuItem>

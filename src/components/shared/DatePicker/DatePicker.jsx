@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { isValid } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { usePopper } from "@/hooks";
 import { formatDate } from "@/utils/helpers/formatDate";
@@ -21,35 +20,18 @@ export const DatePicker = ({
 
   const refEl = useRef(null);
   const popperRef = useRef(null);
-  const [selected, setSelected] = useState(null);
-  const [inputValue, setInputValue] = useState("");
+  const [selected, setSelected] = useState(new Date());
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-    const date = formatDate(e.target.value, "PP");
-    if (isValid(date)) {
-      setSelected(date);
-      setValue(name, date);
-    } else {
-      setSelected(null);
-      setValue(name, "");
-    }
-  };
-
+ 
   const handleDaySelect = (date) => {
     setSelected(date);
     if (date) {
-      setInputValue(formatDate(date, "PP"));
       setValue(name, formatDate(date, "PP"));
     } else {
-      setInputValue(""); 
       setValue(name, "");
     }
-    togglePopper();
-  };
-  const handlePopper = () => {
-    togglePopper();
+    console.log({date})
   };
 
   return (
@@ -60,19 +42,21 @@ export const DatePicker = ({
           type="text"
           id={id}
           name={name}
-          onChange={handleInputChange}
           onClick={togglePopper}
-          value={inputValue}
           placeholder={placeholder}
-          {...register(id)}
+          {...register(name)}
           {...restOfProps}
-          readOnly
         />
-        <p className={styles.date_picker_icon} onClick={handlePopper}>
+        <p className={styles.date_picker_icon} onClick={togglePopper}>
           <span className="material-icons">event</span>
         </p>
       </div>
-      <Popper open={isPopperOpen} ref={popperRef}>
+      <Popper
+        open={isPopperOpen}
+        ref={popperRef}
+        onClose={togglePopper}
+        fullWitdth
+      >
         <div className={styles.date_picker_container}>
           <DayPicker
             initialMonth={selected || new Date()}

@@ -70,6 +70,11 @@ input:focus {
   outline: none;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: var(--clr-text-dark);
+}
+
 button {
   border: none;
   background: none;

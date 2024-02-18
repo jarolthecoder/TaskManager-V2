@@ -1,7 +1,7 @@
 .select_group {
   margin-bottom: 1.5rem;
   width: 100%;
-
+  position: relative;
 }
 
 .select_group:focus-within label,
