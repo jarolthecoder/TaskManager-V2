@@ -20,7 +20,7 @@ export const AddTaskButton = ({ buttonType = 'default' }) => {
     <>
       {buttonType === "icon" ? (
         <div className={styles.icon_btn}>
-          <IconButton variant="filled" onClick={handleAddTask}>
+          <IconButton variant="filled" size="small" onClick={handleAddTask}>
             <span className="material-icons">add</span>
           </IconButton>
           {/* <p>Add Task</p> */}

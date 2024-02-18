@@ -25,7 +25,7 @@
 }
 
 .icon_btn span {
-   color: var(--clr-text-light);
+   color: var(--clr-text-main);
 }
 
 .icon_btn:hover {

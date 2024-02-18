@@ -53,7 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 150px;
+  height: 75px;
   width: 100%;
 }
 
