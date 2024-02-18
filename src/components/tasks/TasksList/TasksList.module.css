@@ -12,9 +12,22 @@
 
 .list_header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 0 0 0.5rem .5rem;
+}
+
+.list_title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filter,
+.filter p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .list_body {

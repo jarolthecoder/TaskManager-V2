@@ -1,3 +1,4 @@
+import { IconButton } from "@/components/shared";
 import { AddTaskButton, TaskCard } from "..";
 import styles from './TasksList.module.css';
 import classNames from "classnames";
@@ -17,8 +18,15 @@ export const TasksList = ({title, tasks}) => {
   return (
     <div className={styles.main}>
       <div className={styles.list_header}>
-        <h3>{title}</h3>
-        <span className={numOfTasksClasses}>{numOfTasks}</span>
+        <div className={styles.list_title}>
+          <h3>{title}</h3>
+          <span className={numOfTasksClasses}>{numOfTasks}</span>
+        </div>
+        <div className={styles.filter}>
+          <IconButton size="small">
+            <span class="material-icons">swap_vert</span>
+          </IconButton>
+        </div>
       </div>
       <div className={styles.list_body}>
         {tasks.map((task) => (

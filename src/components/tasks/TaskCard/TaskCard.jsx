@@ -80,8 +80,8 @@ export const TaskCard = ({ task, selectedView, today }) => {
           <span
             className={styles.project_badge}
             style={{
-              background: task.assignedTo === "Unassigned" && "#2b313a",
-              color: task.assignedTo === "Unassigned" && "#858a91",
+              background: task.assignedTo === "Unassigned" && "#333C46",
+              color: task.assignedTo === "Unassigned" && "#a0a8b1",
               // opacity: task.assignedTo === "Unassigned" && "0.3",
             }}
           >
