@@ -13,11 +13,10 @@
 .filler {
   height: 100%;
   border-radius: inherit;
-  background: var(--clr-yellow-main);
+  background: var(--clr-primary-main);
 }
 
 .label {
   text-align: right;
   padding-left: 1rem;
-  color: var(--clr-gray-main);
 }

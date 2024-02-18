@@ -4,9 +4,9 @@ import styles from "./FormField.module.css";
 export const FormField = ({
   label,
   id,
-  type,
+  type = 'text',
   name,
-  onChange,
+  placeholder,
   fieldIcon,
   register,
   textarea,
@@ -26,22 +26,17 @@ export const FormField = ({
             id={id}
             name={name}
             className={styles.form_textarea}
-            onChange={onChange}
+            placeholder={placeholder}
             rows={5}
+            {...register(id)}
           />
         ) : (
           <input
             type={type}
             id={id}
             name={name}
-            onChange={onChange}
+            placeholder={placeholder}
             {...register(id)}
-            // {...register(id, {
-            //   required: {
-            //     value: true,
-            //     message: errorMessage,
-            //   },
-            // })}
             {...restOfProps}
           />
         )}
@@ -54,8 +49,13 @@ export const FormField = ({
 FormField.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   name: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
   fieldIcon: PropTypes.string,
+  register: PropTypes.func,
+  textarea: PropTypes.bool,
+  error: PropTypes.string,
+  errors: PropTypes.object,
+  errorMessage: PropTypes.string,
+  placeholder: PropTypes.string,
 };

@@ -1,5 +1,5 @@
-.main {
-  background: var(--clr-blue-light);
+/* .main {
+  background: var(--clr-blue-card);
   border-left: 1px solid var(--clr-blue-dark);
   position: fixed;
   top: 0;
@@ -8,11 +8,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-left: 225px; */
+  padding: 1rem 1.5rem;
+  z-index: 3;
+} */
+
+.main {
+  background: var(--clr-trasparent);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid var(--clr-blue-dark);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - 225px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem 1.5rem;
   z-index: 3;
 }
 
+
 .main h2 {
-  color: var(--clr-gray-light);
+  color: var(--clr-text-primary);
 }

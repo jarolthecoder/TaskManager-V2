@@ -10,15 +10,11 @@
   bottom: 0; 
   width: 225px;
   padding: 1.5rem 0;
-  background: var(--clr-blue-light);
-  border-left: 1px solid var(--clr-blue-dark);
-}
-
-.main h2 {
-  color: var(--clr-gray-light);
+  background: var(--clr-bg-card-main);
+  border-left: 1px solid var(--clr-trasparent);
 }
 
 .add_task_container {
   width: 100%;
-  padding: 1rem;
+  padding: 0 1.5rem;
 }

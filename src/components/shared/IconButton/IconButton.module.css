@@ -1,0 +1,94 @@
+.icon_btn {
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background: transparent;
+  outline: 0px;
+  margin: 0px;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  transition: background var(--transition-default),
+    box-shadow var(--transition-default),
+    border-color var(--transition-default),
+    color var(--transition-default);
+  color: var(--clr-text-light);
+  box-shadow: none;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--br-full);
+  overflow: hidden;
+  border: 1px solid var(--clr-trasparent);
+}
+
+.icon_btn span {
+   color: var(--clr-text-light);
+}
+
+.icon_btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Variants */
+.icon_btn.filled {
+ background: rgba(255, 255, 255, 0.08);
+}
+.icon_btn.filled:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.icon_btn.outlined {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.icon_btn.small {
+  height: 36px;
+  padding: 0px;
+  min-width: 36px;
+  max-width: 36px;
+}
+
+.icon_btn.medium {
+  height: 42px;
+  min-width: 42px;
+  max-width: 42px;
+}
+
+.icon_btn.large {
+  height: 48px;
+  min-width: 48px;
+  max-width: 48px;
+}
+
+.icon_btn.accent:not(.filled) {
+  color: var(--clr-primary-main);
+}
+
+.icon_btn.accent:not(.outlined, .filled):hover {
+  color: var(--clr-text-primary);
+  background: var(--clr-primary-opacity);
+}
+
+.icon_btn.accent:hover {
+  background: var(--clr-primary-dark);
+}
+
+.icon_btn.accent.outlined {
+  border-color: var(--clr-primary-main);
+}
+
+.icon_btn.accent.outlined:hover {
+  color: var(--clr-text-primary);
+  border-color: var(--clr-primary-main);
+}
+
+.icon_btn.accent.filled {
+  background: var(--clr-primary-main);
+}
+
+.icon_btn.accent.filled:hover {
+  background: var(--clr-primary-dark);
+}

@@ -5,8 +5,8 @@
 
 .input_group:focus-within label,
 .input_group:focus-within span {
-  color: var(--clr-yellow-main);
-  transition: color .3s ease-in-out;
+  color: var(--clr-primary-main);
+  transition: color var(--transition-default);
 }
 
 .input_group label {
@@ -20,12 +20,12 @@
   align-items: center;
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: var(--clr-gray-main);
+  border-color: var(--clr-border-light);
 }
 
 .form_input:focus-within {
-  border-color: var(--clr-yellow-main);
-  transition: border-color 0.3s ease-in-out;
+  border-color: var(--clr-primary-main);
+  transition: border-color var(--transition-default);
 }
 
 .form_input input {
@@ -36,7 +36,7 @@
 }
 
 .form_input span {
-  color: var(--clr-gray-light);
+  color: var(--clr-text-primary);
 }
 
 /* Field error state */

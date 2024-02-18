@@ -24,28 +24,29 @@
 
 .navlink a,
 .navlink span {
-  color: var(--clr-gray-main);
-  transition: color 0.2s ease-in-out;
+  transition: color var(--transition-default);
 }
 
 .navlink.active {
-  background: var(--clr-blue-card);
-  border-color: var(--clr-yellow-main);
+  background: rgba(37, 155, 239, 0.059);
+  border-color: var(--clr-primary-main);
 }
 
 .navlink:hover,
 .navlink:hover a,
-.navlink:hover span,
+.navlink:hover span {
+  color: var(--clr-text-light);
+  text-decoration: none;
+}
+
 .navlink.active span,
 .navlink.active a {
-  color: var(--clr-gray-light);
-  text-decoration: none;
+  color: var(--clr-primary-light);
 }
 
 .divider {
   margin: 1rem auto;
   width: 82%;
   height: 1px;
-  background: var(--clr-gray-dark);
-  opacity: .3;
+  background: var(--clr-border-light);
 }

@@ -1,4 +1,4 @@
-import { Card } from "@/components/shared";
+
 import styles from "./DisplayPanel.module.css";
 
 export const DisplayPanel = ({ children }) => {

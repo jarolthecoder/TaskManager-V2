@@ -10,12 +10,11 @@
 
 .main p {
   font-size: var(--fs-body);
-  color: var(--clr-gray-main);
 }
 
 .col_right h2,
 .input_group input {
-  color: var(--clr-gray-light);
+  color: var(--clr-text-primary);
 }
 
 .col_left,

@@ -1,0 +1,169 @@
+.task_card {
+  padding: 1.75rem 0;
+  grid-column-end: span 3;
+}
+
+.task_header,
+.task_title,
+.task_stat_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task_header,
+.task_footer {
+  padding: 0 1.5rem;
+}
+
+.task_body {
+  margin: 1.5rem 0 0.5rem 0;
+  padding: 0 1.5rem;
+}
+
+.project_badge {
+  padding: 4px 16px;
+  background: var(--clr-primary-opacity);
+  border-radius: 20px;
+}
+
+.project_badge p {
+  color: var(--clr-primary-light);
+  font-size: var(--fs-small);
+}
+
+.task_title {
+  padding: 0 0 0.5rem 0;
+  font-weight: 400;
+  word-break: break-word;
+  align-self: center;
+  text-overflow: unset;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: break-spaces;
+  -webkit-line-clamp: 2;
+}
+
+.task_description {
+  width: 100%;
+  height: 75px;
+  min-width: 100%;
+  min-height: 75px;
+  max-width: 300px;
+  max-height: 200px;
+  padding: .5rem .25rem 0 0;
+  border: none;
+  overflow: auto;
+}
+
+.divider {
+  margin: 0px;
+  flex-shrink: 0;
+  border-width: 0px 0px thin;
+  border-style: solid;
+  border-color: var(--clr-border-light);
+}
+
+.task_description::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.task_description::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.487);  */
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: var(--clr-scrollbar-track);
+}
+
+/* Handle */
+.task_description::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: var(--clr-scrollbar-thumb);
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  */
+}
+
+.task_stat_row {
+  margin-top: 0.5rem;
+}
+
+.task_footer p {
+  font-size: var(--fs-small);
+}
+
+/* If selected view is list */
+.list_item {
+  padding: 1.5rem 1.75rem;
+}
+
+.list_item .task_description {
+  width: 100%;
+  height: 50px;
+  /* resize: vertical; */
+  min-width: 100%;
+  min-height: 50px;
+  max-width: 300px;
+  max-height: 300px;
+  border: none;
+  overflow: auto;
+  background: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom: 1px solid var(--clr-border-light);
+}
+
+.list_item .task_footer p:not(.item_priority) {
+  font-size: var(--fs-regular);
+}
+
+.completed .task_description,
+.completed .task_header h3 {
+  text-decoration: line-through;
+}
+
+.options_btn {
+  text-align: left;
+  margin-right: -.5rem;
+}
+/* .list_item .priority_badge {
+  max-width: 100px !important;
+} */
+
+/* If decide to make description an editable textarea */
+/* .task_description {
+  height: 75px;
+  white-space: no-wrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  resize: vertical;
+} */
+
+/* .task_description:focus {
+  outline: none;
+  background: var(--clr-blue-dark);
+} */
+
+/* Media Queries */
+@media screen and (max-width: 1300px) {
+  .task_card {
+    grid-column-end: span 4;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .task_card {
+    grid-column-end: span 6;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .task_card {
+    grid-column-end: span 12;
+  }
+}

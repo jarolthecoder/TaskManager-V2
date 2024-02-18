@@ -49,21 +49,18 @@ export default function Login() {
           errors={errors}
         />
         <div className={styles.form_btn_container}>
-          <Button type="submit" title="Sign in" fullWidth />
+          <Button type="submit" label="Sign in" fullWidth />
           <Button
             fullWidth
-            title={
-              <>
-                Sign in with Google
-                <Image
-                  src={googleIcon}
-                  alt="Google icon"
-                  width={25}
-                  height={25}
-                  quality={100}
-                  style={{ marginLeft: "0.5rem" }}
-                />
-              </>
+            label="Sign in with Google"
+            startIcon={
+              <Image
+                src={googleIcon}
+                alt="Google icon"
+                width={25}
+                height={25}
+                quality={100}
+              />
             }
           />
         </div>

@@ -1,20 +1,19 @@
 .main {
+  padding: .5rem 0;
+  transition: background var(--transition-default);
+  cursor: pointer;
+}
+
+.item_content {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-  padding: .5rem 0;
-  transition: background 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.main,
-.main a {
-  color: var(--clr-gray-light);
+  padding: 0 .5rem
 }
 
 .main:hover {
-  background: #383f44;
+  background: var(--clr-border-light)
 }
 
 .main a:hover {

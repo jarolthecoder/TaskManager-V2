@@ -13,10 +13,12 @@ export const DatePicker = ({
   label,
   id,
   name,
-  onChange,
   register,
+  setValue,
+  placeholder,
   ...restOfProps
 }) => {
+
   const inputRef = useRef(null);
   const popperRef = useRef(null);
   const [selected, setSelected] = useState(null);
@@ -28,8 +30,10 @@ export const DatePicker = ({
     const date = formatDate(e.target.value, "PP");
     if (isValid(date)) {
       setSelected(date);
+      setValue(name, date);
     } else {
       setSelected(null);
+      setValue(name, "");
     }
   };
 
@@ -37,12 +41,13 @@ export const DatePicker = ({
     setSelected(date);
     if (date) {
       setInputValue(formatDate(date, "PP"));
+      setValue(name, formatDate(date, "PP"));
     } else {
-      setInputValue("");
+      setInputValue(""); 
+      setValue(name, "");
     }
     togglePopper();
   };
-
   const handlePopper = () => {
     togglePopper();
   };
@@ -57,11 +62,14 @@ export const DatePicker = ({
           name={name}
           onChange={handleInputChange}
           value={inputValue}
+          placeholder={placeholder}
           {...register(id)}
+          {...restOfProps}
+          readOnly
         />
-        <button className={styles.date_picker_icon} onClick={handlePopper}>
+        <p className={styles.date_picker_icon} onClick={handlePopper}>
           <span className="material-icons">event</span>
-        </button>
+        </p>
       </div>
       <Popper open={isPopperOpen} ref={popperRef}>
         <div className={styles.date_picker_container}>
@@ -80,6 +88,7 @@ DatePicker.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
-  onChange: PropTypes.func,
   register: PropTypes.func,
+  setValue: PropTypes.func,
+  placeholder: PropTypes.string,
 };

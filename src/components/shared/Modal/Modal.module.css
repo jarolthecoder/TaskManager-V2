@@ -23,5 +23,5 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--clr-white);
+  color: var(--clr-text-light);
 }

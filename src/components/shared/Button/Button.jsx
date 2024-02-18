@@ -1,18 +1,23 @@
 import PropTypes from "prop-types";
-import styles from "./Button.module.css";
 import classNames from "classnames";
+import styles from "./Button.module.css";
 
 export const Button = ({
-  title,
+  label,
   onClick,
-  fullWidth,
+  fullWidth = false,
+  variant = "filled",
   align = "left",
   size = "medium",
+  startIcon,
+  endIcon,
   ...restOfProps
 }) => {
+
   const btnClasses = classNames(
     styles.btn,
     size === "small" ? styles.small : styles.medium,
+    variant === "outlined" ? styles.outlined : styles.filled,
     classNames
   );
 
@@ -21,7 +26,7 @@ export const Button = ({
     fullWidth && styles.width_full,
     align === "right"
       ? styles.align_right
-      : fullWidth
+      : fullWidth || align === "center"
       ? styles.align_center
       : styles.align_left
   );
@@ -29,18 +34,21 @@ export const Button = ({
   return (
     <div className={containerClasses}>
       <button onClick={onClick} className={btnClasses} {...restOfProps}>
-        {title}
+        {startIcon}
+        {label}
+        {endIcon}
       </button>
     </div>
   );
 };
 
-Button.defaultProps = {
-  fullWidth: false,
-};
-
 Button.propTypes = {
-  title: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(["filled", "outlined"]),
+  size: PropTypes.oneOf(["small", "medium"]),
+  align: PropTypes.oneOf(["left", "center", "right"]),
+  startIcon: PropTypes.node,
+  endIcon: PropTypes.node,
   fullWidth: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };

@@ -52,7 +52,7 @@ export default function Register() {
           register={register}
           errors={errors}
         />
-        <Button type="submit" title="Create account" fullWidth />
+        <Button type="submit" label="Create account" fullWidth />
       </form>
       <p>
         Have an account? <Link href="/login">Log in</Link>

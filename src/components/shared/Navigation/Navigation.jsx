@@ -33,6 +33,31 @@ export const Navigation = () => {
           className={`${styles.navlink} ${
             currentRoute === "/login" ? styles.active : null
           }`}
+        >
+          <span class="material-icons">person</span>
+          <Link href="/profile">Profile</Link>
+        </li>
+        <li
+          className={`${styles.navlink} ${
+            currentRoute === "/login" ? styles.active : null
+          }`}
+        >
+          <span className="material-icons">settings</span>
+          <Link href="/settings">Settings</Link>
+        </li>
+
+        <li
+          className={`${styles.navlink} ${
+            currentRoute === "/login" ? styles.active : null
+          }`}
+        >
+          <span className="material-icons">help</span>
+          <Link href="/help">Help</Link>
+        </li>
+        <li
+          className={`${styles.navlink} ${
+            currentRoute === "/login" ? styles.active : null
+          }`}
           onClick={() => navigateTo("/login")}
         >
           <span className="material-icons">logout</span>

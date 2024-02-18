@@ -4,26 +4,26 @@
 
 .input_group:focus-within label,
 .input_group:focus-within span {
-  color: var(--clr-yellow-main);
-  transition: color .3s ease-in-out;
+  color: var(--clr-primary-main);
+  transition: color var(--transition-default);
 }
 
 .input_group label {
   display: block;
   margin-bottom: .5rem;
   font-weight: 700;
-  color: var(--clr-gray-light);
+  color: var(--clr-text-light);
 }
 
 .form_input {
   border: 1px solid var(--clr-trasparent);
   border-radius: var(--br-small);
-  background: var(--clr-blue-dark);
+  background: var(--clr-bg-card-dark);
 }
 
 .form_input:focus-within {
-  border-color: var(--clr-yellow-main);
-  transition: border-color 0.3s ease-in-out;
+  border-color: var(--clr-primary-main);
+  transition: border-color var(--transition-default);
 }
 
 .form_input input,
@@ -31,12 +31,12 @@
   width: 100%;
   padding: .75rem;
   border: none;
-  color: var(--clr-gray-main);
   background: var(--clr-trasparent);
 }
 
 .form_input textarea {
   resize: none;
+  font-family: inherit;
 }
 
 .form_input textarea:focus {
@@ -44,21 +44,21 @@
 }
 
 .form_input span {
-  color: var(--clr-gray-light);
+  color: var(--clr-text-light);
 }
 
 /* Field error state */
 .form_input.error,
 .form_input.error:focus-within {
-  border-color: var(--clr-red-main);
+  border-color: var(--clr-error-main);
 }
 
 .form_input.error span {
-  color: var(--clr-red-main);
+  color: var(--clr-error-main);
 }
 
 .input_group .error {
-  color: var(--clr-red-main);
+  color: var(--clr-error-main);
   font-size: var(--fs-small);
   margin-top: .25rem;
 }

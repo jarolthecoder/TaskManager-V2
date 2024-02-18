@@ -1,24 +1,26 @@
 "use client"
 import { createContext, useState } from 'react';
+import { TASKS } from "@/lib/constants";
+
+const { ADD } = TASKS
 
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
-  const [modalOpen, setModalOpen] = useState(false);
+  // Task Modal State
+  const [taskModalOpen, setTaskModalOpen] = useState(false);
+  const [selectedTaskAction, setSelectedTaskAction] = useState(ADD);
 
-  const handleOpenModal = () => {
-    setModalOpen(true);
+  const handleTaskModal = () => {
+    setTaskModalOpen((prev) => !prev);
   }
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
   const value = {
-    modalOpen,
-    handleOpenModal,
-    handleCloseModal
+    taskModalOpen,
+    selectedTaskAction,
+    setSelectedTaskAction,
+    handleTaskModal,
   }
 
   return (

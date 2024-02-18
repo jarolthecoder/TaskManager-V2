@@ -1,25 +1,42 @@
 "use client"
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { formatDate } from "date-fns";
 import { Doughnut } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const DoughnutChart = () => {
 
+  const { tasksList } = useSelector((state) => state.tasks);
+   const formattedToday = formatDate(new Date(), "PP");
+
+  const completedTasksNum = tasksList.filter(
+    (task) => task.status === "Completed"
+  ).length;
+  // const inProgressTasks = tasks.filter((task) => task.status === "inProgress");
+  const pendingTasksNum = tasksList.filter((task) => task.status === "Pending").length;
+  const dueTasksNum = tasksList.filter((task) => task.dueDate === formattedToday && task.status !== "Completed").length;
+
   // Doughnut chart settings
   const data = {
-    labels: [`${20} Completed`, `${8} In Progress`, `${5} Pending`],
+    // labels: [`${completedTasksNum} Completed`, `${8} In Progress`, `${pendingTasksNum} Pending`],
+    labels: [
+      `${completedTasksNum} Completed`,
+      `${pendingTasksNum} Pending`,
+      `${dueTasksNum} Due Today`,
+    ],
     datasets: [
       {
-        data: [20, 8, 5],
-        backgroundColor: ["#7C3AED", "#2299ee", "#d3d3d3"],
+        data: [completedTasksNum, pendingTasksNum, dueTasksNum],
+        backgroundColor: ["#2499EF", "rgb(255, 151, 119)", "rgb(255, 107, 147"],
         borderColor: [
-          "#FFF", // Set to trasparent
+          "#222B36", // Set to trasparent
         ],
-        borderWidth: 0, // Donut border
+        borderWidth: 5, // Donut border
         rotation: -190, // Rotates donut direction
-        cutout: "65%", // Donut fill thickness
+        cutout: "70%", // Donut fill thickness
       },
     ],
   };

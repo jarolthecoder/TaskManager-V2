@@ -1,0 +1,59 @@
+.select_group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.select_group:focus-within label,
+.select_group:focus-within span {
+  color: var(--clr-primary-main);
+  transition: color var(--transition-default);
+}
+
+.select_group label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 700;
+  color: var(--clr-text-light);
+}
+
+.select:focus {
+  border-color: var(--clr-primary-main);
+  transition: border-color  var(--transition-default);
+}
+
+.select_input_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background: var(--clr-bg-card-dark);
+  cursor: pointer;
+  border: 1px solid var(--clr-trasparent);
+  border-radius: var(--br-small);
+}
+
+.select_input {
+  width: 100%;
+  appearance: none;
+  padding: .75rem;
+  border: 0;
+  color: var(--clr-text-secondary);
+  background: var(--clr-bg-card-dark);
+  font-size: inherit;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.select_input:focus {
+  outline: none;
+}
+
+.select_icon_btn {
+  color: var(--clr-text-light);
+}
+
+.select_group .error {
+  color: var(--clr-error-main);
+  font-size: var(--fs-small);
+  margin-top: .25rem;
+}

@@ -7,7 +7,7 @@
 }
 
 .main h2 {
-  color: var(--clr-gray-light);
+  color: var(--clr-text-primary);
 }
 
 .footer {
@@ -18,8 +18,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.footer_content p {
-   color: var(--clr-gray-main);
 }

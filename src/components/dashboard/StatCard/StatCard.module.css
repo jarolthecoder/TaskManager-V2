@@ -1,0 +1,54 @@
+.stat {
+  cursor: pointer;
+}
+
+.stat_title {
+  font-size: var(--fs-medium);
+  color: var(--clr-text-primary);
+}
+
+.stat_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.stat_number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--clr-text-light);
+}
+
+.stat_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--br-full);
+}
+
+.stat_icon.due_today {
+  background-color: rgba(255, 107, 147, 0.2);
+}
+
+.stat_icon.due_today span {
+  color: rgb(255, 107, 147);
+}
+
+.stat_icon.pending {
+  background-color: rgba(255, 151, 119, 0.2);
+}
+
+.stat_icon.pending span {
+  color: rgb(255, 151, 119);
+}
+
+.stat_icon.completed {
+  background-color: rgba(167, 152, 255, 0.2);
+}
+
+.stat_icon.completed span {
+  color: rgb(167, 152, 255);
+}

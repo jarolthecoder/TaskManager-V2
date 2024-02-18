@@ -1,0 +1,17 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.add_task_btn {
+  border: 2px dashed var(--clr-bg-dark);
+  border-radius: var(--br-small);
+  color: var(--clr-text-primary);
+}
+
+.add_task_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,5 +1,5 @@
-import { AddTaskButton } from "@/components/dashboard";
-import { Card, Logo, Navigation } from "@/components/shared";
+import {  Logo, Navigation } from "@/components/shared";
+import { AddTaskButton } from "@/components/tasks";
 import styles from "./SideBar.module.css";
 
 export const SideBar = () => {
@@ -8,9 +8,7 @@ export const SideBar = () => {
       <Logo />
       <Navigation />
       <div className={styles.add_task_container}>
-        <Card>
-          <AddTaskButton />
-        </Card>
+        <AddTaskButton />
       </div>
     </aside>
   );

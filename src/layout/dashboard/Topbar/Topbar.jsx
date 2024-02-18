@@ -1,4 +1,5 @@
-import { SearchBar, UserBar } from "@/components/shared";
+import { SearchBar } from "@/components/shared";
+import { UserBar } from "@/components/user";
 import styles from "./TopBar.module.css";
 
 export const TopBar = () => {

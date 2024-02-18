@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 export const MenuItem = ({children, icon, onClick}) => {
   return (
     <li className={styles.main} role="menuitem" onClick={onClick}>
-      <span className="material-icons">{icon}</span>
-      {children}
+      <div className={styles.item_content}>
+        <span className="material-icons">{icon}</span>
+        {children}
+      </div>
     </li>
   );
 }

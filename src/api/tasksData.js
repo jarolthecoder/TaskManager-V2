@@ -1,7 +1,7 @@
 
 export const tasksData = [
   {
-    id: 1,
+    id: "TSK-001",
     title: "Complete Task feature",
     description:
       "Create a new task feature in the app. Then add the ability to edit and delete tasks.",
@@ -11,7 +11,7 @@ export const tasksData = [
     priority: "High",
   },
   {
-    id: 2,
+    id: "TSK-002",
     title: "Finish the UI for the app",
     description: "Task 2 description",
     status: "Completed",
@@ -20,7 +20,7 @@ export const tasksData = [
     priority: "Medium",
   },
   {
-    id: 3,
+    id: "TSK-003",
     title: "New Task 3",
     description: "Task 3 description",
     status: "Pending",
@@ -29,7 +29,7 @@ export const tasksData = [
     priority: "High",
   },
   {
-    id: 4,
+    id: "TSK-004",
     title: "New Task 4",
     description: "Task 3 description",
     status: "Pending",
@@ -38,7 +38,7 @@ export const tasksData = [
     priority: "Low",
   },
   {
-    id: 5,
+    id: "TSK-005",
     title: "New Task 5",
     description: "Task 3 description",
     status: "Pending",

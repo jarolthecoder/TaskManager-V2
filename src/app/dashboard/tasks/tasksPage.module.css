@@ -1,14 +1,15 @@
-
 .header {
   padding-bottom: 2rem;
   width: 100%;
+  color: var(--clr-text-light);
 }
 
 .header,
 .header_options {
-  display: flex ;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .container {
@@ -17,8 +18,8 @@
 
 .container.grid_view {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(12, minmax(auto, 100%));
+  grid-gap: 20px;
   height: 100%;
 }
 
@@ -29,34 +30,66 @@
   height: 100%;
 }
 
-
 .add_task_btn {
-  border: 2px dashed var(--clr-blue-card);
+  border: 2px dashed var(--clr-bg-card-main);
   border-radius: var(--br-small);
-  color: var(--clr-gray-light);
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 275px;
+  width: 100%;
+  grid-column-end: span 3;
 }
 
-.select {
-  margin-left: .5rem;
+.container.list_view .add_task_btn {
+  min-height: 200px;
 }
 
-.select_btn {
+.view_select {
+  margin-left: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .25rem;
-  border-radius: var(--br-small);
-  transition: color ease 0.1s, background ease 0.2s;
 }
 
-.select_btn {
+.view_select_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+  border-radius: var(--br-small);
+  transition: color var(--transition-default);
+}
+
+.view_select_btn,
+.view_select_btn span {
+  color: var(--clr-text-light);
+}
+
+.view_select_btn {
   cursor: pointer;
 }
 
-.select_btn:hover {
-  background: var(--clr-yellow-main);
-  color: var(--clr-blue-dark);
+.view_select_btn:hover {
+  background: var(--clr-primary-main);
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1300px) {
+    .add_task_btn {
+    grid-column-end: span 4;
+  }
+  
+}
+
+@media only screen and (max-width: 1000px) {
+  .add_task_btn {
+    grid-column-end: span 6;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .add_task_btn  {
+    grid-column-end: span 12;
+  }
 }

@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   padding: 0.5rem 0.5rem;
-  background: var(--clr-blue-dark);
+  background: var(--clr-bg-card-main);
   border-radius: var(--br-small);
-  border: 1px solid #ffff0000;
-  transition: border-color ease 0.2s;
+  border: 1px solid var(--clr-trasparent);
+  transition: border-color var(--transition-default);
 }
 
 .search_field {
@@ -17,13 +17,14 @@
 
 .main span,
 .search_field::placeholder {
-  color: var(--clr-gray-dark);
+  color: var(--clr-text-dark);
+}
+
+.main:focus-within {
+  border-color: var(--clr-primary-main);
 }
 
 .main:focus-within span {
-  color: var(--clr-yellow-main);
+  color: var(--clr-primary-main);
 }
-/* 
-.main:focus-within {
-  border-color: var(--clr-yellow-main);
-} */
+

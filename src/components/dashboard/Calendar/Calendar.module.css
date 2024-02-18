@@ -7,7 +7,7 @@
 }
 
 .today {
-  background-color: #2299ee;
-  color: var(--clr-gray-light);
-  border: 1px solid #2299ee;
+  background-color: var(--clr-primary-main);
+  color: var(--clr-text-light);
+  border: 1px solid var(--clr-primary-main);
 }

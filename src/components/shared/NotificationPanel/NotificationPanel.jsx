@@ -60,7 +60,7 @@ export const NotificationPanel = ({ handleOpen }) => {
           </ul>
         </div>
         <div className={styles.panel_footer}>
-          <Button title="View All" fullWidth />
+          <Button label="View All" fullWidth />
         </div>
       </div>
     );

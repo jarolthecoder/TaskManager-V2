@@ -1,6 +1,8 @@
 import { Roboto} from 'next/font/google'
 import './globals.css'
+import './colors.css'
 import "material-icons/iconfont/material-icons.css";
+import { ReduxProvider } from '@/redux/provider';
 
 const roboto = Roboto({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
@@ -12,7 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
+      </body>
     </html>
   )
 }

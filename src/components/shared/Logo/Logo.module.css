@@ -2,23 +2,28 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: 10px;
+  gap: 5px;
   width: 100%;
   padding: 0 1rem 1rem;
-  color: var(--clr-gray-light);
+  color: var(--clr-text-light);
+}
+
+.main h1 {
+  color: var(--clr-text-light);
 }
 
 .main p {
+  color: var(--clr-text-light);
   font-weight: var(--fw-medium);
   font-size: 1.25rem;
   padding-bottom: .4rem;
 }
 
 .logo {
-  width: 50px;
-  max-width: 50px;
-  padding: .5rem;
-  background: var(--clr-yellow-fade);
+  width: 40px;
+  max-width: 40px;
+  padding: .25rem;
+  background: var(--clr-primary-main);
   border-radius: var(--br-small);
   text-align: center;
 }
