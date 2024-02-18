@@ -40,7 +40,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 1.7rem 1rem 1.7rem;
+  color: var(--clr-text-light);
 }
+
+
 
 .table_select_btn {
   cursor: pointer;

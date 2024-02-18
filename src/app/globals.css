@@ -6,7 +6,7 @@
   --fw-bold: 700;
 
   --fs-small: 0.825rem;
-  --fs-body: 1rem;
+  --fs-body: .975rem;
   --fs-number: 1.25rem;
 
   /* Border radius */
@@ -51,6 +51,7 @@
 body {
   background: var(--clr-bg-default);
   color: var(--clr-text-main);
+  font-size: var(--fs-body);
 }
 
 /*global reset*/
@@ -92,7 +93,9 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
   font-weight: var(--fw-medium);
   text-transform: capitalize;
   color: var(--clr-text-light);

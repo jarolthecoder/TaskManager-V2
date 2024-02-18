@@ -16,7 +16,7 @@ export const StatCard = ({ title, icon, stat }) => {
 
   return (
     <Card className={styles.stat}>
-      <h3 className={styles.stat_title}>{title}</h3>
+      <h4 className={styles.stat_title}>{title}</h4>
       <div className={styles.stat_content}>
         <div className={statIconClasses}>
           <span class="material-icons">{icon}</span>

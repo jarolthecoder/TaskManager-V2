@@ -23,8 +23,8 @@
   align-items: center;
 }
 
-.filter,
-.filter p {
+.sort_btn,
+.sort_btn p {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -78,7 +78,7 @@
   width: 25px;
   height: 25px;
   border-radius: var(--br-small);
-  color: var(--clr-primary);
+  color: var(--clr-text-light);
 }
 
 .num_of_tasks.pending {

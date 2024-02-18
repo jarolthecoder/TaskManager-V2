@@ -25,7 +25,7 @@ export default function TasksPage() {
 
   // Task list columns data
   const taskListColumns = [
-    { title: "To Do", tasks: pendingTasks },
+    { title: "Pending", tasks: pendingTasks },
     { title: "In Progress", tasks: inProgressTasks },
     { title: "Completed", tasks: completedTasks },
     { title: "Unassigned", tasks: unAssignedTasks },

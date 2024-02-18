@@ -19,6 +19,10 @@
   font-weight: var(--fw-regular);
 }
 
+.table_body td {
+  font-size: var(--fs-body);
+}
+
 .table_body tr {
   border-bottom: 1px solid var(--clr-border-light);
 }

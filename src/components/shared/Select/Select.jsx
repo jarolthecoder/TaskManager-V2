@@ -16,9 +16,15 @@ export const Select = ({ children, value, className, ...restProps }) => {
   return (
     <div ref={refEl} className={selectClasses} {...restProps}>
       <button className={styles.select_btn} onClick={togglePopper}>
-        <span className="material-icons">filter_list</span>
         {value}
-        <span className="material-icons">arrow_drop_down</span>
+        <span
+          className="material-icons"
+          style={{
+            transform: isPopperOpen ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+        >
+          keyboard_arrow_down
+        </span>
       </button>
       <Popper ref={popperRef} open={isPopperOpen} onClose={togglePopper}>
         <Menu>{children}</Menu>

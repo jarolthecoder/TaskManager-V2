@@ -20,17 +20,17 @@ export const StatsOfTheDay = ({tasks}) => {
     {
       title: "Pending Tasks",
       icon: "pending_actions",
-      stat: completedItems,
+      stat: pendingItems,
     },
     {
-      title: "In Progress",
+      title: "In Progress Tasks",
       icon: "moving",
       stat: inProgressTasks,
     },
     {
       title: "Completed Tasks",
       icon: "task_alt",
-      stat: pendingItems,
+      stat: completedItems,
     },
   ];
   

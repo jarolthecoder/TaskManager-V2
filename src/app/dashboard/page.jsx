@@ -65,7 +65,7 @@ export default function Dashboard() {
         <div className={styles.tables_container}>
           <div className={styles.table_card}>
             <div className={styles.table_card_header}>
-              <h3>Tasks</h3>
+              <h2>Tasks</h2>
               <Select value={filterValue}>
                 {filterOptions.map((option, index) => (
                   <MenuItem

@@ -21,7 +21,7 @@ export const DoughnutChart = () => {
 
   // Doughnut chart settings
   const data = {
-    // labels: [`${completedTasksNum} Completed`, `${8} In Progress`, `${pendingTasksNum} Pending`],
+    // labels: [`${completedTasksNum} Completed`, `${8} In Progress`, `${toDoTasksNum} Pending`],
     labels: [
       `${completedTasksNum} Completed`,
       `${pendingTasksNum} Pending`,

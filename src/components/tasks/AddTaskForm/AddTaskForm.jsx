@@ -93,6 +93,8 @@ export const AddTaskForm = () => {
     handleTaskModal(); 
   };
 
+  
+
   return (
     <>
       <form className={styles.task_form} onSubmit={handleFormSubmit}>
