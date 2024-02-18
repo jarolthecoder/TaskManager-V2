@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useRef } from "react";
-import PropTypes from "prop-types";
 import { isValid } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { usePopper } from "@/hooks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { Popper } from "..";
+import PropTypes from "prop-types";
 import styles from "./DatePicker.module.css";
 
 export const DatePicker = ({
@@ -19,11 +19,11 @@ export const DatePicker = ({
   ...restOfProps
 }) => {
 
-  const inputRef = useRef(null);
+  const refEl = useRef(null);
   const popperRef = useRef(null);
   const [selected, setSelected] = useState(null);
   const [inputValue, setInputValue] = useState("");
-  const { isPopperOpen, togglePopper } = usePopper(inputRef, popperRef);
+  const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -53,14 +53,15 @@ export const DatePicker = ({
   };
 
   return (
-    <div className={styles.input_group}>
+    <div ref={refEl} className={styles.input_group}>
       <label htmlFor={id}>{label}</label>
-      <div ref={inputRef} className={styles.form_input}>
+      <div className={styles.form_input}>
         <input
           type="text"
           id={id}
           name={name}
           onChange={handleInputChange}
+          onClick={togglePopper}
           value={inputValue}
           placeholder={placeholder}
           {...register(id)}

@@ -1,6 +1,7 @@
 .select_group {
   margin-bottom: 1.5rem;
   width: 100%;
+
 }
 
 .select_group:focus-within label,
@@ -16,11 +17,6 @@
   color: var(--clr-text-light);
 }
 
-.select:focus {
-  border-color: var(--clr-primary-main);
-  transition: border-color  var(--transition-default);
-}
-
 .select_input_container {
   display: flex;
   justify-content: space-between;
@@ -30,6 +26,11 @@
   cursor: pointer;
   border: 1px solid var(--clr-trasparent);
   border-radius: var(--br-small);
+}
+
+.select_input_container:focus-within {
+  border-color: var(--clr-primary-main);
+  transition: border-color  var(--transition-default);
 }
 
 .select_input {
@@ -42,6 +43,7 @@
   font-size: inherit;
   cursor: pointer;
   text-transform: capitalize;
+  border-radius: var(--br-small);
 }
 
 .select_input:focus {

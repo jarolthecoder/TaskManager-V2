@@ -90,7 +90,7 @@ export const AddTaskForm = () => {
             placeholder="Select date"
             register={register}
             setValue={setValue}
-          />
+          />  
           <InputSelect
             label="Priority"
             id="priority"
