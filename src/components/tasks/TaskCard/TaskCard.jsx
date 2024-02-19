@@ -12,13 +12,15 @@ import {
   MenuItem,
   Popper,
 } from "@/components/shared";
+import { formatDate } from "@/utils/helpers/formatDate";
 import { TASKS } from "@/lib/constants";
 import classNames from "classnames";
 import styles from "./TaskCard.module.css";
 
 const { EDIT, DELETE } = TASKS;
+const formattedToday = formatDate(new Date(), "PP");
 
-export const TaskCard = ({ task, selectedView, today }) => {
+export const TaskCard = ({ task, selectedView }) => {
   const taskClasses = classNames(
     styles.task_card,
     selectedView === "List" && styles.list_item,
@@ -26,7 +28,7 @@ export const TaskCard = ({ task, selectedView, today }) => {
   );
 
   const { id, title, description, priority, assignedTo, dueDate } = task;
-  const isDueToday = task.dueDate === today;
+  const isDueToday = task.dueDate === formattedToday;
 
   const dispatch = useDispatch();
   const refEl = useRef(null);

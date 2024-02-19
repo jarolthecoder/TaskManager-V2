@@ -1,6 +1,5 @@
 import { tasksData } from "@/api/tasksData";
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
   tasksList: tasksData,
   selectedTask: {
@@ -12,6 +11,7 @@ const initialState = {
     dueDate: "",
     priority: "",
   },
+  sortedTasks: tasksData,
 };
 
 const tasksSlice = createSlice({
@@ -32,9 +32,12 @@ const tasksSlice = createSlice({
     },
     deleteTask: (state, action) => {
       state.tasksList = state.tasksList.filter((task) => task.id !== action.payload);
-    }
+    },
+    sortTasks: (state, action) => {
+      state.sortedTasks = action.payload;
+    } 
   }
 })
 
 export const tasksReducer = tasksSlice.reducer;
-export const { setSelectedTask, addTask, updateTask, deleteTask } = tasksSlice.actions;
+export const { setSelectedTask, addTask, updateTask, deleteTask, sortTasks } = tasksSlice.actions;
