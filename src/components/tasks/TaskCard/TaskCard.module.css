@@ -39,7 +39,7 @@
 .project_badge {
   display: inline-block;
   max-width: 200px;
-  padding: 8px 12px;
+  padding: 4px 12px;
   margin: .5rem 0;
   background: var(--clr-primary-opacity);
   border-radius: 20px;

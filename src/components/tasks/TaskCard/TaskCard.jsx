@@ -13,11 +13,11 @@ import {
   Popper,
 } from "@/components/shared";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { TASKS } from "@/lib/constants";
+import { TASK_ACTIONS } from "@/lib/constants";
 import classNames from "classnames";
 import styles from "./TaskCard.module.css";
 
-const { EDIT, DELETE } = TASKS;
+const { EDIT_TASK, DELETE_TASK } = TASK_ACTIONS;
 const formattedToday = formatDate(new Date(), "PP");
 
 export const TaskCard = ({ task, selectedView }) => {
@@ -39,14 +39,14 @@ export const TaskCard = ({ task, selectedView }) => {
   const handleSelectEdit = () => {
     dispatch(setSelectedTask(task));
     handleTaskModal();
-    setSelectedTaskAction(EDIT);
+    setSelectedTaskAction(EDIT_TASK);
     togglePopper();
   };
 
   const handleSelectDelete = () => {
     dispatch(setSelectedTask(task));
     handleTaskModal();
-    setSelectedTaskAction(DELETE);
+    setSelectedTaskAction(DELETE_TASK);
     togglePopper();
   };
 
@@ -100,7 +100,18 @@ export const TaskCard = ({ task, selectedView }) => {
             </span>
             {isDueToday ? "Today" : dueDate}
           </p>
-          <p>{priority}</p>
+          <p
+            style={{
+              color:
+                task.priority === "High"
+                  ? "#E57373"
+                  : task.priority === "Medium"
+                  ? "#FFCC80"
+                  : "#56e3c2",
+            }}
+          >
+            {priority}
+          </p>
         </div>
       </div>
     </Card>

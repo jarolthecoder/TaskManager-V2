@@ -2,13 +2,74 @@
 
 import { IconButton, Menu, MenuItem, Popper } from "@/components/shared";
 import { AddTaskButton, TaskCard } from "..";
+import { differenceInDays, isToday } from "date-fns";
+import { useEffect, useReducer, useRef, useState } from "react";
+import { usePopper } from "@/hooks";
+import { TASK_SORT_OPTIONS } from "@/lib/constants";
 import styles from "./TasksList.module.css";
 import classNames from "classnames";
-import { differenceInDays, isToday } from "date-fns";
-import { useEffect, useRef, useState } from "react";
-import { usePopper } from "@/hooks";
 
-const sortOptions = ["Latest", "Oldest", "Due Date", "Priority High", "Priority Low"];
+const { LATEST, OLDEST, DUE_DATE, PRIORITY_HIGH, PRIORITY_LOW } =
+  TASK_SORT_OPTIONS;
+
+const sortOptions = [
+  { label: "Latest", value: LATEST },
+  { label: "Oldest", value: OLDEST },
+  { label: "Due Date", value: DUE_DATE },   { label: "Priority High", value: PRIORITY_HIGH },
+  { label: "Priority Low", value: PRIORITY_LOW },
+ ]
+
+const sortTasksReducer = (state, action) => {
+  const { type, tasks } = action;
+
+  switch (type) {
+    case LATEST:
+      return [...tasks].sort(
+        (taskA, taskB) => new Date(taskB.startDate) - new Date(taskA.startDate)
+      );
+    case OLDEST:
+      return [...tasks].sort(
+        (taskA, taskB) => new Date(taskA.startDate) - new Date(taskB.startDate)
+      );
+    case DUE_DATE:
+      return [...tasks].sort((taskA, taskB) => {
+        const isDueTodayA = isToday(new Date(taskA.dueDate));
+        const isDueTodayB = isToday(new Date(taskB.dueDate));
+
+        if (isDueTodayA !== isDueTodayB) {
+          return isDueTodayA ? -1 : 1;
+        }
+
+        const differenceA = differenceInDays(
+          new Date(taskA.dueDate),
+          new Date()
+        );
+        const differenceB = differenceInDays(
+          new Date(taskB.dueDate),
+          new Date()
+        );
+        return differenceA - differenceB;
+      });
+    case PRIORITY_HIGH:
+      return [...tasks].sort((taskA, taskB) => {
+        const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+        return (
+          (priorityOrder[taskA.priority] || 0) -
+          (priorityOrder[taskB.priority] || 0)
+        );
+      });
+    case PRIORITY_LOW:
+      return [...tasks].sort((taskA, taskB) => {
+        const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+        return (
+          (priorityOrder[taskB.priority] || 0) -
+          (priorityOrder[taskA.priority] || 0)
+        );
+      });
+    default:
+      return state;
+  }
+};
 
 export const TasksList = ({ title, tasks }) => {
   const numOfTasks = tasks.length;
@@ -20,91 +81,19 @@ export const TasksList = ({ title, tasks }) => {
     title === "Completed" && styles.completed,
     title === "Unassigned" && styles.unassigned
   );
+
+  // Popper states
   const refEl = useRef(null);
   const popperRef = useRef(null);
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
-  const [sortedTasks, setSortedTasks] = useState(tasks);
-  const [selectedOption, setSelectedOption] = useState("Latest");
+  // Sorting reducer & state
+  const [sortedTasks, dispatch] = useReducer(sortTasksReducer, tasks);
+  const [selectedOption, setSelectedOption] = useState(sortOptions[0]);
 
+  // Update sorted tasks when the selected option changes
   useEffect(() => {
-    const handleSortTasks = () => {
-      switch (selectedOption) {
-        case "Oldest":
-          const sortedByEarliestToLatest = [...tasks].sort((taskA, taskB) => {
-            return new Date(taskA.startDate) - new Date(taskB.startDate);
-          });
-          setSortedTasks(sortedByEarliestToLatest);
-          break;
-
-        case "Latest":
-          const sortedByLatestToEarliest = [...tasks].sort((taskA, taskB) => {
-            return new Date(taskB.startDate) - new Date(taskA.startDate);
-          });
-          setSortedTasks(sortedByLatestToEarliest);
-          break;
-
-        case "Due Date":
-          const sortedByDueDate = [...tasks].sort((taskA, taskB) => {
-            const isDueTodayA = isToday(new Date(taskA.dueDate));
-            const isDueTodayB = isToday(new Date(taskB.dueDate));
-
-            // If one task is due today and the other is not, the task due today should come first
-            if (isDueTodayA !== isDueTodayB) {
-              return isDueTodayA ? -1 : 1;
-            }
-
-            // If both tasks are due today or not due today, sort by the difference in due dates
-            const differenceA = differenceInDays(
-              new Date(taskA.dueDate),
-              new Date()
-            );
-            const differenceB = differenceInDays(
-              new Date(taskB.dueDate),
-              new Date()
-            );
-            return differenceA - differenceB;
-          });
-          setSortedTasks(sortedByDueDate);
-          break;
-
-        case "Priority High":
-          const sortedByPriorityHigh = [...tasks].sort((taskA, taskB) => {
-            const priorityOrder = {
-              High: 1,
-              Medium: 2,
-              Low: 3,
-            };
-
-            const priorityValueA = priorityOrder[taskA.priority] || 0;
-            const priorityValueB = priorityOrder[taskB.priority] || 0;
-
-            return priorityValueA - priorityValueB; // Sort by ascending priority (High > Medium > Low)
-          });
-          setSortedTasks(sortedByPriorityHigh);
-          break;
-        case "Priority Low":
-          const sortedByPriorityLow = [...tasks].sort((taskA, taskB) => {
-            const priorityOrder = {
-              High: 1,
-              Medium: 2,
-              Low: 3,
-            };
-
-            const priorityValueA = priorityOrder[taskA.priority] || 0;
-            const priorityValueB = priorityOrder[taskB.priority] || 0;
-
-            return priorityValueB - priorityValueA; // Sort by descending priority (Low > Medium > High)
-          });
-          setSortedTasks(sortedByPriorityLow);
-          break;
-        default:
-          setSortedTasks(tasks);
-          break;
-      }
-    };
-
-    handleSortTasks();
+    dispatch({ type: selectedOption.value, tasks, selectedOption });
   }, [selectedOption, tasks]);
 
   return (
@@ -115,7 +104,7 @@ export const TasksList = ({ title, tasks }) => {
           <span className={numOfTasksClasses}>{numOfTasks}</span>
         </div>
         <div ref={refEl} className={styles.sort_btn}>
-          <small>{selectedOption}</small>
+          <small>{selectedOption.label}</small>
           <IconButton size="small" onClick={togglePopper}>
             <span class="material-icons">swap_vert</span>
           </IconButton>
@@ -124,7 +113,7 @@ export const TasksList = ({ title, tasks }) => {
           <Menu>
             {sortOptions.map((option) => (
               <MenuItem key={option} onClick={() => setSelectedOption(option)}>
-                {option}
+                {option.label}
               </MenuItem>
             ))}
           </Menu>

@@ -1,5 +1,6 @@
 import { tasksData } from "@/api/tasksData";
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   tasksList: tasksData,
   selectedTask: {
@@ -11,7 +12,6 @@ const initialState = {
     dueDate: "",
     priority: "",
   },
-  sortedTasks: tasksData,
 };
 
 const tasksSlice = createSlice({
@@ -25,19 +25,18 @@ const tasksSlice = createSlice({
       state.tasksList.unshift(action.payload);
     },
     updateTask: (state, action) => {
-      const {id} = action.payload;
+      const { id } = action.payload;
       const taskIndex = state.tasksList.findIndex((task) => task.id === id);
       state.tasksList[taskIndex] = action.payload;
-      
     },
     deleteTask: (state, action) => {
-      state.tasksList = state.tasksList.filter((task) => task.id !== action.payload);
-    },
-    sortTasks: (state, action) => {
-      state.sortedTasks = action.payload;
-    } 
+      state.tasksList = state.tasksList.filter(
+        (task) => task.id !== action.payload
+      );
+    }
+
   }
-})
+});
 
 export const tasksReducer = tasksSlice.reducer;
 export const { setSelectedTask, addTask, updateTask, deleteTask, sortTasks } = tasksSlice.actions;

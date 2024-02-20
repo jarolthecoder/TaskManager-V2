@@ -24,6 +24,18 @@ const priorityOptions = [
   { value: "High", label: "High" },
 ];
 
+const statusOptions = [
+  { value: "Pending", label: "Pending" },
+  { value: "In progress", label: "In progress" },
+  { value: "Completed", label: "Completed" },
+];
+
+const assignedToOptions = [
+  { value: "Other", label: "Stuff" },
+  { value: "Web Development", label: "Web Developement" },
+  { value: "Design", label: "Design" },
+];
+
 export const EditTaskForm = () => {
   const { handleTaskModal } = useContext(AppContext);
 
@@ -35,15 +47,14 @@ export const EditTaskForm = () => {
     defaultValues: selectedTask,
   });
 
-  const { register, formState, setValue } = form;
+  const { register, formState, handleSubmit, setValue } = form;
   const { errors } = formState;
 
   const onPriorityChange = (value) => {
     setValue("priority", value);
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const onFormSubmit = () => {
 
     const value = form.getValues();
 
@@ -64,7 +75,7 @@ export const EditTaskForm = () => {
 
   return (
     <>
-      <form className={styles.task_form} onSubmit={handleFormSubmit}>
+      <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
         <FormField
           label="Title"
           id="title"
@@ -112,9 +123,47 @@ export const EditTaskForm = () => {
             ))}
           </InputSelect>
         </div>
-        <Button type="submit" label="Update Task" onClick={handleFormSubmit} />
+        <div className={styles.field_group}>
+          <InputSelect
+            label="Status"
+            id="status"
+            name="status"
+            placeholder="Select status"
+            register={register}
+            value={form.watch("status")}
+          >
+            {statusOptions.map((option) => (
+              <MenuItem
+                key={option.label}
+                value={option.value}
+                onClick={() => onStatusChange(option.value)}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </InputSelect>
+          <InputSelect
+            label="Project"
+            id="assigned-to"
+            name="assignedTo"
+            placeholder="Select project"
+            register={register}
+            value={form.watch("assignedTo")}
+          >
+            {assignedToOptions.map((option) => (
+              <MenuItem
+                key={option.label}
+                value={option.value}
+                onClick={() => onAssignedToChange(option.value)}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </InputSelect>
+        </div>
+        <Button type="submit" label="Update Task" />
       </form>
-      <DevTool control={form.control} />
+      {/* <DevTool control={form.control} /> */}
     </>
   );
 };

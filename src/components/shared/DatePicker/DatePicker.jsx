@@ -44,6 +44,7 @@ export const DatePicker = ({
           name={name}
           onClick={togglePopper}
           placeholder={placeholder}
+          readOnly
           {...register(name)}
           {...restOfProps}
         />
@@ -62,6 +63,10 @@ export const DatePicker = ({
             initialMonth={selected || new Date()}
             selected={selected}
             onDayClick={handleDaySelect}
+            modifiersClassNames={{
+              selected: styles.date_picker_selected,
+              today: styles.date_picker_today,
+            }}
           />
         </div>
       </Popper>

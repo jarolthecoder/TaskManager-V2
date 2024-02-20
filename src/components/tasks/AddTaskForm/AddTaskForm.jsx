@@ -49,7 +49,7 @@ export const AddTaskForm = () => {
       title: "",
       description: "",
       dueDate: formattedToday,
-      priority: "",
+      priority: "Low",
       status: "Pending",
       assignedTo: "",
     },
@@ -70,8 +70,7 @@ export const AddTaskForm = () => {
     setValue("assignedTo", value);
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const onFormSubmit = () => {
 
     const value = form.getValues();
 
@@ -86,18 +85,14 @@ export const AddTaskForm = () => {
       assignedTo: value.assignedTo === "" ? "Unassigned" : value.assignedTo,
     };
 
-    console.log({ newTask })
-
     dispatch(addTask(newTask));
 
     handleTaskModal(); 
   };
 
-  
-
   return (
     <>
-      <form className={styles.task_form} onSubmit={handleFormSubmit}>
+      <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
         <FormField
           label="Title"
           id="title"
@@ -183,9 +178,9 @@ export const AddTaskForm = () => {
             ))}
           </InputSelect>
         </div>
-        <Button type="submit" label="Create Task" onClick={handleFormSubmit} />
+        <Button type="submit" label="Create Task"/>
       </form>
-      <DevTool control={form.control} />
+      {/* <DevTool control={form.control} /> */}
     </>
   );
 };

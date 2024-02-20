@@ -3,13 +3,13 @@
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { AppContext } from "@/context/AppContext";
-import { TASKS } from "@/lib/constants";
+import { TASK_ACTIONS } from "@/lib/constants";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { Button } from "@/components/shared";
 import { TasksList } from "@/components/tasks";
 import styles from "./tasksPage.module.css";
 
-const { ADD } = TASKS;
+const { ADD_TASK } = TASK_ACTIONS;
 const formattedToday = formatDate(new Date(), "PP");
 
 export default function TasksPage() {
@@ -32,7 +32,7 @@ export default function TasksPage() {
   ];
 
   const handleAddTask = () => {
-    setSelectedTaskAction(ADD);
+    setSelectedTaskAction(ADD_TASK);
     handleTaskModal();
   };
 

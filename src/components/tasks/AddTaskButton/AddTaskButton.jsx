@@ -2,17 +2,17 @@
 import { useContext } from "react";
 import { Button, IconButton } from '@/components/shared';
 import { AppContext } from '@/context/AppContext';
-import { TASKS } from "@/lib/constants";
+import { TASK_ACTIONS } from "@/lib/constants";
 import PropTypes from 'prop-types';
 import styles from "./AddTaskButton.module.css";
 
-const { ADD } = TASKS;
+const { ADD_TASK } = TASK_ACTIONS;
 
 export const AddTaskButton = ({ buttonType = 'default' }) => {
   const {setSelectedTaskAction, handleTaskModal} = useContext(AppContext);
 
   const handleAddTask = () => {
-    setSelectedTaskAction(ADD);
+    setSelectedTaskAction(ADD_TASK);
     handleTaskModal();
   }
 
