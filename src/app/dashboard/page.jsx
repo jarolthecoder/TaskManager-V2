@@ -32,7 +32,7 @@ export default function Dashboard() {
         break;
       case "Completed":
         const completedTasks = tasksList.filter(
-          (task) => task.status === "Completed"
+          (task) => task.status === "completed"
         );
         setFilteredTasks(completedTasks);
         break;
@@ -44,7 +44,7 @@ export default function Dashboard() {
         break;
       case "Pending":
         const pendingTasks = tasksList.filter(
-          (task) => task.status === "Pending"
+          (task) => task.status === "pending"
         );
         setFilteredTasks(pendingTasks);
         break;

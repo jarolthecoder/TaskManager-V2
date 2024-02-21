@@ -25,9 +25,9 @@ const priorityOptions = [
 ];
 
 const statusOptions = [
-  { value: "Pending", label: "Pending" },
-  { value: "In progress", label: "In progress" },
-  { value: "Completed", label: "Completed" },
+  { value: "pending", label: "Pending" },
+  { value: "inProgress", label: "In progress" },
+  { value: "completed", label: "Completed" },
 ];
 
 const assignedToOptions = [
@@ -47,15 +47,18 @@ export const EditTaskForm = () => {
     defaultValues: selectedTask,
   });
 
-  const { register, formState, handleSubmit, setValue } = form;
+  const { register, formState, handleSubmit, setValue, watch } = form;
   const { errors } = formState;
+
+  const selectedStatus = watch("status");
+  console.log({selectedStatus})
 
   const onPriorityChange = (value) => {
     setValue("priority", value);
   };
 
-  const onStatusChange = (value) => {
-    setValue("status", value);
+  const onStatusChange = (option) => {
+    setValue("status", option.label);
   };
 
   const onAssignedToChange = (value) => {
@@ -66,16 +69,21 @@ export const EditTaskForm = () => {
 
     const value = form.getValues();
 
+    const statusValue = statusOptions.find((option) => option.label === value.status).value;
+    console.log({statusValue})
+
     const updatedTask = {
       id: selectedTask.id,
       title: value.title,
       description: value.description,
-      status: "Pending",
+      status: statusValue,
       startDate: formatDate(new Date(), "PP"),
       dueDate: value.dueDate,
       priority: value.priority,
       assignedTo: value.assignedTo,
     };
+
+    console.log({updatedTask})
 
     dispatch(updateTask(updatedTask));
     handleTaskModal();
@@ -118,13 +126,12 @@ export const EditTaskForm = () => {
             name="priority"
             placeholder="Select priority"
             register={register}
-            value={form.watch("priority")}
           >
             {priorityOptions.map((option) => (
               <MenuItem
                 key={option.label}
-                value={option.value}
-                onClick={() => onPriorityChange(option.value)}
+                value={option}
+                onClick={() => onPriorityChange(option)}
               >
                 {option.label}
               </MenuItem>
@@ -144,7 +151,7 @@ export const EditTaskForm = () => {
               <MenuItem
                 key={option.label}
                 value={option.value}
-                onClick={() => onStatusChange(option.value)}
+                onClick={() => onStatusChange(option)}
               >
                 {option.label}
               </MenuItem>

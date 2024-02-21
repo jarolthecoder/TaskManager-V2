@@ -14,17 +14,17 @@ import {
 } from "@/components/shared";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { TASK_ACTIONS } from "@/lib/constants";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./TaskCard.module.css";
 
 const { EDIT_TASK, DELETE_TASK } = TASK_ACTIONS;
 const formattedToday = formatDate(new Date(), "PP");
 
-export const TaskCard = ({ task, selectedView }) => {
+export const TaskCard = ({ task }) => {
   const taskClasses = classNames(
     styles.task_card,
-    selectedView === "List" && styles.list_item,
-    task.status === "Completed" && styles.completed
+    task.status === "completed" && styles.completed
   );
 
   const { title, description, priority, assignedTo, dueDate } = task;
@@ -59,7 +59,7 @@ export const TaskCard = ({ task, selectedView }) => {
         <div ref={refEl}>
           <IconButton
             size="small"
-            className={styles.options_btn}
+            className={styles.task_options_btn}
             onClick={togglePopper}
           >
             <span className="material-icons">more_horiz</span>
@@ -116,4 +116,8 @@ export const TaskCard = ({ task, selectedView }) => {
       </div>
     </Card>
   );
+};
+
+TaskCard.propTypes = {
+  task: PropTypes.object.isRequired,
 };

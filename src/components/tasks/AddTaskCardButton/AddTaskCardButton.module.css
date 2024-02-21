@@ -1,0 +1,16 @@
+.add_task_card {
+  border: 2px dashed var(--clr-bg-card-main);
+  border-radius: var(--br-small);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 75px;
+  max-height: 75px;
+  height: 75px;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.no_margin {
+  margin-top: 0;
+}

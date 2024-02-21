@@ -13,11 +13,11 @@ export const DoughnutChart = () => {
    const formattedToday = formatDate(new Date(), "PP");
 
   const completedTasksNum = tasksList.filter(
-    (task) => task.status === "Completed"
+    (task) => task.status === "completed"
   ).length;
   // const inProgressTasks = tasks.filter((task) => task.status === "inProgress");
-  const pendingTasksNum = tasksList.filter((task) => task.status === "Pending").length;
-  const dueTasksNum = tasksList.filter((task) => task.dueDate === formattedToday && task.status !== "Completed").length;
+  const pendingTasksNum = tasksList.filter((task) => task.status === "pending").length;
+  const dueTasksNum = tasksList.filter((task) => task.dueDate === formattedToday && task.status !== "completed").length;
 
   // Doughnut chart settings
   const data = {

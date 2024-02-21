@@ -7,10 +7,10 @@ export const StatusBadge = ({ status, className }) => {
   const badgeClasses = classNames(
     className,
     styles.status_badge,
-    status === "Pending" && styles.pending,
-    status === "In progress" && styles.in_progress,
-    status === "Completed" && styles.completed
-  )
+    status === "pending" && styles.pending,
+    status === "inProgress" && styles.in_progress,
+    status === "completed" && styles.completed
+  );
 
   console.log({status})
 

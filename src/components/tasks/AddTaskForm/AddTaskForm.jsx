@@ -25,9 +25,9 @@ const priorityOptions = [
 ];
 
 const statusOptions = [
-  { value: "Pending", label: "Pending" },
-  { value: "In progress", label: "In progress" },
-  { value: "Completed", label: "Completed" },
+  { value: "pending", label: "Pending" },
+  { value: "inProgress", label: "In progress" },
+  { value: "completed", label: "Completed" },
 ];
 
 const assignedToOptions = [
@@ -50,7 +50,7 @@ export const AddTaskForm = () => {
       description: "",
       dueDate: formattedToday,
       priority: "Low",
-      status: "Pending",
+      status: "pending",
       assignedTo: "",
     },
   });

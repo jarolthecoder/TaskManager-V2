@@ -6,14 +6,14 @@ export const StatsOfTheDay = ({tasks}) => {
   const formattedToday = formatDate(new Date(), "PP");
 
   const dueTodayItems = tasks.filter((task) => task.dueDate === formattedToday).length.toString();
-  const pendingItems = tasks.filter((task) => task.status === "Pending").length.toString();
+  const pendingItems = tasks.filter((task) => task.status === "pending").length.toString();
     const completedItems = tasks
-      .filter((task) => task.status === "Completed")
+      .filter((task) => task.status === "completed")
       .length.toString();
     
-  const inProgressTasks = tasks.filter(
-    (task) => task.status === "In progress"
-  ).length.toString();
+  const inProgressTasks = tasks
+    .filter((task) => task.status === "inProgress")
+    .length.toString();
 
   const tasksStatsCard = [
     { title: "Due Today", icon: "today", stat: dueTodayItems },
