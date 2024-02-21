@@ -10,11 +10,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/utils/validations/authSchema";
 import { AuthFormField, AuthFormTitle } from "@/components/auth";
 import { Button } from "@/components/shared";
+import { mockUserData } from "@/api/mockUserData";
+
+const {email, password} = mockUserData
 
 export default function Login() {
 
   const form = useForm({
     resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email,
+      password,
+    },
   });
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
@@ -68,7 +75,7 @@ export default function Login() {
       <p>
         Don't have an account? <Link href="/register">Sign up</Link>
       </p>
-      <DevTool control={form.control} />
+      {/* <DevTool control={form.control} /> */}
     </>
   );
 }

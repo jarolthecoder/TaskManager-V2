@@ -69,21 +69,18 @@ export const EditTaskForm = () => {
 
     const value = form.getValues();
 
-    const statusValue = statusOptions.find((option) => option.label === value.status).value;
-    console.log({statusValue})
+    const updatedStatusValue = statusOptions.find((option) => option.label === value.status).value;
 
     const updatedTask = {
       id: selectedTask.id,
       title: value.title,
       description: value.description,
-      status: statusValue,
+      status: updatedStatusValue,
       startDate: formatDate(new Date(), "PP"),
       dueDate: value.dueDate,
       priority: value.priority,
       assignedTo: value.assignedTo,
     };
-
-    console.log({updatedTask})
 
     dispatch(updateTask(updatedTask));
     handleTaskModal();

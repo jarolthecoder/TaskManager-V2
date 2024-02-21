@@ -69,6 +69,6 @@ AuthFormField.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string.isRequired,
   name: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   fieldIcon: PropTypes.string,
 };

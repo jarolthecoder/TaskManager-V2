@@ -14,7 +14,7 @@
 
 .col_right h2,
 .input_group input {
-  color: var(--clr-text-primary);
+  color: var(--clr-text-light);
 }
 
 .col_left,
@@ -49,6 +49,7 @@
 .title h2 {
   font-size: 3.5rem;
   margin-bottom: 1.5rem;
+  color: var(--clr-text-light);
 }
 
 /* Auth Form */

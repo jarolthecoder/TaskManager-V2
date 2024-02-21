@@ -1,7 +1,7 @@
 .title {
   font-size: 2.5rem;
   line-height: 1.5;
-  color: var(--clr-text-primary);
+  color: var(--clr-text-light);
 }
 
 .description {

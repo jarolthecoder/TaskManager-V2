@@ -1,3 +1,4 @@
+import { mockUserData } from "@/api/mockUserData";
 import { tasksData } from "@/api/tasksData";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
 import { createSlice } from "@reduxjs/toolkit";
@@ -7,7 +8,7 @@ const { LATEST, OLDEST, DUE_DATE, PRIORITY_HIGH, PRIORITY_LOW } =
   TASK_SORT_OPTIONS;
 
 const initialState = {
-  tasksList: tasksData,
+  tasksList: mockUserData.tasks,
   selectedTask: {
     id: "",
     title: "",

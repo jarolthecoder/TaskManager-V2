@@ -7,11 +7,13 @@ import { Menu, MenuItem, Popper } from "../../shared";
 import { usePopper } from "@/hooks";
 import styles from "./UserMenu.module.css";
 import userImg from "../../../../public/user-avatar.svg";
+import { mockUserData } from "@/api/mockUserData";
 
 export const UserMenu = () => {
   const refEl = useRef(null);
   const popperRef = useRef(null);
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
+  const userName = mockUserData.name
 
   return (
     <button ref={refEl} className={styles.main} onClick={togglePopper}>
@@ -27,8 +29,7 @@ export const UserMenu = () => {
       </div>
       <div>
         <p className={styles.user_name}>
-          Super User
-          {/* <span className="material-icons">arrow_drop_down</span> */}
+          {userName}
         </p>
         <p className={styles.user_role}>Admin</p>
         <Popper open={isPopperOpen} ref={popperRef}>
