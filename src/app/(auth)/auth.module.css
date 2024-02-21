@@ -36,10 +36,10 @@
 
 .col_right {
   width: 55%;
-  background: url(../../../public/task-manager-v2-landing.png) no-repeat;
+  /* background: url(../../../public/task-manager-v2-landing.png) no-repeat;
   background-size: cover;
-  background-position: bottom -100px center;
-  background-color: var(--clr-blue-main);
+  background-position: bottom -100px center; */
+  background-color: var(--clr-bg-card-dark);
 }
 
 .title {

@@ -11,10 +11,18 @@ import { loginSchema } from "@/utils/validations/authSchema";
 import { AuthFormField, AuthFormTitle } from "@/components/auth";
 import { Button } from "@/components/shared";
 import { mockUserData } from "@/api/mockUserData";
+import { useDispatch } from "react-redux";
+import { login } from "@/redux/features/auth/authSlice";
+import { useSelector } from "react-redux";
 
 const {email, password} = mockUserData
 
 export default function Login() {
+  const dispatch = useDispatch();
+
+  const status = useSelector((state) => state.auth.status);
+
+  console.log({status})
 
   const form = useForm({
     resolver: yupResolver(loginSchema),
@@ -27,13 +35,15 @@ export default function Login() {
   const { errors } = formState;
 
   const onSubmit = (data) => {
-    console.log(data);
+ 
+    dispatch(login(mockUserData));
+    console.log(data)
   }
 
   return (
     <>
       <AuthFormTitle
-        title="Welcome Back!"
+        title="Sign in to TaskManager!"
         description="Enter your credentials to continue"
       />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_form}>
@@ -75,7 +85,7 @@ export default function Login() {
       <p>
         Don't have an account? <Link href="/register">Sign up</Link>
       </p>
-      {/* <DevTool control={form.control} /> */}
+      <DevTool control={form.control} />
     </>
   );
 }

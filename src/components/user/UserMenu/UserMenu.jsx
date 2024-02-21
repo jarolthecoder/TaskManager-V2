@@ -2,18 +2,25 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
+import { use, useRef } from "react";
 import { Menu, MenuItem, Popper } from "../../shared";
 import { usePopper } from "@/hooks";
 import styles from "./UserMenu.module.css";
 import userImg from "../../../../public/user-avatar.svg";
 import { mockUserData } from "@/api/mockUserData";
+import { useDispatch } from "react-redux";
+import { logout } from "@/redux/features/auth/authSlice";
 
 export const UserMenu = () => {
+  const dispatch = useDispatch();
   const refEl = useRef(null);
   const popperRef = useRef(null);
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
-  const userName = mockUserData.name
+  const userName = mockUserData.displayName
+
+    const handleLogout = () => {
+      dispatch(logout());
+    };
 
   return (
     <button ref={refEl} className={styles.main} onClick={togglePopper}>
@@ -28,9 +35,7 @@ export const UserMenu = () => {
         {/* <p className={styles.user_img}>SU</p> */}
       </div>
       <div>
-        <p className={styles.user_name}>
-          {userName}
-        </p>
+        <p className={styles.user_name}>{userName}</p>
         <p className={styles.user_role}>Admin</p>
         <Popper open={isPopperOpen} ref={popperRef}>
           <Menu>
@@ -39,6 +44,9 @@ export const UserMenu = () => {
                 <Link href={path}>{label}</Link>
               </MenuItem>
             ))}
+            <MenuItem onClick={handleLogout} icon="logout">
+              <Link href="/login">Logout</Link>
+            </MenuItem>
           </Menu>
         </Popper>
       </div>
@@ -51,5 +59,4 @@ const menuItems = [
   { label: "Chat", path: "/", icon: "question_answer" },
   { label: "Tasks", path: "/", icon: "list" },
   { label: "Settings", path: "/", icon: "settings" },
-  { label: "Logout", path: "/login", icon: "logout" },
 ];

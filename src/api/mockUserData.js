@@ -1,8 +1,9 @@
 export const mockUserData = {
   id: 1,
-  name: "Super User",
+  uid: "101",
+  displayName: "Super User",
   email: "superuser@mail.com",
-  password: "awesomeUser123",
+  password: "awesomeUser123!",
   tasks: [
     {
       id: "TSK-003",

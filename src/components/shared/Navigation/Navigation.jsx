@@ -3,14 +3,21 @@
 import Link from "next/link"
 import styles from "./Navigation.module.css"
 import { usePathname, useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { logout } from "@/redux/features/auth/authSlice";
 
 export const Navigation = () => {
 
   const router = useRouter();
   const currentRoute = usePathname();
+  const dispatch = useDispatch()
 
   const navigateTo = (path) => {
     router.push(path)
+  }
+
+  const handleLogout = () => {  
+    dispatch(logout())
   }
 
   return (
@@ -58,7 +65,7 @@ export const Navigation = () => {
           className={`${styles.navlink} ${
             currentRoute === "/login" ? styles.active : null
           }`}
-          onClick={() => navigateTo("/login")}
+          onClick={handleLogout}
         >
           <span className="material-icons">logout</span>
           <Link href="/login">Logout</Link>

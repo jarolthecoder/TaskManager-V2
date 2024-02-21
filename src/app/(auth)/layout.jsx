@@ -1,6 +1,20 @@
+"use client"
+
+import { useEffect } from "react";
 import styles from "./auth.module.css";
+import { useRouter } from "next/navigation";
+import { useCheckAuth } from "@/hooks";
 
 export default function AuthLayout({ children }) {
+
+  const router = useRouter();
+  const status = useCheckAuth();
+
+
+   useEffect(() => {
+     if (status === "authenticated") router.push("/dashboard");
+   }, [status]);
+
   return (
     <main className={styles.main}>
       <section className={styles.col_left}>

@@ -1,3 +1,4 @@
+import { Logo } from '@/components/shared';
 import styles from './AuthFormTitle.module.css'
 
 export const AuthFormTitle = ({title, description}) => {
