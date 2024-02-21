@@ -54,6 +54,14 @@ export const EditTaskForm = () => {
     setValue("priority", value);
   };
 
+  const onStatusChange = (value) => {
+    setValue("status", value);
+  };
+
+  const onAssignedToChange = (value) => {
+    setValue("assignedTo", value);
+  };
+
   const onFormSubmit = () => {
 
     const value = form.getValues();
