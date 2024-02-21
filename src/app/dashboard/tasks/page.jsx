@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AppContext } from "@/context/AppContext";
 import { TASK_ACTIONS } from "@/lib/constants";
@@ -8,6 +8,9 @@ import { formatDate } from "@/utils/helpers/formatDate";
 import { Button } from "@/components/shared";
 import { TasksList } from "@/components/tasks";
 import styles from "./tasksPage.module.css";
+import { DragDropContext } from "react-beautiful-dnd";
+import { useDispatch } from "react-redux";
+import { setSelectedTask, updateTask } from "@/redux/features/tasks/tasksSlice";
 
 const { ADD_TASK } = TASK_ACTIONS;
 const formattedToday = formatDate(new Date(), "PP");
@@ -15,6 +18,13 @@ const formattedToday = formatDate(new Date(), "PP");
 export default function TasksPage() {
   const { setSelectedTaskAction, handleTaskModal } = useContext(AppContext);
   const tasks = useSelector((state) => state.tasks.tasksList);
+  const dispatch= useDispatch();
+  const selectedTask = useSelector((state) => state.tasks.selectedTask);
+
+   const [winReady, setwinReady] = useState(false);
+   useEffect(() => {
+     setwinReady(true);
+   }, []);
 
   // Filtered tasks for columns
   const completedTasks = tasks.filter((task) => task.status === "Completed");
@@ -25,16 +35,29 @@ export default function TasksPage() {
 
   // Task list columns data
   const taskListColumns = [
-    { title: "Pending", tasks: pendingTasks },
-    { title: "In Progress", tasks: inProgressTasks },
-    { title: "Completed", tasks: completedTasks },
-    { title: "Unassigned", tasks: unAssignedTasks },
+    { id: "pending", title: "Pending", tasks: pendingTasks },
+    { id: "inProgress", title: "In progress", tasks: inProgressTasks },
+    { id: "completed", title: "Completed", tasks: completedTasks },
+    // {id: "expired", title: "Expired", tasks: tasks.filter((task) => new Date(task.dueDate) < new Date())}
   ];
 
   const handleAddTask = () => {
     setSelectedTaskAction(ADD_TASK);
     handleTaskModal();
   };
+
+   const onDragEnd = (result) => {
+    
+    if (!result.destination) return;
+
+    const { source, destination } = result;
+    const sourceColumn = source.droppableId;
+    const destinationColumn = destination.droppableId;
+    const taskId = result.draggableId;
+    const task = tasks.find((task) => task.id === taskId);
+    const updatedTask = { ...task, status: destinationColumn };
+    dispatch(updateTask(updatedTask)); 
+   };
 
   return (
     <section className={styles.main}>
@@ -52,13 +75,15 @@ export default function TasksPage() {
         </div>
       </div>
       <div className={styles.container}>
-        {taskListColumns.map((column) => (
-          <TasksList
-            key={column.title}
-            title={column.title}
-            tasks={column.tasks}
-          />
-        ))}
+        <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+          {taskListColumns.map((column) => (
+            <TasksList
+              key={column.id}
+              title={column.title}
+              tasks={column.tasks}
+            />
+          ))}
+        </DragDropContext>
       </div>
     </section>
   );

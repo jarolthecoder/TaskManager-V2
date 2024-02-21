@@ -27,7 +27,7 @@ export const TaskCard = ({ task, selectedView }) => {
     task.status === "Completed" && styles.completed
   );
 
-  const { id, title, description, priority, assignedTo, dueDate } = task;
+  const { title, description, priority, assignedTo, dueDate } = task;
   const isDueToday = task.dueDate === formattedToday;
 
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ export const TaskCard = ({ task, selectedView }) => {
   };
 
   return (
-    <Card key={id} className={taskClasses}>
+    <Card className={taskClasses}>
       <div className={styles.task_header}>
         <div className={styles.task_title}>
           <h4>{title}</h4>
