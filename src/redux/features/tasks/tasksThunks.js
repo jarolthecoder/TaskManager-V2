@@ -1,5 +1,5 @@
 import { FirebaseDB } from "@/firebase/config";
-import { addTask, setTask, setTasks } from "./tasksSlice";
+import { addTask, setTask, setTasks, updateSelectedTask } from "./tasksSlice";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore/lite";
 import { loadTasks } from "@/utils/helpers";
 
@@ -23,7 +23,7 @@ export const getTaskById = (taskId) => {
     const { uid } = getState().auth;
     if (!uid) throw new Error("User uid does not exist");
 
-    const collectionRef = collection(FirebaseDB, `${uid}/projects/tasks`);
+    const collectionRef = collection(FirebaseDB, `${uid}/project/tasks`);
     const docRef = doc(collectionRef, taskId);
     const task = await getDoc(docRef);
     // console.log({id: task.id, ...task.data()}) // Improve id handling - add directly to the task object in fireStore
@@ -37,7 +37,7 @@ export const addNewTask = (newTask) => {
   return async (dispatch, getState) => {
     const { uid } = getState().auth;
 
-    const newDoc = doc(collection(FirebaseDB, `${uid}/projects/tasks/`));
+    const newDoc = doc(collection(FirebaseDB, `${uid}/project/tasks/`));
     const setDocResp = await setDoc(newDoc, newTask);
 
     newTask.id = newDoc.id;
@@ -46,14 +46,19 @@ export const addNewTask = (newTask) => {
   };
 };
 
-export const updateTask = () => {
+export const updateTask = (updatedTask) => {
   return async (dispatch, getState) => {
-    const { task } = getState().tasks;
+    // const { task } = getState().tasks;
+    const { uid } = getState().auth;
 
-    const taskToFirestore = {...task}
+    const taskToFirestore = {...updatedTask}
 
     delete taskToFirestore.id;
     console.log({taskToFirestore})
+    const docRef = doc(FirebaseDB, `${uid}/project/tasks/${updatedTask.id}`);
+    await setDoc(docRef, taskToFirestore, { merge: true });
+
+    dispatch(updateSelectedTask(updatedTask));
 
 
     // dispatch(setTask(updatedTask));

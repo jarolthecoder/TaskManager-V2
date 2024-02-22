@@ -80,10 +80,12 @@ export const EditTaskForm = () => {
       priority: value.priority,
       assignedTo: value.assignedTo,
     };
-
+console.log({updatedTask})
     dispatch(updateTask(updatedTask));
     handleTaskModal();
   };
+
+  console.log({selectedTask})
 
   return (
     <>

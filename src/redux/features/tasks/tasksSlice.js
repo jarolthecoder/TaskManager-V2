@@ -37,11 +37,18 @@ const tasksSlice = createSlice({
     },
     updateSelectedTask: (state, action) => {
       const { id } = action.payload;
-      const taskIndex = state.tasksList.findIndex((task) => task.id === id);
-      state.tasksList[taskIndex] = action.payload;
+      const tasks = state.tasks.map((task) => {
+        if (task.id === id) {
+          return action.payload;
+        }
+        return task;
+      });
+      state.tasks = tasks;
+      // const taskIndex = state.tasks.findIndex((task) => task.id === id);
+      // state.tasks[taskIndex] = action.payload;
     },
     deleteTask: (state, action) => {
-      state.tasksList = state.tasksList.filter(
+      state.tasks = state.tasks.filter(
         (task) => task.id !== action.payload
       );
     },

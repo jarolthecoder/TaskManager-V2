@@ -75,7 +75,7 @@ export const AddTaskForm = () => {
     const value = form.getValues();
 
     const newTask = {
-      id: `TSK-${Math.floor(Math.random() * 1000)}`,
+      // id: `TSK-${Math.floor(Math.random() * 1000)}`,
       title: value.title,
       description: value.description,
       status: value.status,
