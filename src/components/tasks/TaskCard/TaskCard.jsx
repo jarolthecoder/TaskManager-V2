@@ -27,7 +27,7 @@ export const TaskCard = ({ task }) => {
     task.status === "completed" && styles.completed
   );
 
-  const { title, description, priority, assignedTo, dueDate } = task;
+  const { title, description, priority, projectName, dueDate } = task;
   const isDueToday = task.dueDate === formattedToday;
 
   const dispatch = useDispatch();
@@ -82,12 +82,12 @@ export const TaskCard = ({ task }) => {
           <span
             className={styles.project_badge}
             style={{
-              background: task.assignedTo === "Unassigned" && "#333C46",
-              color: task.assignedTo === "Unassigned" && "#a0a8b1",
-              // opacity: task.assignedTo === "Unassigned" && "0.3",
+              background: task.projectName === "Unassigned" && "#333C46",
+              color: task.projectName === "Unassigned" && "#a0a8b1",
+              // opacity: task.projectName === "Unassigned" && "0.3",
             }}
           >
-            {assignedTo}
+            {projectName}
           </span>
         </div>
       </div>

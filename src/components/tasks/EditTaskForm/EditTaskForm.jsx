@@ -16,7 +16,7 @@ import { useContext  } from "react";
 import { AppContext } from "@/context/AppContext";
 import { useDispatch, useSelector } from "react-redux";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { updateTask } from "@/redux/features/tasks/tasksSlice";
+import { updateTask } from "@/redux/features/tasks";
 
 const priorityOptions = [
   { value: "Low", label: "Low" },

@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 import { useDispatch } from "react-redux";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { addTask } from "@/redux/features/tasks/tasksSlice";
+import { addNewTask } from "@/redux/features/tasks";
 
 const priorityOptions = [
   { value: "Low", label: "Low" },
@@ -30,7 +30,7 @@ const statusOptions = [
   { value: "completed", label: "Completed" },
 ];
 
-const assignedToOptions = [
+const projectNameOptions = [
   { value: "Other", label: "Stuff" },
   { value: "Web Development", label: "Web Developement" },
   { value: "Design", label: "Design" },
@@ -51,7 +51,7 @@ export const AddTaskForm = () => {
       dueDate: formattedToday,
       priority: "Low",
       status: "pending",
-      assignedTo: "",
+      projectName: "",
     },
   });
 
@@ -66,8 +66,8 @@ export const AddTaskForm = () => {
     setValue("status", value);
   };
 
-  const onAssignedToChange = (value) => {
-    setValue("assignedTo", value);
+  const onProjectNameChange = (value) => {
+    setValue("projectName", value);
   };
 
   const onFormSubmit = () => {
@@ -79,13 +79,14 @@ export const AddTaskForm = () => {
       title: value.title,
       description: value.description,
       status: value.status,
-      startDate: formattedToday,
+      creationDate: formattedToday,
+      startDate: "",
       dueDate: value.dueDate,
       priority: value.priority,
-      assignedTo: value.assignedTo === "" ? "Unassigned" : value.assignedTo,
+      projectName: value.projectName === "" ? "Unassigned" : value.projectName,
     };
 
-    dispatch(addTask(newTask));
+    dispatch(addNewTask(newTask));
 
     handleTaskModal(); 
   };
@@ -161,17 +162,17 @@ export const AddTaskForm = () => {
           </InputSelect>
           <InputSelect
             label="Project"
-            id="assigned-to"
-            name="assignedTo"
+            id="project-name"
+            name="projectName"
             placeholder="Select project"
             register={register}
-            value={form.watch("assignedTo")}
+            value={form.watch("projectName")}
           >
-            {assignedToOptions.map((option) => (
+            {projectNameOptions.map((option) => (
               <MenuItem
                 key={option.label}
                 value={option.value}
-                onClick={() => onAssignedToChange(option.value)}
+                onClick={() => onProjectNameChange(option.value)}
               >
                 {option.label}
               </MenuItem>

@@ -18,7 +18,11 @@ const initialState = {
     dueDate: "",
     priority: "",
   },
-  sortedTasks: tasksData,  
+  tasks: [],
+  task: {},
+  isTaskSaved: false,
+  isSavingTask: false,
+  message: "",
 };
 
 const tasksSlice = createSlice({
@@ -29,9 +33,9 @@ const tasksSlice = createSlice({
       state.selectedTask = action.payload;
     },
     addTask: (state, action) => {
-      state.tasksList.unshift(action.payload);
+      state.tasks.unshift(action.payload);
     },
-    updateTask: (state, action) => {
+    updateSelectedTask: (state, action) => {
       const { id } = action.payload;
       const taskIndex = state.tasksList.findIndex((task) => task.id === id);
       state.tasksList[taskIndex] = action.payload;
@@ -41,8 +45,21 @@ const tasksSlice = createSlice({
         (task) => task.id !== action.payload
       );
     },
-  }
+    setTask: (state, action) => {
+      state.task = action.payload;
+    },
+    setTasks: (state, action) => {
+      state.tasks = action.payload;
+    },
+  },
 });
 
 export const tasksReducer = tasksSlice.reducer;
-export const { setSelectedTask, addTask, updateTask, deleteTask } = tasksSlice.actions;
+export const {
+  setSelectedTask,
+  addTask,
+  updateSelectedTask,
+  deleteTask,
+  setTask,
+  setTasks,
+} = tasksSlice.actions;

@@ -9,15 +9,15 @@ import { Button, RenderWhen } from "@/components/shared";
 import { TasksColumn } from "@/components/tasks";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
-import { updateTask } from "@/redux/features/tasks/tasksSlice";
 import styles from "./tasksPage.module.css";
+import { updateTask } from "@/redux/features/tasks";
 
 const { ADD_TASK } = TASK_ACTIONS;
 const formattedToday = formatDate(new Date(), "PP");
 
 export default function TasksPage() {
   const { setSelectedTaskAction, handleTaskModal } = useContext(AppContext);
-  const tasks = useSelector((state) => state.tasks.tasksList);
+  const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch= useDispatch();
 
    const [winReady, setwinReady] = useState(false);

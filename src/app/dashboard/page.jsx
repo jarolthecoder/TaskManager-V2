@@ -11,57 +11,57 @@ import {
 import { useEffect, useState } from "react";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { useSelector } from "react-redux";
-import styles from "./dashboard.module.css";
 import { TasksTable } from "@/components/tasks";
+import styles from "./dashboard.module.css";
 
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const formattedToday = formatDate(new Date(), "PP");
 
 export default function Dashboard() {
 
-  const { tasksList } = useSelector((state) => state.tasks);
+  const { tasks } = useSelector((state) => state.tasks);
 
   const [filterValue, setFilterValue] = useState("All Tasks");
-  const [filteredTasks, setFilteredTasks] = useState(tasksList);
+  const [filteredTasks, setFilteredTasks] = useState(tasks);
 
   const handleFilterChange = (option) => {
     setFilterValue(option);
     switch (option) {
       case "All Tasks":
-        setFilteredTasks(tasksList);
+        setFilteredTasks(tasks);
         break;
       case "Completed":
-        const completedTasks = tasksList.filter(
+        const completedTasks = tasks.filter(
           (task) => task.status === "completed"
         );
         setFilteredTasks(completedTasks);
         break;
       case "Due Today":
-        const inProgressTasks = tasksList.filter(
+        const inProgressTasks = tasks.filter(
           (task) => task.dueDate === formattedToday
         );
         setFilteredTasks(inProgressTasks);
         break;
       case "Pending":
-        const pendingTasks = tasksList.filter(
+        const pendingTasks = tasks.filter(
           (task) => task.status === "pending"
         );
         setFilteredTasks(pendingTasks);
         break;
       default:
-        setFilteredTasks(tasksList);
+        setFilteredTasks(tasks);
         break;
     }
   };
 
   useEffect(() => {
-    setFilteredTasks(tasksList);
-  }, [tasksList]);
+    setFilteredTasks(tasks);
+  }, [tasks]);
 
   return (
     <section className={styles.main}>
       <div className={styles.panels_container}>
-        <StatsOfTheDay tasks={tasksList} />
+        <StatsOfTheDay tasks={tasks} />
         <div className={styles.tables_container}>
           <div className={styles.table_card}>
             <div className={styles.table_card_header}>

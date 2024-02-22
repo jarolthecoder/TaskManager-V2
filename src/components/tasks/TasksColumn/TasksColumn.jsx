@@ -23,11 +23,11 @@ const sortTasksReducer = (state, action) => {
   switch (type) {
     case LATEST:
       return [...tasks].sort(
-        (taskA, taskB) => new Date(taskB.startDate) - new Date(taskA.startDate)
+        (taskA, taskB) => new Date(taskB.creationDate) - new Date(taskA.creationDate)
       );
     case OLDEST:
       return [...tasks].sort(
-        (taskA, taskB) => new Date(taskA.startDate) - new Date(taskB.startDate)
+        (taskA, taskB) => new Date(taskA.creationDate) - new Date(taskB.creationDate)
       );
     case DUE_DATE:
       return [...tasks].sort((taskA, taskB) => {
