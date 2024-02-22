@@ -97,7 +97,7 @@ h4,
 h5,
 h6 {
   font-weight: var(--fw-medium);
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   color: var(--clr-text-light);
 }
 

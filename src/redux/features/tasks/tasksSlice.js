@@ -29,6 +29,9 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
+    setTasks: (state, action) => {
+      state.tasks = action.payload;
+    },
     setSelectedTask: (state, action) => {
       state.selectedTask = action.payload;
     },
@@ -41,16 +44,11 @@ const tasksSlice = createSlice({
       state.tasks[taskIndex] = action.payload;
     },
     deleteFromTasksList: (state, action) => {
-      state.tasks = state.tasks.filter(
-        (task) => task.id !== action.payload
-      );
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
-    setTask: (state, action) => {
-      state.task = action.payload;
-    },
-    setTasks: (state, action) => {
-      state.tasks = action.payload;
-    },
+    // setTask: (state, action) => {
+    //   state.task = action.payload;
+    // },
   },
 });
 
@@ -60,6 +58,5 @@ export const {
   addTask,
   updateSelectedTask,
   deleteFromTasksList,
-  setTask,
   setTasks,
 } = tasksSlice.actions;

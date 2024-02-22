@@ -1,0 +1,34 @@
+.title {
+  font-size: 2rem;
+  line-height: 1.5;
+  color: var(--clr-text-light);
+}
+
+.lead {
+  font-size: var(--fs-body);
+}
+
+.logo_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.form p,
+.form label {
+  color: var(--clr-gray-dark);
+}
+
+.form a {
+  text-decoration: underline;
+}
+
+.form a:hover {
+  color: var(--clr-primary-main);
+}
+

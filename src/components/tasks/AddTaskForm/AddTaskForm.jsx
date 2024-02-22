@@ -11,7 +11,6 @@ import {
   MenuItem,
 } from "@/components/shared";
 import styles from "./TaskForm.module.css";
-import { DevTool } from "@hookform/devtools";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 import { useDispatch } from "react-redux";
@@ -75,7 +74,6 @@ export const AddTaskForm = () => {
     const value = form.getValues();
 
     const newTask = {
-      // id: `TSK-${Math.floor(Math.random() * 1000)}`,
       title: value.title,
       description: value.description,
       status: value.status,
@@ -87,7 +85,6 @@ export const AddTaskForm = () => {
     };
 
     dispatch(addNewTask(newTask));
-
     handleTaskModal(); 
   };
 
@@ -181,7 +178,6 @@ export const AddTaskForm = () => {
         </div>
         <Button type="submit" label="Create Task"/>
       </form>
-      {/* <DevTool control={form.control} /> */}
     </>
   );
 };

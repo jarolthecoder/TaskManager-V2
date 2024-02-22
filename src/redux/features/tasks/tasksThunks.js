@@ -2,7 +2,6 @@ import { FirebaseDB } from "@/firebase/config";
 import {
   addTask,
   deleteFromTasksList,
-  setTask,
   setTasks,
   updateSelectedTask,
 } from "./tasksSlice";
@@ -23,25 +22,24 @@ export const getTasks = () => {
 
     const tasks = await loadTasks(uid);
 
-    console.log({ tasks });
-
     dispatch(setTasks(tasks));
   };
 };
 
+/** NOTE: Not using at the moment, it will probably be used later for user projects */
 // Load task by id from the firestore database
-export const getTaskById = (taskId) => {
-  return async (dispatch, getState) => {
-    const { uid } = getState().auth;
-    if (!uid) throw new Error("User uid does not exist");
+// export const getTaskById = (taskId) => {
+//   return async (dispatch, getState) => {
+//     const { uid } = getState().auth;
+//     if (!uid) throw new Error("User uid does not exist");
 
-    const collectionRef = collection(FirebaseDB, `${uid}/project/tasks`);
-    const docRef = doc(collectionRef, taskId);
-    const task = await getDoc(docRef);
+//     const collectionRef = collection(FirebaseDB, `${uid}/project/tasks`);
+//     const docRef = doc(collectionRef, taskId);
+//     const task = await getDoc(docRef);
 
-    dispatch(setTask({ id: task.id, ...task.data() }));
-  };
-};
+//     dispatch(setTask({ id: task.id, ...task.data() }));
+//   };
+// };
 
 // Add a new task to the firestore database
 export const addNewTask = (newTask) => {

@@ -5,13 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { createUserWithEmailAndPassword } from "@/redux/features/auth";
 import { registerSchema } from "@/utils/validations/authSchema";
-import { AuthFormField, AuthFormTitle } from "@/components/auth";
+import { AuthForm, AuthFormField } from "@/components/auth";
 import { Button } from "@/components/shared";
 import Link from "next/link";
 import styles from "../auth.module.css";
 
 export default function Register() {
-
   const dispatch = useDispatch();
 
   const form = useForm({
@@ -31,42 +30,44 @@ export default function Register() {
   };
 
   return (
-    <>
-      <AuthFormTitle title="Get Started!" description="Create your account" />
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_form}>
-        <AuthFormField
-          label="Full Name"
-          type="text"
-          id="fullName"
-          name="fullName"
-          fieldIcon="person"
-          register={register}
-          errors={errors}
-        />
-        <AuthFormField
-          label="Email"
-          type="email"
-          id="email"
-          name="email"
-          fieldIcon="alternate_email"
-          register={register}
-          errors={errors}
-        />
-        <AuthFormField
-          label="Password"
-          type="password"
-          id="password"
-          name="password"
-          fieldIcon="remove_red_eye"
-          register={register}
-          errors={errors}
-        />
+    <AuthForm
+      title="Create an account"
+      lead="Enter your details below"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <AuthFormField
+        label="Full Name"
+        type="text"
+        id="fullName"
+        name="fullName"
+        fieldIcon="person"
+        register={register}
+        errors={errors}
+      />
+      <AuthFormField
+        label="Email"
+        type="email"
+        id="email"
+        name="email"
+        fieldIcon="alternate_email"
+        register={register}
+        errors={errors}
+      />
+      <AuthFormField
+        label="Password"
+        type="password"
+        id="password"
+        name="password"
+        fieldIcon="remove_red_eye"
+        register={register}
+        errors={errors}
+      />
+      <div className={styles.form_btn_container}>
         <Button type="submit" label="Create account" fullWidth />
-      </form>
-      <p>
-        Have an account? <Link href="/login">Log in</Link>
+      </div>
+      <p className={styles.form_footer_text}>
+        Have an account? <Link href="/login">Sign in</Link>
       </p>
-      {/* <DevTool control={form.control} /> */}
-    </>
+    </AuthForm>
   );
 }

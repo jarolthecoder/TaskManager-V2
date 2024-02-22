@@ -47,7 +47,7 @@
 }
 
 .title h2 {
-  font-size: 3.5rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   color: var(--clr-text-light);
 }
@@ -57,18 +57,41 @@
   width: 80%;
   max-width: 600px;
 }
-.auth_form {
-  width: 100%;
-  margin: 2rem 0;
-}
-
-.form_container p,
-.input_group label {
-  color: var(--clr-gray-dark);
-}
 
 .form_btn_container {
   flex-direction: column;
   gap: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
+}
+
+.or_signin_text {
+  position: relative;
+  color: var(--clr-text-light);
+  width: 100%;
+  text-align: center;
+}
+
+.or_signin_text h5 {
+  position: relative;
+  width: 50px;
+  margin: auto;
+  z-index: 2;
+  padding: 1rem;
+  background: var(--clr-bg-default);
+}
+
+.or_signin_text::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 1px;
+  background: var(--clr-border-light);
+  z-index: 1;
+}
+
+.form_footer_text {
+  text-align: center;
 }

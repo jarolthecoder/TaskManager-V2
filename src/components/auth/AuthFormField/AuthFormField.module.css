@@ -36,7 +36,7 @@
 
 .form_input input {
   width: 100%;
-  padding: .75rem 0;
+  padding: 0.5rem 0;
   border: none;
   background: var(--clr-trasparent);
 }

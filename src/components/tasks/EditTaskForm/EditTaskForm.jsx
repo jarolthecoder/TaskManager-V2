@@ -10,13 +10,12 @@ import {
   DatePicker,
   MenuItem,
 } from "@/components/shared";
-import styles from "./EditTaskForm.module.css";
-import { DevTool } from "@hookform/devtools";
 import { useContext  } from "react";
 import { AppContext } from "@/context/AppContext";
 import { useDispatch, useSelector } from "react-redux";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { updateTask } from "@/redux/features/tasks";
+import styles from "./EditTaskForm.module.css";
 
 const priorityOptions = [
   { value: "Low", label: "Low" },
@@ -30,7 +29,7 @@ const statusOptions = [
   { value: "completed", label: "Completed" },
 ];
 
-const assignedToOptions = [
+const projectNameOptions = [
   { value: "Other", label: "Stuff" },
   { value: "Web Development", label: "Web Developement" },
   { value: "Design", label: "Design" },
@@ -47,21 +46,19 @@ export const EditTaskForm = () => {
     defaultValues: selectedTask,
   });
 
-  const { register, formState, handleSubmit, setValue, watch } = form;
+  const { register, formState, handleSubmit, setValue } = form;
   const { errors } = formState;
 
   const onPriorityChange = (value) => {
     setValue("priority", value);
-
-    console.log(value)
   };
 
   const onStatusChange = (option) => {
     setValue("status", option.label);
   };
 
-  const onAssignedToChange = (value) => {
-    setValue("assignedTo", value);
+  const onprojectNameChange = (value) => {
+    setValue("projectName", value);
   };
 
   const onFormSubmit = () => {
@@ -78,14 +75,12 @@ export const EditTaskForm = () => {
       startDate: formatDate(new Date(), "PP"),
       dueDate: value.dueDate,
       priority: value.priority,
-      assignedTo: value.assignedTo,
+      projectName: value.projectName,
     };
-console.log({updatedTask})
+
     dispatch(updateTask(updatedTask));
     handleTaskModal();
   };
-
-  console.log({selectedTask})
 
   return (
     <>
@@ -159,16 +154,16 @@ console.log({updatedTask})
           <InputSelect
             label="Project"
             id="assigned-to"
-            name="assignedTo"
+            name="projectName"
             placeholder="Select project"
             register={register}
-            value={form.watch("assignedTo")}
+            value={form.watch("projectName")}
           >
-            {assignedToOptions.map((option) => (
+            {projectNameOptions.map((option) => (
               <MenuItem
                 key={option.label}
                 value={option.value}
-                onClick={() => onAssignedToChange(option.value)}
+                onClick={() => onprojectNameChange(option.value)}
               >
                 {option.label}
               </MenuItem>

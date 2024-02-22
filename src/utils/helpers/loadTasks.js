@@ -15,9 +15,5 @@ export const loadTasks= async (uid = "") => {
 
   console.log({tasks})
 
-  // tasks.reverse()
-
-  // console.log(tasks.reverse())
-
   return tasks;
 };
