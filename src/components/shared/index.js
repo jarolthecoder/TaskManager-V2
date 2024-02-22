@@ -16,3 +16,4 @@ export * from "./Popper/Popper";
 export * from "./InputSelect/InputSelect";
 export * from "./LanguageMenu/LanguageMenu";
 export * from "./NotificationsMenu/NotificationsMenu";
+export * from './Loaders/PageLoader'

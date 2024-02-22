@@ -12,8 +12,6 @@ export const StatusBadge = ({ status, className }) => {
     status === "completed" && styles.completed
   );
 
-  console.log({status})
-
   return (
     <p className={badgeClasses}>{status}</p>
   );

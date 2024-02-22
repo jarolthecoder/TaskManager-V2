@@ -22,14 +22,14 @@ export const NotificationPanel = ({ handleOpen }) => {
                   is 60% completed
                 </span>
                 <p className={styles.notification_time}>
-                  <span class="material-icons">watch_later</span>
+                  <span className="material-icons">watch_later</span>
                   about 18 hours ago
                 </p>
               </div>
             </li>
             <li className={styles.notification} onClick={handleOpen}>
               <div className={`${styles.notification_badge} ${styles.blue}`}>
-                <span class="material-icons">textsms</span>
+                <span className="material-icons">textsms</span>
               </div>
               <div className={styles.notification_content}>
                 <span className={styles.notification_title}>Cristine Burg</span>{" "}
@@ -37,14 +37,14 @@ export const NotificationPanel = ({ handleOpen }) => {
                   sent you a message
                 </span>
                 <p className={styles.notification_time}>
-                  <span class="material-icons">watch_later</span>
+                  <span className="material-icons">watch_later</span>
                   about 18 hours ago
                 </p>
               </div>
             </li>
             <li className={styles.notification} onClick={handleOpen}>
               <div className={`${styles.notification_badge} ${styles.red}`}>
-                <span class="material-icons">warning</span>
+                <span className="material-icons">warning</span>
               </div>
               <div className={styles.notification_content}>
                 <span className={styles.notification_title}>Two tasks</span>{" "}
@@ -52,7 +52,7 @@ export const NotificationPanel = ({ handleOpen }) => {
                   are due tomorrow
                 </span>
                 <p className={styles.notification_time}>
-                  <span class="material-icons">watch_later</span>
+                  <span className="material-icons">watch_later</span>
                   about 18 hours ago
                 </p>
               </div>

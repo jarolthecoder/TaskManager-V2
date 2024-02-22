@@ -50,11 +50,10 @@ export const EditTaskForm = () => {
   const { register, formState, handleSubmit, setValue, watch } = form;
   const { errors } = formState;
 
-  const selectedStatus = watch("status");
-  console.log({selectedStatus})
-
   const onPriorityChange = (value) => {
     setValue("priority", value);
+
+    console.log(value)
   };
 
   const onStatusChange = (option) => {
@@ -69,13 +68,13 @@ export const EditTaskForm = () => {
 
     const value = form.getValues();
 
-    const updatedStatusValue = statusOptions.find((option) => option.label === value.status).value;
+    const updatedStatusValue = statusOptions.find((option) => option.label === value.status);
 
     const updatedTask = {
       id: selectedTask.id,
       title: value.title,
       description: value.description,
-      status: updatedStatusValue,
+      status: updatedStatusValue ? updatedStatusValue.value : value.status,
       startDate: formatDate(new Date(), "PP"),
       dueDate: value.dueDate,
       priority: value.priority,
@@ -123,12 +122,13 @@ export const EditTaskForm = () => {
             name="priority"
             placeholder="Select priority"
             register={register}
+            value={form.watch("priority")}
           >
             {priorityOptions.map((option) => (
               <MenuItem
                 key={option.label}
                 value={option}
-                onClick={() => onPriorityChange(option)}
+                onClick={() => onPriorityChange(option.value)}
               >
                 {option.label}
               </MenuItem>

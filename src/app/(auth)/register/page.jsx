@@ -1,24 +1,33 @@
 "use client";
 
-import { AuthFormField, AuthFormTitle } from "@/components/auth";
-import { Button } from "@/components/shared";
-import styles from "../auth.module.css";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch } from "react-redux";
+import { createUserWithEmailAndPassword } from "@/redux/features/auth";
 import { registerSchema } from "@/utils/validations/authSchema";
-import { DevTool } from "@hookform/devtools";
+import { AuthFormField, AuthFormTitle } from "@/components/auth";
+import { Button } from "@/components/shared";
+import Link from "next/link";
+import styles from "../auth.module.css";
 
 export default function Register() {
+
+  const dispatch = useDispatch();
+
   const form = useForm({
     resolver: yupResolver(registerSchema),
   });
 
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState, getData } = form;
   const { errors } = formState;
 
+  // Register user with email and password
   const onSubmit = (data) => {
-    console.log(data);
+    const values = data;
+    const { email, password, fullName } = values;
+    dispatch(
+      createUserWithEmailAndPassword({ email, password, displayName: fullName })
+    );
   };
 
   return (
@@ -57,7 +66,7 @@ export default function Register() {
       <p>
         Have an account? <Link href="/login">Log in</Link>
       </p>
-      <DevTool control={form.control} />
+      {/* <DevTool control={form.control} /> */}
     </>
   );
 }

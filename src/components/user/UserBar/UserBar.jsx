@@ -7,7 +7,7 @@ export const UserBar = () => {
     <div className={styles.main}>
       <LanguageMenu />
       <IconButton size="small">
-        <span class="material-icons">light_mode</span>
+        <span className="material-icons">light_mode</span>
       </IconButton>
       <NotificationsMenu />
       <UserMenu />

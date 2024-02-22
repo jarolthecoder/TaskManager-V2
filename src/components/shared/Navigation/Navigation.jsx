@@ -41,7 +41,7 @@ export const Navigation = () => {
             currentRoute === "/login" ? styles.active : null
           }`}
         >
-          <span class="material-icons">person</span>
+          <span className="material-icons">person</span>
           <Link href="/profile">Profile</Link>
         </li>
         <li

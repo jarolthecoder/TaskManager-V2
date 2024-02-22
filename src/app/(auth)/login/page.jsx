@@ -5,45 +5,47 @@ import googleIcon from "../../../../public/google.png";
 import Link from "next/link";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/utils/validations/authSchema";
 import { AuthFormField, AuthFormTitle } from "@/components/auth";
 import { Button } from "@/components/shared";
-import { mockUserData } from "@/api/mockUserData";
 import { useDispatch } from "react-redux";
-import { login } from "@/redux/features/auth/authSlice";
-import { useSelector } from "react-redux";
+import { startGoogleSignIn, startLoginWithEmailAndPassword } from "@/redux/features/auth";
+import { mockUserData } from "@/api/mockUserData";
 
-const {email, password} = mockUserData
+const {email, password} = mockUserData;
 
 export default function Login() {
+
   const dispatch = useDispatch();
-
-  const status = useSelector((state) => state.auth.status);
-
-  console.log({status})
 
   const form = useForm({
     resolver: yupResolver(loginSchema),
     defaultValues: {
-      email,
-      password,
+      email: '',
+      password: '',
     },
   });
-  const { register, handleSubmit, formState } = form;
+
+  const { register, handleSubmit, formState, getValues } = form;
   const { errors } = formState;
 
+  // Login user with email and password
   const onSubmit = (data) => {
- 
-    dispatch(login(mockUserData));
-    console.log(data)
+    const userCredentials = getValues();
+    const {email, password} = userCredentials;
+    dispatch(startLoginWithEmailAndPassword(userCredentials));
   }
+
+  // Login user with Google
+  const handleGoogleSignIn = () => {
+    dispatch(startGoogleSignIn());
+  };
 
   return (
     <>
       <AuthFormTitle
-        title="Sign in to TaskManager!"
+        title="Welcome to TaskManager"
         description="Enter your credentials to continue"
       />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_form}>
@@ -70,6 +72,7 @@ export default function Login() {
           <Button
             fullWidth
             label="Sign in with Google"
+            onClick={handleGoogleSignIn}
             startIcon={
               <Image
                 src={googleIcon}
@@ -85,7 +88,7 @@ export default function Login() {
       <p>
         Don't have an account? <Link href="/register">Sign up</Link>
       </p>
-      <DevTool control={form.control} />
+      {/* <DevTool control={form.control} /> */}
     </>
   );
 }

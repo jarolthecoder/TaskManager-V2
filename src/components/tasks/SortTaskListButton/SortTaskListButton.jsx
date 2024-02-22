@@ -27,7 +27,7 @@ export const SortTaskListButton = ({ onSelect, selectedOption }) => {
     <div ref={refEl} className={styles.sort_btn}>
       <small>{selectedOption.label}</small>
       <IconButton size="small" onClick={togglePopper}>
-        <span class="material-icons">swap_vert</span>
+        <span className="material-icons">swap_vert</span>
       </IconButton>
       <Popper open={isPopperOpen} ref={popperRef} onClose={togglePopper}>
         <Menu>

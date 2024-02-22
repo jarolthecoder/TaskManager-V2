@@ -1,26 +1,28 @@
 "use client";
 
+
+import { useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { startLogout } from "@/redux/features/auth";
+import { usePopper } from "@/hooks";
+import { Menu, MenuItem, Popper } from "../../shared";
 import Link from "next/link";
 import Image from "next/image";
-import { use, useRef } from "react";
-import { Menu, MenuItem, Popper } from "../../shared";
-import { usePopper } from "@/hooks";
-import styles from "./UserMenu.module.css";
 import userImg from "../../../../public/user-avatar.svg";
-import { mockUserData } from "@/api/mockUserData";
-import { useDispatch } from "react-redux";
-import { logout } from "@/redux/features/auth/authSlice";
+import styles from "./UserMenu.module.css";
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const refEl = useRef(null);
   const popperRef = useRef(null);
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
-  const userName = mockUserData.displayName
+  const { displayName } = useSelector((state) => state.auth);
 
-    const handleLogout = () => {
-      dispatch(logout());
-    };
+  // const [user] = useIdToken(FirebaseAuth);
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
 
   return (
     <button ref={refEl} className={styles.main} onClick={togglePopper}>
@@ -30,12 +32,10 @@ export const UserMenu = () => {
           alt="user image"
           width={35}
           height={35}
-          layout="fixed"
         />
-        {/* <p className={styles.user_img}>SU</p> */}
       </div>
       <div>
-        <p className={styles.user_name}>{userName}</p>
+        <p className={styles.user_name}>{displayName}</p>
         <p className={styles.user_role}>Admin</p>
         <Popper open={isPopperOpen} ref={popperRef}>
           <Menu>
