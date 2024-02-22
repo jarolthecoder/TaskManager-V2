@@ -4,6 +4,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./AuthFormField.module.css";
 import { RenderWhen } from "@/components/shared";
+import classNames from "classnames";
 
 export const AuthFormField = ({
     label,
@@ -25,11 +26,16 @@ export const AuthFormField = ({
     setIsPasswordVisible((prevState) => !prevState);
   };
 
+  const inputGoupClasses = classNames(
+    styles.input_group,
+    errors[name] ? styles.error : ""
+  )
+
   return (
-    <div className={styles.input_group}>
+    <div className={inputGoupClasses}>
       <label htmlFor={label}>{label}</label>
       <div
-        className={`${styles.form_input} ${errors[name] ? styles.error : ""}`}
+        className={styles.form_input}
       >
         <input
           type={isPasswordVisible ? "text" : type}
@@ -37,12 +43,6 @@ export const AuthFormField = ({
           name={name}
           onChange={onChange}
           {...register(id)}
-          // {...register(id, {
-          //   required: {
-          //     value: true,
-          //     message: errorMessage,
-          //   },
-          // })}
           {...restOfProps}
         />
         <span
@@ -59,7 +59,7 @@ export const AuthFormField = ({
         </span>
       </div>
       {/* {error && <p className={styles.error}>{errorMessage}</p>} */}
-      <p className={styles.error}>{errors[name] && errors[name].message}</p>
+      <p className={styles.error_text}>{errors[name] && errors[name].message}</p>
     </div>
   );
 };

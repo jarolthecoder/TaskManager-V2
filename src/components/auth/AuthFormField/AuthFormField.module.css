@@ -46,17 +46,15 @@
 }
 
 /* Field error state */
-.form_input.error,
-.form_input.error:focus-within {
-  border-color: var(--clr-red-main);
-}
-
-.form_input.error span {
-  color: var(--clr-red-main);
-}
-
-.input_group .error {
-  color: var(--clr-red-main);
-  font-size: var(--fs-small);
+.input_group.error .error_text {
+  color: var(--clr-error-light);
   margin-top: .25rem;
+}
+
+.input_group.error span {
+  color: var(--clr-error-light);
+}
+
+.input_group.error .form_input {
+  border-color: var(--clr-error-light);
 }
