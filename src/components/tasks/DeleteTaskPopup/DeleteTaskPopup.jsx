@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppContext } from "@/context/AppContext";
-import { deleteTask } from "@/redux/features/tasks/tasksSlice";
+import { deleteTask } from "@/redux/features/tasks";
 import { Button } from "@/components/shared";
 import styles from "./DeleteTaskPopup.module.css";
 
