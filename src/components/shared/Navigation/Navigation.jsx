@@ -94,7 +94,7 @@ const navLinks = [
   {
     label: "Tasks",
     path: "/dashboard/tasks",
-    icon: "view_list",
+    icon: "format_list_bulleted",
   },
   {
     label: "Projects",
