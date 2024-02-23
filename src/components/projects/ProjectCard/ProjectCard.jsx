@@ -9,8 +9,6 @@ import { formatDate } from "@/utils/helpers/formatDate";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./ProjectCard.module.css";
-import { truncateText } from "@/utils/helpers";
-import { StatusBadge } from "@/components/tasks";
 
 const formattedToday = formatDate(new Date(), "PP");
 

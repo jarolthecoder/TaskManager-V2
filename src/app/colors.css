@@ -25,14 +25,14 @@
 
   /* Text */
   --clr-text-main: #b9c2cc;
-  --clr-text-light: #f9f9f9;
+  --clr-text-light: #fafafa;
   --clr-text-dark: #8A8C92;
 
   /* Background */
-  --clr-bg-default: #0E1320;
-  --clr-bg-card-main: #1C2536;
-  --clr-bg-card-light: #252E3E;
-  --clr-bg-card-dark: #151d2c;
+  --clr-bg-default: rgb(14, 19, 32);
+  --clr-bg-card-main: rgb(28, 37, 54);
+  --clr-bg-card-light: rgb(37, 46, 62);
+  --clr-bg-card-dark: rgb(21, 29, 44);
 
   /* Border and Divider */
   --clr-border-light: rgba(255, 255, 255, 0.08);

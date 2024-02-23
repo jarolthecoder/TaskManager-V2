@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
-import Link from "next/link"
-import styles from "./Navigation.module.css"
+import Link from "next/link";
+import styles from "./Navigation.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/features/auth/authSlice";
+import { RenderWhen } from "..";
 
-export const Navigation = () => {
-
+export const Navigation = ({ sidebarOpen }) => {
   const router = useRouter();
   const currentRoute = usePathname();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const navigateTo = (path) => {
-    router.push(path)
-  }
+    router.push(path);
+  };
 
-  const handleLogout = () => {  
-    dispatch(logout())
-  }
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -32,7 +32,9 @@ export const Navigation = () => {
             onClick={() => navigateTo(path)}
           >
             <span className="material-icons">{icon}</span>
-            <Link href={path}>{label}</Link>
+            <RenderWhen condition={sidebarOpen}>
+              <Link href={path}>{label}</Link>
+            </RenderWhen>
           </li>
         ))}
         <div className={styles.divider}></div>
@@ -42,7 +44,9 @@ export const Navigation = () => {
           }`}
         >
           <span className="material-icons">person</span>
-          <Link href="/profile">Profile</Link>
+          <RenderWhen condition={sidebarOpen}>
+            <Link href="/profile">Profile</Link>
+          </RenderWhen>
         </li>
         <li
           className={`${styles.navlink} ${
@@ -50,7 +54,9 @@ export const Navigation = () => {
           }`}
         >
           <span className="material-icons">settings</span>
-          <Link href="/settings">Settings</Link>
+          <RenderWhen condition={sidebarOpen}>
+            <Link href="/settings">Settings</Link>
+          </RenderWhen>
         </li>
 
         <li
@@ -59,7 +65,9 @@ export const Navigation = () => {
           }`}
         >
           <span className="material-icons">help</span>
-          <Link href="/help">Help</Link>
+          <RenderWhen condition={sidebarOpen}>
+            <Link href="/help">Help</Link>
+          </RenderWhen>
         </li>
         <li
           className={`${styles.navlink} ${
@@ -68,12 +76,14 @@ export const Navigation = () => {
           onClick={handleLogout}
         >
           <span className="material-icons">logout</span>
-          <Link href="/login">Logout</Link>
+          <RenderWhen condition={sidebarOpen}>
+            <Link href="/login">Logout</Link>
+          </RenderWhen>
         </li>
       </ul>
     </nav>
   );
-}
+};
 
 const navLinks = [
   {

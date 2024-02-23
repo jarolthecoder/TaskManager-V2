@@ -4,6 +4,15 @@
   /* min-height: calc(100vh - 15rem); */
   padding: 1.5rem;
   background: var(--clr-blue-dark);
+  /* transition: margin-left var(--transition-default); */
+}
+
+.main.sidebar_open {
+  margin-left: 225px;
+}
+
+.main.sidebar_closed {
+  margin-left: 70px;
 }
 
 .main h2 {

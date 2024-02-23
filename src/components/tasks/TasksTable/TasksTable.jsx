@@ -1,7 +1,6 @@
-import { StatusBadge } from "..";
 import { formatDate } from "date-fns";
-import styles from "./TasksTable.module.css";
 import { Badge } from "@/components/shared";
+import styles from "./TasksTable.module.css";
 
 const tableColumns = ["Task", "Due Date", "Status", "Priority"];
 const formattedToday = formatDate(new Date(), "PP");

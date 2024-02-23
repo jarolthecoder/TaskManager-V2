@@ -8,6 +8,13 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
+  // Sidebar State
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const handleSidebar = () => {
+    setSidebarOpen((prev) => !prev);
+  }
+
   // Task Modal State
   const [taskModalOpen, setTaskModalOpen] = useState(false);
   const [selectedTaskAction, setSelectedTaskAction] = useState(ADD_TASK);
@@ -17,6 +24,8 @@ export const AppProvider = ({ children }) => {
   }
 
   const value = {
+    sidebarOpen,
+    handleSidebar,
     taskModalOpen,
     selectedTaskAction,
     setSelectedTaskAction,

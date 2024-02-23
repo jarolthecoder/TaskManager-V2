@@ -8,13 +8,16 @@
   left: 0;
   top: 0; 
   bottom: 0; 
-  width: 225px;
   padding: 1.5rem 0;
   background: var(--clr-bg-card-main);
   border-left: 1px solid var(--clr-trasparent);
+  /* transition: width var(--transition-default); */
 }
 
-.add_task_container {
-  width: 100%;
-  padding: 0 1.5rem;
+.main.open {
+  width: 225px;
+}
+
+.main.closed {
+  width: 60px;
 }
