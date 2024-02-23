@@ -17,3 +17,4 @@ export * from "./InputSelect/InputSelect";
 export * from "./LanguageMenu/LanguageMenu";
 export * from "./NotificationsMenu/NotificationsMenu";
 export * from './Loaders/PageLoader'
+export * from './Badge/Badge'

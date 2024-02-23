@@ -86,14 +86,14 @@ export default function Dashboard() {
           </div>
         </div>
         <div className={styles.bottom_cards_container}>
-          <Card className={styles.calendar_card}>
+          <Card className={styles.calendar_card} color="dark">
             <Calendar />
           </Card>
-          <Card>
+          <Card color="dark">
             <h2>Task's completition status</h2>
             <DoughnutChart />
           </Card>
-          <Card>
+          <Card color="dark">
             <h2>Task's completition status</h2>
             <DoughnutChart />
           </Card>

@@ -9,19 +9,19 @@
   --clr-error-main: #EF5350;
   --clr-error-light: #E57373;
   --clr-error-dark: #d32f2f;
-  --clr-error-opacity: rgba(211, 47, 47, 0.08);
+  --clr-error-opacity: rgba(255, 107, 147, 0.2);
 
   /* Warning */
-  --clr-warning-main: #FFA726;
+  --clr-warning-main: #f7b34c;
   --clr-warning-light: #FFCC80;
-  --clr-warning-dark: #ff9800;
-  --clr-warning-opacity: rgba(255, 152, 0, 0.08);
+  --clr-warning-dark: #ffbf00;
+  --clr-warning-opacity: rgba(251, 207, 104, 0.17);
 
   /* Success */
   --clr-success-main: #32b899; 
   --clr-success-light: #56e3c2; 
   --clr-success-dark: #1f3e3e;
-  --clr-success-opacity: rgba(31, 62, 62, 0.08); 
+  --clr-success-opacity: #1F3E3E; 
 
   /* Text */
   --clr-text-main: #b9c2cc;
@@ -29,10 +29,10 @@
   --clr-text-dark: #8A8C92;
 
   /* Background */
-  --clr-bg-default: #171C24;
-  --clr-bg-card-main: #222B36;
-  --clr-bg-card-light: #29323C;
-  --clr-bg-card-dark: #1c232c;
+  --clr-bg-default: #0E1320;
+  --clr-bg-card-main: #1C2536;
+  --clr-bg-card-light: #252E3E;
+  --clr-bg-card-dark: #151d2c;
 
   /* Border and Divider */
   --clr-border-light: rgba(255, 255, 255, 0.08);
@@ -63,7 +63,72 @@
   --clr-task-due-text: rgb(255, 107, 147);
 }
 
- /* OLD Color Palette */
+/* OLD changed 02/23/2024 */
+/*
+:root {
+  
+  --clr-primary-main: #2499EF;
+  --clr-primary-light: #56b2f4;
+  --clr-primary-dark: #196ba7;
+  --clr-primary-opacity: rgba(36, 153, 239, 0.2);
+
+  
+  --clr-error-main: #EF5350;
+  --clr-error-light: #E57373;
+  --clr-error-dark: #d32f2f;
+  --clr-error-opacity: rgba(255, 107, 147, 0.2);
+
+
+  --clr-warning-main: #f7b34c;
+  --clr-warning-light: #FFCC80;
+  --clr-warning-dark: #ffbf00;
+  --clr-warning-opacity: rgba(251, 207, 104, 0.17);
+
+
+  --clr-success-main: #32b899; 
+  --clr-success-light: #56e3c2; 
+  --clr-success-dark: #1f3e3e;
+  --clr-success-opacity: rgba(31, 62, 62, 0.08); 
+
+
+  --clr-text-main: #b9c2cc;
+  --clr-text-light: #f9f9f9;
+  --clr-text-dark: #8A8C92;
+
+
+  --clr-bg-default: #0E1320;
+  --clr-bg-card-main: #222B36;
+  --clr-bg-card-light: #29323C;
+  --clr-bg-card-dark: #1c232c;
+
+
+  --clr-border-light: rgba(255, 255, 255, 0.08);
+  --clr-border-dark: #383f44;
+  --clr-divider-light: rgba(255, 255, 255, 0.08);
+  --clr-divider-dark: #282d31;
+
+  --clr-disabled-main: #8A8C92;
+  --clr-disabled-light: #858a91;
+  --clr-disabled-dark: #2b313a;
+
+  --clr-scrollbar-track: #171C24;
+  --clr-scrollbar-thumb: #71787c;
+  --clr-scrollbar-thumb-hover: #535659;
+
+  --clr-trasparent: #00000000;
+
+
+  --clr-task-pending-bg: rgba(255, 151, 119, 0.2);
+  --clr-task-pending-text: rgb(255, 164, 136);
+  --clr-task-in-progress-bg: rgba(167, 152, 255, 0.2);
+  --clr-task-in-progress-text: rgb(188, 176, 255);
+  --clr-task-completed-bg: #1F3E3E;
+  --clr-task-completed-text: #56e3c2;
+  --clr-task-due-bg: rgba(255, 107, 147, 0.2);
+  --clr-task-due-text: rgb(255, 107, 147);
+} */
+
+ /* OLD Color Palette initial */
   /* --clr-blue-light: #262A3D;
   --clr-blue-main: #1D2235; 
   --clr-blue-dark: #000714;

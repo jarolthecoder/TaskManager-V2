@@ -37,7 +37,7 @@
 
 .table_head {
   color: var(--clr-text-light);
-  background: var(--clr-bg-card-light);
+  background: var(--clr-bg-card-main);
   border-top: 1px solid var(--clr-border-light);
   border-bottom: 1px solid var(--clr-border-light);
 }

@@ -1,6 +1,7 @@
 import { StatusBadge } from "..";
 import { formatDate } from "date-fns";
 import styles from "./TasksTable.module.css";
+import { Badge } from "@/components/shared";
 
 const tableColumns = ["Task", "Due Date", "Status", "Priority"];
 const formattedToday = formatDate(new Date(), "PP");
@@ -26,10 +27,32 @@ export const TasksTable = ({ tasks }) => {
                 {task.dueDate === formattedToday ? "Today" : task.dueDate}
               </td>
               <td align="left">
-                <StatusBadge status={task.status} />
+                <Badge
+                  color={
+                    task.status === "pending"
+                      ? "pending"
+                      : task.status === "inProgress"
+                      ? "in-progress"
+                      : "completed"
+                  }
+                >
+                  {task.status}
+                </Badge>
+                {/* <StatusBadge status={task.status} /> */}
               </td>
               <td align="left">
-                <p
+                <Badge
+                  color={
+                    task.priority === "High"
+                      ? "error"
+                      : task.priority === "Medium"
+                      ? "warning"
+                      : "success"
+                  }
+                >
+                  {task.priority}
+                </Badge>
+                {/* <p
                   style={{
                     color:
                       task.priority === "High"
@@ -40,7 +63,7 @@ export const TasksTable = ({ tasks }) => {
                   }}
                 >
                   {task.priority}
-                </p>
+                </p> */}
               </td>
             </tr>
           ))}

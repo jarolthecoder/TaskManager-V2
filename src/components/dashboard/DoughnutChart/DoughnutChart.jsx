@@ -32,7 +32,7 @@ export const DoughnutChart = () => {
         data: [completedTasksNum, pendingTasksNum, dueTasksNum],
         backgroundColor: ["#2499EF", "rgb(255, 151, 119)", "rgb(255, 107, 147"],
         borderColor: [
-          "#222B36", // Set to trasparent
+          "#151d2c", // Set to trasparent
         ],
         borderWidth: 5, // Donut border
         rotation: -190, // Rotates donut direction

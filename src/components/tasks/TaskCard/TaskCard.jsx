@@ -6,6 +6,7 @@ import { usePopper } from "@/hooks";
 import { useDispatch } from "react-redux";
 import { setSelectedTask } from "@/redux/features/tasks/tasksSlice";
 import {
+  Badge,
   Card,
   IconButton,
   Menu,
@@ -101,7 +102,16 @@ export const TaskCard = ({ task }) => {
             </span>
             Due {isDueToday ? "Today" : dueDateShort}
           </p>
-          <p
+          <Badge color={
+            priority === "High"
+              ? "error"
+              : priority === "Medium"
+              ? "warning"
+              : "success"
+          } variant="pill">
+            {priority}
+          </Badge>
+          {/* <p
             style={{
               color:
                 task.priority === "High"
@@ -112,7 +122,7 @@ export const TaskCard = ({ task }) => {
             }}
           >
             {priority}
-          </p>
+          </p> */}
         </div>
       </div>
     </Card>

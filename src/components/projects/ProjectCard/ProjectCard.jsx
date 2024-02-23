@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import { AppContext } from "@/context/AppContext";
 import { usePopper } from "@/hooks";
 import { useDispatch } from "react-redux";
-import { Card, IconButton, Menu, MenuItem, Popper, ProgressBar } from "@/components/shared";
+import { Badge, Card, IconButton, Menu, MenuItem, Popper, ProgressBar } from "@/components/shared";
 import { formatDate } from "@/utils/helpers/formatDate";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -74,11 +74,12 @@ export const ProjectCard = ({ project }) => {
       </div>
       <hr className={styles.divider} />
       <div className={styles.project_footer}>
-        <StatusBadge
-          status="inProgress"
+        <Badge
+          color="error"
           variant="pill"
-          // className={styles.project_status}
-        />
+        > 
+          High
+        </Badge>
       </div>
     </Card>
   );
