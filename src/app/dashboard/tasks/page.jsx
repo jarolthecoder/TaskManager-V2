@@ -34,8 +34,8 @@ export default function TasksPage() {
 
   // Task list columns data
   const taskListColumns = [
-    { id: "pending", title: "Pending", tasks: pendingTasks },
     { id: "inProgress", title: "In progress", tasks: inProgressTasks },
+    { id: "pending", title: "Pending", tasks: pendingTasks },
     { id: "completed", title: "Completed", tasks: completedTasks },
     // {id: "expired", title: "Expired", tasks: tasks.filter((task) => new Date(task.dueDate) < new Date())}
   ];

@@ -1,17 +1,19 @@
 export const projectsData = [
   {
     id: 1,
-    title: "Startup with design",
-    description: "Revamp the company website for a better user experience.",
+    name: "Design",
+    description: "Revamp the company website",
     startDate: "Jan 15 2024",
     endDate: "Feb 15 2024",
-    tasks: [],
-    progress: 78,
+    tasks: [
+
+    ],
+    progress: 52,
   },
   {
     id: 2,
-    title: "Website Redesign",
-    description: "Revamp the company website for a better user experience.",
+    name: "Web development",
+    description: "Revamp the company website for a better user experience. Them fgbe",
     startDate: "Jan 15 2024",
     endDate: "Apr 7 2024",
     tasks: [],
@@ -19,7 +21,7 @@ export const projectsData = [
   },
   {
     id: 3,
-    title: "Website Redesign",
+    name: "Testing",
     description: "Revamp the company website for a better user experience.",
     startDate: "Jan 15 2024",
     endDate: "Apr 7 2024",
@@ -28,11 +30,29 @@ export const projectsData = [
   },
   {
     id: 4,
-    title: "Website Redesign",
+    name: "Website Redesign",
     description: "Revamp the company website for a better user experience.",
     startDate: "Jan 15 2024",
     endDate: "Apr 7 2024",
     tasks: [],
-    progress: 0,
+    progress: 52,
+  },
+  {
+    id: 5,
+    name: "Website Redesign",
+    description: "Revamp the company website for a better user experience.",
+    startDate: "Jan 15 2024",
+    endDate: "Apr 7 2024",
+    tasks: [],
+    progress: 52,
+  },
+  {
+    id: 6,
+    name: "Website Redesign",
+    description: "Revamp the company website for a better user experience.",
+    startDate: "Jan 15 2024",
+    endDate: "Apr 7 2024",
+    tasks: [],
+    progress: 52,
   },
 ];

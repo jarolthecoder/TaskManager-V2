@@ -23,3 +23,8 @@ background-color: var(--clr-task-pending-bg);
   background-color: var(--clr-task-completed-bg);
   color: var(--clr-task-completed-text);
 }
+
+.status_badge.pill {
+  max-width: 100px;
+  border-radius: 20px;
+}

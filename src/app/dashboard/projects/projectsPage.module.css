@@ -1,0 +1,38 @@
+.header {
+  padding-bottom: 1rem;
+  width: 100%;
+  color: var(--clr-text-light);
+}
+
+.header,
+.header_options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(12, minmax(auto, 1fr));
+  grid-gap: 20px;
+  height: 100%;
+}
+
+.create_project_card {
+  border: 2px dashed var(--clr-bg-card-main);
+  border-radius: var(--br-small);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  width: 100%;
+  grid-column-end: span 3;
+}
+
+.no_margin {
+  margin-top: 0;
+}
+

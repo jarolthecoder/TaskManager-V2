@@ -1,24 +1,28 @@
 "use client";
-
 import { useState } from "react";
-import PropTypes from "prop-types";
-import styles from "./AuthFormField.module.css";
 import { RenderWhen } from "@/components/shared";
+import PropTypes from "prop-types";
 import classNames from "classnames";
+import styles from "./AuthFormField.module.css";
 
 export const AuthFormField = ({
-    label,
-    id,
-    type,
-    name,
-    onChange,
-    fieldIcon,
-    register,
-    error,
-    errors,
-    errorMessage,
-    ...restOfProps
-  }) => {
+  label,
+  id,
+  type,
+  name,
+  onChange,
+  fieldIcon,
+  register,
+  error,
+  errors,
+  errorMessage,
+  ...restOfProps
+}) => {
+
+  const inputGoupClasses = classNames(
+    styles.input_group,
+    errors[name] ? styles.error : ""
+  );
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -26,17 +30,10 @@ export const AuthFormField = ({
     setIsPasswordVisible((prevState) => !prevState);
   };
 
-  const inputGoupClasses = classNames(
-    styles.input_group,
-    errors[name] ? styles.error : ""
-  )
-
   return (
     <div className={inputGoupClasses}>
       <label htmlFor={label}>{label}</label>
-      <div
-        className={styles.form_input}
-      >
+      <div className={styles.form_input}>
         <input
           type={isPasswordVisible ? "text" : type}
           id={id}
@@ -58,8 +55,9 @@ export const AuthFormField = ({
           </RenderWhen>
         </span>
       </div>
-      {/* {error && <p className={styles.error}>{errorMessage}</p>} */}
-      <p className={styles.error_text}>{errors[name] && errors[name].message}</p>
+      <p className={styles.error_text}>
+        {errors[name] && errors[name].message}
+      </p>
     </div>
   );
 };

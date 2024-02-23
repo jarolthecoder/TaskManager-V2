@@ -1,0 +1,54 @@
+.project_card {
+  padding: 1.15rem 0;
+  grid-column-end: span 3;
+}
+
+.project_header,
+.project_body,
+.project_footer {
+  padding: 0 1.15rem;
+}
+
+.project_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project_title {
+ padding: 1rem 0;
+}
+
+.project_options_btn {
+  text-align: left;
+}
+
+.project_body {
+  /* height: 100px; */
+}
+
+.project_description {
+  /* height: 70px;
+  min-height: 70px; */
+}
+
+.project_progress {
+  margin-top: 1rem;
+}
+
+.project_tasks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+}
+
+.divider {
+  margin: 1rem 0;
+  flex-shrink: 0;
+  border-width: 0px 0px thin;
+  border-style: solid;
+  border-color: var(--clr-border-light);
+}

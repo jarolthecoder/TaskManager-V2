@@ -29,6 +29,7 @@ export const TaskCard = ({ task }) => {
 
   const { title, description, priority, projectName, dueDate } = task;
   const isDueToday = task.dueDate === formattedToday;
+  const dueDateShort = formatDate(new Date(dueDate), "LLL d");
 
   const dispatch = useDispatch();
   const refEl = useRef(null);
@@ -98,7 +99,7 @@ export const TaskCard = ({ task }) => {
             <span className={`material-icons ${styles.stat_icon}`}>
               schedule
             </span>
-            {isDueToday ? "Today" : dueDate}
+            Due {isDueToday ? "Today" : dueDateShort}
           </p>
           <p
             style={{
