@@ -8,12 +8,17 @@
 .breadcrumbs_item {
   display: flex;
   align-items: center;
-  color: var(--clr-text-dark);
+  color: var(--clr-text-main);
 }
 
 .breadcrumbs_item a {
-  color: var(--clr-text-dark);
+  color: var(--clr-text-main);
   text-decoration: none;
   font-size: var(--fs-small);
   text-transform: capitalize;
+}
+
+.breadcrumbs_item a:hover {
+  /* text-decoration: underline; */
+  color: var(--clr-text-light);
 }
