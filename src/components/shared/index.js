@@ -19,3 +19,4 @@ export * from "./NotificationsMenu/NotificationsMenu";
 export * from './Loaders/PageLoader'
 export * from './Badge/Badge'
 export * from './MatIcon/MatIcon'
+export * from './Breadcrumbs/Breadcrumbs'

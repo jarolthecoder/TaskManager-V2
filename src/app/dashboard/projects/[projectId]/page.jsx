@@ -6,7 +6,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { AppContext } from "@/context/AppContext";
 import { TASK_ACTIONS } from "@/lib/constants";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { Button, MatIcon, RenderWhen } from "@/components/shared";
+import { Breadcrumbs, Button, MatIcon, RenderWhen } from "@/components/shared";
 import { TasksColumn } from "@/components/tasks";
 import { updateTask } from "@/redux/features/tasks";
 import styles from "./projectPage.module.css";
@@ -62,12 +62,9 @@ export default function ProjectPage() {
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
-          <p style={{ opacity: 0.5, marginBottom: "0.5rem" }}>
-            Projects / {title}
-          </p>
+          <Breadcrumbs selectedItem={title}/>
           <h2>{title}</h2>
         </div>
-
         <div className={styles.header_options}>
           <Button
             fullWidth

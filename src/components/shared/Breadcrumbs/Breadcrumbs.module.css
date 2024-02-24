@@ -1,0 +1,19 @@
+.breadcrumbs_list {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.breadcrumbs_item {
+  display: flex;
+  align-items: center;
+  color: var(--clr-text-dark);
+}
+
+.breadcrumbs_item a {
+  color: var(--clr-text-dark);
+  text-decoration: none;
+  font-size: var(--fs-small);
+  text-transform: capitalize;
+}

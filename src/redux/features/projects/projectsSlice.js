@@ -18,7 +18,6 @@ const projectsSlice = createSlice({
     },
     setSelectedProject: (state, action) => {
       state.selectedProject = action.payload;
-      console.log("selected project", state.selectedProject);
     },
     addProject: (state, action) => {
       state.projects.unshift(action.payload);

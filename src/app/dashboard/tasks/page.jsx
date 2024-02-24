@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { AppContext } from "@/context/AppContext";
 import { TASK_ACTIONS } from "@/lib/constants";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { Button, MatIcon, RenderWhen } from "@/components/shared";
+import { Breadcrumbs, Button, MatIcon, RenderWhen } from "@/components/shared";
 import { TasksColumn } from "@/components/tasks";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
@@ -62,7 +62,10 @@ export default function TasksPage() {
   return (
     <section className={styles.main}>
       <div className={styles.header}>
-        <h2>Tasks</h2>
+        <div>
+          <Breadcrumbs />
+          <h2>Tasks</h2>
+        </div>
         <div className={styles.header_options}>
           <Button
             fullWidth

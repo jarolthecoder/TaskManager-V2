@@ -61,6 +61,7 @@ export const AddProjectForm = () => {
     const value = form.getValues();
 
     const newProject = {
+      id: `PRJ${Math.random() * 1000000}`,
       title: value.title,
       description: value.description,
       status: value.status,

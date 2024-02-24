@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import { useSelector } from "react-redux";
-import { Button, IconButton, MatIcon } from "@/components/shared";
+import { Breadcrumbs, Button, IconButton, MatIcon } from "@/components/shared";
 import { ProjectCard } from "@/components/projects";
 import { AppContext } from "@/context/AppContext";
 import { PROJECT_ACTIONS } from "@/lib/constants";
@@ -24,7 +24,11 @@ export default function Projects() {
   return (
     <section className={styles.main}>
       <div className={styles.header}>
-        <h2>Projects</h2>
+        <div>
+          <Breadcrumbs />
+          <h2>Projects</h2>
+        </div>
+
         <div className={styles.header_options}>
           <Button
             fullWidth
