@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { useSelector } from "react-redux";
+import { selectAllProjects } from "@/redux/features/projects";
 import { Breadcrumbs, Button, IconButton, MatIcon } from "@/components/shared";
 import { ProjectCard } from "@/components/projects";
 import { AppContext } from "@/context/AppContext";
@@ -12,7 +13,7 @@ const { ADD_PROJECT } = PROJECT_ACTIONS;
 
 export default function Projects() {
 
-  const projects = useSelector((state) => state.projects.projects);
+  const projects = useSelector(selectAllProjects);
 
   const {handleProjectModal, setSelectedProjectAction} = useContext(AppContext);
 

@@ -1,25 +1,19 @@
 "use client";
 
-import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
-import {
-  Button,
-  Card,
-  MenuItem,
-  Modal,
-  Select,
-} from "@/components/shared";
 import { useEffect, useState } from "react";
-import { formatDate } from "@/utils/helpers/formatDate";
 import { useSelector } from "react-redux";
+import { selectAllTasks } from "@/redux/features/projects";
+import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
+import { Button, Card, MenuItem, Modal, Select } from "@/components/shared";
 import { TasksTable } from "@/components/tasks";
+import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";
 
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const formattedToday = formatDate(new Date(), "PP");
 
 export default function Dashboard() {
-
-  const { tasks } = useSelector((state) => state.tasks);
+  const tasks = useSelector(selectAllTasks);
 
   const [filterValue, setFilterValue] = useState("All Tasks");
   const [filteredTasks, setFilteredTasks] = useState(tasks);
@@ -43,9 +37,7 @@ export default function Dashboard() {
         setFilteredTasks(inProgressTasks);
         break;
       case "Pending":
-        const pendingTasks = tasks.filter(
-          (task) => task.status === "pending"
-        );
+        const pendingTasks = tasks.filter((task) => task.status === "pending");
         setFilteredTasks(pendingTasks);
         break;
       default:

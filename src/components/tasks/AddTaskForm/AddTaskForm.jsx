@@ -1,21 +1,22 @@
 "use client";
 
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { taskSchema } from "@/utils/validations/taskSchema";
+import { useSelector, useDispatch } from "react-redux";
+import { addTaskToProject, selectAllProjects, selectProject } from "@/redux/features/projects";
+import { AppContext } from "@/context/AppContext";
+import { formatDate } from "@/utils/helpers/formatDate";
 import {
   FormField,
   InputSelect,
   Button,
   DatePicker,
   MenuItem,
+  RenderWhen,
 } from "@/components/shared";
 import styles from "./TaskForm.module.css";
-import { useContext } from "react";
-import { AppContext } from "@/context/AppContext";
-import { useDispatch } from "react-redux";
-import { formatDate } from "@/utils/helpers/formatDate";
-import { addNewTask } from "@/redux/features/tasks";
 
 const priorityOptions = [
   { value: "Low", label: "Low" },
@@ -29,19 +30,17 @@ const statusOptions = [
   { value: "completed", label: "Completed" },
 ];
 
-const projectNameOptions = [
-  { value: "Other", label: "Stuff" },
-  { value: "Web Development", label: "Web Developement" },
-  { value: "Design", label: "Design" },
-];
-
 const formattedToday = formatDate(new Date(), "PP");
 
 export const AddTaskForm = () => {
+
   const { handleTaskModal } = useContext(AppContext);
-
+  
   const dispatch = useDispatch();
-
+  const selectedProject = useSelector(selectProject);
+  const projects = useSelector(selectAllProjects);
+  const projectsNames = projects.map((project) => project.title);
+  
   const form = useForm({
     resolver: yupResolver(taskSchema),
     defaultValues: {
@@ -50,7 +49,7 @@ export const AddTaskForm = () => {
       dueDate: formattedToday,
       priority: "Low",
       status: "pending",
-      projectName: "",
+      projectName: selectedProject ? selectedProject.title : "Unassigned",
     },
   });
 
@@ -70,10 +69,10 @@ export const AddTaskForm = () => {
   };
 
   const onFormSubmit = () => {
-
     const value = form.getValues();
 
     const newTask = {
+      id: `TSK-${Math.floor(1000 + Math.random() * 9000)}`,
       title: value.title,
       description: value.description,
       status: value.status,
@@ -84,100 +83,98 @@ export const AddTaskForm = () => {
       projectName: value.projectName === "" ? "Unassigned" : value.projectName,
     };
 
-    dispatch(addNewTask(newTask));
-    handleTaskModal(); 
+    dispatch(addTaskToProject(newTask));
+    handleTaskModal();
   };
 
   return (
-    <>
-      <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
-        <FormField
-          label="Title"
-          id="title"
-          type="text"
-          name="title"
-          placeholder="Enter title"
+    <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
+      <FormField
+        label="Title"
+        id="title"
+        type="text"
+        name="title"
+        placeholder="Enter title"
+        register={register}
+        errors={errors}
+      />
+      <FormField
+        textarea
+        label="Description"
+        id="description"
+        type="text"
+        name="description"
+        placeholder="Enter description"
+        register={register}
+        errors={errors}
+      />
+      <div className={styles.field_group}>
+        <DatePicker
+          label="Due Date"
+          id="dueDate"
+          name="dueDate"
+          placeholder="Select date"
           register={register}
-          errors={errors}
+          setValue={setValue}
         />
-        <FormField
-          textarea
-          label="Description"
-          id="description"
-          type="text"
-          name="description"
-          placeholder="Enter description"
+        <InputSelect
+          label="Priority"
+          id="priority"
+          name="priority"
+          placeholder="Select priority"
           register={register}
-          errors={errors}
-        />
-        <div className={styles.field_group}>
-          <DatePicker
-            label="Due Date"
-            id="dueDate"
-            name="dueDate"
-            placeholder="Select date"
-            register={register}
-            setValue={setValue}
-          />
-          <InputSelect
-            label="Priority"
-            id="priority"
-            name="priority"
-            placeholder="Select priority"
-            register={register}
-            value={form.watch("priority")}
-          >
-            {priorityOptions.map((option) => (
-              <MenuItem
-                key={option.label}
-                value={option.value}
-                onClick={() => onPriorityChange(option.value)}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
-          </InputSelect>
-        </div>
-        <div className={styles.field_group}>
-          <InputSelect
-            label="Status"
-            id="status"
-            name="status"
-            placeholder="Select status"
-            register={register}
-            value={form.watch("status")}
-          >
-            {statusOptions.map((option) => (
-              <MenuItem
-                key={option.label}
-                value={option.value}
-                onClick={() => onStatusChange(option.value)}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
-          </InputSelect>
-          <InputSelect
-            label="Project"
-            id="project-name"
-            name="projectName"
-            placeholder="Select project"
-            register={register}
-            value={form.watch("projectName")}
-          >
-            {projectNameOptions.map((option) => (
-              <MenuItem
-                key={option.label}
-                value={option.value}
-                onClick={() => onProjectNameChange(option.value)}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
-          </InputSelect>
-        </div>
-        <Button type="submit" label="Create Task"/>
-      </form>
-    </>
+          value={form.watch("priority")}
+        >
+          {priorityOptions.map((option) => (
+            <MenuItem
+              key={option.label}
+              value={option.value}
+              onClick={() => onPriorityChange(option.value)}
+            >
+              {option.label}
+            </MenuItem>
+          ))}
+        </InputSelect>
+      </div>
+      <div className={styles.field_group}>
+        <InputSelect
+          label="Status"
+          id="status"
+          name="status"
+          placeholder="Select status"
+          register={register}
+          value={form.watch("status")}
+        >
+          {statusOptions.map((option) => (
+            <MenuItem
+              key={option.label}
+              value={option.value}
+              onClick={() => onStatusChange(option.value)}
+            >
+              {option.label}
+            </MenuItem>
+          ))}
+        </InputSelect>
+        <InputSelect
+          label="Project"
+          id="project-name"
+          name="projectName"
+          placeholder="Select project"
+          register={register}
+          value={form.watch("projectName")}
+        >
+          {projectsNames.map((option) => (
+            <MenuItem
+              key={option}
+              value={option}
+              onClick={() => onProjectNameChange(option)}
+            >
+              {option}
+            </MenuItem>
+          ))}
+        </InputSelect>
+      </div>
+      <Button type="submit" label="Create Task" />
+    </form>
   );
 };

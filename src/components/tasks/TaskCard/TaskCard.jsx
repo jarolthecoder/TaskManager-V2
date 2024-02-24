@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import { AppContext } from "@/context/AppContext";
 import { usePopper } from "@/hooks";
 import { useDispatch } from "react-redux";
-import { setSelectedTask } from "@/redux/features/tasks/tasksSlice";
+import { setSelectedTask } from "@/redux/features/projects";
 import {
   Badge,
   Card,
@@ -29,15 +29,15 @@ export const TaskCard = ({ task }) => {
     task.status === "completed" && styles.completed
   );
 
-  const { title, description, priority, projectName, dueDate } = task;
-  const isDueToday = task.dueDate === formattedToday;
-  const dueDateShort = formatDate(new Date(dueDate), "LLL d");
-
   const dispatch = useDispatch();
   const refEl = useRef(null);
   const popperRef = useRef(null);
   const { handleTaskModal, setSelectedTaskAction } = useContext(AppContext);
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
+
+  const { title, description, priority, projectName, dueDate } = task;
+  const isDueToday = task.dueDate === formattedToday;
+  const dueDateShort = formatDate(new Date(dueDate), "LLL d");
 
   const handleSelectEdit = () => {
     dispatch(setSelectedTask(task));
@@ -81,7 +81,7 @@ export const TaskCard = ({ task }) => {
       </div>
       <div className={styles.task_body}>
         <p className={styles.task_description}>{description}</p>
-        {/* <div className={styles.project_badge_container}>
+        <div className={styles.project_badge_container}>
           <span
             className={styles.project_badge}
             style={{
@@ -92,7 +92,7 @@ export const TaskCard = ({ task }) => {
           >
             {projectName}
           </span>
-        </div> */}
+        </div>
       </div>
       <hr className={styles.divider} />
       <div className={styles.task_footer}>

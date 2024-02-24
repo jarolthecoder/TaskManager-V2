@@ -1,8 +1,12 @@
 "use client";
 
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
 import { taskSchema } from "@/utils/validations/taskSchema";
+import { selectAllProjects, selectTask, updateTaskInProject } from "@/redux/features/projects";
+import { AppContext } from "@/context/AppContext";
 import {
   FormField,
   InputSelect,
@@ -10,11 +14,7 @@ import {
   DatePicker,
   MenuItem,
 } from "@/components/shared";
-import { useContext  } from "react";
-import { AppContext } from "@/context/AppContext";
-import { useDispatch, useSelector } from "react-redux";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { updateTask } from "@/redux/features/tasks";
 import styles from "./EditTaskForm.module.css";
 
 const priorityOptions = [
@@ -29,17 +29,13 @@ const statusOptions = [
   { value: "completed", label: "Completed" },
 ];
 
-const projectNameOptions = [
-  { value: "Other", label: "Stuff" },
-  { value: "Web Development", label: "Web Developement" },
-  { value: "Design", label: "Design" },
-];
-
 export const EditTaskForm = () => {
   const { handleTaskModal } = useContext(AppContext);
 
   const dispatch = useDispatch();
-  const {selectedTask} = useSelector((state) => state.tasks);
+  const selectedTask  = useSelector(selectTask);
+  const projects = useSelector(selectAllProjects);
+  const projectsNames = projects.map((project) => project.title);
 
   const form = useForm({
     resolver: yupResolver(taskSchema),
@@ -57,15 +53,17 @@ export const EditTaskForm = () => {
     setValue("status", option.label);
   };
 
-  const onprojectNameChange = (value) => {
+  // To Review!
+  const onProjectNameChange = (value) => {
     setValue("projectName", value);
   };
 
   const onFormSubmit = () => {
-
     const value = form.getValues();
 
-    const updatedStatusValue = statusOptions.find((option) => option.label === value.status);
+    const updatedStatusValue = statusOptions.find(
+      (option) => option.label === value.status
+    );
 
     const updatedTask = {
       id: selectedTask.id,
@@ -78,101 +76,80 @@ export const EditTaskForm = () => {
       projectName: value.projectName,
     };
 
-    dispatch(updateTask(updatedTask));
+    dispatch(updateTaskInProject(updatedTask));
     handleTaskModal();
   };
 
   return (
-    <>
-      <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
-        <FormField
-          label="Title"
-          id="title"
-          type="text"
-          name="title"
-          placeholder="Enter title"
+    <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
+      <FormField
+        label="Title"
+        id="title"
+        type="text"
+        name="title"
+        placeholder="Enter title"
+        register={register}
+        errors={errors}
+      />
+      <FormField
+        textarea
+        label="Description"
+        id="description"
+        type="text"
+        name="description"
+        placeholder="Enter description"
+        register={register}
+        errors={errors}
+      />
+      <div className={styles.field_group}>
+        <DatePicker
+          label="Due Date"
+          id="dueDate"
+          name="dueDate"
+          placeholder="Select date"
           register={register}
-          errors={errors}
+          setValue={setValue}
         />
-        <FormField
-          textarea
-          label="Description"
-          id="description"
-          type="text"
-          name="description"
-          placeholder="Enter description"
+        <InputSelect
+          label="Priority"
+          id="priority"
+          name="priority"
+          placeholder="Select priority"
           register={register}
-          errors={errors}
-        />
-        <div className={styles.field_group}>
-          <DatePicker
-            label="Due Date"
-            id="dueDate"
-            name="dueDate"
-            placeholder="Select date"
-            register={register}
-            setValue={setValue}
-          />
-          <InputSelect
-            label="Priority"
-            id="priority"
-            name="priority"
-            placeholder="Select priority"
-            register={register}
-            value={form.watch("priority")}
-          >
-            {priorityOptions.map((option) => (
-              <MenuItem
-                key={option.label}
-                value={option}
-                onClick={() => onPriorityChange(option.value)}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
-          </InputSelect>
-        </div>
-        <div className={styles.field_group}>
-          <InputSelect
-            label="Status"
-            id="status"
-            name="status"
-            placeholder="Select status"
-            register={register}
-            value={form.watch("status")}
-          >
-            {statusOptions.map((option) => (
-              <MenuItem
-                key={option.label}
-                value={option.value}
-                onClick={() => onStatusChange(option)}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
-          </InputSelect>
-          <InputSelect
-            label="Project"
-            id="assigned-to"
-            name="projectName"
-            placeholder="Select project"
-            register={register}
-            value={form.watch("projectName")}
-          >
-            {projectNameOptions.map((option) => (
-              <MenuItem
-                key={option.label}
-                value={option.value}
-                onClick={() => onprojectNameChange(option.value)}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
-          </InputSelect>
-        </div>
-        <Button type="submit" label="Update Task" />
-      </form>
-      {/* <DevTool control={form.control} /> */}
-    </>
+          value={form.watch("priority")}
+        >
+          {priorityOptions.map((option) => (
+            <MenuItem
+              key={option.label}
+              value={option}
+              onClick={() => onPriorityChange(option.value)}
+            >
+              {option.label}
+            </MenuItem>
+          ))}
+        </InputSelect>
+      </div>
+      <div className={styles.field_group}>
+        <InputSelect
+          label="Status"
+          id="status"
+          name="status"
+          placeholder="Select status"
+          register={register}
+          value={form.watch("status")}
+        >
+          {statusOptions.map((option) => (
+            <MenuItem
+              key={option.label}
+              value={option.value}
+              onClick={() => onStatusChange(option)}
+            >
+              {option.label}
+            </MenuItem>
+          ))}
+        </InputSelect>
+      </div>
+      <Button type="submit" label="Update Task" />
+    </form>
   );
 };

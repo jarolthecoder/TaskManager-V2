@@ -2,8 +2,10 @@ import { projectsData } from "@/api/projectsData";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedProject: {},
+  selectedProject: null,
+  selectedTask: null,
   projects: projectsData,
+  tasks: [],
   isprojectsaved: false,
   isSavingProject: false,
   message: "",
@@ -24,43 +26,81 @@ const projectsSlice = createSlice({
     },
     updateSelectedProject: (state, action) => {
       const { id } = action.payload;
-      const projectIndex = state.projects.findIndex((project) => project.id === id);
+      const projectIndex = state.projects.findIndex(
+        (project) => project.id === id
+      );
       state.projects[projectIndex] = action.payload;
     },
     deleteFromProjectsList: (state, action) => {
-      state.projects = state.projects.filter((project) => project.id !== action.payload);
+      state.projects = state.projects.filter(
+        (project) => project.id !== action.payload
+      );
     },
     // Tasks actions ======================================================================
+    setAllTasks: (state) => {
+      state.tasks = state.projects.reduce((acc, project) => {
+        return [...acc, ...project.tasks];
+      }, []);
+    },
+    setSelectedTask: (state, action) => {
+      state.selectedTask = action.payload;
+    },
     addTaskToProject: (state, action) => {
-      const { id } = state.selectedProject;
-      const projectIndex = state.projects.findIndex((project) => project.id === id);
+      // Adds based on the projectName
+      const { projectName } = action.payload;
+      const projectIndex = state.projects.findIndex(
+        (project) => project.title === projectName
+      );
       state.projects[projectIndex].tasks.push(action.payload);
     },
     updateTaskInProject: (state, action) => {
-      const { id, taskId } = action.payload;
-      const projectIndex = state.projects.findIndex((project) => project.id === id);
-      const taskIndex = state.projects[projectIndex].tasks.findIndex(
-        (task) => task.id === taskId
+      const { projectName } = action.payload;
+
+      const projectIndex = state.projects.findIndex(
+        (project) => project.title === projectName
       );
+      const taskIndex = state.projects[projectIndex].tasks.findIndex(
+        (task) => task.id === action.payload.id
+      );
+
       state.projects[projectIndex].tasks[taskIndex] = action.payload;
     },
     deleteTaskFromProject: (state, action) => {
-      const { id, taskId } = action.payload;
-      const projectIndex = state.projects.findIndex((project) => project.id === id);
-      state.projects[projectIndex].tasks = state.projects[projectIndex].tasks.filter(
-        (task) => task.id !== taskId
+      const { id, projectName } = action.payload;
+      
+      const projectIndex = state.projects.findIndex(
+        (project) => project.title === projectName
       );
+      state.projects[projectIndex].tasks = state.projects[projectIndex].tasks.filter(
+        (task) => task.id !== id
+      );
+      
+
     },
   },
 });
 
 export const projectsReducer = projectsSlice.reducer;
+
+// Selectors
+export const selectAllProjects = (state) => state.projects.projects;
+export const selectAllTasks = (state) => {
+  return state.projects.projects.reduce((acc, project) => {
+    return [...acc, ...project.tasks];
+  }, []);
+};
+export const selectProject = (state) => state.projects.selectedProject;
+export const selectTask = (state) => state.projects.selectedTask;
+
+// Actions
 export const {
   setSelectedProject,
   addProject,
   updateSelectedProject,
   deleteFromProjectsList,
   setProjects,
+  setAllTasks,
+  setSelectedTask,
   addTaskToProject,
   updateTaskInProject,
   deleteTaskFromProject,

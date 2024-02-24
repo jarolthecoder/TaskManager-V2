@@ -4,42 +4,37 @@ import { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd";
 import { AppContext } from "@/context/AppContext";
+import {
+  selectProject,
+  setSelectedProject,
+  updateTaskInProject,
+} from "@/redux/features/projects";
 import { TASK_ACTIONS } from "@/lib/constants";
-import { formatDate } from "@/utils/helpers/formatDate";
 import { Breadcrumbs, Button, MatIcon, RenderWhen } from "@/components/shared";
 import { TasksColumn } from "@/components/tasks";
-import { updateTask } from "@/redux/features/tasks";
 import styles from "./projectPage.module.css";
 
 const { ADD_TASK } = TASK_ACTIONS;
-const formattedToday = formatDate(new Date(), "PP");
 
 export default function ProjectPage() {
-
-  const dispatch = useDispatch();
   const { setSelectedTaskAction, handleTaskModal } = useContext(AppContext);
-  const selectedProject = useSelector(
-    (state) => state.projects.selectedProject
-  );
-  const { title, tasks } = selectedProject;
+  const dispatch = useDispatch();
+  const selectedProject = useSelector(selectProject);
 
+  // State for displaying the drag and drop columns after the window is ready
   const [winReady, setwinReady] = useState(false);
-  useEffect(() => {
-    setwinReady(true);
-  }, []);
 
   // Filtered tasks for columns
-  const completedTasks = tasks.filter((task) => task.status === "completed");
+  const { title, tasks } = selectedProject;
   const pendingTasks = tasks.filter((task) => task.status === "pending");
   const inProgressTasks = tasks.filter((task) => task.status === "inProgress");
-  const inReviewTasks = tasks.filter((task) => task.status === "inReview");
+  const completedTasks = tasks.filter((task) => task.status === "completed");
 
   // Task list columns data
   const taskListColumns = [
     { id: "pending", title: "To Do", tasks: pendingTasks },
     { id: "inProgress", title: "Doing", tasks: inProgressTasks },
     { id: "completed", title: "Completed", tasks: completedTasks },
-    // {id: "expired", title: "Expired", tasks: tasks.filter((task) => new Date(task.dueDate) < new Date())}
   ];
 
   const handleAddTask = () => {
@@ -55,14 +50,22 @@ export default function ProjectPage() {
     const taskId = result.draggableId;
     const task = tasks.find((task) => task.id === taskId);
     const updatedTask = { ...task, status: destinationColumn };
-    dispatch(updateTask(updatedTask));
+    dispatch(updateTaskInProject(updatedTask));
   };
+
+  useEffect(() => {
+    setwinReady(true);
+    // Clear selected project object on unmount
+    return () => {
+      dispatch(setSelectedProject(null));
+    };
+  }, []);
 
   return (
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
-          <Breadcrumbs selectedItem={title}/>
+          <Breadcrumbs selectedItem={title} />
           <h2>{title}</h2>
         </div>
         <div className={styles.header_options}>
@@ -77,7 +80,7 @@ export default function ProjectPage() {
         </div>
       </div>
       <div className={styles.container}>
-        <RenderWhen condition={winReady}>
+        <RenderWhen condition={winReady && selectedProject !== null}>
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
             {taskListColumns.map((column) => (
               <TasksColumn
