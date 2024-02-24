@@ -7,6 +7,7 @@ import { useCheckAuth } from "@/hooks";
 import { useEffect } from "react";
 import styles from "./dashboard.module.css";
 import { PageLoader } from "@/components/shared";
+import { ProjectActionsModal } from "@/components/projects";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function DashboardLayout({ children }) {
       </main>
       {/* Modals */}
       <TaskActionsModal />
+      <ProjectActionsModal />
     </AppProvider>
   );
 }

@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { DayPicker } from "react-day-picker";
 import { usePopper } from "@/hooks";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { Popper } from "..";
+import { MatIcon, Popper } from "..";
 import PropTypes from "prop-types";
 import styles from "./DatePicker.module.css";
 
@@ -49,7 +49,7 @@ export const DatePicker = ({
           {...restOfProps}
         />
         <p className={styles.date_picker_icon} onClick={togglePopper}>
-          <span className="material-icons">event</span>
+          <MatIcon iconName="event" />
         </p>
       </div>
       <Popper

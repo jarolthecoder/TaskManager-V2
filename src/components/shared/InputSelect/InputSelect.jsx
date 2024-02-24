@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { usePopper } from "@/hooks";
-import { Menu, Popper } from "..";
+import { MatIcon, Menu, Popper } from "..";
 import PropTypes from "prop-types";
 import styles from "./InputSelect.module.css";
 
@@ -44,7 +44,7 @@ export const InputSelect = ({
           {...register(name)}
         />
         <p className={styles.select_icon_btn} onClick={togglePopper}>
-          <span className="material-icons">arrow_drop_down</span>
+          <MatIcon iconName="arrow_drop_down" />
         </p>
       </div>
       <Popper

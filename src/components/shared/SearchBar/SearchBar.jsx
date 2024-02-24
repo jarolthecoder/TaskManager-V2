@@ -1,3 +1,4 @@
+import { MatIcon } from '..';
 import styles from './SearchBar.module.css'
 
 export const SearchBar = () => {
@@ -8,7 +9,7 @@ export const SearchBar = () => {
         className={styles.search_field}
         placeholder="Search"
       />
-      <span className="material-icons-outlined">search</span>
+      <MatIcon  iconName="search" />
     </form>
   );
 }

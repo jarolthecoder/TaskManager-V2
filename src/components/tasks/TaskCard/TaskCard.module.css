@@ -36,10 +36,6 @@
   /* font-size: var(--fs-small) */
 }
 
-.stat_icon {
-  font-size: 18px
-}
-
 .project_badge {
   display: inline-block;
   max-width: 200px;
@@ -70,7 +66,7 @@
 
 .task_description {
   width: 100%;
-  padding: .5rem 0;
+  padding:0.5rem 0 1rem 0;
   border: none;
 }
 

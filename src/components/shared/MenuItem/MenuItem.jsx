@@ -1,3 +1,4 @@
+import { MatIcon } from '..';
 import styles from './MenuItem.module.css'
 import PropTypes from 'prop-types'
 
@@ -5,7 +6,7 @@ export const MenuItem = ({children, icon, onClick}) => {
   return (
     <li className={styles.main} role="menuitem" onClick={onClick}>
       <div className={styles.item_content}>
-        <span className="material-icons">{icon}</span>
+        <MatIcon iconName={icon} />
         {children}
       </div>
     </li>

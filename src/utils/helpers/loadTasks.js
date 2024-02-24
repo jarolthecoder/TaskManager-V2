@@ -13,7 +13,21 @@ export const loadTasks= async (uid = "") => {
     tasks.push({ id: doc.id, ...doc.data() }); // doc.data() returns the document data as an object
   });
 
-  console.log({tasks})
+  console.log({ tasks });
 
   return tasks;
+
+  // For getting projects from databse
+  // const collectionRef = collection(FirebaseDB, `test-user-1/user-projects/projects`);
+  // const docs = await getDocs(collectionRef); // Firebase docs reference
+
+  // const projects = [];
+
+  // docs.forEach((doc) => {
+  //   projects.push({ id: doc.id, ...doc.data() }); // doc.data() returns the document data as an object
+  // });
+
+  // console.log({projects})
+
+  // return projects;
 };

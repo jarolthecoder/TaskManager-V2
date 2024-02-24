@@ -1,6 +1,6 @@
 "use client"
 import { useContext } from "react";
-import { Button, IconButton } from '@/components/shared';
+import { Button, IconButton, MatIcon } from '@/components/shared';
 import { AppContext } from '@/context/AppContext';
 import { TASK_ACTIONS } from "@/lib/constants";
 import PropTypes from 'prop-types';
@@ -21,7 +21,7 @@ export const AddTaskButton = ({ buttonType = 'default' }) => {
       {buttonType === "icon" ? (
         <div className={styles.icon_btn}>
           <IconButton variant="filled" size="small" onClick={handleAddTask}>
-            <span className="material-icons">add</span>
+            <MatIcon iconName="add" />
           </IconButton>
           {/* <p>Add Task</p> */}
         </div>
@@ -30,7 +30,7 @@ export const AddTaskButton = ({ buttonType = 'default' }) => {
           fullWidth
           label="New Task"
           color="accent"
-          startIcon={<span className="material-icons">add</span>}
+          startIcon={<MatIcon iconName="add" />}
           onClick={handleAddTask}
         />
       )}

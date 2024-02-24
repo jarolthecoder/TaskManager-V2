@@ -1,8 +1,9 @@
 "use client"
 import { createContext, useState } from 'react';
-import { TASK_ACTIONS } from "@/lib/constants";
+import { TASK_ACTIONS, PROJECT_ACTIONS } from "@/lib/constants";
 
 const { ADD_TASK } = TASK_ACTIONS
+const { ADD_PROJECT } = PROJECT_ACTIONS
 
 export const AppContext = createContext();
 
@@ -23,6 +24,14 @@ export const AppProvider = ({ children }) => {
     setTaskModalOpen((prev) => !prev);
   }
 
+  // Project Modal State
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
+  const [selectedProjectAction, setSelectedProjectAction] = useState(ADD_PROJECT);
+
+  const handleProjectModal = () => {
+    setProjectModalOpen((prev) => !prev);
+  }
+
   const value = {
     sidebarOpen,
     handleSidebar,
@@ -30,6 +39,10 @@ export const AppProvider = ({ children }) => {
     selectedTaskAction,
     setSelectedTaskAction,
     handleTaskModal,
+    projectModalOpen,
+    selectedProjectAction,
+    setSelectedProjectAction,
+    handleProjectModal,
   }
 
   return (

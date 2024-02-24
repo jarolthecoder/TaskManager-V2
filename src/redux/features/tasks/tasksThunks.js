@@ -23,6 +23,11 @@ export const getTasks = () => {
     const tasks = await loadTasks(uid);
 
     dispatch(setTasks(tasks));
+
+    // For projects
+    // const projects = await loadTasks(uid);
+
+    // dispatch(setTasks(projects));
   };
 };
 

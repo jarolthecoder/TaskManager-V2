@@ -1,7 +1,7 @@
 "use client"
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { SearchBar } from "@/components/shared";
+import { IconButton, MatIcon, SearchBar } from "@/components/shared";
 import { UserBar } from "@/components/user";
 import classNames from "classnames";
 import styles from "./TopBar.module.css";
@@ -18,9 +18,9 @@ export const TopBar = () => {
   return (
     <header className={headerClasses}>
       <div className={styles.col_left}>
-        <button styles={styles.sidebar_toggle} onClick={handleSidebar}>
-          <span className="material-icons">menu</span>
-        </button>
+        <IconButton size="small" onClick={handleSidebar}>
+          <MatIcon iconName="menu" /> 
+        </IconButton>
         <SearchBar />
       </div>
       <div className={styles.col_right}>

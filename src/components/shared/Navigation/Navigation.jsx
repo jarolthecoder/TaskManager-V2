@@ -5,7 +5,7 @@ import styles from "./Navigation.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/features/auth/authSlice";
-import { RenderWhen } from "..";
+import { MatIcon, RenderWhen } from "..";
 
 export const Navigation = ({ sidebarOpen }) => {
   const router = useRouter();
@@ -31,7 +31,7 @@ export const Navigation = ({ sidebarOpen }) => {
             }`}
             onClick={() => navigateTo(path)}
           >
-            <span className="material-icons">{icon}</span>
+            <MatIcon iconName={icon} />
             <RenderWhen condition={sidebarOpen}>
               <Link href={path}>{label}</Link>
             </RenderWhen>
@@ -43,7 +43,7 @@ export const Navigation = ({ sidebarOpen }) => {
             currentRoute === "/login" ? styles.active : null
           }`}
         >
-          <span className="material-icons">person</span>
+          <MatIcon iconName="person" />
           <RenderWhen condition={sidebarOpen}>
             <Link href="/profile">Profile</Link>
           </RenderWhen>
@@ -53,7 +53,7 @@ export const Navigation = ({ sidebarOpen }) => {
             currentRoute === "/login" ? styles.active : null
           }`}
         >
-          <span className="material-icons">settings</span>
+          <MatIcon iconName="settings" />
           <RenderWhen condition={sidebarOpen}>
             <Link href="/settings">Settings</Link>
           </RenderWhen>
@@ -64,7 +64,7 @@ export const Navigation = ({ sidebarOpen }) => {
             currentRoute === "/login" ? styles.active : null
           }`}
         >
-          <span className="material-icons">help</span>
+          <MatIcon iconName="help" />
           <RenderWhen condition={sidebarOpen}>
             <Link href="/help">Help</Link>
           </RenderWhen>
@@ -75,7 +75,7 @@ export const Navigation = ({ sidebarOpen }) => {
           }`}
           onClick={handleLogout}
         >
-          <span className="material-icons">logout</span>
+          <MatIcon iconName="logout" />
           <RenderWhen condition={sidebarOpen}>
             <Link href="/login">Logout</Link>
           </RenderWhen>

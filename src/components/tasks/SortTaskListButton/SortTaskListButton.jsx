@@ -1,6 +1,6 @@
 "use client";
 
-import { IconButton, Menu, MenuItem, Popper } from "@/components/shared";
+import { IconButton, MatIcon, Menu, MenuItem, Popper } from "@/components/shared";
 import { usePopper } from "@/hooks";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
 import { useRef } from "react";
@@ -27,7 +27,7 @@ export const SortTaskListButton = ({ onSelect, selectedOption }) => {
     <div ref={refEl} className={styles.sort_btn}>
       <small>{selectedOption.label}</small>
       <IconButton size="small" onClick={togglePopper}>
-        <span className="material-icons">swap_vert</span>
+        <MatIcon iconName="swap_vert" />
       </IconButton>
       <Popper open={isPopperOpen} ref={popperRef} onClose={togglePopper}>
         <Menu>

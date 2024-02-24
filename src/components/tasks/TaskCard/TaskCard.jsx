@@ -9,6 +9,7 @@ import {
   Badge,
   Card,
   IconButton,
+  MatIcon,
   Menu,
   MenuItem,
   Popper,
@@ -64,7 +65,7 @@ export const TaskCard = ({ task }) => {
             className={styles.task_options_btn}
             onClick={togglePopper}
           >
-            <span className="material-icons">more_horiz</span>
+            <MatIcon iconName="more_horiz" />
           </IconButton>
         </div>
         <Popper ref={popperRef} open={isPopperOpen}>
@@ -80,7 +81,7 @@ export const TaskCard = ({ task }) => {
       </div>
       <div className={styles.task_body}>
         <p className={styles.task_description}>{description}</p>
-        <div className={styles.project_badge_container}>
+        {/* <div className={styles.project_badge_container}>
           <span
             className={styles.project_badge}
             style={{
@@ -91,38 +92,27 @@ export const TaskCard = ({ task }) => {
           >
             {projectName}
           </span>
-        </div>
+        </div> */}
       </div>
       <hr className={styles.divider} />
       <div className={styles.task_footer}>
         <div className={styles.task_stat_row}>
           <p className={styles.task_stat}>
-            <span className={`material-icons ${styles.stat_icon}`}>
-              schedule
-            </span>
+            <MatIcon iconName="schedule" size="small" />
             Due {isDueToday ? "Today" : dueDateShort}
           </p>
-          <Badge color={
-            priority === "High"
-              ? "error"
-              : priority === "Medium"
-              ? "warning"
-              : "success"
-          } variant="pill">
-            {priority}
-          </Badge>
-          {/* <p
-            style={{
-              color:
-                task.priority === "High"
-                  ? "#E57373"
-                  : task.priority === "Medium"
-                  ? "#FFCC80"
-                  : "#56e3c2",
-            }}
+          <Badge
+            color={
+              priority === "High"
+                ? "error"
+                : priority === "Medium"
+                ? "warning"
+                : "success"
+            }
+            variant="pill"
           >
             {priority}
-          </p> */}
+          </Badge>
         </div>
       </div>
     </Card>

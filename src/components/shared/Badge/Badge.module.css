@@ -1,12 +1,13 @@
 .badge {
-  padding: 0.1rem;
+  padding: 0 12px;
   border-radius: var(--br-small);
   text-transform: capitalize;
   font-size: var(--fs-small);
   /* font-weight: var(--fw-medium); */
-  width: 100%;
-  max-width: 90px;
+  min-width: 60px;
+  max-width: 100px;
   text-align: center;
+  display: inline-block;
 }
 
 /* Pill variant */
@@ -41,6 +42,6 @@
 }
 
 .badge.success {
- background: var(--clr-success-opacity);
+  background: var(--clr-success-opacity);
   color: var(--clr-success-light);
 }

@@ -3,7 +3,7 @@
 import { NotificationPanel } from "../NotificationPanel/NotificationPanel";
 import { useRef } from "react";
 import { usePopper } from "@/hooks";
-import { IconButton, Popper } from "..";
+import { IconButton, MatIcon, Popper } from "..";
 import styles from "./NotificationsMenu.module.css";
 
 export const NotificationsMenu = () => {
@@ -15,7 +15,7 @@ export const NotificationsMenu = () => {
     <>
       <div className={styles.notifications} ref={refEl} onClick={togglePopper}>
         <IconButton size="small">
-          <span className="material-icons">notifications</span>
+          <MatIcon iconName="notifications" />
         </IconButton>
       </div>
       <Popper open={isPopperOpen} ref={popperRef}>

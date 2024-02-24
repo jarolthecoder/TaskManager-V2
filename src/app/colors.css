@@ -57,8 +57,10 @@
   --clr-task-pending-text: rgb(255, 164, 136);
   --clr-task-in-progress-bg: rgba(167, 152, 255, 0.2);
   --clr-task-in-progress-text: rgb(188, 176, 255);
-  --clr-task-completed-bg: #1F3E3E;
-  --clr-task-completed-text: #56e3c2;
+  /* --clr-task-completed-bg: #1F3E3E;
+  --clr-task-completed-text: #56e3c2; */
+   --clr-task-completed-bg: #193348d3;
+  --clr-task-completed-text: #56b2f4;
   --clr-task-due-bg: rgba(255, 107, 147, 0.2);
   --clr-task-due-text: rgb(255, 107, 147);
 }

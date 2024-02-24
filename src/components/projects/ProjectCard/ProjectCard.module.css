@@ -17,7 +17,14 @@
 }
 
 .project_title {
- padding: 1rem 0;
+  padding: 0 0 1rem 0;
+}
+
+.project_tasks_stat {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .project_options_btn {

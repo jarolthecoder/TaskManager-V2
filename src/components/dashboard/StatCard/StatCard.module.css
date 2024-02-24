@@ -20,43 +20,47 @@
   color: var(--clr-text-light);
 }
 
-.stat_icon {
+.stat_icon_container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: var(--br-full);
 }
 
-.stat_icon.due_today {
+.stat_icon {
+  font-size: 27px;
+}
+
+.stat_icon_container.due_today {
   background: var(--clr-task-due-bg);
 }
 
-.stat_icon.due_today span {
+.stat_icon_container.due_today span {
   color: var(--clr-task-due-text);
 }
 
-.stat_icon.pending {
+.stat_icon_container.pending {
   background: var(--clr-task-pending-bg);
 }
 
-.stat_icon.pending span {
+.stat_icon_container.pending span {
   color: var(--clr-task-pending-text);
 }
 
-.stat_icon.in_progress {
+.stat_icon_container.in_progress {
   background: var(--clr-task-in-progress-bg);
 }
 
-.stat_icon.in_progress span {
+.stat_icon_container.in_progress span {
    color: var(--clr-task-in-progress-text);
 }
 
-.stat_icon.completed {
+.stat_icon_container.completed {
   background: var(--clr-task-completed-bg);
 }
 
-.stat_icon.completed span {
+.stat_icon_container.completed span {
   color: var(--clr-task-completed-text);
 }

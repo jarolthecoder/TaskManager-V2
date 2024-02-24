@@ -1,5 +1,5 @@
 
-import { Card, IconButton, RenderWhen } from "..";
+import { Card, IconButton, MatIcon, RenderWhen } from "..";
 import PropTypes from "prop-types";
 import styles from "./Modal.module.css";
 
@@ -19,7 +19,7 @@ export const Modal = ({
               <div className={styles.modal_header}>
                 <h2>{title}</h2>
                 <IconButton onClick={onClose}>
-                  <span className="material-icons">close</span>
+                  <MatIcon iconName="close" />
                 </IconButton>
               </div>
             </RenderWhen>
