@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { taskSchema } from "@/utils/validations/taskSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewProject, addTaskToProject, selectAllProjects, selectProject, setSelectedProject, updateProject } from "@/redux/features/projects";
+import { addNewProject, addProject, addTaskToProject, selectAllProjects, selectProject, setSelectedProject, updateProject } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import { formatDate } from "@/utils/helpers/formatDate";
 import {
@@ -162,6 +162,7 @@ export const AddTaskForm = () => {
             </MenuItem>
           ))}
         </InputSelect>
+        <RenderWhen condition={projects.length > 0}>
         <InputSelect
           label="Project"
           id="project-name"
@@ -180,6 +181,7 @@ export const AddTaskForm = () => {
             </MenuItem>
           ))}
         </InputSelect>
+        </RenderWhen>
       </div>
       <Button type="submit" label="Create Task" />
     </form>

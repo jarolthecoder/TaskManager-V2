@@ -2,7 +2,7 @@
   padding:1rem;
   background: var(--clr-bg-card-dark);
   border-radius: var(--br-small);
-  grid-column-end: span 4;
+  /* grid-column-end: span 4; */
 }
 
 .list_body,

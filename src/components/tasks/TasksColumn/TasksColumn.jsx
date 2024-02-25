@@ -69,7 +69,7 @@ const sortTasksReducer = (state, action) => {
   }
 };
 
-export const TasksColumn = ({ listId, listTitle, tasks }) => {
+export const TasksColumn = ({ listId, listTitle, tasks, colSpan = 4 }) => {
   const numOfTasks = tasks.length;
 
   const numOfTasksClasses = classNames(
@@ -90,7 +90,9 @@ export const TasksColumn = ({ listId, listTitle, tasks }) => {
   }, [selectedOption, tasks]);
 
   return (
-    <div className={styles.main}>
+    <div className={styles.main} style={{
+      gridColumnEnd: `span ${colSpan}`
+    }}>
       <div className={styles.list_header}>
         <div className={styles.list_title}>
           <h3>{listTitle}</h3>

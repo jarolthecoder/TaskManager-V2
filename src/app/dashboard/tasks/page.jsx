@@ -33,7 +33,7 @@ export default function TasksPage() {
     { id: "pending", title: "To Do", tasks: pendingTasks },
     { id: "inProgress", title: "Doing", tasks: inProgressTasks },
     { id: "completed", title: "Completed", tasks: completedTasks },
-    // { id: "unAssigned", title: "Unassigned", tasks: unAssignedTasks },
+    { id: "unAssigned", title: "Unassigned", tasks: unAssignedTasks },
   ];
 
   const handleAddTask = () => {
@@ -91,6 +91,7 @@ export default function TasksPage() {
                 listId={column.id}
                 listTitle={column.title}
                 tasks={column.tasks}
+                colSpan={3}
               />
             ))}
           </DragDropContext>
