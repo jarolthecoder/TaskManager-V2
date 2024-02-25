@@ -5,7 +5,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { taskSchema } from "@/utils/validations/taskSchema";
-import { selectAllProjects, selectTask, updateProject, updateTaskInProject } from "@/redux/features/projects";
+import {
+  selectAllProjects,
+  selectTask,
+  updateProject,
+} from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import {
   FormField,
@@ -33,7 +37,7 @@ export const EditTaskForm = () => {
   const { handleTaskModal } = useContext(AppContext);
 
   const dispatch = useDispatch();
-  const selectedTask  = useSelector(selectTask);
+  const selectedTask = useSelector(selectTask);
   const projects = useSelector(selectAllProjects);
   const projectsNames = projects.map((project) => project.title);
 
@@ -53,9 +57,44 @@ export const EditTaskForm = () => {
     setValue("status", option.label);
   };
 
-  // To Review!
   const onProjectNameChange = (value) => {
     setValue("projectName", value);
+  };
+
+  // Update the task in the project based on the new project value
+  const updateProjectsTasks = (newProjectValue, updatedTask) => {
+    return projects.map((project) => {
+      // If the project title is different from the new project value then remove the task from the project
+      if (project.title !== newProjectValue) {
+        const updatedUnassignedProject = {
+          ...project,
+          tasks: project.tasks.filter((task) => task.id !== updatedTask.id),
+        };
+
+        dispatch(updateProject(updatedUnassignedProject));
+
+        // If the project title is the same as the new project value and
+        // the project title is different from the selected task project name then add the task to the project
+      } else if (project.title === newProjectValue && project.title !== selectedTask.projectName) {
+        const updatedProject = {
+          ...project,
+          tasks: [...project.tasks, updatedTask],
+        };
+        dispatch(updateProject(updatedProject));
+      // If the project title is the same as the new project value and 
+      // the project title is the same as the selected task project name then update the task in the project
+      } else if (project.title === newProjectValue && project.title === selectedTask.projectName) {
+        const updatedProject = {
+          ...project,
+          tasks: project.tasks.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task
+            ),
+        };
+        dispatch(updateProject(updatedProject));
+      }
+
+      return project;
+    });
   };
 
   const onFormSubmit = () => {
@@ -63,10 +102,6 @@ export const EditTaskForm = () => {
 
     const updatedStatusValue = statusOptions.find(
       (option) => option.label === value.status
-    );
-
-    const projectToUpdate = projects.find(
-      (project) => project.title === selectedTask.projectName
     );
 
     const updatedTask = {
@@ -80,16 +115,7 @@ export const EditTaskForm = () => {
       projectName: value.projectName,
     };
 
-    const updatedProject = {
-      ...projectToUpdate,
-      tasks: projectToUpdate.tasks.map((task) =>
-        task.id === selectedTask.id ? updatedTask : task
-      ),
-    }
-
-    dispatch(updateProject(updatedProject));
-
-    // dispatch(updateTaskInProject(updatedTask));
+    updateProjectsTasks(value.projectName, updatedTask);
     handleTaskModal();
   };
 
@@ -158,6 +184,24 @@ export const EditTaskForm = () => {
               onClick={() => onStatusChange(option)}
             >
               {option.label}
+            </MenuItem>
+          ))}
+        </InputSelect>
+        <InputSelect
+          label="Project"
+          id="project-name"
+          name="projectName"
+          placeholder="Select project"
+          register={register}
+          value={form.watch("projectName")}
+        >
+          {projectsNames.map((option) => (
+            <MenuItem
+              key={option}
+              value={option}
+              onClick={() => onProjectNameChange(option)}
+            >
+              {option}
             </MenuItem>
           ))}
         </InputSelect>

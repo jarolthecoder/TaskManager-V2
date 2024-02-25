@@ -15,6 +15,10 @@ export default function Projects() {
 
   const projects = useSelector(selectAllProjects);
 
+  const projectsWithAssignedTasks = projects.filter(
+    (project) => project.title !== "Unassigned"
+  );
+
   const {handleProjectModal, setSelectedProjectAction} = useContext(AppContext);
 
    const handleAddProject = () => {
@@ -42,7 +46,7 @@ export default function Projects() {
         </div>
       </div>
       <div className={styles.container}>
-        {projects.map((project) => (
+        {projectsWithAssignedTasks.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
         <div className={styles.create_project_card}>

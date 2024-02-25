@@ -5,7 +5,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { taskSchema } from "@/utils/validations/taskSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewProject, addProject, addTaskToProject, selectAllProjects, selectProject, setSelectedProject, updateProject } from "@/redux/features/projects";
+import {
+  addNewProject,
+  selectAllProjects,
+  selectProject,
+  setSelectedProject,
+  updateProject,
+} from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import { formatDate } from "@/utils/helpers/formatDate";
 import {
@@ -14,7 +20,6 @@ import {
   Button,
   DatePicker,
   MenuItem,
-  RenderWhen,
 } from "@/components/shared";
 import styles from "./TaskForm.module.css";
 
@@ -33,14 +38,13 @@ const statusOptions = [
 const formattedToday = formatDate(new Date(), "PP");
 
 export const AddTaskForm = () => {
-
   const { handleTaskModal } = useContext(AppContext);
-  
+
   const dispatch = useDispatch();
   const selectedProject = useSelector(selectProject);
   const projects = useSelector(selectAllProjects);
   const projectsNames = projects.map((project) => project.title);
-  
+
   const form = useForm({
     resolver: yupResolver(taskSchema),
     defaultValues: {
@@ -65,7 +69,9 @@ export const AddTaskForm = () => {
   };
 
   const onProjectNameChange = (value) => {
-    dispatch(setSelectedProject(projects.find((project) => project.title === value)));
+    dispatch(
+      setSelectedProject(projects.find((project) => project.title === value))
+    );
     setValue("projectName", value);
   };
 
@@ -84,16 +90,32 @@ export const AddTaskForm = () => {
       projectName: value.projectName === "" ? "Unassigned" : value.projectName,
     };
 
-    const updatedProject = {
-      ...selectedProject,
-      tasks: [...selectedProject.tasks, newTask],
-    };
+    const projectToUpdate = projects.find(
+      (project) => project.title === value.projectName
+    );
 
+    if (value.projectName === "Unassigned" && projects.length === 0) {
+      const unassignedProjectFolder = {
+        title: "Unassigned",
+        description: "Unassigned tasks",
+        creationDate: formattedToday,
+        dueDate: "",
+        status: "",
+        priority: "",
+        tasks: [newTask],
+      };
+      dispatch(addNewProject(unassignedProjectFolder));
+    }
+    else {
+      const updatedProject = {
+      ...projectToUpdate,
+      tasks: [...projectToUpdate.tasks, newTask],
+    };
     dispatch(updateProject(updatedProject));
-    // dispatch(addNewProject(newTask));
+  }
     handleTaskModal();
   };
-  console.log({projects})
+
   return (
     <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
       <FormField
@@ -162,7 +184,6 @@ export const AddTaskForm = () => {
             </MenuItem>
           ))}
         </InputSelect>
-        <RenderWhen condition={projects.length > 0}>
         <InputSelect
           label="Project"
           id="project-name"
@@ -171,6 +192,12 @@ export const AddTaskForm = () => {
           register={register}
           value={form.watch("projectName")}
         >
+          <MenuItem
+            value="Unassigned"
+            onClick={() => onProjectNameChange("Unassigned")}
+          >
+            Unassigned
+          </MenuItem>
           {projectsNames.map((option) => (
             <MenuItem
               key={option}
@@ -181,7 +208,6 @@ export const AddTaskForm = () => {
             </MenuItem>
           ))}
         </InputSelect>
-        </RenderWhen>
       </div>
       <Button type="submit" label="Create Task" />
     </form>
