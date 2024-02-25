@@ -12,7 +12,7 @@ import {
   MenuItem,
 } from "@/components/shared";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { addProject } from "@/redux/features/projects";
+import { addNewProject } from "@/redux/features/projects";
 import { projectSchema } from "@/utils/validations";
 import styles from "./ProjectForm.module.css";
 
@@ -61,7 +61,6 @@ export const AddProjectForm = () => {
     const value = form.getValues();
 
     const newProject = {
-      id: `PRJ${Math.random() * 1000000}`,
       title: value.title,
       description: value.description,
       status: value.status,
@@ -72,7 +71,7 @@ export const AddProjectForm = () => {
       tasks: [],
     };
 
-    dispatch(addProject(newProject));
+    dispatch(addNewProject(newProject));
     handleProjectModal();
   };
 

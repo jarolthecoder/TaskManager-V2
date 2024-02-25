@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppContext } from "@/context/AppContext";
-import { deleteFromProjectsList } from "@/redux/features/projects";
+import { deleteProject } from "@/redux/features/projects";
 import { Button } from "@/components/shared";
 import styles from "./DeleteProjectPopup.module.css";
 
@@ -13,7 +13,7 @@ export const DeleteProjectPopup = () => {
   const { handleProjectModal } = useContext(AppContext);
 
   const handleDeleteProject = () => {
-    dispatch(deleteFromProjectsList(id));
+    dispatch(deleteProject(id));
     handleProjectModal();
   }
 

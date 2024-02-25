@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   selectedProject: null,
   selectedTask: null,
-  projects: projectsData,
+  projects: [],
   tasks: [],
   isprojectsaved: false,
   isSavingProject: false,
@@ -17,6 +17,8 @@ const projectsSlice = createSlice({
   reducers: {
     setProjects: (state, action) => {
       state.projects = action.payload;
+
+      console.log({ projects: state.projects })
     },
     setSelectedProject: (state, action) => {
       state.selectedProject = action.payload;

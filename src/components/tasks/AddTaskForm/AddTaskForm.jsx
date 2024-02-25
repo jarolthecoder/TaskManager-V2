@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { taskSchema } from "@/utils/validations/taskSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { addTaskToProject, selectAllProjects, selectProject } from "@/redux/features/projects";
+import { addNewProject, addTaskToProject, selectAllProjects, selectProject } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import { formatDate } from "@/utils/helpers/formatDate";
 import {
@@ -72,7 +72,7 @@ export const AddTaskForm = () => {
     const value = form.getValues();
 
     const newTask = {
-      id: `TSK-${Math.floor(1000 + Math.random() * 9000)}`,
+      // id: `TSK-${Math.floor(1000 + Math.random() * 9000)}`,
       title: value.title,
       description: value.description,
       status: value.status,
@@ -83,10 +83,10 @@ export const AddTaskForm = () => {
       projectName: value.projectName === "" ? "Unassigned" : value.projectName,
     };
 
-    dispatch(addTaskToProject(newTask));
+    // dispatch(addNewProject(newTask));
     handleTaskModal();
   };
-
+  console.log({projects})
   return (
     <form className={styles.task_form} onSubmit={handleSubmit(onFormSubmit)}>
       <FormField

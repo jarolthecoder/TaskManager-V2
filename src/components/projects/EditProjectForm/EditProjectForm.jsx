@@ -13,7 +13,7 @@ import {
 } from "@/components/shared";
 import { AppContext } from "@/context/AppContext";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { updateSelectedProject } from "@/redux/features/projects";
+import { updateProject } from "@/redux/features/projects";
 import { projectSchema } from "@/utils/validations";
 import styles from "./EditProjectForm.module.css";
 
@@ -72,7 +72,7 @@ export const EditProjectForm = () => {
       tasks: selectedProject.tasks,
     };
 
-    dispatch(updateSelectedProject(updatedProject));
+    dispatch(updateProject(updatedProject));
     handleProjectModal();
   };
 

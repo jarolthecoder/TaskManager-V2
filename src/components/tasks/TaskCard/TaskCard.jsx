@@ -37,7 +37,8 @@ export const TaskCard = ({ task }) => {
 
   const { title, description, priority, projectName, dueDate } = task;
   const isDueToday = task.dueDate === formattedToday;
-  const dueDateShort = formatDate(new Date(dueDate), "LLL d");
+  const dueDateShort = task.dueDate;
+  // const dueDateShort = formatDate(new Date(task.dueDate), "LLL d");
 
   const handleSelectEdit = () => {
     dispatch(setSelectedTask(task));
