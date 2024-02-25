@@ -25,7 +25,7 @@ export const addNewProject = (newProject) => {
     const { uid } = getState().auth;
 
     const newDoc = doc(
-      collection(FirebaseDB, `test-user-1/user-projects/projects/`)
+      collection(FirebaseDB, `${uid}/user-projects/projects/`)
     );
     const setDocResp = await setDoc(newDoc, newProject);
 
@@ -46,7 +46,7 @@ export const updateProject = (updatedProject) => {
     console.log({ projectToFirestore });
     const docRef = doc(
       FirebaseDB,
-      `test-user-1/user-projects/projects/${updatedProject.id}`
+      `${uid}/user-projects/projects/${updatedProject.id}`
     );
     await setDoc(docRef, projectToFirestore, { merge: true });
 
@@ -58,12 +58,29 @@ export const deleteProject = (projectId) => {
   return async (dispatch, getState) => {
     const { uid } = getState().auth;
 
-    const docRef = doc(FirebaseDB, `test-user-1/user-projects/projects/${projectId}`);
+    const docRef = doc(FirebaseDB, `${uid}/user-projects/projects/${projectId}`);
     await deleteDoc(docRef);
 
     dispatch(deleteFromProjectsList(projectId));
   }
 }
+
+// TO REVIEW!!! =========================================================================
+
+// export const addTask = (newTask) => {
+//   return async (dispatch, getState) => {
+//     const { uid } = getState().auth;
+
+//     const newDoc = doc(
+//       collection(FirebaseDB, `${uid}/user-projects/projects/${newTask.projectId}`)
+//     );
+//     const setDocResp = await setDoc(newDoc, newTask);
+
+//     newTask.id = newDoc.id;
+
+//     dispatch(addTaskToProject(newTask));
+//   }
+// }
 
 
 /** NOTE: Not using at the moment, it will probably be used later for user projects */

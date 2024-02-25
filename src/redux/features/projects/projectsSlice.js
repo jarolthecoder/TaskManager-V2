@@ -47,38 +47,39 @@ const projectsSlice = createSlice({
     setSelectedTask: (state, action) => {
       state.selectedTask = action.payload;
     },
-    addTaskToProject: (state, action) => {
-      // Adds based on the projectName
-      const { projectName } = action.payload;
-      const projectIndex = state.projects.findIndex(
-        (project) => project.title === projectName
-      );
-      state.projects[projectIndex].tasks.push(action.payload);
-    },
-    updateTaskInProject: (state, action) => {
-      const { projectName } = action.payload;
+    // TO REVIEW!!! =========================================================================
+    // addTaskToProject: (state, action) => {
+    //   // Adds based on the projectName
+    //   const { projectName } = action.payload;
+    //   const projectIndex = state.projects.findIndex(
+    //     (project) => project.title === projectName
+    //   );
+    //   state.projects[projectIndex].tasks.push(action.payload);
+    // },
+    // updateTaskInProject: (state, action) => {
+    //   const { projectName } = action.payload;
 
-      const projectIndex = state.projects.findIndex(
-        (project) => project.title === projectName
-      );
-      const taskIndex = state.projects[projectIndex].tasks.findIndex(
-        (task) => task.id === action.payload.id
-      );
+    //   const projectIndex = state.projects.findIndex(
+    //     (project) => project.title === projectName
+    //   );
+    //   const taskIndex = state.projects[projectIndex].tasks.findIndex(
+    //     (task) => task.id === action.payload.id
+    //   );
 
-      state.projects[projectIndex].tasks[taskIndex] = action.payload;
-    },
-    deleteTaskFromProject: (state, action) => {
-      const { id, projectName } = action.payload;
+    //   state.projects[projectIndex].tasks[taskIndex] = action.payload;
+    // },
+    // deleteTaskFromProject: (state, action) => {
+    //   const { id, projectName } = action.payload;
       
-      const projectIndex = state.projects.findIndex(
-        (project) => project.title === projectName
-      );
-      state.projects[projectIndex].tasks = state.projects[projectIndex].tasks.filter(
-        (task) => task.id !== id
-      );
+    //   const projectIndex = state.projects.findIndex(
+    //     (project) => project.title === projectName
+    //   );
+    //   state.projects[projectIndex].tasks = state.projects[projectIndex].tasks.filter(
+    //     (task) => task.id !== id
+    //   );
       
 
-    },
+    // },
   },
 });
 
@@ -103,7 +104,7 @@ export const {
   setProjects,
   setAllTasks,
   setSelectedTask,
-  addTaskToProject,
-  updateTaskInProject,
-  deleteTaskFromProject,
+  // addTaskToProject,
+  // updateTaskInProject,
+  // deleteTaskFromProject,
 } = projectsSlice.actions;

@@ -7,7 +7,7 @@ import { AppContext } from "@/context/AppContext";
 import {
   selectProject,
   setSelectedProject,
-  updateTaskInProject,
+  updateProject,
 } from "@/redux/features/projects";
 import { TASK_ACTIONS } from "@/lib/constants";
 import { Breadcrumbs, Button, MatIcon, RenderWhen } from "@/components/shared";
@@ -50,7 +50,13 @@ export default function ProjectPage() {
     const taskId = result.draggableId;
     const task = tasks.find((task) => task.id === taskId);
     const updatedTask = { ...task, status: destinationColumn };
-    dispatch(updateTaskInProject(updatedTask));
+
+    const updatedProject = {
+      ...selectedProject,
+      tasks: tasks.map((task) => (task.id === taskId ? updatedTask : task)),
+    };
+
+    dispatch(updateProject(updatedProject));
   };
 
   useEffect(() => {

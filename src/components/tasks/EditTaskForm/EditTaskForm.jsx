@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { taskSchema } from "@/utils/validations/taskSchema";
-import { selectAllProjects, selectTask, updateTaskInProject } from "@/redux/features/projects";
+import { selectAllProjects, selectTask, updateProject, updateTaskInProject } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import {
   FormField,
@@ -65,6 +65,10 @@ export const EditTaskForm = () => {
       (option) => option.label === value.status
     );
 
+    const projectToUpdate = projects.find(
+      (project) => project.title === selectedTask.projectName
+    );
+
     const updatedTask = {
       id: selectedTask.id,
       title: value.title,
@@ -76,7 +80,16 @@ export const EditTaskForm = () => {
       projectName: value.projectName,
     };
 
-    dispatch(updateTaskInProject(updatedTask));
+    const updatedProject = {
+      ...projectToUpdate,
+      tasks: projectToUpdate.tasks.map((task) =>
+        task.id === selectedTask.id ? updatedTask : task
+      ),
+    }
+
+    dispatch(updateProject(updatedProject));
+
+    // dispatch(updateTaskInProject(updatedTask));
     handleTaskModal();
   };
 

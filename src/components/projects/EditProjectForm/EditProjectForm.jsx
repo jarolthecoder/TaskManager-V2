@@ -60,6 +60,10 @@ export const EditProjectForm = () => {
       (option) => option.label === value.status
     );
 
+    const tasksWithNewProjectName = selectedProject.tasks.map((task) => {
+      return { ...task, projectName: value.title };
+    });
+
     const updatedProject = {
       id: selectedProject.id,
       title: value.title,
@@ -69,7 +73,7 @@ export const EditProjectForm = () => {
       startDate: formatDate(new Date(), "PP"),
       dueDate: value.dueDate,
       priority: value.priority,
-      tasks: selectedProject.tasks,
+      tasks: tasksWithNewProjectName,
     };
 
     dispatch(updateProject(updatedProject));

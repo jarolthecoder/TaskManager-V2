@@ -27,6 +27,7 @@
   align-items: center;
   flex-direction: column;
   gap: 0.5rem;
+  min-height: 150px;
   height: 100%;
   width: 100%;
   grid-column-end: span 3;

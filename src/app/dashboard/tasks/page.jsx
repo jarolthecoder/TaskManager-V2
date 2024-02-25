@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllTasks, updateTaskInProject } from "@/redux/features/projects";
+import { selectAllProjects, selectAllTasks, updateProject } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import { TASK_ACTIONS } from "@/lib/constants";
 import { Breadcrumbs, Button, MatIcon, RenderWhen } from "@/components/shared";
@@ -15,6 +15,7 @@ const { ADD_TASK } = TASK_ACTIONS;
 export default function TasksPage() {
 
   const dispatch = useDispatch();
+  const projects = useSelector(selectAllProjects);
   const tasks = useSelector(selectAllTasks);
   const { setSelectedTaskAction, handleTaskModal } = useContext(AppContext);
 
@@ -49,7 +50,14 @@ export default function TasksPage() {
     const taskId = result.draggableId;
     const task = tasks.find((task) => task.id === taskId);
     const updatedTask = { ...task, status: destinationColumn };
-    dispatch(updateTaskInProject(updatedTask));
+    const projectToUpdate = projects.find((project) => project.title === task.projectName);
+
+    const updatedProject = {
+      ...projectToUpdate,
+      tasks: tasks.map((task) => (task.id === taskId ? updatedTask : task)),
+    };
+    dispatch(updateProject(updatedProject))
+    // dispatch(updateTaskInProject(updatedTask));
   };
 
   useEffect(() => {

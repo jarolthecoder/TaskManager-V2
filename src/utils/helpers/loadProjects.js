@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore/lite";
 export const loadProjects = async (uid = "") => {
   if (!uid) throw new Error("User uid does not exist");
 
-   const collectionRef = collection(FirebaseDB,`test-user-1/user-projects/projects`);
+   const collectionRef = collection(FirebaseDB,`${uid}/user-projects/projects`);
    const docs = await getDocs(collectionRef); // Firebase docs reference
 
    const projects = [];

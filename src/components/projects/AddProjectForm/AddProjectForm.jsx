@@ -71,6 +71,8 @@ export const AddProjectForm = () => {
       tasks: [],
     };
 
+    
+
     dispatch(addNewProject(newProject));
     handleProjectModal();
   };

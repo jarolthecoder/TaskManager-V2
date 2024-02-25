@@ -2,21 +2,31 @@
 
 import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTaskFromProject, selectTask } from "@/redux/features/projects";
+import { selectAllProjects, selectTask, updateProject } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
-import { deleteTask } from "@/redux/features/tasks";
 import { Button } from "@/components/shared";
 import styles from "./DeleteTaskPopup.module.css";
 
 export const DeleteTaskPopup = () => {
 
   const dispatch = useDispatch();
+  const projects = useSelector(selectAllProjects);
   const selectedTask = useSelector(selectTask);
   const { handleTaskModal } = useContext(AppContext);
   const { title } = selectedTask;
   
   const handleDeleteTask = () => {
-    dispatch(deleteTaskFromProject(selectedTask));
+
+    const selectedProject = projects.find((project) => project.title === selectedTask.projectName)
+
+    const updatedProject = {
+      ...selectedProject,
+      tasks: selectedProject.tasks.filter((task) => task.id !== selectedTask.id),
+    };
+
+    dispatch(updateProject(updatedProject));
+
+    // dispatch(deleteTaskFromProject(selectedTask));
     handleTaskModal();
   }
 

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { taskSchema } from "@/utils/validations/taskSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewProject, addTaskToProject, selectAllProjects, selectProject } from "@/redux/features/projects";
+import { addNewProject, addTaskToProject, selectAllProjects, selectProject, setSelectedProject, updateProject } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import { formatDate } from "@/utils/helpers/formatDate";
 import {
@@ -65,6 +65,7 @@ export const AddTaskForm = () => {
   };
 
   const onProjectNameChange = (value) => {
+    dispatch(setSelectedProject(projects.find((project) => project.title === value)));
     setValue("projectName", value);
   };
 
@@ -72,7 +73,7 @@ export const AddTaskForm = () => {
     const value = form.getValues();
 
     const newTask = {
-      // id: `TSK-${Math.floor(1000 + Math.random() * 9000)}`,
+      id: `TSK-${Math.floor(1000 + Math.random() * 9000)}`,
       title: value.title,
       description: value.description,
       status: value.status,
@@ -83,6 +84,12 @@ export const AddTaskForm = () => {
       projectName: value.projectName === "" ? "Unassigned" : value.projectName,
     };
 
+    const updatedProject = {
+      ...selectedProject,
+      tasks: [...selectedProject.tasks, newTask],
+    };
+
+    dispatch(updateProject(updatedProject));
     // dispatch(addNewProject(newTask));
     handleTaskModal();
   };
