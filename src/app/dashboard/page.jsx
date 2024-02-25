@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllTasks } from "@/redux/features/projects";
 import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
-import { Button, Card, MenuItem, Modal, Select } from "@/components/shared";
+import { Breadcrumbs, Button, Card, MenuItem, Modal, Select } from "@/components/shared";
 import { TasksTable } from "@/components/tasks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";
 
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const formattedToday = formatDate(new Date(), "PP");
+const todaysDateFull = formatDate(new Date(), "eeee, MMM d, yyyy");
 
 export default function Dashboard() {
   const tasks = useSelector(selectAllTasks);
@@ -52,6 +53,13 @@ export default function Dashboard() {
 
   return (
     <section className={styles.main}>
+      <div className={styles.header}>
+        <div>
+          <Breadcrumbs />
+          <h2>Hello Super User</h2>
+        </div>
+        <p className={styles.header_date}>{todaysDateFull}</p>
+      </div>
       <div className={styles.panels_container}>
         <StatsOfTheDay tasks={tasks} />
         <div className={styles.tables_container}>

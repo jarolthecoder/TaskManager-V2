@@ -1,3 +1,18 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.header h2,
+.header_date {
+  color: var(--clr-text-light);
+}
+
+.header_date {
+  font-size: var(--fs-medium);
+}
 
 .panels_container {
   height: 100%;
