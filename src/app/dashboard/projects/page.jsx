@@ -33,7 +33,6 @@ export default function Projects() {
           <Breadcrumbs />
           <h2>Projects</h2>
         </div>
-
         <div className={styles.header_options}>
           <Button
             fullWidth

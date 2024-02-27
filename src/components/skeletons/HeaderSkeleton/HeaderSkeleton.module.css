@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slug {
+  width: 130px;
+  height: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  width: 115px;
+  height: 24px;
+}
+
+.button {
+  width: 150px;
+  height: 41px;
+}
+
+.slug,
+.title,
+.button {
+  border-radius: var(--br-small);
+  background: var(--clr-bg-card-light);
+}

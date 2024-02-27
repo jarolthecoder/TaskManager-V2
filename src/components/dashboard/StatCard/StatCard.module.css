@@ -3,7 +3,7 @@
 }
 
 .stat_title {
-  font-size: var(--fs-medium);
+  font-size: var(--fs-body);
   color: var(--clr-text-primary);
 }
 

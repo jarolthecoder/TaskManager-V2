@@ -8,7 +8,7 @@ import styles from "./AddTaskButton.module.css";
 
 const { ADD_TASK } = TASK_ACTIONS;
 
-export const AddTaskButton = ({ buttonType = 'default' }) => {
+export const AddTaskButton = ({ buttonType = 'default', size = 'small' }) => {
   const {setSelectedTaskAction, handleTaskModal} = useContext(AppContext);
 
   const handleAddTask = () => {
@@ -20,7 +20,7 @@ export const AddTaskButton = ({ buttonType = 'default' }) => {
     <>
       {buttonType === "icon" ? (
         <div className={styles.icon_btn}>
-          <IconButton variant="filled" size="small" onClick={handleAddTask}>
+          <IconButton variant="filled" size={size} onClick={handleAddTask}>
             <MatIcon iconName="add" />
           </IconButton>
           {/* <p>Add Task</p> */}
@@ -28,8 +28,9 @@ export const AddTaskButton = ({ buttonType = 'default' }) => {
       ) : (
         <Button
           fullWidth
-          label="New Task"
+          label="Add Task"
           color="accent"
+          size={size}
           startIcon={<MatIcon iconName="add" />}
           onClick={handleAddTask}
         />

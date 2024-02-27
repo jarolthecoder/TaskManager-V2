@@ -18,17 +18,17 @@ export const StatsOfTheDay = ({tasks}) => {
   const tasksStatsCard = [
     { title: "Due Today", icon: "today", stat: dueTodayItems },
     {
-      title: "Pending Tasks",
+      title: "Tasks To Do",
       icon: "pending_actions",
       stat: pendingItems,
     },
     {
-      title: "In Progress Tasks",
+      title: "Tasks Doing",
       icon: "moving",
       stat: inProgressTasks,
     },
     {
-      title: "Completed Tasks",
+      title: "Tasks Completed",
       icon: "task_alt",
       stat: completedItems,
     },

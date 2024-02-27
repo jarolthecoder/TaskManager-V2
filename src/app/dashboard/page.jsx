@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectAllTasks } from "@/redux/features/projects";
+import { selectAllProjects } from "@/redux/features/projects";
 import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
-import { Breadcrumbs, Button, Card, MenuItem, Modal, Select } from "@/components/shared";
+import { Breadcrumbs, Card, MenuItem, Select } from "@/components/shared";
 import { TasksTable } from "@/components/tasks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";
@@ -14,7 +14,8 @@ const formattedToday = formatDate(new Date(), "PP");
 const todaysDateFull = formatDate(new Date(), "eeee, MMM d, yyyy");
 
 export default function Dashboard() {
-  const tasks = useSelector(selectAllTasks);
+  const projects = useSelector(selectAllProjects);
+  const tasks = projects.map((project) => project.tasks).flat();
 
   const [filterValue, setFilterValue] = useState("All Tasks");
   const [filteredTasks, setFilteredTasks] = useState(tasks);
@@ -46,10 +47,6 @@ export default function Dashboard() {
         break;
     }
   };
-
-  useEffect(() => {
-    setFilteredTasks(tasks);
-  }, [tasks]);
 
   return (
     <section className={styles.main}>

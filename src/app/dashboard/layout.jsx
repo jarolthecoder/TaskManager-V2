@@ -8,18 +8,45 @@ import { useEffect } from "react";
 import styles from "./dashboard.module.css";
 import { PageLoader } from "@/components/shared";
 import { ProjectActionsModal } from "@/components/projects";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { FirebaseAuth } from "@/firebase/config";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
   const status = useCheckAuth();
 
-  useEffect(() => {
-    if (status === "non-authenticated") router.push("/login");
-  }, [status]);
+   const [user, loading] = useAuthState(FirebaseAuth);
 
-  if (status !== "authenticated") {
+   if(loading) {
+    return <PageLoader />;
+   }
+
+  if (!user) {
+    router.push("/login");
     return <PageLoader />;
   }
+
+    // useEffect(() => {
+    //   if (status === "non-authenticated") router.push("/login");
+    // }, [status]);
+
+    // if (status !== "authenticated") {
+    //   return <PageLoader />;
+    // }
+   
+
+  // useEffect(() => {
+  //   if (status === "non-authenticated") router.push("/login");
+  // }, [status]);
+
+  // if (status !== "non-authenticated") {
+  //   router.push("/login");
+  //   return <PageLoader />;
+  // }
+
+  // if (status !== "authenticated") {
+  //   return <PageLoader />;
+  // }
 
   return (
     <AppProvider>

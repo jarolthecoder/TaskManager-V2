@@ -25,8 +25,6 @@ export const DeleteTaskPopup = () => {
     };
 
     dispatch(updateProject(updatedProject));
-
-    // dispatch(deleteTaskFromProject(selectedTask));
     handleTaskModal();
   }
 

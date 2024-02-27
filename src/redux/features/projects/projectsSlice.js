@@ -5,7 +5,6 @@ const initialState = {
   selectedProject: null,
   selectedTask: null,
   projects: [],
-  tasks: [],
   isprojectsaved: false,
   isSavingProject: false,
   message: "",
@@ -17,11 +16,17 @@ const projectsSlice = createSlice({
   reducers: {
     setProjects: (state, action) => {
       state.projects = action.payload;
-
-      console.log({ projects: state.projects })
+    },
+    setProjectById: (state, action) => {
+      state.selectedProject = action.payload;
     },
     setSelectedProject: (state, action) => {
       state.selectedProject = action.payload;
+    },
+    updateProjects: (state, action) => {
+      state.projects = state.projects.map((project) =>
+        project.id === action.payload.id ? action.payload : project
+      ); 
     },
     addProject: (state, action) => {
       state.projects.unshift(action.payload);
@@ -32,6 +37,11 @@ const projectsSlice = createSlice({
         (project) => project.id === id
       );
       state.projects[projectIndex] = action.payload;
+
+      // Update selectedProject if it's the same project
+      if(state.selectedProject && state.selectedProject.id === id) {
+        state.selectedProject = action.payload;
+      }
     },
     deleteFromProjectsList: (state, action) => {
       state.projects = state.projects.filter(
@@ -39,47 +49,12 @@ const projectsSlice = createSlice({
       );
     },
     // Tasks actions ======================================================================
-    setAllTasks: (state) => {
-      state.tasks = state.projects.reduce((acc, project) => {
-        return [...acc, ...project.tasks];
-      }, []);
+    setAllTasks: (state, action) => {
+      state.tasks = action.payload;
     },
     setSelectedTask: (state, action) => {
       state.selectedTask = action.payload;
     },
-    // TO REVIEW!!! =========================================================================
-    // addTaskToProject: (state, action) => {
-    //   // Adds based on the projectName
-    //   const { projectName } = action.payload;
-    //   const projectIndex = state.projects.findIndex(
-    //     (project) => project.title === projectName
-    //   );
-    //   state.projects[projectIndex].tasks.push(action.payload);
-    // },
-    // updateTaskInProject: (state, action) => {
-    //   const { projectName } = action.payload;
-
-    //   const projectIndex = state.projects.findIndex(
-    //     (project) => project.title === projectName
-    //   );
-    //   const taskIndex = state.projects[projectIndex].tasks.findIndex(
-    //     (task) => task.id === action.payload.id
-    //   );
-
-    //   state.projects[projectIndex].tasks[taskIndex] = action.payload;
-    // },
-    // deleteTaskFromProject: (state, action) => {
-    //   const { id, projectName } = action.payload;
-      
-    //   const projectIndex = state.projects.findIndex(
-    //     (project) => project.title === projectName
-    //   );
-    //   state.projects[projectIndex].tasks = state.projects[projectIndex].tasks.filter(
-    //     (task) => task.id !== id
-    //   );
-      
-
-    // },
   },
 });
 
@@ -87,11 +62,6 @@ export const projectsReducer = projectsSlice.reducer;
 
 // Selectors
 export const selectAllProjects = (state) => state.projects.projects;
-export const selectAllTasks = (state) => {
-  return state.projects.projects.reduce((acc, project) => {
-    return [...acc, ...project.tasks];
-  }, []);
-};
 export const selectProject = (state) => state.projects.selectedProject;
 export const selectTask = (state) => state.projects.selectedTask;
 
@@ -102,9 +72,7 @@ export const {
   updateSelectedProject,
   deleteFromProjectsList,
   setProjects,
+  setProjectById,
   setAllTasks,
   setSelectedTask,
-  // addTaskToProject,
-  // updateTaskInProject,
-  // deleteTaskFromProject,
 } = projectsSlice.actions;

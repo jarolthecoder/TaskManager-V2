@@ -2,14 +2,29 @@
 
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
+import { useAuthState } from "react-firebase-hooks/auth";
 import styles from "./auth.module.css";
+import { FirebaseAuth } from "@/firebase/config";
+import { PageLoader } from "@/components/shared";
 
 export default function AuthLayout({ children }) {
 
   const router = useRouter();
   const status = useCheckAuth();
+  const [user, loading] = useAuthState(FirebaseAuth);
 
-  if (status === "authenticated") router.push("/dashboard");
+   if (loading) {
+     return <PageLoader />;
+   }
+
+
+  if(user) {
+    router.push("/dashboard");
+    return <PageLoader />;
+  }
+
+  //  if (status === "authenticated") router.push("/dashboard");
+
 
   return (
     <main className={styles.main}>

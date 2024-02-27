@@ -43,7 +43,9 @@ export const AddTaskForm = () => {
   const dispatch = useDispatch();
   const selectedProject = useSelector(selectProject);
   const projects = useSelector(selectAllProjects);
-  const projectsNames = projects.map((project) => project.title);
+  const projectsNames = projects
+    .filter((project) => project.title !== "Unassigned")
+    .map((project) => project.title);
 
   const form = useForm({
     resolver: yupResolver(taskSchema),
@@ -105,14 +107,13 @@ export const AddTaskForm = () => {
         tasks: [newTask],
       };
       dispatch(addNewProject(unassignedProjectFolder));
-    }
-    else {
+    } else {
       const updatedProject = {
-      ...projectToUpdate,
-      tasks: [...projectToUpdate.tasks, newTask],
-    };
-    dispatch(updateProject(updatedProject));
-  }
+        ...projectToUpdate,
+        tasks: [...projectToUpdate.tasks, newTask],
+      };
+      dispatch(updateProject(updatedProject));
+    }
     handleTaskModal();
   };
 
@@ -192,12 +193,6 @@ export const AddTaskForm = () => {
           register={register}
           value={form.watch("projectName")}
         >
-          <MenuItem
-            value="Unassigned"
-            onClick={() => onProjectNameChange("Unassigned")}
-          >
-            Unassigned
-          </MenuItem>
           {projectsNames.map((option) => (
             <MenuItem
               key={option}
@@ -207,6 +202,12 @@ export const AddTaskForm = () => {
               {option}
             </MenuItem>
           ))}
+            <MenuItem
+              value="Unassigned"
+              onClick={() => onProjectNameChange("Unassigned")}
+            >
+              Unassigned
+            </MenuItem>
         </InputSelect>
       </div>
       <Button type="submit" label="Create Task" />

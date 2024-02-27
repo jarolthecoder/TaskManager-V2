@@ -8,7 +8,9 @@ import { taskSchema } from "@/utils/validations/taskSchema";
 import {
   selectAllProjects,
   selectTask,
+  setSelectedProject,
   updateProject,
+  updateProjects,
 } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import {
@@ -39,7 +41,9 @@ export const EditTaskForm = () => {
   const dispatch = useDispatch();
   const selectedTask = useSelector(selectTask);
   const projects = useSelector(selectAllProjects);
-  const projectsNames = projects.map((project) => project.title);
+  const projectsNames = projects
+    .filter((project) => project.title !== "Unassigned")
+    .map((project) => project.title);
 
   const form = useForm({
     resolver: yupResolver(taskSchema),
@@ -64,32 +68,39 @@ export const EditTaskForm = () => {
   // Update the task in the project based on the new project value
   const updateProjectsTasks = (newProjectValue, updatedTask) => {
     return projects.map((project) => {
-      // If the project title is different from the new project value then remove the task from the project
+
+      // Removes task from the current project and adds it to the selected project from the dropdown
       if (project.title !== newProjectValue) {
-        const updatedUnassignedProject = {
+        const updatedProject = {
           ...project,
           tasks: project.tasks.filter((task) => task.id !== updatedTask.id),
         };
+        dispatch(updateProject(updatedProject));
 
-        dispatch(updateProject(updatedUnassignedProject));
-
-        // If the project title is the same as the new project value and
-        // the project title is different from the selected task project name then add the task to the project
-      } else if (project.title === newProjectValue && project.title !== selectedTask.projectName) {
+      // Adds the task to the selected project from dropdown and removes it from the current project
+      } else if (
+        project.title === newProjectValue &&
+        project.title !== selectedTask.projectName
+      ) {
         const updatedProject = {
           ...project,
           tasks: [...project.tasks, updatedTask],
-        };
-        dispatch(updateProject(updatedProject));
-      // If the project title is the same as the new project value and 
-      // the project title is the same as the selected task project name then update the task in the project
-      } else if (project.title === newProjectValue && project.title === selectedTask.projectName) {
+        };     
+
+          dispatch(updateProject(updatedProject));
+
+        // If the selected project name from the dropdown is the same as the current project just update the task
+      } else if (
+        project.title === newProjectValue &&
+        project.title === selectedTask.projectName
+      ) {
         const updatedProject = {
           ...project,
           tasks: project.tasks.map((task) =>
             task.id === updatedTask.id ? updatedTask : task
-            ),
+          ),
         };
+     
         dispatch(updateProject(updatedProject));
       }
 
@@ -204,6 +215,12 @@ export const EditTaskForm = () => {
               {option}
             </MenuItem>
           ))}
+          <MenuItem
+            value="Unassigned"
+            onClick={() => onProjectNameChange("Unassigned")}
+          >
+            Unassigned
+          </MenuItem>
         </InputSelect>
       </div>
       <Button type="submit" label="Update Task" />

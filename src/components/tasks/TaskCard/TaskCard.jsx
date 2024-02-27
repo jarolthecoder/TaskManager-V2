@@ -37,8 +37,7 @@ export const TaskCard = ({ task }) => {
 
   const { title, description, priority, projectName, dueDate } = task;
   const isDueToday = task.dueDate === formattedToday;
-  const dueDateShort = task.dueDate;
-  // const dueDateShort = formatDate(new Date(task.dueDate), "LLL d");
+  const dueDateShort = formatDate(new Date(task.dueDate), "LLL d");
 
   const handleSelectEdit = () => {
     dispatch(setSelectedTask(task));
@@ -55,7 +54,7 @@ export const TaskCard = ({ task }) => {
   };
 
   return (
-    <Card className={taskClasses}>
+    <Card className={taskClasses} color="dark">
       <div className={styles.task_header}>
         <div className={styles.task_title}>
           <h4>{title}</h4>

@@ -17,3 +17,23 @@ export const loadProjects = async (uid = "") => {
 
    return projects;
 }
+
+export const loadProjectById = async (uid = "", id = "") => {
+  if (!uid) throw new Error("User uid does not exist");
+
+  const collectionRef = collection(
+    FirebaseDB,
+    `${uid}/user-projects/projects/`
+  );
+  const docs = await getDocs(collectionRef);
+
+  let project = {};
+
+  docs.forEach((doc) => {
+    if (doc.id === id) {
+      project = { id: doc.id, ...doc.data() };
+    }
+  });
+
+  return project;
+};

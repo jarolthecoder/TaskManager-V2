@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { AppContext } from "@/context/AppContext";
 import { usePopper } from "@/hooks";
 import {
-  Badge,
   Card,
   IconButton,
   MatIcon,
@@ -21,6 +20,7 @@ import { PROJECT_ACTIONS } from "@/lib/constants";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./ProjectCard.module.css";
+import { set } from "date-fns";
 
 const { EDIT_PROJECT, DELETE_PROJECT } = PROJECT_ACTIONS;
 
@@ -43,7 +43,7 @@ export const ProjectCard = ({ project }) => {
   const numOfCompletedTasks = project.tasks.filter((task) => task.status === "completed").length;
   const progressPercentage = (numOfCompletedTasks / numOfTasks) * 100 || 0;
 
-  const handleSelectProject = () => {
+  const handleViewProject = () => {
     dispatch(setSelectedProject(project));
     router.push(`/dashboard/projects/${project.id}`);
   };
@@ -69,7 +69,7 @@ export const ProjectCard = ({ project }) => {
           <small className={styles.task_stat}>
             Due {isDueToday ? "Today" : dueDateShort}
           </small>
-          <h4 onClick={handleSelectProject}>{project.title}</h4>
+          <h4 onClick={handleViewProject}>{project.title}</h4>
         </div>
         <div ref={refEl}>
           <IconButton
@@ -82,7 +82,7 @@ export const ProjectCard = ({ project }) => {
         </div>
         <Popper ref={popperRef} open={isPopperOpen}>
           <Menu>
-            <MenuItem icon="visibility" onClick={handleSelectProject}>
+            <MenuItem icon="visibility" onClick={handleViewProject}>
               <p>View</p>
             </MenuItem>
             <MenuItem icon="edit" onClick={handleSelectEdit}>
@@ -112,14 +112,7 @@ export const ProjectCard = ({ project }) => {
           <ProgressBar progress={progressPercentage} />
         </div>
       </div>
-      {/* <hr className={styles.divider} /> */}
       <div className={styles.project_footer}>
-        {/* <Badge
-          color="error"
-          variant="pill"
-        > 
-          High
-        </Badge> */}
       </div>
     </Card>
   );

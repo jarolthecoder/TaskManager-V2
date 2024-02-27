@@ -18,6 +18,8 @@ import { loadTasks } from "@/utils/helpers";
 export const getTasks = () => {
   return async (dispatch, getState) => {
     const { uid } = getState().auth;
+    const { projectId } = getState().projects;
+    
     if (!uid) throw new Error("User uid does not exist");
 
     const tasks = await loadTasks(uid);
