@@ -4,16 +4,16 @@
   align-items: center;
   padding: .25rem .25rem .25rem .5rem;
   border-radius: var(--br-small);
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
   font-size: inherit;
   font-family: inherit;
   transition: color var(--transition-default), background var(--transition-default);
 }
 
 .select_btn span {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .select_btn:hover {
-  background: var(--clr-bg-card-light);
+  background: rgba(95, 116, 141, 0.137);
 }

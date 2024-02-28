@@ -20,7 +20,7 @@ export const AddTaskButton = ({ buttonType = 'default', size = 'small' }) => {
     <>
       {buttonType === "icon" ? (
         <div className={styles.icon_btn}>
-          <IconButton variant="filled" size={size} onClick={handleAddTask}>
+          <IconButton variant="outlined" size={size} onClick={handleAddTask}>
             <MatIcon iconName="add" />
           </IconButton>
           {/* <p>Add Task</p> */}

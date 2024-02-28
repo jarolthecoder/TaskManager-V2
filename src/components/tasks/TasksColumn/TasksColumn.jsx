@@ -105,7 +105,7 @@ export const TasksColumn = ({ listId, listTitle, tasks, colSpan = 4 }) => {
       </div>
       <div className={styles.list_body}>
         <DroppableTaskList listId={listId} sortedTasks={sortedTasks} />
-        <AddTaskCardButton tasksLength={numOfTasks} />
+        <AddTaskCardButton />
       </div>
     </div>
   );

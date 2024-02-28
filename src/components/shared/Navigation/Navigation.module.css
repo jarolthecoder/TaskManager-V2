@@ -24,18 +24,19 @@
 
 .navlink a,
 .navlink span {
+  color: #b0b8c4;
   transition: color var(--transition-default);
 }
 
 .navlink.active {
-  background: rgba(37, 155, 239, 0.059);
+  background: rgba(0, 58, 117, 0.4);
   border-color: var(--clr-primary-main);
 }
 
 .navlink:hover,
 .navlink:hover a,
 .navlink:hover span {
-  color: var(--clr-text-light);
+  color: var(--clr-primary-light);
   text-decoration: none;
 }
 

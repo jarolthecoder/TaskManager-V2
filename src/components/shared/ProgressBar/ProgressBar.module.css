@@ -6,14 +6,14 @@
 .container {
   height: 7px;
   width: 100%;
-  background: var(--clr-bg-card-light);
+  background: var(--clr-primary-opacity);
   border-radius: var(--br-small);
 }
 
 .filler {
   height: 100%;
   border-radius: inherit;
-  background: var(--clr-primary-main);
+  background: var(--clr-primary-light);
 }
 
 .label {

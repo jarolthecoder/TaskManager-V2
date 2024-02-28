@@ -13,8 +13,6 @@ export const loadProjects = async (uid = "") => {
      projects.push({ id: doc.id, ...doc.data() }); // doc.data() returns the document data as an object
    });
 
-   console.log({ projects });
-
    return projects;
 }
 

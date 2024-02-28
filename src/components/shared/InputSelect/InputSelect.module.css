@@ -14,7 +14,7 @@
   display: block;
   margin-bottom: .5rem;
   font-weight: 700;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .select_input_container {
@@ -22,9 +22,9 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  background: var(--clr-bg-card-dark);
+  background: var(--clr-bg-default);
   cursor: pointer;
-  border: 1px solid var(--clr-trasparent);
+  border: 1px solid var(--clr-border-opacity);
   border-radius: var(--br-small);
 }
 
@@ -39,7 +39,7 @@
   padding: .75rem;
   border: 0;
   color: var(--clr-text-secondary);
-  background: var(--clr-bg-card-dark);
+ background: var(--clr-bg-default);
   font-size: inherit;
   cursor: pointer;
   text-transform: capitalize;
@@ -51,7 +51,7 @@
 }
 
 .select_icon_btn {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .select_group .error {

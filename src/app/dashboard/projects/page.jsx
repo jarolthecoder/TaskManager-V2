@@ -49,7 +49,7 @@ export default function Projects() {
           <ProjectCard key={project.id} project={project} />
         ))}
         <div className={styles.create_project_card}>
-          <IconButton variant="filled" size="small" onClick={handleAddProject}>
+          <IconButton variant="outlined" size="small" onClick={handleAddProject}>
             <MatIcon iconName="add" />
           </IconButton>
           <p>Create project</p>

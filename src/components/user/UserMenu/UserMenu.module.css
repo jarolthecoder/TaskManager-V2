@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   gap: .5rem;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .main {
@@ -13,7 +13,7 @@
 }
 
 .user_name span {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
   cursor: pointer;
 }
 

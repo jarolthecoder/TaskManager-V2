@@ -98,8 +98,8 @@
   /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  */
 }
 
-.task_stat_row {
-  margin-top: 0.5rem;
+.task_footer {
+  margin-top: 1rem;
 }
 
 .task_footer p {

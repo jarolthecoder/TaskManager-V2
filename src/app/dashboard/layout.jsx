@@ -1,6 +1,6 @@
 "use client";
 import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
-import { AppProvider } from "@/context/AppContext";
+import { AppProvider, ThemeProvider } from "@/context";
 import { TaskActionsModal } from "@/components/tasks/";
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
@@ -50,14 +50,16 @@ export default function DashboardLayout({ children }) {
 
   return (
     <AppProvider>
-      <main className={styles.main}>
-        <SideBar />
-        <TopBar />
-        <DisplayPanel>{children}</DisplayPanel>
-      </main>
-      {/* Modals */}
-      <TaskActionsModal />
-      <ProjectActionsModal />
+      <ThemeProvider>
+        <main className={styles.main}>
+          <SideBar />
+          <TopBar />
+          <DisplayPanel>{children}</DisplayPanel>
+        </main>
+        {/* Modals */}
+        <TaskActionsModal />
+        <ProjectActionsModal />
+      </ThemeProvider>
     </AppProvider>
   );
 }

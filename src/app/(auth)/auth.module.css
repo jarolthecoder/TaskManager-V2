@@ -14,7 +14,7 @@
 
 .col_right h2,
 .input_group input {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .col_left,
@@ -49,7 +49,7 @@
 .title h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 /* Auth Form */
@@ -66,7 +66,7 @@
 
 .or_signin_text {
   position: relative;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
   width: 100%;
   text-align: center;
 }

@@ -1,7 +1,7 @@
 .header {
   padding-bottom: 1rem;
   width: 100%;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .header,
@@ -20,7 +20,7 @@
 }
 
 .create_project_card {
-  border: 2px dashed var(--clr-bg-card-main);
+  border: 1px dashed var(--clr-border-dark);
   border-radius: var(--br-small);
   display: flex;
   justify-content: center;

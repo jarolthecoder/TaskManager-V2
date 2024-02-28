@@ -4,7 +4,7 @@
 
 .stat_title {
   font-size: var(--fs-body);
-  color: var(--clr-text-primary);
+  color: var(--clr-text-secondary);
 }
 
 .stat_content {
@@ -17,16 +17,16 @@
 .stat_number {
   font-size: 3rem;
   font-weight: 700;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .stat_icon_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 55px;
-    height: 55px;
-    border-radius: var(--br-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: var(--br-full);
 }
 
 .stat_icon {

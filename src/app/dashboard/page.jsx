@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
 import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
@@ -48,6 +48,11 @@ export default function Dashboard() {
     }
   };
 
+  useEffect(() => {
+    setFilteredTasks(tasks);
+  }, [projects]);
+
+
   return (
     <section className={styles.main}>
       <div className={styles.header}>
@@ -60,7 +65,7 @@ export default function Dashboard() {
       <div className={styles.panels_container}>
         <StatsOfTheDay tasks={tasks} />
         <div className={styles.tables_container}>
-          <div className={styles.table_card}>
+          <Card className={styles.table_card} color="dark">
             <div className={styles.table_card_header}>
               <h2>Tasks</h2>
               <Select value={filterValue}>
@@ -75,12 +80,12 @@ export default function Dashboard() {
               </Select>
             </div>
             <TasksTable tasks={filteredTasks} />
-          </div>
-          <div className={styles.table_card}>
+          </Card>
+          <Card className={styles.table_card} color="dark">
             <div className={styles.table_card_header}>
               <h3>NotePad</h3>
             </div>
-          </div>
+          </Card>
         </div>
         <div className={styles.bottom_cards_container}>
           <Card className={styles.calendar_card} color="dark">

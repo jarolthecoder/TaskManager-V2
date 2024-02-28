@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(9, 13, 21, 0.434);
   backdrop-filter: blur(1px);
   z-index: 100000;
 }
@@ -15,7 +15,7 @@
 .modal_content {
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.253);
+  box-shadow: rgba(95, 116, 141, 0.03) 0px 4px 2px -2px, rgba(95, 116, 141, 0.04) 0px 2px 2px 0px, rgba(95, 116, 141, 0.08) 0px 1px 3px 0px;
   border-radius: var(--br-small);
 }
 
@@ -23,5 +23,5 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }

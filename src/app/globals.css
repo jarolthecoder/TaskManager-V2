@@ -52,7 +52,7 @@
 
 body {
   background: var(--clr-bg-default);
-  color: var(--clr-text-main);
+  color: var(--clr-text-secondary);
   font-size: var(--fs-body);
 }
 
@@ -66,7 +66,7 @@ textarea,
 span,
 a {
   font-size: var(--fs-body);
-  color: var(--clr-text-main);
+  color: var(--clr-text-secondary);
 }
 
 input:focus {
@@ -75,14 +75,14 @@ input:focus {
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--clr-text-dark);
+  color: var(--clr-text-opacity);
 }
 
 button {
   border: none;
   background: none;
   cursor: pointer;
-  color: var(--clr-text-main);
+  color: var(--clr-text-secondary);
   /* text-transform: capitalize; */
 }
 
@@ -100,7 +100,7 @@ h5,
 h6 {
   font-weight: var(--fw-medium);
   /* text-transform: capitalize; */
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 h1 {
@@ -127,7 +127,7 @@ h5 {
 p {
   font-size: var(--fs-body);
   line-height: 1.5rem;
-  color: var(--clr-text-main);
+  color: var(--clr-text-secondary);
 }
 
 a {

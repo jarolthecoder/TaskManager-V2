@@ -8,6 +8,6 @@
 
 .today {
   background-color: var(--clr-primary-main);
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
   border: 1px solid var(--clr-primary-main);
 }

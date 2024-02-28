@@ -5,7 +5,7 @@
 
 .input_group label,
 .input_group span {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
   transition: color var(--transition-default);
 }
 
@@ -17,7 +17,7 @@
 
 .input_group label {
   display: block;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .form_input {
@@ -42,7 +42,7 @@
 }
 
 .form_input span {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 /* Field error state */

@@ -36,14 +36,19 @@
 }
 
 .table_head {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
   background: var(--clr-bg-card-main);
   border-top: 1px solid var(--clr-border-light);
   border-bottom: 1px solid var(--clr-border-light);
 }
 
-.table_head th {
-  font-weight: var(--fw-regular);
+.table_head th{
+  color: var(--clr-text-secondary);
+  font-size: var(--fs-body);
+}
+
+.table_body td {
+  color: var(--clr-text-primary)
 }
 
 .table_body td {

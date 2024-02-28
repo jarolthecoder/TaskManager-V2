@@ -14,7 +14,7 @@ export const Modal = ({
     <RenderWhen condition={open}>
       <div className={styles.main}>
         <div className={styles.modal_content}>
-          <Card>
+          <Card color="dark">
             <RenderWhen condition={showHeader}>
               <div className={styles.modal_header}>
                 <h2>{title}</h2>

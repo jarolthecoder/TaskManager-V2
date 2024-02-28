@@ -12,7 +12,7 @@
   transition: background var(--transition-default),
     border-color var(--transition-default),
     color var(--transition-default);
-  color: var(--clr-text-light);
+  color: var(--clr-btn-text-primary);
   box-shadow: none;
   padding: 0px;
   display: flex;
@@ -24,12 +24,11 @@
 }
 
 .icon_btn span {
-  color: var(--clr-text-main);
+  color: var(--clr-text-secondary);
 }
 
 .icon_btn:hover {
-  background: var(--clr-bg-card-light);
-  /* background: rgb(from var(--clr-bg-card-light) r g b / 50%); */
+  background: rgba(95, 116, 141, 0.137);
 }
 
 /* Variants */
@@ -41,7 +40,16 @@
 }
 
 .icon_btn.outlined {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--clr-border-dark);
+}
+
+.icon_btn.outlined:hover {
+  border-color: var(--clr-primary-main);
+  background: var(--clr-primary-opacity);
+}
+
+.icon_btn.icon_btn.outlined:hover span {
+  color: var(--clr-primary-main);
 }
 
 .icon_btn.small {
@@ -73,11 +81,12 @@
 }
 
 .icon_btn.accent:hover {
-  background: var(--clr-primary-dark);
+  background: var(--clr-primary-opacity);
 }
 
 .icon_btn.accent.outlined {
-  border-color: var(--clr-primary-main);
+  background: var(--clr-primary-opacity);
+  border-color: var(--clr-primary-dark);
 }
 
 .icon_btn.accent.outlined:hover {

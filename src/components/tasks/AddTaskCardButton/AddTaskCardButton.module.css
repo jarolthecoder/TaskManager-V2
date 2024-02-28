@@ -1,5 +1,5 @@
 .add_task_card {
-  border: 2px dashed var(--clr-bg-card-main);
+  border: 1px dashed var(--clr-border-dark);
   border-radius: var(--br-small);
   display: flex;
   justify-content: center;

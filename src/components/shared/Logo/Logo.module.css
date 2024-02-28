@@ -5,7 +5,7 @@
   gap: 5px;
   width: 100%;
   padding: 0 1rem 1rem;
-  color: var(--clr-text-light);
+  color: #fcfcfc;
 }
 
 .main.flex_center {
@@ -14,11 +14,11 @@
 }
 
 .main h1 {
-  color: var(--clr-text-light);
+  color: #fcfcfc;
 }
 
 .main p {
-  color: var(--clr-text-light);
+  color: #fcfcfc;
   font-weight: var(--fw-medium);
   font-size: 1.25rem;
   padding-bottom: .4rem;

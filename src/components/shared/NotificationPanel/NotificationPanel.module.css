@@ -46,7 +46,7 @@
 }
 
 .notification_description {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .notification_time {

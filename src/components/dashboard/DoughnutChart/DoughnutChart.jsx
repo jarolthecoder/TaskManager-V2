@@ -1,7 +1,9 @@
 "use client"
 
+import { ThemeContext } from "@/context";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { formatDate } from "date-fns";
+import { useContext } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
@@ -10,6 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export const DoughnutChart = () => {
 
   const { tasksList } = useSelector((state) => state.tasks);
+  const {theme} = useContext(ThemeContext);
    const formattedToday = formatDate(new Date(), "PP");
 
   const completedTasksNum = tasksList.filter(
@@ -32,7 +35,7 @@ export const DoughnutChart = () => {
         data: [completedTasksNum, pendingTasksNum, dueTasksNum],
         backgroundColor: ["#2499EF", "rgb(255, 151, 119)", "rgb(255, 107, 147"],
         borderColor: [
-          "#151d2c", // Set to trasparent
+          `${theme === "dark" ? "#151d2c" : "#ffffff"} `,
         ],
         borderWidth: 5, // Donut border
         rotation: -190, // Rotates donut direction

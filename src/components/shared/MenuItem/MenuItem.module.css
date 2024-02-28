@@ -1,6 +1,6 @@
 .main {
   padding: .5rem 0;
-  transition: background var(--transition-default);
+  transition: color var(--transition-default), background var(--transition-default);
   cursor: pointer;
 }
 
@@ -13,8 +13,14 @@
 }
 
 .main:hover {
-  background: var(--clr-border-light)
+  background: var(--clr-primary-opacity)
 }
+
+.main:hover * {
+  color: var(--clr-primary-light);
+  transition: color var(--transition-default);
+}
+
 
 .main a:hover {
   text-decoration: none;

@@ -37,7 +37,7 @@ export const Navigation = ({ sidebarOpen }) => {
             </RenderWhen>
           </li>
         ))}
-        <div className={styles.divider}></div>
+        {/* <div className={styles.divider}></div> */}
         <li
           className={`${styles.navlink} ${
             currentRoute === "/login" ? styles.active : null

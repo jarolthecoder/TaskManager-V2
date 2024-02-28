@@ -33,5 +33,5 @@
 }
 
 .sidebar_toggle span:hover {
-  color: var(--clr-text-light) !important;
+  color: var(--clr-text-primary) !important;
 }

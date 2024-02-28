@@ -1,7 +1,7 @@
 .title {
   font-size: 2rem;
   line-height: 1.5;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .lead {

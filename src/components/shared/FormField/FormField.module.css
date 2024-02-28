@@ -12,13 +12,13 @@
   display: block;
   margin-bottom: .5rem;
   font-weight: 700;
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 .form_input {
-  border: 1px solid var(--clr-trasparent);
+  border: 1px solid var(--clr-border-opacity);
   border-radius: var(--br-small);
-  background: var(--clr-bg-card-dark);
+  background: var(--clr-bg-default);
 }
 
 .form_input:focus-within {
@@ -44,7 +44,7 @@
 }
 
 .form_input span {
-  color: var(--clr-text-light);
+  color: var(--clr-text-primary);
 }
 
 /* Field error state */
