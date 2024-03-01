@@ -1,13 +1,15 @@
 .badge {
   padding: 0 12px;
   border-radius: var(--br-small);
-  text-transform: capitalize;
-  font-size: var(--fs-small);
-  /* font-weight: var(--fw-medium); */
   min-width: 60px;
-  max-width: 100px;
+  max-width: 200px;
   text-align: center;
   display: inline-block;
+  text-transform: capitalize;
+  font-size: var(--fs-small);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Pill variant */
@@ -16,6 +18,11 @@
 }
 
 /* Bagde Colors */
+.badge.primary {
+  background-color: var(--clr-primary-opacity);
+  color: var(--clr-primary-light);
+}
+
 .badge.pending {
   background-color: var(--clr-task-pending-bg);
   color: var(--clr-task-pending-text);
@@ -44,4 +51,9 @@
 .badge.success {
   background: var(--clr-success-opacity);
   color: var(--clr-success-light);
+}
+
+.badge.disabled {
+  background: var(--clr-disabled-opacity);
+  color: var(--clr-disabled-main);
 }

@@ -1,11 +1,10 @@
-.task_card {
-  padding: 1.15rem 0;
+.task_header,
+.task_footer {
+  padding: 0 1.35rem;
 }
 
-.task_header,
-.task_body,
-.task_footer {
-  padding: 0 1.5rem;
+.task_body {
+  padding: 1rem 1.35rem;
 }
 
 .task_header,
@@ -25,7 +24,7 @@
 
 .task_options_btn {
   text-align: left;
-  margin: -.5rem -.5rem 0 0;
+  margin: -0.5rem -0.5rem 0 0;
 }
 
 .task_stat {
@@ -33,26 +32,9 @@
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
-  /* font-size: var(--fs-small) */
-}
-
-.project_badge {
-  display: inline-block;
-  max-width: 200px;
-  padding: 4px 12px;
-  margin: .5rem 0;
-  background: var(--clr-primary-opacity);
-  border-radius: 20px;
-  text-transform: capitalize;
-  color: var(--clr-primary-light);
-  font-size: var(--fs-small);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .task_title {
-  padding: 0 0 0.5rem 0;
   font-weight: 400;
   word-break: break-word;
   align-self: center;
@@ -66,7 +48,7 @@
 
 .task_description {
   width: 100%;
-  padding:0.5rem 0 1rem 0;
+  padding: 0.5rem 0 0 0;
   border: none;
 }
 

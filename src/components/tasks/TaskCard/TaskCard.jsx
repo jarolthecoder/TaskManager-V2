@@ -54,11 +54,15 @@ export const TaskCard = ({ task }) => {
   };
 
   return (
-    <Card className={taskClasses} color="dark">
+    <Card className={taskClasses} color="dark" padding="none">
       <div className={styles.task_header}>
-        <div className={styles.task_title}>
-          <h4>{title}</h4>
-        </div>
+        <Badge
+          color={projectName === "Unassigned" ? "disabled" : "primary"}
+          variant="pill"
+        >
+          {projectName}
+        </Badge>
+
         <div ref={refEl}>
           <IconButton
             size="small"
@@ -80,25 +84,16 @@ export const TaskCard = ({ task }) => {
         </Popper>
       </div>
       <div className={styles.task_body}>
-        <p className={styles.task_description}>{description}</p>
-        <div className={styles.project_badge_container}>
-          <span
-            className={styles.project_badge}
-            style={{
-              background: task.projectName === "Unassigned" && "#333C46",
-              color: task.projectName === "Unassigned" && "#a0a8b1",
-              // opacity: task.projectName === "Unassigned" && "0.3",
-            }}
-          >
-            {projectName}
-          </span>
+        <div className={styles.task_title}>
+          <h4>{title}</h4>
         </div>
+        <p className={styles.task_description}>{description}</p>
       </div>
       <hr className={styles.divider} />
       <div className={styles.task_footer}>
         <div className={styles.task_stat_row}>
           <p className={styles.task_stat}>
-            <MatIcon iconName="schedule" size="small" />
+            <MatIcon iconName="event" size="small" />
             Due {isDueToday ? "Today" : dueDateShort}
           </p>
           <Badge

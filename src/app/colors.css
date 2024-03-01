@@ -5,7 +5,7 @@
   --clr-primary-light: #2599EF;
   /* #56b2f4 for light */
   --clr-primary-dark: #196ba7;
-  --clr-primary-opacity: rgba(10, 80, 150, 0.271);
+  --clr-primary-opacity: rgba(29, 101, 172, 0.17);
 
   /* Error */
   --clr-error-main: #ef5350;
@@ -49,9 +49,10 @@
   --clr-border-opacity: rgba(37, 46, 62, 0.177);
 
   /* Disabled */
-  --clr-disabled-main: #8a8c92;
+  --clr-disabled-main: #a0a8b1;
   --clr-disabled-light: #858a91;
   --clr-disabled-dark: #2b313a;
+  --clr-disabled-opacity: #464e57ac;
 
   /* Scrollbar */
   --clr-scrollbar-track: #171c24;
@@ -127,9 +128,10 @@
   --clr-btn-text-primary: #ffffff;
 
   /* Disabled */
-  --clr-disabled-main: #8a8c92;
+  --clr-disabled-main: #7c8289;
   --clr-disabled-light: #858a91;
   --clr-disabled-dark: #2b313a;
+  --clr-disabled-opacity: #2b313a1e;
 
   /* Scrollbar */
   --clr-scrollbar-track: #171c24;

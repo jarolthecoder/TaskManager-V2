@@ -1,13 +1,12 @@
 .project_card {
-  padding: 1.15rem 0;
   grid-column-end: span 3;
 }
-
+/* 
 .project_header,
 .project_body,
 .project_footer {
   padding: 0 1.15rem;
-}
+} */
 
 .project_header {
   display: flex;

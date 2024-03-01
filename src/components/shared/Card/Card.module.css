@@ -18,3 +18,11 @@
 .dark {
   background: var(--clr-bg-card-primary);
 }
+
+.padding_small {
+  padding: 1.35rem;
+}
+
+.padding_none {
+  padding: 1.35rem 0;
+}

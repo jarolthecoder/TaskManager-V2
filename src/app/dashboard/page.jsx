@@ -65,7 +65,7 @@ export default function Dashboard() {
       <div className={styles.panels_container}>
         <StatsOfTheDay tasks={tasks} />
         <div className={styles.tables_container}>
-          <Card className={styles.table_card} color="dark">
+          <Card className={styles.table_card} color="dark" padding="none">
             <div className={styles.table_card_header}>
               <h2>Tasks</h2>
               <Select value={filterValue}>
