@@ -2,7 +2,7 @@
   margin-left: 225px;
   margin-top: 82px;
   /* min-height: calc(100vh - 15rem); */
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
   background: var(--clr-blue-dark);
   /* transition: margin-left var(--transition-default); */
 }

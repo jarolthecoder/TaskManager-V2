@@ -10,6 +10,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0 .5rem;
+   font-size: var(--fs-body);
 }
 
 .main:hover {

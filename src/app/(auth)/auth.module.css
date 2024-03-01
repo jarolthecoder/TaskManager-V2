@@ -39,7 +39,7 @@
   /* background: url(../../../public/task-manager-v2-landing.png) no-repeat;
   background-size: cover;
   background-position: bottom -100px center; */
-  background-color: var(--clr-bg-card-dark);
+  background-color: var(--clr-bg-default);
 }
 
 .title {

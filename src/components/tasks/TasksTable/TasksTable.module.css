@@ -37,18 +37,18 @@
 
 .table_head {
   color: var(--clr-text-primary);
-  background: var(--clr-bg-card-main);
+  background: var(--clr-bg-card-secondary);
   border-top: 1px solid var(--clr-border-light);
   border-bottom: 1px solid var(--clr-border-light);
 }
 
 .table_head th{
-  color: var(--clr-text-secondary);
   font-size: var(--fs-body);
 }
 
-.table_body td {
-  color: var(--clr-text-primary)
+.table_body td,
+.table_head th {
+  color: var(--clr-text-secondary)
 }
 
 .table_body td {

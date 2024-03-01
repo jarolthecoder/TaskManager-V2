@@ -19,10 +19,11 @@
   margin: 2rem 0;
 }
 
-.form p,
-.form label {
-  color: var(--clr-gray-dark);
+.form label,
+.form span {
+  color: var(--clr-text-secondary);
 }
+
 
 .form a {
   text-decoration: underline;

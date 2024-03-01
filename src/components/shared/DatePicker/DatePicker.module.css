@@ -60,7 +60,7 @@
 .date_picker_container {
   padding: .75rem;
   border-radius: var(--br-small);
-  background: var(--clr-bg-card-dark);
+  background: var(--clr-bg-card-secondary);
   border: 1px solid var(--clr-border-light);
 }
 

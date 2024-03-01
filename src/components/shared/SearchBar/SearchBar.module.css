@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   padding: 0.5rem 0.5rem;
-  background: var(--clr-bg-card-dark);
+  background: var(--clr-bg-card-primary);
   border-radius: var(--br-small);
   border: 1px solid var(--clr-border-opacity);
   transition: border-color var(--transition-default);

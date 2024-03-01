@@ -1,6 +1,5 @@
 .main {
   padding: 1rem;
-  /* background: var(--clr-bg-card-dark); */
   border: 1px solid var(--clr-border-dark);
   border-radius: var(--br-small);
   /* grid-column-end: span 4; */

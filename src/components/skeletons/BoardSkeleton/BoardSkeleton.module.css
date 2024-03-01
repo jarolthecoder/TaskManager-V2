@@ -9,7 +9,7 @@
 .list {
   border: 1px solid var(--clr-trasparent);
   border-radius: var(--br-small);
-  background: var(--clr-bg-card-light);
+  background: var(--clr-bg-card-secondary);
   padding: 1rem;
   grid-column-end: span 4;
   display: flex;

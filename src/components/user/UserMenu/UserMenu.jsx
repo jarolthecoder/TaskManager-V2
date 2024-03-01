@@ -30,8 +30,8 @@ export const UserMenu = () => {
         <Image
           src={userImg}
           alt="user image"
-          width={35}
-          height={35}
+          width={36}
+          height={36}
         />
       </div>
       <div>

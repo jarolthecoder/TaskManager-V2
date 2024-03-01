@@ -38,9 +38,7 @@
   appearance: none;
   padding: .75rem;
   border: 0;
-  color: var(--clr-text-secondary);
  background: var(--clr-bg-default);
-  font-size: inherit;
   cursor: pointer;
   text-transform: capitalize;
   border-radius: var(--br-small);

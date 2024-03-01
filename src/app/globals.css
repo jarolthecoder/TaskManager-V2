@@ -6,7 +6,7 @@
   --fw-bold: 700;
 
   --fs-small: 0.825rem;
-  --fs-body: .975rem;
+  --fs-body: 0.95rem;
   --fs-medium: 1.125rem;  
   --fs-large: 1.25rem;
   --fs-number: 1.25rem;
@@ -32,16 +32,10 @@
   --fc-today-bg-color: #242213;
 
   /* FC Events */
-  /* --fc-event-bg-color: var(--clr-yellow-main); */
-
   --fc-event-bg-color: #3788d8;
   --fc-event-border-color: #3788d8;
   --fc-event-text-color: #fff;
   --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
-  /* 
-  --fc-event-border-color: var(--clr-yellow-main);
-  --fc-event-text-color: var(--clr-blue-dark);
-  --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25); */
 }
 
 * {
@@ -61,12 +55,16 @@ ul {
   list-style-type: none;
 }
 
-input,
-textarea,
+
 span,
 a {
-  font-size: var(--fs-body);
   color: var(--clr-text-secondary);
+}
+
+input,
+textarea {
+  color: var(--clr-text-primary);
+  font-size: var(--fs-body);
 }
 
 input:focus {
@@ -83,7 +81,6 @@ button {
   background: none;
   cursor: pointer;
   color: var(--clr-text-secondary);
-  /* text-transform: capitalize; */
 }
 
 html,
@@ -99,7 +96,6 @@ h4,
 h5,
 h6 {
   font-weight: var(--fw-medium);
-  /* text-transform: capitalize; */
   color: var(--clr-text-primary);
 }
 
@@ -125,7 +121,6 @@ h5 {
 }
 
 p {
-  font-size: var(--fs-body);
   line-height: 1.5rem;
   color: var(--clr-text-secondary);
 }

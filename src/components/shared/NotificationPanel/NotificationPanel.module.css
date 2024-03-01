@@ -1,8 +1,8 @@
 .notifications_panel {
   min-width: 400px;
   height: auto;
-  background: var(--clr-bg-card-main);
-  border: 1px solid var(--clr-border-light);
+  background: var(--clr-bg-card-secondary);
+  border: 1px solid var(--clr-border-dark);
   border-radius: var(--br-small);
   padding: 1rem 0;
 }
@@ -27,17 +27,17 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--clr-border-light);
+  border-bottom: 1px solid var(--clr-border-dark);
   transition: background var(--transition-default);
   cursor: pointer;
 }
 
 .notification:hover {
-  background: var(--clr-border-light);
+  background: var(--clr-primary-opacity);
 }
 
 .notification:nth-child(1) {
-  border-top: 1px solid var(--clr-border-light);
+  border-top: 1px solid var(--clr-border-dark);
 }
 
 .notification_title {
@@ -57,18 +57,20 @@
   font-size: var(--fs-small);
 }
 
-.notification_time span {
-  font-size: 0.9rem;
-}
 
 .notification_badge {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  width: 35px;
+  height: 35px;
   color: rgb(105, 94, 23);
   background: var(--clr-primary-main);
   border-radius: var(--br-full);
+}
+
+.notification_badge span {
+  color: #fff;
 }
 
 .notification_badge.blue {

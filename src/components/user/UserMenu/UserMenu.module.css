@@ -34,7 +34,12 @@
   justify-content: center;
   align-items: center;
   border-radius: var(--br-full);
-  background: var(--clr-bg-card-light);
+  background: rgb(37, 46, 62);
+  overflow: hidden;
+}
+
+.user_img_container img {
+  margin-top: 8px;
 }
 
 .user_img {

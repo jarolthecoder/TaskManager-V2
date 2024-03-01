@@ -2,10 +2,16 @@ import Image from 'next/image';
 import logoImg from "../../../../public/task-manager-v2-logo.png";
 import PropTypes from 'prop-types';
 import styles from './Logo.module.css'
+import classNames from 'classnames';
 
-export const Logo = ({ displayText = true }) => {
+export const Logo = ({ displayText = true, color = "light" }) => {
+  const logoClasses = classNames(
+    styles.main,
+    !displayText && styles.flex_center,
+    color === "dark" && styles.dark
+  )
   return (
-    <div className={`${styles.main} ${!displayText ? styles.flex_center : ''}`}>
+    <div className={logoClasses}>
       <Image
         src={logoImg}
         alt="TaskManager"
@@ -13,7 +19,7 @@ export const Logo = ({ displayText = true }) => {
         height={40}
         quality={100}
       />
-      {displayText && <p>TaskManager</p>}
+      {displayText && <h1>TaskManager</h1>}
     </div>
   );
 }

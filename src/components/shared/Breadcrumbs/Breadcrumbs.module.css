@@ -20,5 +20,5 @@
 
 .breadcrumbs_item a:hover {
   /* text-decoration: underline; */
-  color: var(--clr-text-primaryt);
+  color: var(--clr-primary-light);
 }

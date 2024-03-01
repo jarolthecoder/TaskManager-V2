@@ -3,9 +3,7 @@ import { Button, MatIcon } from "..";
 
 export const NotificationPanel = ({ handleOpen }) => {
     return (
-      <div
-        className={styles.notifications_panel}
-      >
+      <div className={styles.notifications_panel}>
         <div className={styles.panel_header}>
           <h3>Notifications</h3>
           <p>You have 3 unread notifications</p>
@@ -14,7 +12,7 @@ export const NotificationPanel = ({ handleOpen }) => {
           <ul className={styles.notifications_list}>
             <li className={styles.notification} onClick={handleOpen}>
               <div className={styles.notification_badge}>
-                <MatIcon iconName="settings" />
+                <MatIcon iconName="settings" size="small" />
               </div>
               <div className={styles.notification_content}>
                 <span className={styles.notification_title}>Your profile</span>{" "}
@@ -22,14 +20,14 @@ export const NotificationPanel = ({ handleOpen }) => {
                   is 60% completed
                 </span>
                 <p className={styles.notification_time}>
-                  <MatIcon iconName="watch_later" />
+                  <MatIcon iconName="watch_later" size="small" />
                   about 18 hours ago
                 </p>
               </div>
             </li>
             <li className={styles.notification} onClick={handleOpen}>
               <div className={`${styles.notification_badge} ${styles.blue}`}>
-                <MatIcon iconName="textsms" />
+                <MatIcon iconName="textsms" size="small" />
               </div>
               <div className={styles.notification_content}>
                 <span className={styles.notification_title}>Cristine Burg</span>{" "}
@@ -37,14 +35,14 @@ export const NotificationPanel = ({ handleOpen }) => {
                   sent you a message
                 </span>
                 <p className={styles.notification_time}>
-                  <MatIcon iconName="watch_later" />
+                  <MatIcon iconName="watch_later" size="small" />
                   about 18 hours ago
                 </p>
               </div>
             </li>
             <li className={styles.notification} onClick={handleOpen}>
               <div className={`${styles.notification_badge} ${styles.red}`}>
-                <MatIcon iconName="warning" />
+                <MatIcon iconName="warning" size="small" />
               </div>
               <div className={styles.notification_content}>
                 <span className={styles.notification_title}>Two tasks</span>{" "}
@@ -52,7 +50,7 @@ export const NotificationPanel = ({ handleOpen }) => {
                   are due tomorrow
                 </span>
                 <p className={styles.notification_time}>
-                  <MatIcon iconName="watch_later" />
+                  <MatIcon iconName="watch_later" size="small" />
                   about 18 hours ago
                 </p>
               </div>
@@ -60,7 +58,7 @@ export const NotificationPanel = ({ handleOpen }) => {
           </ul>
         </div>
         <div className={styles.panel_footer}>
-          <Button label="View All" fullWidth />
+          <Button label="View All" variant="outlined" fullWidth />
         </div>
       </div>
     );
