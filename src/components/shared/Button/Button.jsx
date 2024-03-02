@@ -8,7 +8,7 @@ export const Button = ({
   fullWidth = false,
   variant = "filled",
   align = "left",
-  size = "medium",
+  size = "small",
   startIcon,
   endIcon,
   ...restOfProps

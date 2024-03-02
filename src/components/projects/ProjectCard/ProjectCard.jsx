@@ -69,7 +69,7 @@ export const ProjectCard = ({ project }) => {
           <small className={styles.task_stat}>
             Due {isDueToday ? "Today" : dueDateShort}
           </small>
-          <h4 onClick={handleViewProject}>{project.title}</h4>
+          <h3 onClick={handleViewProject}>{project.title}</h3>
         </div>
         <div ref={refEl}>
           <IconButton

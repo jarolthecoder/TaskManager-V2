@@ -26,7 +26,7 @@
   --clr-success-opacity: #1f3e3e;
 
   /* Text */
-  --clr-text-primary: #fcfcfc;
+  --clr-text-primary: #fdfdfd;
   --clr-text-secondary: #b0b8c4;
   --clr-text-opacity: #b9c2cc5a;
   --clr-muted: #6b7a90;
@@ -92,7 +92,7 @@
   --clr-warning-main: #f7b34c;
   --clr-warning-light: #ffcc80;
   --clr-warning-dark: #ffbf00;
-  --clr-warning-opacity: rgba(251, 207, 104, 0.17);
+  --clr-warning-opacity: rgba(251, 207, 104, 0.214);
 
   /* Success */
   --clr-success-main: #32b899;

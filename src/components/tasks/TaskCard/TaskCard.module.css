@@ -16,7 +16,7 @@
   gap: 1rem;
 }
 
-.task_title h4 {
+.task_title h3 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

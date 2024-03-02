@@ -13,9 +13,9 @@
 }
 
 .container{
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(12, minmax(auto, 1fr));
-  grid-gap: 20px;
+  grid-gap: 20px; */
   height: 100%;
 
   /* min-width: 600px;

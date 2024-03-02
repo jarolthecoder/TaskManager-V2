@@ -7,3 +7,4 @@ export * from "./TaskCard/TaskCard";
 export * from "./AddTaskButton/AddTaskButton";
 export * from "./TasksColumn/TasksColumn";
 export * from "./TasksBoard/TasksBoard";
+export * from "./TasksList/TasksList";

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import styles from "./Select.module.css";
 import classNames from "classnames";
 
-export const Select = ({ children, value, className, ...restProps }) => {
+export const Select = ({ children, value, className, startIcon, endIcon, ...restProps }) => {
   const selectClasses = classNames(styles.select, className);
 
   const refEl = useRef(null);
@@ -16,15 +16,22 @@ export const Select = ({ children, value, className, ...restProps }) => {
   return (
     <div ref={refEl} className={selectClasses} {...restProps}>
       <button className={styles.select_btn} onClick={togglePopper}>
+        {startIcon}
         {value}
-        <span
-          className="material-icons"
-          style={{
-            transform: isPopperOpen ? "rotate(180deg)" : "rotate(0deg)",
-          }}
-        >
-          keyboard_arrow_down
-        </span>
+        {endIcon && endIcon !== "none"
+          ? endIcon
+          : endIcon === "none" 
+          ? null 
+          : (
+          <span
+            className="material-icons"
+            style={{
+              transform: isPopperOpen ? "rotate(180deg)" : "rotate(0deg)",
+            }}
+          >
+            keyboard_arrow_down
+          </span>
+        )}
       </button>
       <Popper ref={popperRef} open={isPopperOpen} onClose={togglePopper}>
         <Menu>{children}</Menu>

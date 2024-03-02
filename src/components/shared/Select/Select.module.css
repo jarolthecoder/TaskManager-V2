@@ -1,17 +1,17 @@
 .select_btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  padding: .25rem .25rem .25rem .5rem;
+  padding: 0.25rem 0.5rem;
   border-radius: var(--br-small);
-  color: var(--clr-text-primary);
+  color: var(--clr-text-secondary);
   font-size: inherit;
   font-family: inherit;
   transition: color var(--transition-default), background var(--transition-default);
 }
 
 .select_btn span {
-  color: var(--clr-text-primary);
+  color: var(--clr-text-secondary);
 }
 
 .select_btn:hover {

@@ -1,0 +1,17 @@
+.task_header,
+.task_footer,
+.task_stat,
+.task_badges_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task_stat {
+   gap: 4px;
+}
+
+.task_body {
+  padding: 0.75rem 0;
+}

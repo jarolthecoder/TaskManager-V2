@@ -1,10 +1,5 @@
-"use client";
-
-import { IconButton, MatIcon, Menu, MenuItem, Popper } from "@/components/shared";
-import { usePopper } from "@/hooks";
+import { MatIcon, MenuItem, Select } from "@/components/shared";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
-import { useRef } from "react";
-import styles from "./SortTaskListButton.module.css";
 
 const { LATEST, OLDEST, DUE_DATE, PRIORITY_HIGH, PRIORITY_LOW } =
   TASK_SORT_OPTIONS;
@@ -18,26 +13,16 @@ const sortOptions = [
 ];
 
 export const SortTaskListButton = ({ onSelect, selectedOption }) => {
-
-  const refEl = useRef(null);
-  const popperRef = useRef(null);
-  const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
-
   return (
-    <div ref={refEl} className={styles.sort_btn}>
-      <small>{selectedOption.label}</small>
-      <IconButton size="small" onClick={togglePopper}>
-        <MatIcon iconName="swap_vert" />
-      </IconButton>
-      <Popper open={isPopperOpen} ref={popperRef} onClose={togglePopper}>
-        <Menu>
-          {sortOptions.map((option) => (
-            <MenuItem key={option.value} onClick={() => onSelect(option)}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </Menu>
-      </Popper>
-    </div>
+    <Select
+      value={selectedOption.label}
+      endIcon={<MatIcon iconName="swap_vert" />}
+    >
+      {sortOptions.map((option, index) => (
+        <MenuItem key={option.value} onClick={() => onSelect(option)}>
+          <p>{option.label}</p>
+        </MenuItem>
+      ))}
+    </Select>
   );
 };

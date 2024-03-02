@@ -11,6 +11,7 @@ import {
 } from "@/redux/features/projects";
 import { RenderWhen } from "@/components/shared";
 import { TasksColumn } from "..";
+import styles from "./TasksBoard.module.css";
 
 export const TasksBoard = () => {
   const pathname = usePathname();
@@ -76,17 +77,19 @@ export const TasksBoard = () => {
 
   return (
     <RenderWhen condition={winReady}>
-      <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
-        {taskListColumns.map((column) => (
-          <TasksColumn
-            key={column.id}
-            listId={column.id}
-            listTitle={column.title}
-            tasks={column.tasks}
-            colSpan={4}
-          />
-        ))}
-      </DragDropContext>
+      <div className={styles.main}>
+        <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+          {taskListColumns.map((column) => (
+            <TasksColumn
+              key={column.id}
+              listId={column.id}
+              listTitle={column.title}
+              tasks={column.tasks}
+              colSpan={4}
+            />
+          ))}
+        </DragDropContext>
+      </div>
     </RenderWhen>
   );
 };

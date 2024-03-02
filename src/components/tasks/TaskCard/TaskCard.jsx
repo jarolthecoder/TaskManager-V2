@@ -85,7 +85,7 @@ export const TaskCard = ({ task }) => {
       </div>
       <div className={styles.task_body}>
         <div className={styles.task_title}>
-          <h4>{title}</h4>
+          <h3>{title}</h3>
         </div>
         <p className={styles.task_description}>{description}</p>
       </div>
