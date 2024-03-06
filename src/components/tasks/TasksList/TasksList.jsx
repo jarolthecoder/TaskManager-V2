@@ -19,30 +19,55 @@ export const TasksList = () => {
    const [filterValue, setFilterValue] = useState("All Tasks");
    const [filteredTasks, setFilteredTasks] = useState(tasks);
    const [sortValue, setSortValue] = useState("Latest");
-  //  const [sortedTasks, dispatchSortTasks] = useState(tasks);
+   const [sortedTasks, dispatchSortTasks] = useState(tasks);
 
    const handleFilterChange = (option) => {
-     setFilterValue(option);
+    
      switch (option) {
        case "All Tasks":
          setFilteredTasks(tasks);
+          setFilterValue(option);
          break;
        case "Completed":
          const completedTasks = tasks.filter(
            (task) => task.status === "completed"
          );
          setFilteredTasks(completedTasks);
+          setFilterValue(option);
          break;
        case "Due Today":
          const inProgressTasks = tasks.filter(
            (task) => task.dueDate === formattedToday
          );
          setFilteredTasks(inProgressTasks);
+          setFilterValue(option);
          break;
        case "Pending":
          const pendingTasks = tasks.filter((task) => task.status === "pending");
          setFilteredTasks(pendingTasks);
          break;
+        case "Priority High":
+             const sortedByPriorityHigh = [...tasks].sort((taskA, taskB) => {
+               const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+               return (
+                 (priorityOrder[taskA.priority] || 0) -
+                 (priorityOrder[taskB.priority] || 0)
+               );
+             });
+            setFilteredTasks(sortedByPriorityHigh);
+             setSortValue(option);
+          break;
+        case "Priority Low":
+              const sortedByPriorityLow = [...tasks].sort((taskA, taskB) => {
+                const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+                return (
+                  (priorityOrder[taskB.priority] || 0) -
+                  (priorityOrder[taskA.priority] || 0)
+                );
+              });
+              setFilteredTasks(sortedByPriorityLow);
+              setSortValue(option);
+            break;
        default:
          setFilteredTasks(tasks);
          break;
@@ -52,7 +77,6 @@ export const TasksList = () => {
    useEffect(() => {
      setFilteredTasks(tasks);
    }, [projects]);
-
 
   return (
     <div className={styles.main}>

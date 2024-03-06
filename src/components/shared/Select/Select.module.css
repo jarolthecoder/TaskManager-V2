@@ -1,6 +1,7 @@
 .select_btn {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 2px;
   align-items: center;
   padding: 0.25rem 0.5rem;
   border-radius: var(--br-small);
