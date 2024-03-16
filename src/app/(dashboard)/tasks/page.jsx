@@ -6,13 +6,13 @@ import styles from "./tasksPage.module.css";
 
 export default function TasksPage() {
 
-  const preferedTaskView = window?.localStorage.getItem("prefered-task-view");
+  const preferedTaskView = localStorage.getItem("prefered-task-view");
 
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
 
   const handleSelectedView = (view) => {
     setSelectedView(view);
-    window?.localStorage.setItem("prefered-task-view", view);
+    localStorage.setItem("prefered-task-view", view);
   };
 
   return (

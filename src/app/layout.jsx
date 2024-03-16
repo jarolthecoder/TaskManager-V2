@@ -2,7 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import "./colors.css";
 import "material-icons/iconfont/material-icons.css";
-import { ReduxProvider } from "@/redux/provider";
+import { SharedProviders } from "@/components/shared";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
           href="../../public/task-manager-v2-logo.png"
           sizes="16x16"
         />
-        <ReduxProvider>{children}</ReduxProvider>
+        <SharedProviders>{children}</SharedProviders>
       </body>
     </html>
   );

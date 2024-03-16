@@ -1,6 +1,6 @@
 "use client";
 
-import { AppProvider, ThemeProvider } from "@/context";
+import { AppProvider } from "@/context";
 import { TaskActionsModal } from "@/components/tasks/";
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
@@ -16,25 +16,24 @@ export default function DashboardLayout({ children }) {
   const router = useRouter();
   const status = useCheckAuth();
 
-   const [user, loading] = useAuthState(FirebaseAuth);
+  const [user, loading] = useAuthState(FirebaseAuth);
 
-   if(loading) {
+  if (loading) {
     return <PageLoader />;
-   }
+  }
 
   if (!user) {
     router.push("/login");
     return <PageLoader />;
   }
 
-    // useEffect(() => {
-    //   if (status === "non-authenticated") router.push("/login");
-    // }, [status]);
+  // useEffect(() => {
+  //   if (status === "non-authenticated") router.push("/login");
+  // }, [status]);
 
-    // if (status !== "authenticated") {
-    //   return <PageLoader />;
-    // }
-   
+  // if (status !== "authenticated") {
+  //   return <PageLoader />;
+  // }
 
   // useEffect(() => {
   //   if (status === "non-authenticated") router.push("/login");
@@ -51,16 +50,14 @@ export default function DashboardLayout({ children }) {
 
   return (
     <AppProvider>
-      <ThemeProvider>
-        <main className={styles.main}>
-          <SideBar />
-          <TopBar />
-          <DisplayPanel>{children}</DisplayPanel>
-        </main>
-        {/* Modals */}
-        <TaskActionsModal />
-        <ProjectActionsModal />
-      </ThemeProvider>
+      <main className={styles.main}>
+        <SideBar />
+        <TopBar />
+        <DisplayPanel>{children}</DisplayPanel>
+      </main>
+      {/* Modals */}
+      <TaskActionsModal />
+      <ProjectActionsModal />
     </AppProvider>
   );
 }

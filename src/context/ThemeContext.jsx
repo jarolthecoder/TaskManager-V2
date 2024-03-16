@@ -9,7 +9,7 @@ export const ThemeProvider = ({ children }) => {
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
-    window?.localStorage.setItem("theme", newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   useEffect(() => {
-    const storedTheme = window?.localStorage.getItem("theme");
+    const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       setTheme(storedTheme);
     }
