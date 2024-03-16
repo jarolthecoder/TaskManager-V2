@@ -10,7 +10,7 @@ import { PageLoader } from "@/components/shared";
 import { ProjectActionsModal } from "@/components/projects";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FirebaseAuth } from "@/firebase/config";
-import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
+import { DisplayPanel, SideBar, TopBar } from "@/components/layout";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
