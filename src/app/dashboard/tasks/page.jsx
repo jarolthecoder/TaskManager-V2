@@ -4,15 +4,15 @@ import { Breadcrumbs, MatIcon, RenderWhen } from "@/components/shared";
 import { AddTaskButton, TasksBoard, TasksList  } from "@/components/tasks";
 import styles from "./tasksPage.module.css";
 
-const preferedTaskView = localStorage.getItem("prefered-task-view");
-
 export default function TasksPage() {
+
+  const preferedTaskView = window?.localStorage.getItem("prefered-task-view");
 
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
 
   const handleSelectedView = (view) => {
     setSelectedView(view);
-    localStorage.setItem("prefered-task-view", view);
+    window?.localStorage.setItem("prefered-task-view", view);
   };
 
   return (
