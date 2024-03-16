@@ -1,5 +1,5 @@
 import { PuffLoader } from "react-spinners";
-import styles from "./loaders.module.css";
+import styles from "./Loaders.module.css";
 
 export const Loader = () => {
   return (

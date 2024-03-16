@@ -1,7 +1,8 @@
 "use client";
-import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
+
 import { AppProvider, ThemeProvider } from "@/context";
 import { TaskActionsModal } from "@/components/tasks/";
+import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
 import { useEffect } from "react";
