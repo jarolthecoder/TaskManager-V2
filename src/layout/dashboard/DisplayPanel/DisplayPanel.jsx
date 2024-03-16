@@ -16,12 +16,6 @@ export const DisplayPanel = ({ children }) => {
     <>
       <article className={displayClasses}>
         {children}
-        {/* <footer className={styles.footer}>
-          <Card className={styles.footer_content}>
-            <p>2024 &copy; TaskManager</p>
-            <p>Designed and Developed by Jarol Riera</p>
-          </Card>
-        </footer> */}
       </article>
     </>
   );

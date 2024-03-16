@@ -1,7 +1,6 @@
 "use client";
 
 import { AppProvider, ThemeProvider } from "@/context";
-import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
 import { TaskActionsModal } from "@/components/tasks/";
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
@@ -11,6 +10,7 @@ import { PageLoader } from "@/components/shared";
 import { ProjectActionsModal } from "@/components/projects";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FirebaseAuth } from "@/firebase/config";
+import { DisplayPanel, SideBar, TopBar } from "@/layout/dashboard";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
