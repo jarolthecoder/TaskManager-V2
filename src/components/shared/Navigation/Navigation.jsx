@@ -88,17 +88,17 @@ export const Navigation = ({ sidebarOpen }) => {
 const navLinks = [
   {
     label: "Dashboard",
-    path: "/dashboard",
+    path: "/",
     icon: "dashboard",
   },
   {
     label: "Tasks",
-    path: "/dashboard/tasks",
+    path: "/tasks",
     icon: "format_list_bulleted",
   },
   {
     label: "Projects",
-    path: "/dashboard/projects",
+    path: "/projects",
     icon: "folder",
   },
 ];

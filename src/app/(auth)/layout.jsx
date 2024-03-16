@@ -20,7 +20,7 @@ export default function AuthLayout({ children }) {
   }
 
   if (user) {
-    router.push("/dashboard");
+    router.push("/");
     return <PageLoader />;
   }
 

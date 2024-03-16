@@ -45,7 +45,7 @@ export const ProjectCard = ({ project }) => {
 
   const handleViewProject = () => {
     dispatch(setSelectedProject(project));
-    router.push(`/dashboard/projects/${project.id}`);
+    router.push(`/projects/${project.id}`);
   };
 
   const handleSelectEdit = () => {
