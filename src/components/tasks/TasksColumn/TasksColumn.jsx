@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useReducer, useState } from "react";
-import { differenceInDays, isToday } from "date-fns";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
 import { DroppableTaskList } from "../DroppableTaskList/DroppableTaskList";
 import { AddTaskCardButton } from "../AddTaskCardButton/AddTaskCardButton";
@@ -9,7 +8,7 @@ import { SortTaskListButton } from "../SortTaskListButton/SortTaskListButton";
 import styles from "./TasksColumn.module.css";
 import classNames from "classnames";
 
-const { LATEST, OLDEST, DUE_DATE, PRIORITY_HIGH, PRIORITY_LOW } =
+const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } =
   TASK_SORT_OPTIONS;
 
 const initialSortValue = {
@@ -29,25 +28,6 @@ const sortTasksReducer = (state, action) => {
       return [...tasks].sort(
         (taskA, taskB) => new Date(taskA.creationDate) - new Date(taskB.creationDate)
       );
-    case DUE_DATE:
-      return [...tasks].sort((taskA, taskB) => {
-        const isDueTodayA = isToday(new Date(taskA.dueDate));
-        const isDueTodayB = isToday(new Date(taskB.dueDate));
-
-        if (isDueTodayA !== isDueTodayB) {
-          return isDueTodayA ? -1 : 1;
-        }
-
-        const differenceA = differenceInDays(
-          new Date(taskA.dueDate),
-          new Date()
-        );
-        const differenceB = differenceInDays(
-          new Date(taskB.dueDate),
-          new Date()
-        );
-        return differenceA - differenceB;
-      });
     case PRIORITY_HIGH:
       return [...tasks].sort((taskA, taskB) => {
         const priorityOrder = { High: 1, Medium: 2, Low: 3 };
@@ -86,8 +66,9 @@ export const TasksColumn = ({ listId, listTitle, tasks, colSpan = 4 }) => {
 
   // Update sorted tasks when the selected option changes or a new task is added
   useEffect(() => {
-    dispatch({ type: selectedOption.value, tasks, selectedOption });
+    dispatch({ type: selectedOption.value, tasks, selectedOption});
   }, [selectedOption, tasks]);
+
 
   return (
     <div className={styles.main} style={{

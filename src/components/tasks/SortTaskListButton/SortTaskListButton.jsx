@@ -7,7 +7,6 @@ const { LATEST, OLDEST, DUE_DATE, PRIORITY_HIGH, PRIORITY_LOW } =
 const sortOptions = [
   { label: "Latest", value: LATEST },
   { label: "Oldest", value: OLDEST },
-  { label: "Due Date", value: DUE_DATE },
   { label: "Priority High", value: PRIORITY_HIGH },
   { label: "Priority Low", value: PRIORITY_LOW },
 ];

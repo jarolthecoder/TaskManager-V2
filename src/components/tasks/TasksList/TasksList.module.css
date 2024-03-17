@@ -25,3 +25,10 @@
 .list_option_btn:hover {
   background: rgba(95, 116, 141, 0.137);
 }
+
+.list_empty_message {
+  font-size: var(--fs-medium);
+  font-weight: 500;
+  /* color: var(--clr-text-opacity); */
+  padding-left: 10px;
+}

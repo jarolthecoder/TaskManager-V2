@@ -116,7 +116,7 @@ export const EditTaskForm = () => {
     );
 
     const updatedTask = {
-      id: selectedTask.id,
+      ...selectedTask,
       title: value.title,
       description: value.description,
       status: updatedStatusValue ? updatedStatusValue.value : value.status,
