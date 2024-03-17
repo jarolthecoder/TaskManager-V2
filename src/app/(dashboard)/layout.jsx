@@ -4,7 +4,6 @@ import { AppProvider } from "@/context";
 import { TaskActionsModal } from "@/components/tasks/";
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
-import { useEffect } from "react";
 import styles from "./dashboard.module.css";
 import { PageLoader } from "@/components/shared";
 import { ProjectActionsModal } from "@/components/projects";
