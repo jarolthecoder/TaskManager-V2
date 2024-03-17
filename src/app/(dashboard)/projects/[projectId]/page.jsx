@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getProjectById,
   selectProject,
   setSelectedProject,
 } from "@/redux/features/projects";
-import { Breadcrumbs, RenderWhen } from "@/components/shared";
-import { AddTaskButton, TasksBoard } from "@/components/tasks";
+import { Breadcrumbs, MatIcon, RenderWhen } from "@/components/shared";
+import { AddTaskButton, TasksBoard, TasksList } from "@/components/tasks";
 import styles from "./projectPage.module.css";
 
 export default function ProjectPage({ params }) {
@@ -16,6 +16,14 @@ export default function ProjectPage({ params }) {
 
   const selectedProject = useSelector(selectProject);
   const projectTitle = selectedProject?.title;
+
+  const preferedTaskView = localStorage.getItem("prefered-task-view");
+  const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
+
+  const handleSelectedView = (view) => {
+    setSelectedView(view);
+    localStorage.setItem("prefered-task-view", view);
+  };
 
   // Fetch project by id
   useEffect(() => {
@@ -27,19 +35,46 @@ export default function ProjectPage({ params }) {
   }, []);
 
   return (
-    <section className={styles.main}>   
+    <section className={styles.main}>
       <div className={styles.header}>
         <div>
           <Breadcrumbs selectedItem={projectTitle} />
           <h2>{projectTitle}</h2>
         </div>
         <div className={styles.header_options}>
+          <p
+            className={`${styles.view_btn} ${
+              selectedView === "board" ? styles.active : ""
+            }`}
+            onClick={() => handleSelectedView("board")}
+          >
+            <MatIcon iconName="calendar_view_week" />
+            Board
+          </p>
+          <p
+            className={`${styles.view_btn} ${
+              selectedView === "list" ? styles.active : ""
+            }`}
+            onClick={() => handleSelectedView("list")}
+          >
+            <MatIcon iconName="format_list_bulleted" />
+            List
+          </p>
           <AddTaskButton />
         </div>
       </div>
       <div className={styles.container}>
         <RenderWhen condition={selectedProject !== null}>
-          <TasksBoard />
+          <RenderWhen
+            condition={selectedView === "board"}
+            fallback={
+              <TasksList 
+                tasks={selectedProject?.tasks} 
+              />
+            }
+          >
+            <TasksBoard />
+          </RenderWhen>
         </RenderWhen>
       </div>
     </section>

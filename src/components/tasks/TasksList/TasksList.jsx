@@ -1,13 +1,13 @@
 "use client";
-import { useSelector } from "react-redux";
-import { selectAllProjects } from "@/redux/features/projects";
+
 import { TaskListItem } from "../TaskListItem/TaskListItem";
 import { MatIcon, MenuItem, RenderWhen, Select } from "@/components/shared";
 import { useMemo, useState } from "react";
 import { formatDate } from "@/utils/helpers";
-import styles from "./TasksList.module.css";
 import { SortTaskListButton } from "../SortTaskListButton/SortTaskListButton";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
+import PropTypes from "prop-types";
+import styles from "./TasksList.module.css";
 
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } = TASK_SORT_OPTIONS;
@@ -33,9 +33,7 @@ const sortTasks = (tasks, sortValue) => {
   }
 };
 
-export const TasksList = () => {
-  const projects = useSelector(selectAllProjects);
-  const allTasks = projects.flatMap((project) => project.tasks);
+export const TasksList = ({ tasks }) => {
 
   const [filterValue, setFilterValue] = useState("All Tasks");
   const [sortValue, setSortValue] = useState({ label: "Latest", value: LATEST });
@@ -44,16 +42,16 @@ export const TasksList = () => {
   const filteredTasks = useMemo(() => {
     switch (filterValue) {
       case "Completed":
-        return allTasks.filter((task) => task.status === "completed");
+        return tasks.filter((task) => task.status === "completed");
       case "Due Today":
-        return allTasks.filter((task) => task.dueDate === formattedToday);
+        return tasks.filter((task) => task.dueDate === formattedToday);
       case "Pending":
-        return allTasks.filter((task) => task.status === "pending");
+        return tasks.filter((task) => task.status === "pending");
       case "All Tasks":
       default:
-        return allTasks;
+        return tasks;
     }
-  }, [allTasks, filterValue]);
+  }, [tasks, filterValue]);
 
   // Sort filtered tasks based on sortValue
   const sortedTasks = useMemo(() => sortTasks(filteredTasks, sortValue), [filteredTasks, sortValue]);
@@ -95,4 +93,8 @@ export const TasksList = () => {
       </RenderWhen>
     </div>
   );
+};
+
+TasksList.propTypes = {
+  tasks: PropTypes.array.isRequired,
 };

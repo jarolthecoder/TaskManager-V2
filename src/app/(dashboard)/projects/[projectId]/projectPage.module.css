@@ -32,3 +32,18 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.view_btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--br-small);
+}
+
+.view_btn:hover,
+.view_btn.active {
+  background: rgba(95, 116, 141, 0.137);
+}

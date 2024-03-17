@@ -3,9 +3,13 @@ import { useState } from "react";
 import { Breadcrumbs, MatIcon, RenderWhen } from "@/components/shared";
 import { AddTaskButton, TasksBoard, TasksList  } from "@/components/tasks";
 import styles from "./tasksPage.module.css";
+import { useSelector } from "react-redux";
+import { selectAllProjects } from "@/redux/features/projects";
 
 export default function TasksPage() {
-
+  
+  const projects = useSelector(selectAllProjects);
+  const allTasks = projects.flatMap((project) => project.tasks);
   const preferedTaskView = localStorage.getItem("prefered-task-view");
 
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
@@ -47,7 +51,7 @@ export default function TasksPage() {
       <div className={styles.container}>
         <RenderWhen
           condition={selectedView === "board"}
-          fallback={<TasksList />}
+          fallback={<TasksList tasks={allTasks}/>}
         >
           <TasksBoard />
         </RenderWhen>
