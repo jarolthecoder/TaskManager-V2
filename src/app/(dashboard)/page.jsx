@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
 import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
@@ -15,43 +15,35 @@ const todaysDateFull = formatDate(new Date(), "eeee, MMM d, yyyy");
 
 export default function Dashboard() {
   const projects = useSelector(selectAllProjects);
-  const tasks = projects.map((project) => project.tasks).flat();
+  const tasks = useMemo(
+    () =>
+      projects
+        .flatMap((project) => project.tasks)
+        .sort(
+          (taskA, taskB) =>  new Date(taskB.creationDate) - new Date(taskA.creationDate)
+        ),
+    [projects]
+  );
 
   const [filterValue, setFilterValue] = useState("All Tasks");
-  const [filteredTasks, setFilteredTasks] = useState(tasks);
+
+  const filteredTasks = useMemo(() => {
+    switch (filterValue) {
+      case "Completed":
+        return tasks.filter((task) => task.status === "completed");
+      case "Due Today":
+        return tasks.filter((task) => task.dueDate === formattedToday);
+      case "Pending":
+        return tasks.filter((task) => task.status === "pending");
+      case "All Tasks":
+      default:
+        return tasks;
+    }
+  }, [tasks, filterValue]);
 
   const handleFilterChange = (option) => {
     setFilterValue(option);
-    switch (option) {
-      case "All Tasks":
-        setFilteredTasks(tasks);
-        break;
-      case "Completed":
-        const completedTasks = tasks.filter(
-          (task) => task.status === "completed"
-        );
-        setFilteredTasks(completedTasks);
-        break;
-      case "Due Today":
-        const inProgressTasks = tasks.filter(
-          (task) => task.dueDate === formattedToday
-        );
-        setFilteredTasks(inProgressTasks);
-        break;
-      case "Pending":
-        const pendingTasks = tasks.filter((task) => task.status === "pending");
-        setFilteredTasks(pendingTasks);
-        break;
-      default:
-        setFilteredTasks(tasks);
-        break;
-    }
   };
-
-  useEffect(() => {
-    setFilteredTasks(tasks);
-  }, [projects]);
-
 
   return (
     <section className={styles.main}>
