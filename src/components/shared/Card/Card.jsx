@@ -9,6 +9,8 @@ export const Card = ({children, className, color = 'default', padding = "small",
     color === 'light' && styles.light,
     color === 'dark' && styles.dark,
     padding === "small" && styles.padding_small,
+    padding === "medium" && styles.padding_medium,
+    padding === "large" && styles.padding_large,
     padding === "none" && styles.padding_none,
     className
   )

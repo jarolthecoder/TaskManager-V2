@@ -26,3 +26,11 @@
 .padding_none {
   padding: 1.35rem 0;
 }
+
+.padding_medium {
+  padding: 2.5rem;
+}
+
+.padding_large {
+  padding: 2.75rem;
+}
