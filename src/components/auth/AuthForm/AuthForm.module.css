@@ -1,4 +1,4 @@
-.form {
+.main {
   width: 100%;
 }
 
@@ -28,12 +28,11 @@
   color: var(--clr-text-secondary);
 }
 
-
 .form a {
-  text-decoration: underline;
+  color: var(--clr-primary-main);
 }
 
 .form a:hover {
   color: var(--clr-primary-main);
+  text-decoration: underline;
 }
-

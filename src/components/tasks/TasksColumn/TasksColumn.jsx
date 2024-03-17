@@ -36,7 +36,7 @@ export const TasksColumn = ({ listId, listTitle, tasks, colSpan = 4 }) => {
   const numOfTasksClasses = classNames(
     styles.num_of_tasks,
     listTitle === "To Do" && styles.pending,
-    listTitle === "Doing" && styles.in_progress,
+    listTitle === "In Progress" && styles.in_progress,
     listTitle === "Completed" && styles.completed,
     listTitle === "Unassigned" && styles.unassigned
   );

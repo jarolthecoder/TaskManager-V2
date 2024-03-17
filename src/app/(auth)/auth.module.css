@@ -3,70 +3,45 @@
   min-height: 100dvh;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--clr-blue-dark);
-}
-
-.main p {
-  font-size: var(--fs-body);
-}
-
-.col_right h2,
-.input_group input {
-  color: var(--clr-text-primary);
-}
-
-.col_left,
-.form_btn_container {
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .col_left,
 .col_right {
+ 
   height: 100dvh;
-  padding: 4rem 3rem;
 }
 
 .col_left {
-  width: 45%;
+  width: 40%;
+  padding: 2rem 3rem;
+  background: var(--clr-bg-card-primary);
 }
 
 .col_right {
-  width: 55%;
-  /* background: url(../../../public/task-manager-v2-landing.png) no-repeat;
-  background-size: cover;
-  background-position: bottom -100px center; */
-  background-color: var(--clr-bg-default);
+  width: 60%;
 }
 
-.title {
-  max-width: 500px;
+.col_right .col_header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem 3rem;
 }
 
-.title h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: var(--clr-text-primary);
+.auth_logo {
+  padding: 0;
 }
 
 /* Auth Form */
-.form_card {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 .form_container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 15vh;
 }
 
 .form_btn_container {
@@ -88,7 +63,7 @@
   margin: auto;
   z-index: 2;
   padding: 1rem;
-  background: var(--clr-bg-default);
+  background: var(--clr-bg-card-primary);
 }
 
 .or_signin_text::before {

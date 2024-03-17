@@ -25,12 +25,18 @@ export default function AuthLayout({ children }) {
 
   return (
     <main className={styles.main}>
-      {/* <Logo color={theme === "dark" ? "dark" : "light"} /> */}
-      <Card className={styles.form_card} padding="medium">
-        <div className={styles.form_container}>
-          {children}
+      <div className={styles.col_left}>
+        <div className={styles.col_header}>
+          <Logo className={styles.auth_logo} />
         </div>
-      </Card>   
+        <div className={styles.form_container}>{children}</div>
+      </div>
+
+      <div className={styles.col_right}>
+        <div className={styles.col_header}>
+          <ThemeToggle />
+        </div>
+      </div>
     </main>
   );
 }

@@ -18,7 +18,7 @@ export const TasksBoard = ({ tasks, onDragEnd }) => {
 
     return [
       { id: "pending", title: "To Do", tasks: pendingTasks },
-      { id: "inProgress", title: "Doing", tasks: inProgressTasks },
+      { id: "inProgress", title: "In Progress", tasks: inProgressTasks },
       { id: "completed", title: "Completed", tasks: completedTasks },
     ];
   }, [tasks]);

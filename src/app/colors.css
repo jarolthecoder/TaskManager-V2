@@ -134,8 +134,8 @@
   --clr-disabled-opacity: #2b313a1e;
 
   /* Scrollbar */
-  --clr-scrollbar-track: #171c24;
-  --clr-scrollbar-thumb: #71787c;
+  --clr-scrollbar-track: #dddddd;
+  --clr-scrollbar-thumb:  #b3b5b8;
   --clr-scrollbar-thumb-hover: #535659;
   --clr-trasparent: #00000000;
 

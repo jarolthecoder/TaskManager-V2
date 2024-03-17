@@ -60,7 +60,7 @@ export default function TasksPage() {
       <div className={styles.header}>
         <div>
           <Breadcrumbs />
-          <h2>Tasks</h2>
+          <h2>My Tasks</h2>
         </div>
         <div className={styles.header_options}>
           <p
