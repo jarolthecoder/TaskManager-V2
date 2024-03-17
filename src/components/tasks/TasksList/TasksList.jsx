@@ -2,114 +2,66 @@
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
 import { TaskListItem } from "../TaskListItem/TaskListItem";
-import styles from "./TasksList.module.css";
 import { MatIcon, MenuItem, RenderWhen, Select } from "@/components/shared";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { formatDate } from "@/utils/helpers";
+import styles from "./TasksList.module.css";
 
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const sortOptions = ["Latest", "Oldest", "Priority High", "Priority Low"];
 const formattedToday = formatDate(new Date(), "PP");
-const todaysDateFull = formatDate(new Date(), "eeee, MMM d, yyyy");
 
 export const TasksList = () => {
   const projects = useSelector(selectAllProjects);
-  const tasks = projects
-    .map((project) => project.tasks)
-    .flat()
-    .sort(
-      (taskA, taskB) =>
-        new Date(taskB.creationDate) - new Date(taskA.creationDate)
-    );
+  const allTasks = projects.flatMap((project) => project.tasks);
 
   const [filterValue, setFilterValue] = useState("All Tasks");
-  const [filteredTasks, setFilteredTasks] = useState(tasks);
   const [sortValue, setSortValue] = useState("Latest");
 
-  const handleFilterChange = (option) => {
-    switch (option) {
-      case "All Tasks":
-        setFilteredTasks(tasks);
-        setFilterValue(option);
-        break;
+  // Filter tasks based on filterValue
+  const filteredTasks = useMemo(() => {
+    switch (filterValue) {
       case "Completed":
-        const completedTasks = tasks.filter(
-          (task) => task.status === "completed"
-        );
-        setFilteredTasks(completedTasks);
-        setFilterValue(option);
-        break;
+        return allTasks.filter((task) => task.status === "completed");
       case "Due Today":
-        const inProgressTasks = tasks.filter(
-          (task) => task.dueDate === formattedToday
-        );
-        setFilteredTasks(inProgressTasks);
-        setFilterValue(option);
-        break;
+        return allTasks.filter((task) => task.dueDate === formattedToday);
       case "Pending":
-        const pendingTasks = tasks.filter((task) => task.status === "pending");
-        setFilteredTasks(pendingTasks);
-        setFilterValue(option);
-        break;
+        return allTasks.filter((task) => task.status === "pending");
+      case "All Tasks":
       default:
-        setFilteredTasks(tasks);
-        break;
+        return allTasks;
     }
+  }, [allTasks, filterValue]);
+
+  // Sort filtered tasks based on sortValue
+  const sortedTasks = useMemo(() => {
+    switch (sortValue) {
+      case "Oldest":
+        return [...filteredTasks].sort((a, b) => new Date(a.creationDate) - new Date(b.creationDate));
+      case "Priority High":
+        return [...filteredTasks].sort((a, b) => {
+          const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+          return (priorityOrder[a.priority] || 0) - (priorityOrder[b.priority] || 0);
+        });
+      case "Priority Low":
+        return [...filteredTasks].sort((a, b) => {
+          const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+          return (priorityOrder[b.priority] || 0) - (priorityOrder[a.priority] || 0);
+        });
+      case "Latest":
+      default:
+        return [...filteredTasks].sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+    }
+  }, [filteredTasks, sortValue]);
+
+  const handleFilterChange = (option) => {
+    setFilterValue(option);
   };
 
   const handleSortChange = (option) => {
-    switch (option) {
-      case "Latest":
-        const sortedByLatest = filteredTasks.sort(
-          (taskA, taskB) =>
-            new Date(taskB.creationDate) - new Date(taskA.creationDate)
-        );
-        setFilteredTasks(sortedByLatest);
-        setSortValue(option);
-        break;
-      case "Oldest":
-        const sortedByOldest = filteredTasks.sort(
-          (taskA, taskB) =>
-            new Date(taskA.creationDate) - new Date(taskB.creationDate)
-        );
-        setFilteredTasks(sortedByOldest);
-        setSortValue(option);
-        break;
-      case "Priority High":
-        const sortedByPriorityHigh = filteredTasks.sort((taskA, taskB) => {
-          const priorityOrder = { High: 1, Medium: 2, Low: 3 };
-          return (
-            (priorityOrder[taskA.priority] || 0) -
-            (priorityOrder[taskB.priority] || 0)
-          );
-        });
-        setFilteredTasks(sortedByPriorityHigh);
-        setSortValue(option);
-        break;
-      case "Priority Low":
-        const sortedByPriorityLow = filteredTasks.sort((taskA, taskB) => {
-          const priorityOrder = { High: 1, Medium: 2, Low: 3 };
-          return (
-            (priorityOrder[taskB.priority] || 0) -
-            (priorityOrder[taskA.priority] || 0)
-          );
-        });
-        setFilteredTasks(sortedByPriorityLow);
-        setSortValue(option);
-        break;
-      default:
-        setFilteredTasks(tasks);
-        break;
-    }
+    setSortValue(option);
   };
 
-  useEffect(() => {
-    setFilteredTasks(tasks);
-  }, [projects]);
-
-  //  useEffect(() => {
-  //     setSortValue("Latest");
-  //   }, [filterValue]);
 
   return (
     <div className={styles.main}>
@@ -141,7 +93,7 @@ export const TasksList = () => {
         condition={filteredTasks.length > 0}
         fallback={<p className={styles.list_empty_message}>No tasks to show</p>}
       >
-      {filteredTasks.map((task) => (
+      {sortedTasks.map((task) => (
         <TaskListItem key={task.id} task={task} />
       ))}
       </RenderWhen>
