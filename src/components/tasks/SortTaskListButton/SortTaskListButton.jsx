@@ -1,7 +1,7 @@
 import { MatIcon, MenuItem, Select } from "@/components/shared";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
 
-const { LATEST, OLDEST, DUE_DATE, PRIORITY_HIGH, PRIORITY_LOW } =
+const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } =
   TASK_SORT_OPTIONS;
 
 const sortOptions = [
