@@ -8,12 +8,12 @@ import { Breadcrumbs, Card, MenuItem, Select } from "@/components/shared";
 import { TasksTable } from "@/components/tasks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";
-
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const formattedToday = formatDate(new Date(), "PP");
 const todaysDateFull = formatDate(new Date(), "eeee, MMM d, yyyy");
 
 export default function Dashboard() {
+
   const projects = useSelector(selectAllProjects);
   const tasks = useMemo(
     () =>
@@ -41,6 +41,7 @@ export default function Dashboard() {
     }
   }, [tasks, filterValue]);
 
+  
   const handleFilterChange = (option) => {
     setFilterValue(option);
   };

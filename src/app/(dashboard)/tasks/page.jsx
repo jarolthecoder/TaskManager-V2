@@ -1,23 +1,59 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Breadcrumbs, MatIcon, RenderWhen } from "@/components/shared";
 import { AddTaskButton, TasksBoard, TasksList  } from "@/components/tasks";
-import styles from "./tasksPage.module.css";
 import { useSelector } from "react-redux";
-import { selectAllProjects } from "@/redux/features/projects";
+import { selectAllProjects, updateProject } from "@/redux/features/projects";
+import { useDispatch } from "react-redux";
+import styles from "./tasksPage.module.css";
 
 export default function TasksPage() {
-  
+  const dispatch = useDispatch();
   const projects = useSelector(selectAllProjects);
-  const allTasks = projects.flatMap((project) => project.tasks);
+  const tasks = projects.flatMap((project) => project.tasks);
   const preferedTaskView = localStorage.getItem("prefered-task-view");
 
+  const [allTasks, setAllTasks] = useState(tasks) 
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
 
   const handleSelectedView = (view) => {
     setSelectedView(view);
     localStorage.setItem("prefered-task-view", view);
   };
+
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const { destination } = result;
+    const destinationColumn = destination.droppableId;
+    const taskId = result.draggableId;
+    const task = allTasks.find((task) => task.id === taskId);
+    const updatedTask = { ...task, status: destinationColumn };
+    const projectToUpdate = projects.find((project) => project.title === task.projectName);
+
+    const updatedProject = {
+      ...projectToUpdate,
+      tasks: projectToUpdate.tasks.map((task) =>
+        task.id === taskId ? updatedTask : task
+      ),
+    };
+
+    try {
+      dispatch(updateProject(updatedProject));
+    } catch (error) {
+      console.log("Error updating project", error.message)
+    }
+    
+    setAllTasks(
+      allTasks.map((task) =>
+        task.id === taskId ? updatedTask : task
+      )
+    );
+  };
+
+  useEffect(() => {
+    setAllTasks(tasks);
+  }, [projects]);
 
   return (
     <section className={styles.main}>
@@ -54,7 +90,7 @@ export default function TasksPage() {
           fallback={<TasksList tasks={allTasks}/>}
         >
           <TasksBoard 
-          
+            onDragEnd={handleDragEnd}
             tasks={allTasks}
           />
         </RenderWhen>

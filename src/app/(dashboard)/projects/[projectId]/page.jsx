@@ -6,6 +6,7 @@ import {
   getProjectById,
   selectProject,
   setSelectedProject,
+  updateProject,
 } from "@/redux/features/projects";
 import { Breadcrumbs, MatIcon, RenderWhen } from "@/components/shared";
 import { AddTaskButton, TasksBoard, TasksList } from "@/components/tasks";
@@ -13,16 +14,46 @@ import styles from "./projectPage.module.css";
 
 export default function ProjectPage({ params }) {
   const dispatch = useDispatch();
-
   const selectedProject = useSelector(selectProject);
   const projectTitle = selectedProject?.title;
-
   const preferedTaskView = localStorage.getItem("prefered-task-view");
-  const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
 
+  // Local state
+  const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
+  const [allTasks, setAllTasks] = useState(selectedProject?.tasks);
+  
   const handleSelectedView = (view) => {
     setSelectedView(view);
     localStorage.setItem("prefered-task-view", view);
+  };
+
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const { destination } = result;
+    const destinationColumn = destination.droppableId;
+    const taskId = result.draggableId;
+    const task = allTasks.find((task) => task.id === taskId);
+    const updatedTask = { ...task, status: destinationColumn };
+
+    const updatedProject = {
+      ...selectedProject,
+      tasks: selectedProject.tasks.map((task) =>
+        task.id === taskId ? updatedTask : task
+      ),
+    };
+
+    try {
+      dispatch(updateProject(updatedProject));
+    } catch (error) {
+      console.log("Error updating project", error.message)
+    }
+    
+    setAllTasks(
+      allTasks.map((task) =>
+        task.id === taskId ? updatedTask : task
+      )
+    );
   };
 
   // Fetch project by id
@@ -33,6 +64,10 @@ export default function ProjectPage({ params }) {
       dispatch(setSelectedProject(null));
     };
   }, []);
+
+  useEffect(() => {
+    setAllTasks(selectedProject?.tasks);
+  }, [selectedProject]);
 
   return (
     <section className={styles.main}>
@@ -68,13 +103,12 @@ export default function ProjectPage({ params }) {
           <RenderWhen
             condition={selectedView === "board"}
             fallback={
-              <TasksList 
-                tasks={selectedProject?.tasks} 
-              />
+              <TasksList tasks={selectedProject?.tasks} />
             }
           >
             <TasksBoard 
-              tasks={selectedProject?.tasks}
+              tasks={allTasks}
+              onDragEnd={handleDragEnd}
             />
           </RenderWhen>
         </RenderWhen>
