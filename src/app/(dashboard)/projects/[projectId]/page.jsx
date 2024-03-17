@@ -73,7 +73,9 @@ export default function ProjectPage({ params }) {
               />
             }
           >
-            <TasksBoard />
+            <TasksBoard 
+              tasks={selectedProject?.tasks}
+            />
           </RenderWhen>
         </RenderWhen>
       </div>

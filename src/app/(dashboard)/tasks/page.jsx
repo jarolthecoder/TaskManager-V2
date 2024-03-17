@@ -53,7 +53,10 @@ export default function TasksPage() {
           condition={selectedView === "board"}
           fallback={<TasksList tasks={allTasks}/>}
         >
-          <TasksBoard />
+          <TasksBoard 
+          
+            tasks={allTasks}
+          />
         </RenderWhen>
       </div>
     </section>
