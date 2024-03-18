@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { DayPicker } from "react-day-picker";
 import { usePopper } from "@/hooks";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { MatIcon, Popper } from "..";
+import { MatIcon, RenderWhen } from "..";
 import PropTypes from "prop-types";
 import styles from "./DatePicker.module.css";
 
@@ -17,13 +17,11 @@ export const DatePicker = ({
   placeholder,
   ...restOfProps
 }) => {
-
   const refEl = useRef(null);
   const popperRef = useRef(null);
   const [selected, setSelected] = useState(new Date());
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
- 
   const handleDaySelect = (date) => {
     setSelected(date);
     if (date) {
@@ -31,7 +29,7 @@ export const DatePicker = ({
     } else {
       setValue(name, "");
     }
-    console.log({date})
+    togglePopper();
   };
 
   return (
@@ -52,24 +50,27 @@ export const DatePicker = ({
           <MatIcon iconName="event" />
         </p>
       </div>
-      <Popper
-        open={isPopperOpen}
-        ref={popperRef}
-        onClose={togglePopper}
-        fullWitdth
-      >
-        <div className={styles.date_picker_container}>
-          <DayPicker
-            initialMonth={selected || new Date()}
-            selected={selected}
-            onDayClick={handleDaySelect}
-            modifiersClassNames={{
-              selected: styles.date_picker_selected,
-              today: styles.date_picker_today,
-            }}
-          />
+      <RenderWhen condition={isPopperOpen}>
+        <div
+          ref={popperRef}
+          role="dialog"
+          aria-modal="true"
+          tabIndex={-1}
+          style={{ zIndex: 5 }}
+        >
+          <div className={styles.date_picker_container}>
+            <DayPicker
+              initialMonth={selected || new Date()}
+              selected={selected}
+              onDayClick={handleDaySelect}
+              modifiersClassNames={{
+                selected: styles.date_picker_selected,
+                today: styles.date_picker_today,
+              }}
+            />
+          </div>
         </div>
-      </Popper>
+      </RenderWhen>
     </div>
   );
 };
