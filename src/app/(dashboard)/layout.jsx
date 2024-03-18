@@ -4,12 +4,12 @@ import { AppProvider } from "@/context";
 import { TaskActionsModal } from "@/components/tasks/";
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
-import styles from "./dashboard.module.css";
-import { PageLoader } from "@/components/shared";
+import { PageLoader } from "@/components/ui";
 import { ProjectActionsModal } from "@/components/projects";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FirebaseAuth } from "@/firebase/config";
 import { DisplayPanel, SideBar, TopBar } from "@/components/layout";
+import styles from "./dashboard.module.css";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();

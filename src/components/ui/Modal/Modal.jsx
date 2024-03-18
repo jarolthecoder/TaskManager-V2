@@ -1,5 +1,5 @@
-
-import { Card, IconButton, MatIcon, RenderWhen } from "..";
+import { Card, IconButton, MatIcon } from "..";
+import { RenderWhen } from "@/components/shared";
 import PropTypes from "prop-types";
 import styles from "./Modal.module.css";
 

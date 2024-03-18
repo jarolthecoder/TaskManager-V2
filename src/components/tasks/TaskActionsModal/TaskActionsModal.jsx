@@ -1,5 +1,5 @@
 "use client";
-import { Modal } from "@/components/shared";
+import { Modal } from "@/components/ui";
 import { AppContext } from "@/context/AppContext";
 import { useContext } from "react";
 import { AddTaskForm, DeleteTaskPopup, EditTaskForm } from "..";

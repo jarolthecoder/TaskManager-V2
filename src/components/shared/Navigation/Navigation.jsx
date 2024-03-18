@@ -5,7 +5,8 @@ import styles from "./Navigation.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/features/auth/authSlice";
-import { MatIcon, RenderWhen } from "..";
+import { MatIcon } from "@/components/ui";
+import { RenderWhen } from "..";
 
 export const Navigation = ({ sidebarOpen }) => {
   const router = useRouter();
@@ -56,17 +57,6 @@ export const Navigation = ({ sidebarOpen }) => {
           <MatIcon iconName="settings" />
           <RenderWhen condition={sidebarOpen}>
             <Link href="/settings">Settings</Link>
-          </RenderWhen>
-        </li>
-
-        <li
-          className={`${styles.navlink} ${
-            currentRoute === "/login" ? styles.active : null
-          }`}
-        >
-          <MatIcon iconName="help" />
-          <RenderWhen condition={sidebarOpen}>
-            <Link href="/help">Help</Link>
           </RenderWhen>
         </li>
         <li

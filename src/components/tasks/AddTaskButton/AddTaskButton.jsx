@@ -1,6 +1,6 @@
 "use client"
 import { useContext } from "react";
-import { Button, IconButton, MatIcon } from '@/components/shared';
+import { Button, IconButton, MatIcon } from '@/components/ui';
 import { AppContext } from '@/context/AppContext';
 import { TASK_ACTIONS } from "@/lib/constants";
 import PropTypes from 'prop-types';

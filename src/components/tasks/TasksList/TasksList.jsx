@@ -1,7 +1,8 @@
 "use client";
 
 import { TaskListItem } from "../TaskListItem/TaskListItem";
-import { MatIcon, MenuItem, RenderWhen, Select } from "@/components/shared";
+import { RenderWhen } from "@/components/shared";
+import { MatIcon, MenuItem, Select } from "@/components/ui";
 import { useMemo, useState } from "react";
 import { formatDate } from "@/utils/helpers";
 import { SortTaskListButton } from "../SortTaskListButton/SortTaskListButton";

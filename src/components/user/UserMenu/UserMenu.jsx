@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { startLogout } from "@/redux/features/auth";
 import { usePopper } from "@/hooks";
-import { Menu, MenuItem, Popper } from "../../shared";
+import { Menu, MenuItem, Popper } from "@/components/ui";
 import Link from "next/link";
 import Image from "next/image";
 import userImg from "../../../../public/user-avatar.svg";

@@ -1,4 +1,4 @@
-import { Loader } from "@/components/shared";
+import { Loader } from "@/components/ui";
 
 export default function Loading() {
   return (

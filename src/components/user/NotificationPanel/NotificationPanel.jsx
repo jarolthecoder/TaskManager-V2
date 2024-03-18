@@ -1,5 +1,6 @@
+import { Button, MatIcon } from "@/components/ui";
 import styles from "./NotificationPanel.module.css";
-import { Button, MatIcon } from "..";
+
 
 export const NotificationPanel = ({ handleOpen }) => {
     return (

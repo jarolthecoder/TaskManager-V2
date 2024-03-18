@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { createUserWithEmailAndPassword } from "@/redux/features/auth";
 import { registerSchema } from "@/utils/validations/authSchema";
 import { AuthForm, AuthFormField } from "@/components/auth";
-import { Button } from "@/components/shared";
+import { Button } from "@/components/ui";
 import Link from "next/link";
 import styles from "../auth.module.css";
 

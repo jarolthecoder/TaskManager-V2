@@ -1,4 +1,4 @@
-import { Card } from "@/components/shared";
+import { Card } from "@/components/ui";
 import styles from "./StatCard.module.css";
 import classNames from "classnames";
 

@@ -1,7 +1,7 @@
 "use client"
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { IconButton, MatIcon, SearchBar } from "@/components/shared";
+import { IconButton, MatIcon, SearchBar } from "@/components/ui";
 import { UserBar } from "@/components/user";
 import classNames from "classnames";
 import styles from "./TopBar.module.css";

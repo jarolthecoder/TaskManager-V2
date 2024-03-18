@@ -13,13 +13,13 @@ import {
   updateProjects,
 } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
+import { DatePicker } from "@/components/shared";
 import {
   FormField,
   InputSelect,
   Button,
-  DatePicker,
   MenuItem,
-} from "@/components/shared";
+} from "@/components/ui";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./EditTaskForm.module.css";
 

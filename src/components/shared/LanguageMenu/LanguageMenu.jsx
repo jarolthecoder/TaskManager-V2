@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { usePopper } from "@/hooks";
 import Image from "next/image";
-import { IconButton, Menu, MenuItem, Popper } from "..";
+import { IconButton, Menu, MenuItem, Popper } from "../../ui";
 import enFlag from "../../../../public/ic_flag_en.9a67c937.svg";
 import deFlag from "../../../../public/ic_flag_de.7d35b6ca.svg";
 import frFlag from "../../../../public/ic_flag_fr.35afd52c.svg";

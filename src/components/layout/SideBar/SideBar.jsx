@@ -2,7 +2,8 @@
 
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { Logo, Navigation } from "@/components/shared";
+import { Logo } from "@/components/ui";
+import { Navigation } from "@/components/shared";
 import classNames from "classnames";
 import styles from "./SideBar.module.css";
 

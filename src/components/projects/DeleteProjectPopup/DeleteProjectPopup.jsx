@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppContext } from "@/context/AppContext";
 import { deleteProject } from "@/redux/features/projects";
-import { Button } from "@/components/shared";
+import { Button } from "@/components/ui";
 import styles from "./DeleteProjectPopup.module.css";
 
 export const DeleteProjectPopup = () => {

@@ -1,5 +1,5 @@
 import { formatDate } from "date-fns";
-import { Badge } from "@/components/shared";
+import { Badge } from "@/components/ui";
 import styles from "./TasksTable.module.css";
 
 const tableColumns = ["Task", "Due Date", "Status", "Priority"];

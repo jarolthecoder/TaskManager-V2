@@ -1,6 +1,6 @@
 "use client";
 import { useContext } from "react";
-import { Modal } from "@/components/shared";
+import { Modal } from "@/components/ui";
 import { AppContext } from "@/context/AppContext";
 import { PROJECT_ACTIONS } from "@/lib/constants";
 import { DeleteProjectPopup } from "../DeleteProjectPopup/DeleteProjectPopup";

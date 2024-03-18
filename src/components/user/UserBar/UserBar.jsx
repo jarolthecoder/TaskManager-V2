@@ -1,5 +1,6 @@
-import { LanguageMenu, NotificationsMenu, ThemeToggle } from "@/components/shared";
+import { LanguageMenu, ThemeToggle } from "@/components/shared";
 import { UserMenu } from "../UserMenu/UserMenu";
+import { NotificationsMenu } from "../NotificationsMenu/NotificationsMenu";
 import styles from "./UserBar.module.css";
 
 export const UserBar = () => {

@@ -3,9 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useCheckAuth } from "@/hooks";
 import { useAuthState } from "react-firebase-hooks/auth";
-import styles from "./auth.module.css";
 import { FirebaseAuth } from "@/firebase/config";
-import { Card, Logo, PageLoader, ThemeToggle } from "@/components/shared";
+import { ThemeToggle } from "@/components/shared";
+import { Card, Logo, PageLoader} from "@/components/ui";
+import styles from "./auth.module.css";
 
 export default function AuthLayout({ children }) {
   const router = useRouter();

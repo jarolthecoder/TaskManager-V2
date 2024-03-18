@@ -3,7 +3,8 @@
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
-import { Breadcrumbs, Button, IconButton, MatIcon } from "@/components/shared";
+import { Breadcrumbs } from "@/components/shared";
+import { Button, IconButton, MatIcon } from "@/components/ui";
 import { ProjectCard } from "@/components/projects";
 import { AppContext } from "@/context/AppContext";
 import { PROJECT_ACTIONS } from "@/lib/constants";

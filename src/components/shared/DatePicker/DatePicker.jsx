@@ -4,7 +4,8 @@ import { useState, useRef } from "react";
 import { DayPicker } from "react-day-picker";
 import { usePopper } from "@/hooks";
 import { formatDate } from "@/utils/helpers/formatDate";
-import { MatIcon, RenderWhen } from "..";
+import { MatIcon } from "@/components/ui";
+import { RenderWhen } from "..";
 import PropTypes from "prop-types";
 import styles from "./DatePicker.module.css";
 

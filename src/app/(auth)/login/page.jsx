@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/utils/validations/authSchema";
 import { AuthForm, AuthFormField } from "@/components/auth";
-import { Button } from "@/components/shared";
+import { Button } from "@/components/ui";
 import { useDispatch } from "react-redux";
 import {
   startGoogleSignIn,

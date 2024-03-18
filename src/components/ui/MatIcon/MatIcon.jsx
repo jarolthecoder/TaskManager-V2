@@ -19,7 +19,7 @@ export const MatIcon = ({ iconName, size = "regular", className, style }) => {
 };
 
 MatIcon.propTypes = {
-  iconName: PropTypes.string.isRequired,
+  iconName: PropTypes.string,
   size: PropTypes.oneOf(["small", "regular", "large"]),
   className: PropTypes.string,
 };

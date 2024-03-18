@@ -14,13 +14,13 @@ import {
 } from "@/redux/features/projects";
 import { AppContext } from "@/context/AppContext";
 import { formatDate } from "@/utils/helpers/formatDate";
+import { DatePicker } from "@/components/shared";
 import {
   FormField,
   InputSelect,
   Button,
-  DatePicker,
   MenuItem,
-} from "@/components/shared";
+} from "@/components/ui";
 import styles from "./TaskForm.module.css";
 
 const priorityOptions = [

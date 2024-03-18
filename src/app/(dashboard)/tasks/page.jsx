@@ -1,6 +1,7 @@
 "use client"
-import { useEffect, useState } from "react";
-import { Breadcrumbs, MatIcon, RenderWhen } from "@/components/shared";
+import { useEffect, useMemo, useState } from "react";
+import { Breadcrumbs, RenderWhen } from "@/components/shared";
+import { MatIcon } from "@/components/ui";
 import { AddTaskButton, TasksBoard, TasksList  } from "@/components/tasks";
 import { useSelector } from "react-redux";
 import { selectAllProjects, updateProject } from "@/redux/features/projects";
@@ -10,16 +11,54 @@ import styles from "./tasksPage.module.css";
 export default function TasksPage() {
   const dispatch = useDispatch();
   const projects = useSelector(selectAllProjects);
-  const tasks = projects.flatMap((project) => project.tasks);
+// Derive tasks directly from projects
+const tasks = useMemo(() => projects.flatMap((project) => project.tasks), [projects]);
   const preferedTaskView = localStorage.getItem("prefered-task-view");
 
-  const [allTasks, setAllTasks] = useState(tasks) 
+  const [allTasks, setAllTasks] = useState(tasks);
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
 
   const handleSelectedView = (view) => {
     setSelectedView(view);
     localStorage.setItem("prefered-task-view", view);
   };
+
+  // REORDER TASKS BASED ON DROP POSITION - NEEDS TO BE FIXED
+  // const handleDragEnd = (result) => {
+  //   if (!result.destination) return;
+   
+  //   const { destination } = result;
+  //   const destinationIndex = destination.index;
+  //   const taskId = result.draggableId;
+  
+  //   // Find the task being dragged
+  //   const taskIndex = allTasks.findIndex((task) => task.id === taskId);
+  //   const updatedTask = { ...allTasks[taskIndex], status: destination.droppableId };
+  
+  //   // Remove the task from its original position
+  //   const updatedTasks = allTasks.filter((task) => task.id !== taskId);
+  
+  //   // Insert the task into its new position
+  //   updatedTasks.splice(destinationIndex, 0, updatedTask);
+
+  //   // Update the project with the new task order
+  //   const projectToUpdate = projects.find((project) => project.title === updatedTask.projectName);
+  
+  //   if (projectToUpdate) {
+  //     const updatedProject = {
+  //       ...projectToUpdate,
+  //       tasks: updatedTasks.filter((task) => task.projectName === projectToUpdate.title)
+  //     };
+  
+  //     try {
+  //       dispatch(updateProject(updatedProject));
+  //       setAllTasks(updatedTasks);
+  //     } catch (error) {
+  //       console.log("Error updating project", error.message);
+  //     }
+
+  //   }
+  // };
 
   const handleDragEnd = (result) => {
     if (!result.destination) return;
@@ -51,9 +90,12 @@ export default function TasksPage() {
     );
   };
 
+ // Update tasks state whenever projects change
   useEffect(() => {
     setAllTasks(tasks);
-  }, [projects]);
+  }, [tasks]);
+
+
 
   return (
     <section className={styles.main}>

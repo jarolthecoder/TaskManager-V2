@@ -13,7 +13,7 @@ import {
   Menu,
   MenuItem,
   Popper,
-} from "@/components/shared";
+} from "@/components/ui";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { TASK_ACTIONS } from "@/lib/constants";
 import PropTypes from "prop-types";

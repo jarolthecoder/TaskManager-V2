@@ -13,14 +13,13 @@ import {
   MenuItem,
   Popper,
   ProgressBar,
-} from "@/components/shared";
+} from "@/components/ui";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { setSelectedProject } from "@/redux/features/projects";
 import { PROJECT_ACTIONS } from "@/lib/constants";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./ProjectCard.module.css";
-import { set } from "date-fns";
 
 const { EDIT_PROJECT, DELETE_PROJECT } = PROJECT_ACTIONS;
 

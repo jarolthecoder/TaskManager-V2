@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { DatePicker } from "@/components/shared";
 import {
   FormField,
   InputSelect,
   Button,
-  DatePicker,
   MenuItem,
-} from "@/components/shared";
+} from "@/components/ui";
 import { AppContext } from "@/context/AppContext";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { updateProject } from "@/redux/features/projects";

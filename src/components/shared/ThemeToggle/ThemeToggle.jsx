@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import { ThemeContext } from "@/context";
-import { IconButton, MatIcon } from "@/components/shared";
+import { IconButton, MatIcon } from "@/components/ui";
 
 export const ThemeToggle = () => {
   const { toggleTheme, theme } = useContext(ThemeContext);

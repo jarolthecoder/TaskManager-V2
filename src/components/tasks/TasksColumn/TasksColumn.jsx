@@ -13,20 +13,33 @@ const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } = TASK_SORT_OPTIONS;
 const sortTasks = (tasks, sortValue) => {
   switch (sortValue.value) {
     case OLDEST:
-      return [...tasks].sort((taskA, taskB) => new Date(taskA.creationDate) - new Date(taskB.creationDate));
+      return [...tasks].sort(
+        (taskA, taskB) =>
+          new Date(taskA.creationDate) - new Date(taskB.creationDate)
+      );
     case PRIORITY_HIGH:
       return [...tasks].sort((taskA, taskB) => {
         const priorityOrder = { High: 1, Medium: 2, Low: 3 };
-        return (priorityOrder[taskA.priority] || 0) - (priorityOrder[taskB.priority] || 0);
+        return (
+          (priorityOrder[taskA.priority] || 0) -
+          (priorityOrder[taskB.priority] || 0)
+        );
       });
     case PRIORITY_LOW:
       return [...tasks].sort((taskA, taskB) => {
         const priorityOrder = { High: 1, Medium: 2, Low: 3 };
-        return (priorityOrder[taskB.priority] || 0) - (priorityOrder[taskA.priority] || 0);
+        return (
+          (priorityOrder[taskB.priority] || 0) -
+          (priorityOrder[taskA.priority] || 0)
+        );
       });
-      case LATEST:
+    case LATEST:
+      return [...tasks].sort(
+        (a, b) => new Date(b.creationDate) - new Date(a.creationDate)
+      );
+
     default:
-      return [...tasks].sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+      return tasks;
   }
 };
 
@@ -41,10 +54,16 @@ export const TasksColumn = ({ listId, listTitle, tasks, colSpan = 4 }) => {
     listTitle === "Unassigned" && styles.unassigned
   );
 
-  const [sortValue, setSortValue] = useState({ label: "Latest", value: LATEST });
+  const [sortValue, setSortValue] = useState({
+    label: "Latest",
+    value: LATEST,
+  });
 
   // Memoize sorted tasks
-  const sortedTasks = useMemo(() => sortTasks(tasks, sortValue), [tasks, sortValue]);
+  const sortedTasks = useMemo(
+    () => sortTasks(tasks, sortValue),
+    [tasks, sortValue]
+  );
 
   return (
     <div className={styles.main} style={{ gridColumnEnd: `span ${colSpan}` }}>

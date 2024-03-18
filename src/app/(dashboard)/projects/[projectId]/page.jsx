@@ -8,7 +8,8 @@ import {
   setSelectedProject,
   updateProject,
 } from "@/redux/features/projects";
-import { Breadcrumbs, MatIcon, RenderWhen } from "@/components/shared";
+import { Breadcrumbs, RenderWhen } from "@/components/shared";
+import { MatIcon } from "@/components/ui";
 import { AddTaskButton, TasksBoard, TasksList } from "@/components/tasks";
 import styles from "./projectPage.module.css";
 

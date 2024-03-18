@@ -3,8 +3,9 @@
 import { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
+import { Breadcrumbs } from "@/components/shared";
+import { Card, MenuItem, Select } from "@/components/ui";
 import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
-import { Breadcrumbs, Card, MenuItem, Select } from "@/components/shared";
 import { TasksTable } from "@/components/tasks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";

@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { IconButton, MatIcon } from "..";
+import { IconButton, MatIcon } from "@/components/ui";
+
 
 export const SidebarToggle = () => {
-  const { sidebarOpen, handleSidebar } = useContext(AppContext);
+  const { handleSidebar } = useContext(AppContext);
 
   return (
     <IconButton size="small" onClick={handleSidebar}>

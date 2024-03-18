@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { RenderWhen } from "..";
+import { RenderWhen } from "../../shared";
 import PropTypes from "prop-types";
 import styles from "./Breadcrumbs.module.css";
 import Link from "next/link";
