@@ -13,6 +13,7 @@ export const IconButton = ({
 }) => {
 
   const btnClassnames = classNames(
+    className,
     styles.icon_btn,
     variant === "filled" && styles.filled,
     variant === "outlined" && styles.outlined,
@@ -22,7 +23,6 @@ export const IconButton = ({
     : size === "medium" 
     ? styles.medium
     : styles.large,
-    className
   );
 
   return (

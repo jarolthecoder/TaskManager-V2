@@ -63,3 +63,9 @@
 .table_body td:first-child {
   padding-left: 1.75rem;
 }
+
+@media (max-width: 600px) {
+  .table_container {
+    display: none;
+  }
+}

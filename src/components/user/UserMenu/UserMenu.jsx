@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { startLogout } from "@/redux/features/auth";
@@ -27,29 +26,24 @@ export const UserMenu = () => {
   return (
     <button ref={refEl} className={styles.main} onClick={togglePopper}>
       <div className={styles.user_img_container}>
-        <Image
-          src={userImg}
-          alt="user image"
-          width={36}
-          height={36}
-        />
+        <Image src={userImg} alt="user image" width={36} height={36} />
       </div>
-      <div>
+      <div className={styles.user}>
         <p className={styles.user_name}>{displayName}</p>
         <p className={styles.user_role}>Admin</p>
-        <Popper open={isPopperOpen} ref={popperRef}>
-          <Menu>
-            {menuItems.map(({ label, path, icon }) => (
-              <MenuItem key={label} onClick={togglePopper} icon={icon}>
-                <Link href={path}>{label}</Link>
-              </MenuItem>
-            ))}
-            <MenuItem onClick={handleLogout} icon="logout">
-              <Link href="/login">Logout</Link>
-            </MenuItem>
-          </Menu>
-        </Popper>
       </div>
+      <Popper open={isPopperOpen} ref={popperRef}>
+        <Menu>
+          {menuItems.map(({ label, path, icon }) => (
+            <MenuItem key={label} onClick={togglePopper} icon={icon}>
+              <Link href={path}>{label}</Link>
+            </MenuItem>
+          ))}
+          <MenuItem onClick={handleLogout} icon="logout">
+            <Link href="/login">Logout</Link>
+          </MenuItem>
+        </Menu>
+      </Popper>
     </button>
   );
 };

@@ -1,0 +1,17 @@
+.main {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(14, 19, 32, 0.747);
+  backdrop-filter: blur(15px);
+  transform: translateY(0);
+  transition: transform var(--transtion-slow), opacity var(--transtion-slow);
+  opacity: 1;
+}
+
+.scrolled_down {
+  transform: translateY(100%);
+  opacity: 0;
+}

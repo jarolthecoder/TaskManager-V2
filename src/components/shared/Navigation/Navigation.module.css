@@ -105,3 +105,26 @@
   height: 1px;
   background: var(--clr-border-light);
 }
+
+/* Media queries */
+@media (max-width: 600px) {
+  .navbar {
+    margin-top: 0;
+  }
+
+  .links_list {
+    flex-direction: row;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .navlink {
+    justify-content: center;
+    border-left: none;
+    border-top: 2px solid var(--clr-border-light);
+  }
+
+  .navlink.active {
+    background: var(--clr-trasparent);
+  }
+}

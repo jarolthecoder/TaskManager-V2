@@ -46,3 +46,9 @@
 .main.closed {
   width: 60px;
 }
+
+@media (max-width: 600px) {
+  .main {
+   display: none;
+  }
+}

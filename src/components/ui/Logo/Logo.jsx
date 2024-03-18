@@ -6,10 +6,10 @@ import classNames from "classnames";
 
 export const Logo = ({ displayText = true, color = "light", className }) => {
   const logoClasses = classNames(
+    className,
     styles.main,
     !displayText && styles.flex_center,
     color === "dark" && styles.dark,
-    className
   );
   return (
     <div className={logoClasses}>

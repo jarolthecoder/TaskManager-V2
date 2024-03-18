@@ -37,3 +37,30 @@
 .sidebar_toggle span:hover {
   color: var(--clr-text-primary) !important;
 }
+
+
+/* Media queries */
+@media (max-width: 600px) {
+  .main.sidebar_open,
+  .main.sidebar_closed {
+    width: 100%;
+  }
+
+  .col_left .sidebar_toggle_btn {
+    display: none;
+  }
+
+  .col_left .topbar_logo {
+    padding: 0;
+  }
+
+  .main {
+    transition: transform var(--transtion-slow), opacity var(--transtion-slow);
+  opacity: 1;
+  }
+
+  .scrolled_down {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}

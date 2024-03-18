@@ -39,7 +39,7 @@ export const Navigation = ({ sidebarOpen }) => {
           </li>
         ))}
         {/* <div className={styles.divider}></div> */}
-        <li
+        {/* <li
           className={`${styles.navlink} ${
             currentRoute === "/login" ? styles.active : null
           }`}
@@ -48,7 +48,7 @@ export const Navigation = ({ sidebarOpen }) => {
           <RenderWhen condition={sidebarOpen}>
             <Link href="/profile">Profile</Link>
           </RenderWhen>
-        </li>
+        </li> */}
         <li
           className={`${styles.navlink} ${
             currentRoute === "/login" ? styles.active : null
@@ -59,7 +59,7 @@ export const Navigation = ({ sidebarOpen }) => {
             <Link href="/settings">Settings</Link>
           </RenderWhen>
         </li>
-        <li
+        {/* <li
           className={`${styles.navlink} ${
             currentRoute === "/login" ? styles.active : null
           }`}
@@ -69,7 +69,7 @@ export const Navigation = ({ sidebarOpen }) => {
           <RenderWhen condition={sidebarOpen}>
             <Link href="/login">Logout</Link>
           </RenderWhen>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
