@@ -3,20 +3,18 @@
 import { AppProvider } from "@/context";
 import { TaskActionsModal } from "@/components/tasks/";
 import { useRouter } from "next/navigation";
-import { useCheckAuth, useWindowSize } from "@/hooks";
+import { useCheckAuth} from "@/hooks";
 import { PageLoader } from "@/components/ui";
 import { ProjectActionsModal } from "@/components/projects";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FirebaseAuth } from "@/firebase/config";
 import { DisplayPanel, SideBar, TopBar } from "@/components/layout";
 import styles from "./dashboard.module.css";
-import { RenderWhen } from "@/components/shared";
 import { MobileBar } from "@/components/layout/MobileBar/MobileBar";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
   const status = useCheckAuth();
-  const {winWidth} = useWindowSize();
 
   const [user, loading] = useAuthState(FirebaseAuth);
 
@@ -56,9 +54,7 @@ export default function DashboardLayout({ children }) {
         <SideBar />
         <TopBar />
         <DisplayPanel>{children}</DisplayPanel>
-        <RenderWhen condition={winWidth < 601}>
           <MobileBar />
-        </RenderWhen>
       </main>
       {/* Modals */}
       <TaskActionsModal />

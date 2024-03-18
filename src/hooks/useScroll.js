@@ -6,14 +6,14 @@ export const useScroll = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const newScrollTop = window.pageYOffset;
+      const newScrollTop = window?.scrollY;
       setScrollTop(newScrollTop);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window?.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window?.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
