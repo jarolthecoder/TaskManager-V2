@@ -1,36 +1,41 @@
-"use client"
+"use client";
 
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
-import { Breadcrumbs } from "@/components/shared";
+import { Breadcrumbs, RenderWhen } from "@/components/shared";
 import { Button, IconButton, MatIcon } from "@/components/ui";
 import { ProjectCard } from "@/components/projects";
 import { AppContext } from "@/context/AppContext";
 import { PROJECT_ACTIONS } from "@/lib/constants";
 import styles from "./projectsPage.module.css";
+import { useWindowSize } from "@/hooks";
 
 const { ADD_PROJECT } = PROJECT_ACTIONS;
 
 export default function Projects() {
-
   const projects = useSelector(selectAllProjects);
 
   const projectsWithAssignedTasks = projects.filter(
     (project) => project.title !== "Unassigned"
   );
-  const {handleProjectModal, setSelectedProjectAction} = useContext(AppContext);
 
-   const handleAddProject = () => {
-     setSelectedProjectAction(ADD_PROJECT);
-     handleProjectModal();
-   };
+  const { winWidth } = useWindowSize();
+  const { handleProjectModal, setSelectedProjectAction } =
+    useContext(AppContext);
+
+  const handleAddProject = () => {
+    setSelectedProjectAction(ADD_PROJECT);
+    handleProjectModal();
+  };
 
   return (
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
-          <Breadcrumbs />
+          <RenderWhen condition={winWidth > 600}>
+            <Breadcrumbs />
+          </RenderWhen>
           <h2>Projects</h2>
         </div>
         <div className={styles.header_options}>
@@ -49,7 +54,11 @@ export default function Projects() {
           <ProjectCard key={project.id} project={project} />
         ))}
         <div className={styles.create_project_card}>
-          <IconButton variant="outlined" size="small" onClick={handleAddProject}>
+          <IconButton
+            variant="outlined"
+            size="small"
+            onClick={handleAddProject}
+          >
             <MatIcon iconName="add" />
           </IconButton>
           <p>Create project</p>

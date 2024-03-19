@@ -7,11 +7,13 @@ import { useDispatch } from "react-redux";
 import { logout } from "@/redux/features/auth/authSlice";
 import { MatIcon } from "@/components/ui";
 import { RenderWhen } from "..";
+import { useWindowSize } from "@/hooks";
 
 export const Navigation = ({ sidebarOpen }) => {
   const router = useRouter();
   const currentRoute = usePathname();
   const dispatch = useDispatch();
+  const {winWidth} = useWindowSize();
 
   const navigateTo = (path) => {
     router.push(path);
@@ -33,7 +35,7 @@ export const Navigation = ({ sidebarOpen }) => {
             onClick={() => navigateTo(path)}
           >
             <MatIcon iconName={icon} />
-            <RenderWhen condition={sidebarOpen}>
+            <RenderWhen condition={sidebarOpen || winWidth < 600}>
               <Link href={path}>{label}</Link>
             </RenderWhen>
           </li>
@@ -55,7 +57,7 @@ export const Navigation = ({ sidebarOpen }) => {
           }`}
         >
           <MatIcon iconName="settings" />
-          <RenderWhen condition={sidebarOpen}>
+          <RenderWhen condition={sidebarOpen || winWidth < 600}>
             <Link href="/settings">Settings</Link>
           </RenderWhen>
         </li>

@@ -19,12 +19,12 @@ export default function ProjectPage({ params }) {
   const selectedProject = useSelector(selectProject);
   const projectTitle = selectedProject?.title;
   const preferedTaskView = localStorage.getItem("prefered-task-view");
-  const {winWidth} = useWindowSize();
+  const { winWidth } = useWindowSize();
 
   // Local state
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
   const [allTasks, setAllTasks] = useState(selectedProject?.tasks);
-  
+
   const handleSelectedView = (view) => {
     setSelectedView(view);
     localStorage.setItem("prefered-task-view", view);
@@ -49,13 +49,11 @@ export default function ProjectPage({ params }) {
     try {
       dispatch(updateProject(updatedProject));
     } catch (error) {
-      console.log("Error updating project", error.message)
+      console.log("Error updating project", error.message);
     }
-    
+
     setAllTasks(
-      allTasks.map((task) =>
-        task.id === taskId ? updatedTask : task
-      )
+      allTasks.map((task) => (task.id === taskId ? updatedTask : task))
     );
   };
 
@@ -76,30 +74,32 @@ export default function ProjectPage({ params }) {
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
-          <Breadcrumbs selectedItem={projectTitle} />
+          <RenderWhen condition={winWidth > 600}>
+            <Breadcrumbs selectedItem={projectTitle} />
+          </RenderWhen>
           <h2>{projectTitle}</h2>
         </div>
         <div className={styles.header_options}>
-        <RenderWhen condition={winWidth > 600}>
-          <p
-            className={`${styles.view_btn} ${
-              selectedView === "board" ? styles.active : ""
-            }`}
-            onClick={() => handleSelectedView("board")}
-          >
-            <MatIcon iconName="calendar_view_week" />
-            Board
-          </p>
-          <p
-            className={`${styles.view_btn} ${
-              selectedView === "list" ? styles.active : ""
-            }`}
-            onClick={() => handleSelectedView("list")}
-          >
-            <MatIcon iconName="format_list_bulleted" />
-            List
-          </p>
-          <AddTaskButton />
+          <RenderWhen condition={winWidth > 600}>
+            <p
+              className={`${styles.view_btn} ${
+                selectedView === "board" ? styles.active : ""
+              }`}
+              onClick={() => handleSelectedView("board")}
+            >
+              <MatIcon iconName="calendar_view_week" />
+              Board
+            </p>
+            <p
+              className={`${styles.view_btn} ${
+                selectedView === "list" ? styles.active : ""
+              }`}
+              onClick={() => handleSelectedView("list")}
+            >
+              <MatIcon iconName="format_list_bulleted" />
+              List
+            </p>
+            <AddTaskButton />
           </RenderWhen>
         </div>
       </div>
@@ -107,14 +107,9 @@ export default function ProjectPage({ params }) {
         <RenderWhen condition={selectedProject !== null}>
           <RenderWhen
             condition={selectedView === "board" && winWidth > 600}
-            fallback={
-              <TasksList tasks={selectedProject?.tasks} />
-            }
+            fallback={<TasksList tasks={selectedProject?.tasks} />}
           >
-            <TasksBoard 
-              tasks={allTasks}
-              onDragEnd={handleDragEnd}
-            />
+            <TasksBoard tasks={allTasks} onDragEnd={handleDragEnd} />
           </RenderWhen>
         </RenderWhen>
       </div>
