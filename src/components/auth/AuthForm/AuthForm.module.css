@@ -3,7 +3,7 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 1.5;
   color: var(--clr-text-primary);
 }
@@ -35,4 +35,10 @@
 .form a:hover {
   color: var(--clr-primary-main);
   text-decoration: underline;
+}
+/* Media queries */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
 }

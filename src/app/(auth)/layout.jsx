@@ -5,7 +5,7 @@ import { useCheckAuth } from "@/hooks";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FirebaseAuth } from "@/firebase/config";
 import { ThemeToggle } from "@/components/shared";
-import { Card, Logo, PageLoader} from "@/components/ui";
+import { Card, Logo, PageLoader } from "@/components/ui";
 import styles from "./auth.module.css";
 
 export default function AuthLayout({ children }) {
@@ -26,18 +26,13 @@ export default function AuthLayout({ children }) {
 
   return (
     <main className={styles.main}>
-      <div className={styles.col_left}>
-        <div className={styles.col_header}>
-          <Logo className={styles.auth_logo} />
-        </div>
-        <div className={styles.form_container}>{children}</div>
+      <div className={styles.header}>
+        <Logo className={styles.auth_logo} />
+        <ThemeToggle />
       </div>
-
-      <div className={styles.col_right}>
-        <div className={styles.col_header}>
-          <ThemeToggle />
-        </div>
-      </div>
+      <Card className={styles.form_card} padding="medium">
+        {children}
+      </Card>
     </main>
   );
 }

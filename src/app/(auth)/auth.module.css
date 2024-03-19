@@ -1,33 +1,22 @@
 .main {
   width: 100%;
   min-height: 100dvh;
+  max-width: 1500px;
+  margin: auto;
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.col_left,
-.col_right {
- 
-  height: 100dvh;
-}
-
-.col_left {
-  width: 40%;
-  padding: 2rem 3rem;
-  background: var(--clr-bg-card-primary);
-}
-
-.col_right {
-  width: 60%;
-}
-
-.col_right .col_header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 2rem 3rem;
+  padding: 2rem;
 }
 
 .auth_logo {
@@ -35,6 +24,15 @@
 }
 
 /* Auth Form */
+.form_card {
+  min-width: 500px;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem 3rem;
+  background: var(--clr-bg-card-primary);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}
 .form_container {
   width: 100%;
   display: flex;
@@ -80,4 +78,21 @@
 
 .form_footer_text {
   text-align: center;
+}
+
+/*Media queries*/
+@media (max-width: 600px) {
+  .form_card {
+    min-width: 90%;
+    max-width: 90%;
+    padding: 1.75rem
+  }
+
+  .header {
+    padding: 2rem 1rem;
+  }
+
+  .main {
+    gap: 50px;
+  }
 }
