@@ -1,28 +1,27 @@
-"use client"
-import { useState, useEffect, useRef } from 'react';
+"use client";
+import { useState, useEffect, useRef } from "react";
 
 export const useScroll = () => {
   const lastScrollTop = useRef(0);
   const [scrollTop, setScrollTop] = useState(0);
 
-  const handleScroll = () => {
-    const newScrollTop = window?.scrollY;
-    
-    if (newScrollTop > lastScrollTop.current) {
-      setScrollTop(false);
-    } else if (newScrollTop < lastScrollTop.current) {
-      setScrollTop(true);
-    } 
-
-    lastScrollTop.current = newScrollTop
-  };
   useEffect(() => {
-   
+    const handleScroll = () => {
+      const newScrollTop = window.scrollY;
 
-    window?.addEventListener('scroll', handleScroll, { passive: true });
+      if (newScrollTop > lastScrollTop.current) {
+        setScrollTop(false);
+      } else if (newScrollTop < lastScrollTop.current || newScrollTop === 0) {
+        setScrollTop(true);
+      }
+
+      lastScrollTop.current = newScrollTop;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window?.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
