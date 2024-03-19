@@ -15,7 +15,7 @@ export const useScroll = () => {
         setScrollTop(true);
       }
 
-      lastScrollTop.current = newScrollTop;
+      // lastScrollTop.current = newScrollTop;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
