@@ -23,9 +23,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-width: 0 0 1px 0;
+  border-width: 1px;
   border-style: solid;
   border-color: var(--clr-border-dark);
+  border-radius: var(--br-small);
+  margin-top: 0.5rem;
+  padding: .75rem;
 }
 
 .form_input:focus-within {
@@ -35,7 +38,7 @@
 
 .form_input input {
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0 0.5rem 0 0;
   border: none;
   background: var(--clr-trasparent);
 }

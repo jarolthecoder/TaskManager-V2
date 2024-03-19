@@ -76,9 +76,9 @@
   z-index: 1;
 }
 
-.form_footer_text {
+/* .form_footer_text {
   text-align: center;
-}
+} */
 
 /*Media queries*/
 @media (max-width: 600px) {
@@ -93,6 +93,6 @@
   }
 
   .main {
-    gap: 50px;
+    gap: 25px;
   }
 }

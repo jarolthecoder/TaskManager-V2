@@ -45,7 +45,7 @@ export default function Login() {
 
   return (
     <AuthForm
-      title="Signin to your account"
+      title="Signin to dashboard"
       lead="Welcome back! Enter your details below"
       onSubmit={handleSubmit(onSubmit)}
     >
@@ -68,7 +68,7 @@ export default function Login() {
         errors={errors}
       />
       <div className={styles.form_btn_container}>
-        <Button type="submit" label="Sign in" fullWidth />
+        <Button type="submit" label="Signin to your account" fullWidth size="medium" />
         <div className={styles.or_signin_text}>
           <h5>OR</h5>
         </div>
@@ -77,6 +77,7 @@ export default function Login() {
           label="Signin with Google"
           onClick={handleGoogleSignIn}
           variant="outlined"
+          size="medium"
           startIcon={
             <Image
               src={googleIcon}
