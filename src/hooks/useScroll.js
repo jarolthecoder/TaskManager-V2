@@ -11,7 +11,7 @@ export const useScroll = () => {
 
       if (newScrollTop > lastScrollTop.current) {
         setScrollTop(false);
-      } else if (newScrollTop < lastScrollTop.current || newScrollTop === 0) {
+      } else if (newScrollTop < lastScrollTop.current || newScrollTop <= 0) {
         setScrollTop(true);
       }
 
