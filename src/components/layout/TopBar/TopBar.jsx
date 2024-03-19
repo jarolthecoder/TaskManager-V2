@@ -16,11 +16,9 @@ export const TopBar = () => {
   const headerClasses = classNames(
     styles.main,
     sidebarOpen ? styles.sidebar_open : styles.sidebar_closed,
-    scrollTop > 0 && winWidth < 600 
-    ? styles.scrolled_down 
-    : winWidth < 600 && scrollTop === 0 
-    ? styles.scrolled_up 
-    : null
+    scrollTop && winWidth < 600 
+    ? styles.visible
+    : styles.hidden
   );
 
   return (

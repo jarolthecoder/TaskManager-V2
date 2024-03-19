@@ -1,16 +1,25 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const useScroll = () => {
+  const lastScrollTop = useRef(0);
   const [scrollTop, setScrollTop] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const newScrollTop = window?.scrollY;
-      setScrollTop(newScrollTop);
-    };
+  const handleScroll = () => {
+    const newScrollTop = window?.scrollY;
+    
+    if (newScrollTop > lastScrollTop.current) {
+      setScrollTop(false);
+    } else if (newScrollTop < lastScrollTop.current) {
+      setScrollTop(true);
+    } 
 
-    window?.addEventListener('scroll', handleScroll);
+    lastScrollTop.current = newScrollTop
+  };
+  useEffect(() => {
+   
+
+    window?.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window?.removeEventListener('scroll', handleScroll);

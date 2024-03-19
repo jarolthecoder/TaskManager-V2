@@ -11,7 +11,12 @@
   opacity: 1;
 }
 
-.scrolled_down {
+.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hidden {
   transform: translateY(100%);
   opacity: 0;
 }
