@@ -79,7 +79,7 @@ const navLinks = [
   {
     label: "Dashboard",
     path: "/",
-    icon: "dashboard",
+    icon: "home",
   },
   {
     label: "Tasks",

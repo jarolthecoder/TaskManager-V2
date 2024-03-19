@@ -12,12 +12,14 @@ import { Breadcrumbs, RenderWhen } from "@/components/shared";
 import { MatIcon } from "@/components/ui";
 import { AddTaskButton, TasksBoard, TasksList } from "@/components/tasks";
 import styles from "./projectPage.module.css";
+import { useWindowSize } from "@/hooks";
 
 export default function ProjectPage({ params }) {
   const dispatch = useDispatch();
   const selectedProject = useSelector(selectProject);
   const projectTitle = selectedProject?.title;
   const preferedTaskView = localStorage.getItem("prefered-task-view");
+  const {winWidth} = useWindowSize();
 
   // Local state
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
@@ -78,6 +80,7 @@ export default function ProjectPage({ params }) {
           <h2>{projectTitle}</h2>
         </div>
         <div className={styles.header_options}>
+        <RenderWhen condition={winWidth > 600}>
           <p
             className={`${styles.view_btn} ${
               selectedView === "board" ? styles.active : ""
@@ -97,12 +100,13 @@ export default function ProjectPage({ params }) {
             List
           </p>
           <AddTaskButton />
+          </RenderWhen>
         </div>
       </div>
       <div className={styles.container}>
         <RenderWhen condition={selectedProject !== null}>
           <RenderWhen
-            condition={selectedView === "board"}
+            condition={selectedView === "board" && winWidth > 600}
             fallback={
               <TasksList tasks={selectedProject?.tasks} />
             }

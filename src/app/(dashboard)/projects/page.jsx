@@ -19,7 +19,6 @@ export default function Projects() {
   const projectsWithAssignedTasks = projects.filter(
     (project) => project.title !== "Unassigned"
   );
-
   const {handleProjectModal, setSelectedProjectAction} = useContext(AppContext);
 
    const handleAddProject = () => {

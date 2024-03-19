@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { selectAllProjects, updateProject } from "@/redux/features/projects";
 import { useDispatch } from "react-redux";
 import styles from "./tasksPage.module.css";
+import { useWindowSize } from "@/hooks";
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ export default function TasksPage() {
 // Derive tasks directly from projects
 const tasks = useMemo(() => projects.flatMap((project) => project.tasks), [projects]);
   const preferedTaskView = localStorage.getItem("prefered-task-view");
+
+  const {winWidth} = useWindowSize();
 
   const [allTasks, setAllTasks] = useState(tasks);
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
@@ -96,7 +99,6 @@ const tasks = useMemo(() => projects.flatMap((project) => project.tasks), [proje
   }, [tasks]);
 
 
-
   return (
     <section className={styles.main}>
       <div className={styles.header}>
@@ -105,6 +107,7 @@ const tasks = useMemo(() => projects.flatMap((project) => project.tasks), [proje
           <h2>My Tasks</h2>
         </div>
         <div className={styles.header_options}>
+        <RenderWhen condition={winWidth > 600}>
           <p
             className={`${styles.view_btn} ${
               selectedView === "board" ? styles.active : ""
@@ -114,6 +117,7 @@ const tasks = useMemo(() => projects.flatMap((project) => project.tasks), [proje
             <MatIcon iconName="calendar_view_week" />
             Board
           </p>
+         
           <p
             className={`${styles.view_btn} ${
               selectedView === "list" ? styles.active : ""
@@ -124,11 +128,12 @@ const tasks = useMemo(() => projects.flatMap((project) => project.tasks), [proje
             List
           </p>
           <AddTaskButton />
+        </RenderWhen>
         </div>
       </div>
       <div className={styles.container}>
         <RenderWhen
-          condition={selectedView === "board"}
+          condition={selectedView === "board" && winWidth > 600}
           fallback={<TasksList tasks={allTasks}/>}
         >
           <TasksBoard 

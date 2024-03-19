@@ -43,3 +43,16 @@
   border-style: solid;
   border-color: var(--clr-border-light);
 }
+
+/* Media queries */
+@media (max-width: 900px) {
+  .project_card {
+    grid-column-end: span 6;
+  }
+}
+
+@media (max-width: 600px) {
+  .project_card {
+    grid-column-end: span 12;
+  }
+}

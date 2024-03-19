@@ -10,7 +10,7 @@ import { TASK_SORT_OPTIONS } from "@/lib/constants";
 import PropTypes from "prop-types";
 import styles from "./TasksList.module.css";
 
-const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
+const filterOptions = ["All Tasks", "Due Today",  "Pending", "In Progress", "Completed"];
 const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } = TASK_SORT_OPTIONS;
 const formattedToday = formatDate(new Date(), "PP");
 
@@ -28,6 +28,7 @@ const sortTasks = (tasks, sortValue) => {
         const priorityOrder = { High: 1, Medium: 2, Low: 3 };
         return (priorityOrder[b.priority] || 0) - (priorityOrder[a.priority] || 0);
       });
+      
     case LATEST:
     default:
       return [...tasks].sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
@@ -48,6 +49,8 @@ export const TasksList = ({ tasks }) => {
         return tasks.filter((task) => task.dueDate === formattedToday);
       case "Pending":
         return tasks.filter((task) => task.status === "pending");
+      case "In Progress":
+        return tasks.filter((task) => task.status === "inProgress");
       case "All Tasks":
       default:
         return tasks;
