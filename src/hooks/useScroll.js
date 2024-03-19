@@ -7,7 +7,7 @@ export const useScroll = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const newScrollTop = window.scrollY;
+      const newScrollTop = window.pageYOffset;
 
       if (newScrollTop > lastScrollTop.current) {
         setScrollTop(false);
