@@ -83,13 +83,13 @@
 /*Media queries*/
 @media (max-width: 600px) {
   .form_card {
-    min-width: 90%;
-    max-width: 90%;
+    min-width: 88%;
+    max-width: 88%;
     padding: 1.75rem
   }
 
   .header {
-    padding: 2rem 1rem;
+    padding: 1rem 1.25rem;
   }
 
   .main {
