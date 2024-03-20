@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export const useScroll = () => {
   const [scrollTop, setScrollTop] = useState(true);
@@ -7,7 +7,7 @@ export const useScroll = () => {
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
-    const updateScrollDirection = () => {
+    const handleScroll = () => {
       const scrollY = window.scrollY;
       const direction = scrollY > lastScrollY ? false : true;
       if (direction !== scrollTop && (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)) {
@@ -16,9 +16,9 @@ export const useScroll = () => {
       lastScrollY = scrollY > 0 ? scrollY : 0;
     };
 
-    window.addEventListener("scroll", updateScrollDirection);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", updateScrollDirection);
+      window.removeEventListener("scroll", handleScroll);
     }
   }, [scrollTop]);
 

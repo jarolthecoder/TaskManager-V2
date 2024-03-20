@@ -50,7 +50,5 @@ export const UserMenu = () => {
 
 const menuItems = [
   { label: "Profile", path: "/", icon: "person" },
-  { label: "Chat", path: "/", icon: "question_answer" },
-  { label: "Tasks", path: "/", icon: "list" },
   { label: "Settings", path: "/", icon: "settings" },
 ];
