@@ -2,28 +2,25 @@
 import { useState, useEffect, useRef } from "react";
 
 export const useScroll = () => {
-  const lastScrollTop = useRef(0);
   const [scrollTop, setScrollTop] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const newScrollTop = window.pageYOffset;
+    let lastScrollY = window.scrollY;
 
-      if (newScrollTop > lastScrollTop.current) {
-        setScrollTop(false);
-      } else if (newScrollTop < lastScrollTop.current || newScrollTop <= 0) {
-        setScrollTop(true);
+    const updateScrollDirection = () => {
+      const scrollY = window.scrollY;
+      const direction = scrollY > lastScrollY ? false : true;
+      if (direction !== scrollTop && (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)) {
+        setScrollTop(direction);
       }
-
-      lastScrollTop.current = newScrollTop;
+      lastScrollY = scrollY > 0 ? scrollY : 0;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
+    window.addEventListener("scroll", updateScrollDirection);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", updateScrollDirection);
+    }
+  }, [scrollTop]);
 
   return scrollTop;
 };
