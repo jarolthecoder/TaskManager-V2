@@ -17,8 +17,6 @@ export const UserMenu = () => {
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
   const { displayName } = useSelector((state) => state.auth);
 
-  // const [user] = useIdToken(FirebaseAuth);
-
   const handleLogout = () => {
     dispatch(startLogout());
   };
@@ -32,7 +30,7 @@ export const UserMenu = () => {
         <p className={styles.user_name}>{displayName}</p>
         <p className={styles.user_role}>Admin</p>
       </div>
-      <Popper open={isPopperOpen} ref={popperRef}>
+      <Popper open={isPopperOpen} onClose={togglePopper} ref={popperRef}>
         <Menu>
           {menuItems.map(({ label, path, icon }) => (
             <MenuItem key={label} onClick={togglePopper} icon={icon}>
@@ -49,6 +47,6 @@ export const UserMenu = () => {
 };
 
 const menuItems = [
-  { label: "Profile", path: "/", icon: "person" },
-  { label: "Settings", path: "/", icon: "settings" },
+  { label: "Profile", path: "/user", icon: "person" },
+  { label: "Settings", path: "/user/settings", icon: "settings" },
 ];
