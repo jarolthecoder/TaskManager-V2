@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
-import { Breadcrumbs, RenderWhen } from "@/components/shared";
+import { Breadcrumbs } from "@/components/shared";
 import { Button, IconButton, MatIcon } from "@/components/ui";
 import { ProjectCard } from "@/components/projects";
 import { AppContext } from "@/context/AppContext";
@@ -20,7 +20,6 @@ export default function Projects() {
     (project) => project.title !== "Unassigned"
   );
 
-  const { winWidth } = useWindowSize();
   const { handleProjectModal, setSelectedProjectAction } =
     useContext(AppContext);
 
@@ -33,9 +32,7 @@ export default function Projects() {
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
-          <RenderWhen condition={winWidth > 600}>
-            <Breadcrumbs />
-          </RenderWhen>
+          <Breadcrumbs />
           <h2>Projects</h2>
         </div>
         <div className={styles.header_options}>

@@ -4,10 +4,12 @@ import { RenderWhen } from "../../shared";
 import PropTypes from "prop-types";
 import styles from "./Breadcrumbs.module.css";
 import Link from "next/link";
+import { useWindowSize } from "@/hooks";
 
 export const Breadcrumbs = ({ selectedItem }) => {
   const pathname = usePathname();
   const segments = pathname.split("/").filter((segment) => segment !== "");
+  const { winWidth } = useWindowSize();
 
   // Create an array of breadcrumb segments with the provided title
   const breadcrumbSegments = segments.reduce((acc, segment, index) => {
@@ -25,21 +27,23 @@ export const Breadcrumbs = ({ selectedItem }) => {
   }
 
   return (
-    <ul className={styles.breadcrumbs_list}>
-      {breadcrumbSegments.map((segment, index) => (
-        <li key={index} className={styles.breadcrumbs_item}>
-          <RenderWhen condition={segment !== " / "} fallback={segment}>
-            <Link
-              href={`/${segments
+    <RenderWhen condition={winWidth > 600}>
+      <ul className={styles.breadcrumbs_list}>
+        {breadcrumbSegments.map((segment, index) => (
+          <li key={index} className={styles.breadcrumbs_item}>
+            <RenderWhen condition={segment !== " / "} fallback={segment}>
+              <Link
+                href={`/${segments
                   .slice(0, Math.floor((index + 1) / 2) + 1)
                   .join("/")}`}
-            >
-              {segment}
-            </Link>
-          </RenderWhen>
-        </li>
-      ))}
-    </ul>
+              >
+                {segment}
+              </Link>
+            </RenderWhen>
+          </li>
+        ))}
+      </ul>
+    </RenderWhen>
   );
 };
 

@@ -105,9 +105,7 @@ export default function TasksPage() {
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
-          <RenderWhen condition={winWidth > 600}>
-            <Breadcrumbs />
-          </RenderWhen>
+          <Breadcrumbs />
           <h2>My Tasks</h2>
         </div>
         <div className={styles.header_options}>

@@ -17,7 +17,7 @@ export const navigation = [
   },
   {
     label: "Settings",
-    path: "/settings",
+    path: "/user/settings",
     icon: "settings",
   }
 ];

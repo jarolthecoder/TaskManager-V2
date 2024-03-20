@@ -74,9 +74,7 @@ export default function ProjectPage({ params }) {
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
-          <RenderWhen condition={winWidth > 600}>
-            <Breadcrumbs selectedItem={projectTitle} />
-          </RenderWhen>
+          <Breadcrumbs selectedItem={projectTitle} />
           <h2>{projectTitle}</h2>
         </div>
         <div className={styles.header_options}>
