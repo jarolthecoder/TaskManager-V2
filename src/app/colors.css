@@ -1,8 +1,8 @@
 :root[theme="dark"] {
   /* Primary */
   /* --clr-primary-main: #0783ff; */
-    --clr-primary-main: #2599EF;
-  --clr-primary-light: #2599EF;
+  --clr-primary-main: #2599ef;
+  --clr-primary-light: #2599ef;
   /* #56b2f4 for light */
   --clr-primary-dark: #196ba7;
   --clr-primary-opacity: rgba(29, 101, 172, 0.17);
@@ -37,7 +37,7 @@
   --clr-bg-card-secondary: rgb(28, 37, 54);
 
   /* Buttons */
-  --clr-btn-bg-primary: #2599EF;
+  --clr-btn-bg-primary: #2599ef;
   --clr-btn-bg-hover: #046fda;
   --clr-btn-text-primary: #ffffff;
 
@@ -77,8 +77,8 @@
 :root[theme="light"] {
   /* Primary */
 
-  --clr-primary-main: #2599EF;
-  --clr-primary-light: #2599EF;
+  --clr-primary-main: #2599ef;
+  --clr-primary-light: #2599ef;
   --clr-primary-dark: #196ba7;
   --clr-primary-opacity: #ebf5ff;
 
@@ -114,7 +114,6 @@
   --clr-bg-card-primary: #fcfcfc;
   --clr-bg-card-secondary: #fafbff;
 
-
   /* Border and Divider */
   --clr-border-light: #d8e1eb;
   --clr-border-dark: #c2cbd4;
@@ -123,7 +122,7 @@
   --clr-border-opacity: #c2cbd4d7;
 
   /* Buttons */
-  --clr-btn-bg-primary: #2599EF;
+  --clr-btn-bg-primary: #2599ef;
   --clr-btn-bg-hover: #046fda;
   --clr-btn-text-primary: #ffffff;
 
@@ -135,7 +134,7 @@
 
   /* Scrollbar */
   --clr-scrollbar-track: #dddddd;
-  --clr-scrollbar-thumb:  #b3b5b8;
+  --clr-scrollbar-thumb: #b3b5b8;
   --clr-scrollbar-thumb-hover: #535659;
   --clr-trasparent: #00000000;
 

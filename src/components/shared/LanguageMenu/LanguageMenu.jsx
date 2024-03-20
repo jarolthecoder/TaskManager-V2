@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { usePopper } from "@/hooks";
 import Image from "next/image";
 import { IconButton, Menu, MenuItem, Popper } from "../../ui";
@@ -13,22 +13,23 @@ export const LanguageMenu = () => {
   const popperRef = useRef(null);
   const { isPopperOpen, togglePopper } = usePopper(refEl, popperRef);
 
+  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+
   return (
     <>
       <div ref={refEl}>
         <IconButton size="small" onClick={togglePopper}>
-          <Image 
-            src={enFlag} 
-            alt="England flag" 
-            width={24}
-            height={24}
-          />
+          <Image src={enFlag} alt="England flag" width={24} height={24} />
         </IconButton>
       </div>
       <Popper open={isPopperOpen} ref={popperRef}>
         <Menu>
-          {menuItems.map(({ label, icon }) => (
-            <MenuItem key={label} onClick={togglePopper}>
+          {languages.map(({ label, icon }) => (
+            <MenuItem
+              key={label}
+              onClick={togglePopper}
+              selected={selectedLanguage.label === label}
+            >
               <Image src={icon} alt={`${label} flag`} />
               {label}
             </MenuItem>
@@ -39,7 +40,7 @@ export const LanguageMenu = () => {
   );
 };
 
-const menuItems = [
+const languages = [
   { label: "English", icon: enFlag },
   { label: "German", icon: deFlag },
   { label: "French", icon: frFlag },

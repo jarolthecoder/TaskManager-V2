@@ -10,11 +10,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0 .5rem;
-   font-size: var(--fs-body);
-}
-
-.main:hover {
-  background: var(--clr-primary-opacity)
+  font-size: var(--fs-body);
 }
 
 .main:hover * {
@@ -25,4 +21,12 @@
 
 .main a:hover {
   text-decoration: none;
+}
+
+.selected {
+  background: var(--clr-primary-opacity);
+}
+
+.selected * {
+  color: var(--clr-primary-main);
 }

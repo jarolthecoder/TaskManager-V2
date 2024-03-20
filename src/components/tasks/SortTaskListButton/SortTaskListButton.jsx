@@ -1,8 +1,7 @@
 import { MatIcon, MenuItem, Select } from "@/components/ui";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
 
-const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } =
-  TASK_SORT_OPTIONS;
+const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } = TASK_SORT_OPTIONS;
 
 const sortOptions = [
   { label: "Latest", value: LATEST },
@@ -19,10 +18,12 @@ export const SortTaskListButton = ({ onSelect, selectedOption }) => {
       endIcon={<MatIcon iconName="swap_vert" />}
     >
       {sortOptions.map((option, index) => (
-        <MenuItem key={option.value} onClick={() => onSelect(option)}>
-          <p>
-            {option.label}
-          </p>
+        <MenuItem
+          key={option.value}
+          onClick={() => onSelect(option)}
+          selected={option.value === selectedOption.value}
+        >
+          <p>{option.label}</p>
         </MenuItem>
       ))}
     </Select>

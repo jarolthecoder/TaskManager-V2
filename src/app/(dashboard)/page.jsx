@@ -67,6 +67,7 @@ export default function Dashboard() {
                   <MenuItem
                     key={index}
                     onClick={() => handleFilterChange(option)}
+                    selected={option === filterValue}
                   >
                     <p>{option}</p>
                   </MenuItem>
