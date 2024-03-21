@@ -47,3 +47,13 @@
 .view_btn.active {
   background: rgba(95, 116, 141, 0.137);
 }
+
+@media (max-width: 600px) {
+  .create_project_card {
+    grid-column-end: span 12;
+  }
+
+  .header {
+    padding-bottom: 0;
+  }
+}
