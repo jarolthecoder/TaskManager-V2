@@ -142,7 +142,7 @@
   --clr-trasparent: #00000000;
 
   /* Mobile bar */
-  --clr-mobilebar: rgba(252, 252, 252, .747);
+  --clr-mobilebar: rgba(252, 252, 252, 0.493);
 
   /* Task Status */
   --clr-task-pending-bg: rgba(255, 151, 119, 0.2);

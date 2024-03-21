@@ -8,7 +8,7 @@
   background: var(--clr-mobilebar);
   backdrop-filter: blur(15px);
   transform: translateY(0);
-  transition: transform var(--transtion-slow), opacity var(--transtion-slow);
+  transition: transform var(--transition-default), opacity var(--transition-default);
   opacity: 1;
 }
 
