@@ -36,4 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # other
-testFuncs.js
+testFunctions.js

@@ -61,4 +61,8 @@
   .add_task_btn  {
     grid-column-end: span 12;
   }
+
+  .header {
+    padding-bottom: 0;
+  }
 }

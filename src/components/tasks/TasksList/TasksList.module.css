@@ -5,7 +5,7 @@
   gap: 1rem;
 }
 
-.list_options_container {
+.list_controls_container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -31,4 +31,11 @@
   font-weight: 500;
   /* color: var(--clr-text-opacity); */
   padding-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .list_controls_container {
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
 }

@@ -16,6 +16,7 @@ export const SortTaskListButton = ({ onSelect, selectedOption }) => {
     <Select
       value={selectedOption.label === "Default" ? "Sort" : selectedOption.label}
       endIcon={<MatIcon iconName="swap_vert" />}
+      buttonOnly={window.innerWidth < 600}
     >
       {sortOptions.map((option, index) => (
         <MenuItem

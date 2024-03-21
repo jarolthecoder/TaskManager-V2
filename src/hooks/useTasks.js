@@ -1,17 +1,11 @@
-"use client";
+"use client"
 
-import { TaskListItem } from "../TaskListItem/TaskListItem";
-import { RenderWhen } from "@/components/shared";
-import { TasksListControls } from "../TaskListControls/TasksListControl";
-import { useMemo, useState } from "react";
+import { TASK_SORT_OPTIONS } from "@/lib";
 import { formatDate } from "@/utils/helpers";
-import { TASK_SORT_OPTIONS } from "@/lib/constants";
-import PropTypes from "prop-types";
-import styles from "./TasksList.module.css";
+import { useMemo } from "react";
 
 const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } = TASK_SORT_OPTIONS;
 const formattedToday = formatDate(new Date(), "PP");
-
 const sortTasks = (tasks, sortValue) => {
   switch (sortValue.value) {
     case OLDEST:
@@ -40,16 +34,10 @@ const sortTasks = (tasks, sortValue) => {
       );
   }
 };
+export const useTasks = ({tasks, filterValue, sortValue}) => {
 
-export const TasksList = ({ tasks }) => {
-  const [filterValue, setFilterValue] = useState("All Tasks");
-  const [sortValue, setSortValue] = useState({
-    label: "Latest",
-    value: LATEST,
-  });
-
-  // Filter tasks based on filterValue
-  const filteredTasks = useMemo(() => {
+   // Filter tasks based on filterValue
+   const filteredTasks = useMemo(() => {
     switch (filterValue) {
       case "Completed":
         return tasks.filter((task) => task.status === "completed");
@@ -63,7 +51,7 @@ export const TasksList = ({ tasks }) => {
       default:
         return tasks;
     }
-  }, [tasks, filterValue]);
+  }, [tasks, filterValue])
 
   // Sort filtered tasks based on sortValue
   const sortedTasks = useMemo(
@@ -71,36 +59,7 @@ export const TasksList = ({ tasks }) => {
     [filteredTasks, sortValue]
   );
 
-  const handleFilterChange = (option) => {
-    setFilterValue(option);
-  };
 
-  const handleSortChange = (option) => {
-    setSortValue(option);
-  };
 
-  return (
-    <div className={styles.main}>
-      <div className={styles.list_controls_container}>
-        <TasksListControls
-          filterValue={filterValue}
-          handleFilterChange={handleFilterChange}
-          sortValue={sortValue}
-          handleSortChange={handleSortChange}
-        />
-      </div>
-      <RenderWhen
-        condition={filteredTasks.length > 0}
-        fallback={<p className={styles.list_empty_message}>No tasks to show</p>}
-      >
-        {sortedTasks.map((task) => (
-          <TaskListItem key={task.id} task={task} />
-        ))}
-      </RenderWhen>
-    </div>
-  );
-};
-
-TasksList.propTypes = {
-  tasks: PropTypes.array.isRequired,
-};
+  return {filteredTasks, sortedTasks}
+}

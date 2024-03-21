@@ -2,7 +2,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import styles from "./PriorityBadge.module.css";
 
-export const PriorityBadge = ({ priority, className }) => {
+export const PriorityBadge = ({ priority = "low", className }) => {
 
   const badgeClasses = classNames(
     className,
@@ -16,10 +16,6 @@ export const PriorityBadge = ({ priority, className }) => {
     <p className={badgeClasses}>{priority}</p>
   );
 }
-
-PriorityBadge.defaultProps = {
-  priority: "low",
-};
 
 PriorityBadge.propTypes = {
   priority: PropTypes.string.isRequired,

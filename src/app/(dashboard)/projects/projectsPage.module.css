@@ -48,4 +48,8 @@
   .create_project_card {
     grid-column-end: span 12;
   }
+
+  .header {
+    padding-bottom: 0;
+  }
 }
