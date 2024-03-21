@@ -59,6 +59,9 @@
   --clr-scrollbar-thumb: #71787c;
   --clr-scrollbar-thumb-hover: #535659;
 
+  /* Mobile bar */
+  --clr-mobilebar: rgba(14,19,32,.747);
+
   --clr-trasparent: #00000000;
 
   /* Task Status */
@@ -137,6 +140,9 @@
   --clr-scrollbar-thumb: #b3b5b8;
   --clr-scrollbar-thumb-hover: #535659;
   --clr-trasparent: #00000000;
+
+  /* Mobile bar */
+  --clr-mobilebar: rgba(252, 252, 252, .747);
 
   /* Task Status */
   --clr-task-pending-bg: rgba(255, 151, 119, 0.2);
