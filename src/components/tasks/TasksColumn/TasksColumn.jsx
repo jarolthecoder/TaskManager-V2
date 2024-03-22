@@ -5,8 +5,8 @@ import { TASK_SORT_OPTIONS } from "@/lib/constants";
 import { DroppableTaskList } from "../DroppableTaskList/DroppableTaskList";
 import { AddTaskCardButton } from "../AddTaskCardButton/AddTaskCardButton";
 import { SortTaskListButton } from "../SortTaskListButton/SortTaskListButton";
-import styles from "./TasksColumn.module.css";
 import classNames from "classnames";
+import styles from "./TasksColumn.module.css";
 
 const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } = TASK_SORT_OPTIONS;
 
@@ -55,8 +55,8 @@ export const TasksColumn = ({ listId, listTitle, tasks, colSpan = 4 }) => {
   );
 
   const [sortValue, setSortValue] = useState({
-    label: "Latest",
-    value: LATEST,
+    label: "Default",
+    value: "Default",
   });
 
   // Memoize sorted tasks

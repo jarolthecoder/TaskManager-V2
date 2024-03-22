@@ -41,21 +41,36 @@
   cursor: pointer;
   padding: 0.25rem 0.5rem;
   border-radius: var(--br-small);
+  border: 1px solid var(--clr-border-dark);
+  transition: background var(--transition-default);
 }
 
-.view_btn:hover,
-.view_btn.active {
+.view_btn:hover {
   background: rgba(95, 116, 141, 0.137);
 }
+
+.view_btn.active:hover,
+.view_btn.active,
+.view_btn.active:hover span,
+.view_btn.active span{
+  color: var(--clr-primary-light);
+}
+
+.view_btn.active:hover,
+.view_btn.active {
+  background: var(--clr-primary-opacity);
+  border-color: var(--clr-primary-main);
+}
+
 
 @media (max-width: 600px) {
   .create_project_card {
     grid-column-end: span 12;
   }
 
-  .header {
+  /* .header {
     padding-bottom: 0;
     justify-content: flex-start;
     gap: 0;
-  }
+  } */
 }

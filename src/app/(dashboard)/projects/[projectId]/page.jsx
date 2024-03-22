@@ -73,11 +73,10 @@ export default function ProjectPage({ params }) {
   return (
     <section className={styles.main}>
       <div className={styles.header}>
-        
-        <div>
-        <RenderWhen condition={winWidth <= 600}>
+        <div className={styles.title_container}>
+        {/* <RenderWhen condition={winWidth <= 600}>
           <GoBackButton />
-        </RenderWhen>
+        </RenderWhen> */}
           <Breadcrumbs selectedItem={projectTitle} />
           <h2>{projectTitle}</h2>
         </div>
@@ -89,8 +88,8 @@ export default function ProjectPage({ params }) {
               }`}
               onClick={() => handleSelectedView("board")}
             >
-              <MatIcon iconName="calendar_view_week" />
-              Board
+              <MatIcon iconName="view_kanban" />
+              Kanban Board
             </p>
             <p
               className={`${styles.view_btn} ${

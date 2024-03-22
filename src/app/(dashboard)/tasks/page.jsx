@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { selectAllProjects, updateProject } from "@/redux/features/projects";
 import { useDispatch } from "react-redux";
 import styles from "./tasksPage.module.css";
+import { SortTaskListButton } from "@/components/tasks/SortTaskListButton/SortTaskListButton";
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -67,21 +68,31 @@ export default function TasksPage() {
   return (
     <section className={styles.main}>
       <div className={styles.header}>
-        <div>
-          <GoBackButton />
+        <div className={styles.title_container}>
+          {/* <GoBackButton /> */}
           <Breadcrumbs />
           <h2>My Tasks</h2>
         </div>
         <div className={styles.header_options}>
-          <RenderWhen condition={winWidth > 600}>
+          <RenderWhen
+            condition={winWidth > 600}
+            // fallback={
+            //   <>
+            //     <SortTaskListButton
+            //       onSelect={(option) => console.log(option)}
+            //       selectedOption={{ label: "Default", value: "Default" }}
+            //     />
+            //   </>
+            // }
+          >
             <p
               className={`${styles.view_btn} ${
                 selectedView === "board" ? styles.active : ""
               }`}
               onClick={() => handleSelectedView("board")}
             >
-              <MatIcon iconName="calendar_view_week" />
-              Board
+              <MatIcon iconName="view_kanban" />
+              Kanban Board
             </p>
 
             <p

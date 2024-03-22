@@ -1,0 +1,23 @@
+.filters_container,
+.filters_badges_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter_badge {
+  cursor: pointer;
+  transition: background var(--transition-default);
+}
+
+.filter_badge:hover {
+  background: rgba(95, 116, 141, 0.137);
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .filters_icon {
+    display: none;
+  }
+}

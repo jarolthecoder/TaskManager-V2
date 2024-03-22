@@ -7,9 +7,9 @@
 
 .list_controls_container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .list_option_btn {
@@ -30,11 +30,12 @@
   font-size: var(--fs-medium);
   font-weight: 500;
   /* color: var(--clr-text-opacity); */
-  padding-left: 10px;
+  padding: 10px 0 0 10px;
 }
 
 @media (max-width: 600px) {
-  .list_controls_container {
-    justify-content: flex-end;
-  }
+  /* .list_controls_container {
+    position: fixed;
+    top: 100px;
+  } */
 }

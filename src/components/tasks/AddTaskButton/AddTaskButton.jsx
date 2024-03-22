@@ -27,7 +27,7 @@ export const AddTaskButton = ({ buttonType = 'default', size = 'small' }) => {
         </div>
       ) : (
         <Button
-          fullWidth
+          // fullWidth
           label="Add Task"
           color="accent"
           size={size}

@@ -30,8 +30,8 @@ export default function Projects() {
   return (
     <section className={styles.main}>
       <div className={styles.header}>
-        <div>
-          <GoBackButton />
+        <div className={styles.title_container}>
+          {/* <GoBackButton /> */}
           <Breadcrumbs />
           <h2>Projects</h2>
         </div>

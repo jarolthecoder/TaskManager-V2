@@ -42,10 +42,10 @@ const sortTasks = (tasks, sortValue) => {
 };
 
 export const TasksList = ({ tasks }) => {
-  const [filterValue, setFilterValue] = useState("All Tasks");
+  const [filterValue, setFilterValue] = useState("All");
   const [sortValue, setSortValue] = useState({
-    label: "Latest",
-    value: LATEST,
+    label: "Default",
+    value: "Default",
   });
 
   // Filter tasks based on filterValue
@@ -53,13 +53,11 @@ export const TasksList = ({ tasks }) => {
     switch (filterValue) {
       case "Completed":
         return tasks.filter((task) => task.status === "completed");
-      case "Due Today":
-        return tasks.filter((task) => task.dueDate === formattedToday);
       case "Pending":
         return tasks.filter((task) => task.status === "pending");
       case "In Progress":
         return tasks.filter((task) => task.status === "inProgress");
-      case "All Tasks":
+      case "All":
       default:
         return tasks;
     }

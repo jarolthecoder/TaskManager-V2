@@ -3,7 +3,7 @@ export const navigation = [
   {
     label: "Dashboard",
     path: "/",
-    icon: "home",
+    icon: "dashboard",
   },
   {
     label: "Tasks",

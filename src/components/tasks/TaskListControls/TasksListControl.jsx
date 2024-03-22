@@ -1,14 +1,9 @@
-import { MatIcon, MenuItem, Select } from "@/components/ui";
+import { Badge, MatIcon } from "@/components/ui";
 import { SortTaskListButton } from "../SortTaskListButton/SortTaskListButton";
+import { RenderWhen } from "@/components/shared";
+import styles from "./TaskListControls.module.css";
 
-const filterOptions = [
-  "All Tasks",
-  "Due Today",
-  "Pending",
-  "In Progress",
-  "Completed",
-];
-
+const filterOptions = ["All", "Pending", "In Progress", "Completed"];
 export const TasksListControls = ({
   filterValue,
   handleFilterChange,
@@ -17,25 +12,29 @@ export const TasksListControls = ({
 }) => {
   return (
     <>
-      <Select
-        value={filterValue}
-        endIcon={<MatIcon iconName="filter_list" />}
-        buttonOnly={window.innerWidth < 600}
-      >
-        {filterOptions.map((option, index) => (
-          <MenuItem
-            key={index}
-            onClick={() => handleFilterChange(option)}
-            selected={option === filterValue}
-          >
-            <p>{option}</p>
-          </MenuItem>
-        ))}
-      </Select>
-      <SortTaskListButton
-        selectedOption={sortValue}
-        onSelect={handleSortChange}
-      />
+      <div className={styles.filters_container}>
+        <MatIcon iconName="filter_list" className={styles.filters_icon} />
+        <div className={styles.filters_badges_container}>
+          {filterOptions.map((option, index) => (
+            <Badge
+              key={index}
+              color={filterValue === option ? "primary" : "default"}
+              variant="outlined"
+              onClick={() => handleFilterChange(option)}
+              selected={option === filterValue}
+              className={styles.filter_badge}
+            >
+              {option}
+            </Badge>
+          ))}
+        </div>
+      </div>
+      <RenderWhen condition={window.innerWidth > 600}>
+        <SortTaskListButton
+          selectedOption={sortValue}
+          onSelect={handleSortChange}
+        />
+      </RenderWhen>
     </>
   );
 };
