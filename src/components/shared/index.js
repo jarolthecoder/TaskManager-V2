@@ -6,3 +6,4 @@ export * from './Breadcrumbs/Breadcrumbs'
 export * from './ThemeToggle/ThemeToggle' 
 export * from './Providers/SharedProviders'
 export * from './SibebarToggle/SidebarToggle'
+export * from "./GoBackButton/GoBackButton";

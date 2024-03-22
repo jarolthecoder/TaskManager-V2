@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { useWindowSize } from "@/hooks";
-import { Breadcrumbs, RenderWhen } from "@/components/shared";
+import { Breadcrumbs, GoBackButton, RenderWhen } from "@/components/shared";
 import { MatIcon } from "@/components/ui";
 import { AddTaskButton, TasksBoard, TasksList } from "@/components/tasks";
 import { useSelector } from "react-redux";
@@ -23,7 +23,7 @@ export default function TasksPage() {
 
   const [allTasks, setAllTasks] = useState(tasks);
   const [selectedView, setSelectedView] = useState(preferedTaskView || "board");
- 
+
   const handleSelectedView = (view) => {
     setSelectedView(view);
     localStorage.setItem("prefered-task-view", view);
@@ -68,6 +68,7 @@ export default function TasksPage() {
     <section className={styles.main}>
       <div className={styles.header}>
         <div>
+          <GoBackButton />
           <Breadcrumbs />
           <h2>My Tasks</h2>
         </div>

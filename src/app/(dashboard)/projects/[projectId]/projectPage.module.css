@@ -55,5 +55,7 @@
 
   .header {
     padding-bottom: 0;
+    justify-content: flex-start;
+    gap: 0;
   }
 }
