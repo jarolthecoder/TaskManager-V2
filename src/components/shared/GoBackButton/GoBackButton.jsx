@@ -9,14 +9,9 @@ export const GoBackButton = () => {
   const handleGoBack = () => router.back();
   return (
     <RenderWhen condition={window.innerWidth < 600}>
-      <IconButton
-        onClick={handleGoBack}
-        style={{
-          justifyContent: "flex-start",
-        }}
-      >
+      <button type="button" onClick={handleGoBack}>
         <MatIcon iconName="arrow_back" />
-      </IconButton>
+      </button>
     </RenderWhen>
   );
 };
