@@ -17,7 +17,13 @@
 
 /* Media Queries */
 @media (max-width: 600px) {
-  .filters_icon {
+  .filters_container {
+    max-width: calc(100% - 40px);
+    overflow-x: auto;
+  }
+  
+  .filters_icon,
+  .filters_container::-webkit-scrollbar {
     display: none;
   }
 }

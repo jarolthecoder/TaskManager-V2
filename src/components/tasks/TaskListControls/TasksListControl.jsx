@@ -1,6 +1,5 @@
 import { Badge, MatIcon } from "@/components/ui";
 import { SortTaskListButton } from "../SortTaskListButton/SortTaskListButton";
-import { RenderWhen } from "@/components/shared";
 import styles from "./TaskListControls.module.css";
 
 const filterOptions = ["All", "Pending", "In Progress", "Completed"];
@@ -29,12 +28,10 @@ export const TasksListControls = ({
           ))}
         </div>
       </div>
-      <RenderWhen condition={window.innerWidth > 600}>
-        <SortTaskListButton
-          selectedOption={sortValue}
-          onSelect={handleSortChange}
-        />
-      </RenderWhen>
+      <SortTaskListButton
+        selectedOption={sortValue}
+        onSelect={handleSortChange}
+      />
     </>
   );
 };

@@ -74,17 +74,7 @@ export default function TasksPage() {
           <h2>My Tasks</h2>
         </div>
         <div className={styles.header_options}>
-          <RenderWhen
-            condition={winWidth > 600}
-            // fallback={
-            //   <>
-            //     <SortTaskListButton
-            //       onSelect={(option) => console.log(option)}
-            //       selectedOption={{ label: "Default", value: "Default" }}
-            //     />
-            //   </>
-            // }
-          >
+          <RenderWhen condition={winWidth > 600}>
             <p
               className={`${styles.view_btn} ${
                 selectedView === "board" ? styles.active : ""

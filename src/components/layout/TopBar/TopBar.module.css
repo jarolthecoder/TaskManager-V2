@@ -10,7 +10,7 @@
   align-items: center;
   padding: 0.5rem 1.5rem;
   z-index: 3;
-  border-bottom: 1px solid var(--clr-border-dark);
+  /* border-bottom: 1px solid var(--clr-border-dark); */
   /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); */
   /* transition: width var(--transition-default); */
 }
