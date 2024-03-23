@@ -79,14 +79,12 @@ export const TasksList = ({ tasks }) => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.list_controls_container}>
-        <TasksListControls
-          filterValue={filterValue}
-          handleFilterChange={handleFilterChange}
-          sortValue={sortValue}
-          handleSortChange={handleSortChange}
-        />
-      </div>
+      <TasksListControls
+        filterValue={filterValue}
+        handleFilterChange={handleFilterChange}
+        sortValue={sortValue}
+        handleSortChange={handleSortChange}
+      />
       <RenderWhen
         condition={filteredTasks.length > 0}
         fallback={<p className={styles.list_empty_message}>No tasks to show</p>}

@@ -10,7 +10,7 @@ export const TasksListControls = ({
   handleSortChange,
 }) => {
   return (
-    <>
+    <div className={styles.list_controls_container}>
       <div className={styles.filters_container}>
         <MatIcon iconName="filter_list" className={styles.filters_icon} />
         <div className={styles.filters_badges_container}>
@@ -32,6 +32,6 @@ export const TasksListControls = ({
         selectedOption={sortValue}
         onSelect={handleSortChange}
       />
-    </>
+    </div>
   );
 };

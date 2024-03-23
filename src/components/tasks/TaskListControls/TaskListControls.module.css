@@ -1,3 +1,10 @@
+.list_controls_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .filters_container,
 .filters_badges_container {
   display: flex;
@@ -17,8 +24,26 @@
 
 /* Media Queries */
 @media (max-width: 600px) {
+  .list_controls_container {
+    position: relative;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .list_controls_container::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to right, #0e132000, var(--clr-bg-default));
+    position: absolute;
+    top: 0;
+    right: 40px;
+  }
+  
   .filters_container {
-    max-width: calc(100% - 40px);
+    width: 100%;
+    padding-right: 1rem;
     overflow-x: auto;
   }
   
