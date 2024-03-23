@@ -47,6 +47,13 @@
 @media (max-width: 600px) {
   .create_project_card {
     grid-column-end: span 12;
+    height: 75px;
+    min-height: 75px;
+    max-height: 75px;
+  }
+
+  .create_project_card p {
+    display: none;
   }
 
   .container {

@@ -4,24 +4,25 @@ import { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
 import { Breadcrumbs } from "@/components/shared";
-import { Card, MenuItem, Select } from "@/components/ui";
+import { Card, MatIcon, MenuItem, Select } from "@/components/ui";
 import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
 import { TasksTable } from "@/components/tasks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";
+import { ProjectsBarChart } from "@/components/projects";
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const formattedToday = formatDate(new Date(), "PP");
 const todaysDateFull = formatDate(new Date(), "eeee, MMM d, yyyy");
 
 export default function Dashboard() {
-
   const projects = useSelector(selectAllProjects);
   const tasks = useMemo(
     () =>
       projects
         .flatMap((project) => project.tasks)
         .sort(
-          (taskA, taskB) =>  new Date(taskB.creationDate) - new Date(taskA.creationDate)
+          (taskA, taskB) =>
+            new Date(taskB.creationDate) - new Date(taskA.creationDate)
         ),
     [projects]
   );
@@ -42,7 +43,6 @@ export default function Dashboard() {
     }
   }, [tasks, filterValue]);
 
-  
   const handleFilterChange = (option) => {
     setFilterValue(option);
   };
@@ -62,7 +62,11 @@ export default function Dashboard() {
           <Card className={styles.table_card} color="dark" padding="none">
             <div className={styles.table_card_header}>
               <h2>Tasks</h2>
-              <Select value={filterValue}>
+              <Select
+                value={filterValue}
+                startIcon={<MatIcon iconName="filter_list" />}
+                endIcon="none"
+              >
                 {filterOptions.map((option, index) => (
                   <MenuItem
                     key={index}
@@ -76,9 +80,34 @@ export default function Dashboard() {
             </div>
             <TasksTable tasks={filteredTasks} />
           </Card>
-          <Card className={styles.table_card} color="dark">
+          <Card padding="none">
             <div className={styles.table_card_header}>
-              <h3>NotePad</h3>
+              <h2>Productivity overview</h2>
+            </div>
+            
+            <div className={styles.chart_stats}>
+              <div className={styles.chart_stats_card}>
+                <p>{tasks.length}</p>
+                <h3>Number of tasks</h3>
+              </div>
+              <div className={styles.chart_stats_card}>
+                <p>
+                  {tasks.filter((task) => task.status === "completed").length}
+                </p>
+                <h3>Tasks Completed</h3>
+              </div>
+              <div className={styles.chart_stats_card}>
+                <p>
+                  {(
+                    tasks.filter((task) => task.status === "completed").length /
+                    tasks.length
+                  ).toFixed(2)}
+                </p>
+                <h3>Productivity average</h3>
+              </div>
+            </div>
+            <div className={styles.chart_container}>
+              <ProjectsBarChart />
             </div>
           </Card>
         </div>
