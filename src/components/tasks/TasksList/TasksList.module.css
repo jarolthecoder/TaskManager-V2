@@ -38,4 +38,8 @@
     position: fixed;
     top: 100px;
   } */
+
+  .main {
+    padding-bottom: 1rem;
+  }
 }

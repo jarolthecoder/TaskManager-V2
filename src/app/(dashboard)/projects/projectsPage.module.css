@@ -12,7 +12,7 @@
   gap: 1rem;
 }
 
-.container{
+.container {
   display: grid;
   grid-template-columns: repeat(12, minmax(auto, 1fr));
   grid-gap: 20px;
@@ -47,5 +47,9 @@
 @media (max-width: 600px) {
   .create_project_card {
     grid-column-end: span 12;
+  }
+
+  .container {
+    padding-bottom: 1rem;
   }
 }

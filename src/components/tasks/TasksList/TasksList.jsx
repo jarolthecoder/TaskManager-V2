@@ -8,6 +8,7 @@ import { formatDate } from "@/utils/helpers";
 import { TASK_SORT_OPTIONS } from "@/lib/constants";
 import PropTypes from "prop-types";
 import styles from "./TasksList.module.css";
+import { AddTaskCardButton } from "../AddTaskCardButton/AddTaskCardButton";
 
 const { LATEST, OLDEST, PRIORITY_HIGH, PRIORITY_LOW } = TASK_SORT_OPTIONS;
 const formattedToday = formatDate(new Date(), "PP");
@@ -92,6 +93,9 @@ export const TasksList = ({ tasks }) => {
         {sortedTasks.map((task) => (
           <TaskListItem key={task.id} task={task} />
         ))}
+        <RenderWhen condition={window.innerWidth < 600 }>
+          <AddTaskCardButton />
+        </RenderWhen>
       </RenderWhen>
     </div>
   );
