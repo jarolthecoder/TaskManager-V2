@@ -12,7 +12,7 @@ export const TasksListControls = ({
   return (
     <div className={styles.list_controls_container}>
       <div className={styles.filters_container}>
-        <MatIcon iconName="filter_list" className={styles.filters_icon} />
+        <MatIcon iconName="filter_alt" className={styles.filters_icon} />
         <div className={styles.filters_badges_container}>
           {filterOptions.map((option, index) => (
             <Badge

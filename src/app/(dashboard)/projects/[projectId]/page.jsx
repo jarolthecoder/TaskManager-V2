@@ -100,8 +100,9 @@ export default function ProjectPage({ params }) {
               <MatIcon iconName="format_list_bulleted" />
               List
             </p>
-            <AddTaskButton />
+            
           </RenderWhen>
+          <AddTaskButton />
         </div>
       </div>
       <div className={styles.container}>

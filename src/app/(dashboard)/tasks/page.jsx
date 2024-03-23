@@ -94,8 +94,8 @@ export default function TasksPage() {
               <MatIcon iconName="format_list_bulleted" />
               List
             </p>
-            <AddTaskButton />
-          </RenderWhen>
+            </RenderWhen>
+            <AddTaskButton siz="small" />
         </div>
       </div>
       <div className={styles.container}>

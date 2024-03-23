@@ -36,7 +36,7 @@ export default function Projects() {
           <h2>Projects</h2>
         </div>
         <div className={styles.header_options}>
-          <RenderWhen condition={window.innerWidth > 600}>
+          {/* <RenderWhen condition={window.innerWidth > 600}> */}
             <Button
               fullWidth
               label="Create project"
@@ -45,7 +45,7 @@ export default function Projects() {
               startIcon={<MatIcon iconName="add" />}
               onClick={handleAddProject}
             />
-          </RenderWhen>
+          {/* </RenderWhen> */}
         </div>
       </div>
       <div className={styles.container}>

@@ -15,7 +15,7 @@
   align-items: center;
   gap: 8px;
   text-align: center;
-  font-size: inherit;
+  font-size: var(--fs-body);
   font-weight: var(--fw-medium);
   border-radius: var(--br-small);
   border: 1px solid var(--clr-trasparent);
@@ -83,4 +83,11 @@
 
 .align_right {
   justify-content: flex-end;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .btn.small {
+    padding: 4px 8px;
+  }
 }

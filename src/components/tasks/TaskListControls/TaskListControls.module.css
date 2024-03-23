@@ -43,7 +43,7 @@
   
   .filters_container {
     width: 100%;
-    padding-right: 1rem;
+    padding-right: 0.75rem;
     overflow-x: auto;
   }
   

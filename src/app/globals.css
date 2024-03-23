@@ -245,3 +245,9 @@ a:hover {
 .fc .fc-highlight {
   background: var(--clr-blue-light);
 }
+
+
+/* Media queries */
+@media screen and (max-width: 600px) {
+
+}
