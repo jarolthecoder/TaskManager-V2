@@ -38,7 +38,7 @@
     background: linear-gradient(to right, #0e132000, var(--clr-bg-default));
     position: absolute;
     top: 0;
-    right: 40px;
+    right: 42px;
   }
   
   .filters_container {

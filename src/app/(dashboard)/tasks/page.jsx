@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { useWindowSize } from "@/hooks";
-import { Breadcrumbs, GoBackButton, RenderWhen } from "@/components/shared";
+import { Breadcrumbs, RenderWhen } from "@/components/shared";
 import { MatIcon } from "@/components/ui";
 import { AddTaskButton, TasksBoard, TasksList } from "@/components/tasks";
 import { useSelector } from "react-redux";
 import { selectAllProjects, updateProject } from "@/redux/features/projects";
 import { useDispatch } from "react-redux";
 import styles from "./tasksPage.module.css";
-import { SortTaskListButton } from "@/components/tasks/SortTaskListButton/SortTaskListButton";
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -69,7 +68,6 @@ export default function TasksPage() {
     <section className={styles.main}>
       <div className={styles.header}>
         <div className={styles.title_container}>
-          {/* <GoBackButton /> */}
           <Breadcrumbs />
           <h2>My Tasks</h2>
         </div>

@@ -8,8 +8,8 @@ import {
   setSelectedProject,
   updateProject,
 } from "@/redux/features/projects";
-import { Breadcrumbs, GoBackButton, RenderWhen } from "@/components/shared";
-import { IconButton, MatIcon } from "@/components/ui";
+import { Breadcrumbs, RenderWhen } from "@/components/shared";
+import { MatIcon } from "@/components/ui";
 import { AddTaskButton, TasksBoard, TasksList } from "@/components/tasks";
 import styles from "./projectPage.module.css";
 import { useWindowSize } from "@/hooks";
@@ -74,9 +74,6 @@ export default function ProjectPage({ params }) {
     <section className={styles.main}>
       <div className={styles.header}>
         <div className={styles.title_container}>
-        {/* <RenderWhen condition={winWidth <= 600}>
-          <GoBackButton />
-        </RenderWhen> */}
           <Breadcrumbs selectedItem={projectTitle} />
           <h2>{projectTitle}</h2>
         </div>

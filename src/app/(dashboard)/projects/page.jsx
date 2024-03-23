@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { selectAllProjects } from "@/redux/features/projects";
-import { Breadcrumbs, GoBackButton, RenderWhen } from "@/components/shared";
+import { Breadcrumbs } from "@/components/shared";
 import { Button, IconButton, MatIcon } from "@/components/ui";
 import { ProjectCard } from "@/components/projects";
 import { AppContext } from "@/context/AppContext";
@@ -31,21 +31,18 @@ export default function Projects() {
     <section className={styles.main}>
       <div className={styles.header}>
         <div className={styles.title_container}>
-          {/* <GoBackButton /> */}
           <Breadcrumbs />
           <h2>Projects</h2>
         </div>
         <div className={styles.header_options}>
-          {/* <RenderWhen condition={window.innerWidth > 600}> */}
-            <Button
-              fullWidth
-              label="Create project"
-              color="accent"
-              size="small"
-              startIcon={<MatIcon iconName="add" />}
-              onClick={handleAddProject}
-            />
-          {/* </RenderWhen> */}
+          <Button
+            fullWidth
+            label="Create Project"
+            color="accent"
+            size="small"
+            startIcon={<MatIcon iconName="add" />}
+            onClick={handleAddProject}
+          />
         </div>
       </div>
       <div className={styles.container}>
