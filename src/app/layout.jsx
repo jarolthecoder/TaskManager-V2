@@ -15,6 +15,13 @@ export const metadata = {
     "With TaskManager, you can easily create to-do lists and prioritize tasks according to their importance. Our user-friendly interface makes it easy to navigate and access all the features you need to stay organized and productive",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
