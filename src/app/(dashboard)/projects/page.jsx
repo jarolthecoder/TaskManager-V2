@@ -37,7 +37,7 @@ export default function Projects() {
         <div className={styles.header_options}>
           <Button
             fullWidth
-            label="Create Project"
+            label="Create project"
             color="accent"
             size="small"
             startIcon={<MatIcon iconName="add" />}
