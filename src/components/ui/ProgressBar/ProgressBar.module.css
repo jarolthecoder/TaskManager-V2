@@ -2,7 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 }
+
 .container {
   height: 7px;
   width: 100%;
@@ -17,6 +19,6 @@
 }
 
 .label {
-  text-align: right;
-  padding-left: 1rem;
+  font-size: var(--fs-small);
+  color: var(--clr-text-secondary);
 }

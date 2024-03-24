@@ -15,6 +15,7 @@ import {
   BarController,
   Filler,
 } from "chart.js";
+import { parseISO } from "date-fns";
 import { useMemo } from "react";
 import { Chart } from "react-chartjs-2";
 import { useSelector } from "react-redux";
@@ -70,47 +71,49 @@ export const ProjectsBarChart = () => {
     const completedTasks = tasksForMonth.filter(
       (task) => task.status === "completed"
     );
-    return (completedTasks.length / tasksForMonth.length);
+    return (completedTasks.length / tasksForMonth.length) * 10;
   };
 
   const data = {
     labels,
     datasets: [
-      {
-        type: "bar",
-        label: "Number of tasks",
-        backgroundColor: "rgb(133, 114, 238)",
-        data: labels.map((_, index) => countTasksByMonth(index).length),
-      },
-      {
-        type: "bar",
-        label: "Completed task",
-        backgroundColor: "#2599ef",
-        data: labels.map(
-          (_, index) =>
-            countTasksByMonth(index).filter(
-              (task) => task.status === "completed"
-            ).length
-        ),
-      },
+      // {
+      //   type: "bar",
+      //   label: "Number of tasks",
+      //   backgroundColor: "rgb(133, 114, 238)",
+      //   data: labels.map((_, index) => countTasksByMonth(index).length),
+      // },
+      // {
+      //   type: "bar",
+      //   label: "Completed task",
+      //   backgroundColor: "#2599ef",
+      //   data: labels.map(
+      //     (_, index) =>
+      //       countTasksByMonth(index).filter(
+      //         (task) => task.status === "completed"
+      //       ).length
+      //   ),
+      // },
       {
         type: "line",
-        label: "Prod. average",
+        label: "Tasks completed",
         borderColor: "#73dce9",
         pointBorderColor: "#73dce9",
         pointBackgroundColor: "#73dce9",
         pointHoverBackgroundColor: "#73dce9",
         pointHoverBorderColor: "#73dce9",
         pointBorderWidth: 2,
-        pointHoverRadius: 4,
+        pointHoverRadius: 5,
         pointHoverBorderWidth: 1,
         backgroundColor: "#73dce926",
-        pointRadius: 2,
+        pointRadius: 3,
         tension: 0.4,
         fill: true,
         borderWidth: 2,
         borderDash: [3, 3],
-        data: labels.map((_, index) => calculateCompletionAverage(index)),
+        data: labels.map((_, index) => countTasksByMonth(index).filter(
+          (task) => task.status === "completed" && new Date(task.endDate).getMonth() === index
+          ).length),
       },
     ],
   };
@@ -121,7 +124,7 @@ export const ProjectsBarChart = () => {
     // aspectRatio: 2,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: "bottom",
         labels: {
           usePointStyle: true, // use custom shapes for the labels
@@ -134,6 +137,9 @@ export const ProjectsBarChart = () => {
       x: {
         beginAtZero: true,
         stacked: false,
+        border: {
+          color: "rgba(37, 46, 62, 0.177)",
+        },
         grid: {
           display: true,
           drawTicks: false,
@@ -152,6 +158,7 @@ export const ProjectsBarChart = () => {
         },
         grid: {
           display: false,
+          color: "rgba(37, 46, 62, 0.177)",
         },
         ticks: {
           color: "#b0b8c4",
@@ -178,6 +185,6 @@ export const ProjectsBarChart = () => {
   };
 
   return (
-    <Chart type="bar" data={data} options={options} height={window.innerWidth < 600 && 300}/>
+    <Chart type="bar" data={data} options={options} height={window.innerWidth < 600 && 250}/>
   );
 };

@@ -15,7 +15,7 @@ export const projectsData = [
         status: "completed",
         creationDate: "Feb 18, 2024",
         startDate: "Feb 19, 2024",
-        dueDate: "Mar 02, 2024",
+        dueDate: "Mar 02, 2024",   
         priority: "High",
         assignedTo: "Design",
         projectName: "Design",

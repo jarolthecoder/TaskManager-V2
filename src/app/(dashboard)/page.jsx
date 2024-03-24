@@ -10,6 +10,7 @@ import { TasksTable } from "@/components/tasks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";
 import { ProductivityPanel } from "@/components/dashboard/ProductivityPanel/ProductivityPanel";
+import { ProjectsTable } from "@/components/projects";
 
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const formattedToday = formatDate(new Date(), "PP");
@@ -62,7 +63,7 @@ export default function Dashboard() {
         <div className={styles.tables_container}>
           <Card className={styles.table_card} color="dark" padding="none">
             <div className={styles.table_card_header}>
-              <h2>Tasks</h2>
+              <h2>Active projects</h2>
               <Select
                 value={filterValue}
                 startIcon={<MatIcon iconName="filter_list" />}
@@ -79,7 +80,8 @@ export default function Dashboard() {
                 ))}
               </Select>
             </div>
-            <TasksTable tasks={filteredTasks} />
+            {/* <TasksTable tasks={filteredTasks} /> */}
+            <ProjectsTable />
           </Card>
           <Card padding="none">
             <ProductivityPanel tasks={tasks} />

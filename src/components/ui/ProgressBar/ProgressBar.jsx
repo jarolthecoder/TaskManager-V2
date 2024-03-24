@@ -1,8 +1,17 @@
-import styles from './ProgressBar.module.css'
+import { RenderWhen } from "@/components/shared";
+import PropTypes from "prop-types";
+import styles from "./ProgressBar.module.css";
 
-export const ProgressBar = ({progress}) => {
+export const ProgressBar = ({
+  progress,
+  showLabel = false,
+  labelAlign = "start",
+}) => {
   return (
     <div className={styles.main}>
+      <RenderWhen condition={showLabel && labelAlign === "start"}>
+        <span className={styles.label}>{progress.toFixed()}%</span>
+      </RenderWhen>
       <div className={styles.container}>
         <div
           className={styles.filler}
@@ -11,7 +20,15 @@ export const ProgressBar = ({progress}) => {
           }}
         ></div>
       </div>
-      {/* <span className={styles.label}>{`${progress}%`}</span>  */}
+      <RenderWhen condition={showLabel && labelAlign === "end"}>
+        <span className={styles.label}>{progress.toFixed()}%</span>
+      </RenderWhen>
     </div>
   );
-}
+};
+
+ProgressBar.propTypes = {
+  progress: PropTypes.number.isRequired,
+  showLabel: PropTypes.bool,
+  labelAlign: PropTypes.oneOf(["start", "end"]),
+};

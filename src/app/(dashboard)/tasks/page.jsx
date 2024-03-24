@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { selectAllProjects, updateProject } from "@/redux/features/projects";
 import { useDispatch } from "react-redux";
 import styles from "./tasksPage.module.css";
+import { formatDate } from "date-fns";
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -36,7 +37,13 @@ export default function TasksPage() {
     const destinationColumn = destination.droppableId;
     const taskId = result.draggableId;
     const task = allTasks.find((task) => task.id === taskId);
-    const updatedTask = { ...task, status: destinationColumn };
+    const updatedTask = {
+      ...task,
+      status: destinationColumn,
+      startDate:
+        destinationColumn === "inProgress" ? formatDate(new Date(), "PP") : "",
+      endDate: destinationColumn === "completed" ? formatDate(new Date(), "PP") : "",
+    };
     const projectToUpdate = projects.find(
       (project) => project.title === task.projectName
     );
@@ -92,8 +99,8 @@ export default function TasksPage() {
               <MatIcon iconName="format_list_bulleted" />
               List
             </p>
-            </RenderWhen>
-            <AddTaskButton siz="small" />
+          </RenderWhen>
+          <AddTaskButton siz="small" />
         </div>
       </div>
       <div className={styles.container}>

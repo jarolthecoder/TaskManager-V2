@@ -6,8 +6,8 @@ export const Table = ({
   renderHeader,
   renderFooter,
   className,
-  headAlign,
-  bodyAlign,
+  headAlign = "left",
+  bodyAlign = "left",
   ...rest
 }) => {
   return (
@@ -25,7 +25,7 @@ export const Table = ({
         <tbody className={styles.table_body}>
           {data.map((row, index) => (
             <tr key={index}>
-              {columns.map((column, index) => (
+              {Object.keys(row).map((column, index) => (
                 <td key={index} align={bodyAlign}>
                   {row[column]}
                 </td>
@@ -34,7 +34,7 @@ export const Table = ({
           ))}
         </tbody>
         <tfoot className={styles.table_footer}>
-          <tr>{renderFooter()}</tr>
+          {/* <tr>{renderFooter()}</tr> */}
         </tfoot>
       </table>
     </div>
