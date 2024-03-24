@@ -181,6 +181,6 @@ export const ProjectsBarChart = () => {
   };
 
   return (
-    <Chart type="bar" data={data} options={options} height={window.innerWidth < 450 && 350}/>
+    <Chart type="bar" data={data} options={options} height={window.innerWidth < 600 && 300}/>
   );
 };
