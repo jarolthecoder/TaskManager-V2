@@ -45,7 +45,7 @@ export default function Login() {
 
   return (
     <AuthForm
-      title="Sign in to yout account"
+      title="Sign in to your account"
       lead="Welcome back! Enter your details below"
       onSubmit={handleSubmit(onSubmit)}
     >
