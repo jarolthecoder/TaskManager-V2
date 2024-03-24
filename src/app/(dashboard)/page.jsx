@@ -9,7 +9,8 @@ import { Calendar, DoughnutChart, StatsOfTheDay } from "@/components/dashboard";
 import { TasksTable } from "@/components/tasks";
 import { formatDate } from "@/utils/helpers/formatDate";
 import styles from "./dashboard.module.css";
-import { ProjectsBarChart } from "@/components/projects";
+import { ProductivityPanel } from "@/components/dashboard/ProductivityPanel/ProductivityPanel";
+
 const filterOptions = ["All Tasks", "Completed", "Due Today", "Pending"];
 const formattedToday = formatDate(new Date(), "PP");
 const todaysDateFull = formatDate(new Date(), "eeee, MMM d, yyyy");
@@ -81,40 +82,7 @@ export default function Dashboard() {
             <TasksTable tasks={filteredTasks} />
           </Card>
           <Card padding="none">
-            <div className={styles.table_card_header}>
-              <h2>Productivity overview</h2>
-            </div>
-            
-            <div className={styles.chart_stats}>
-              <div className={styles.chart_stats_card}>
-                <p>{tasks.length}</p>
-                <h3>Total tasks</h3>
-              </div>
-              <div className={styles.chart_stats_card}>
-                <p>
-                  {tasks.filter((task) => task.status === "completed").length}
-                </p>
-                <h3>Tasks completed</h3>
-              </div>
-              <div className={styles.chart_stats_card}>
-                <p>
-                  {(
-                    tasks.filter((task) => task.status === "completed").length /
-                    tasks.length
-                  ).toFixed(2)}
-                </p>
-                <h3>Prod. average</h3>
-              </div>
-              <div className={styles.chart_stats_card}>
-                <p className={styles.working_hours_num}>
-                  1267,89
-                </p>
-                <h3>Working hours</h3>
-              </div>
-            </div>
-            <div className={styles.chart_container}>
-              <ProjectsBarChart />
-            </div>
+            <ProductivityPanel tasks={tasks} />
           </Card>
         </div>
         <div className={styles.bottom_cards_container}>

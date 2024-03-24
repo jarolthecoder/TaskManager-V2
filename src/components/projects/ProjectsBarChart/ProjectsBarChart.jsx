@@ -95,7 +95,7 @@ export const ProjectsBarChart = () => {
       },
       {
         type: "line",
-        label: "Progress",
+        label: "Prod. average",
         borderColor: "#73dce9",
         pointBorderColor: "#73dce9",
         pointBackgroundColor: "#73dce9",
@@ -124,12 +124,9 @@ export const ProjectsBarChart = () => {
         display: true,
         position: "bottom",
         labels: {
-          textAlign: "left",
           usePointStyle: true, // use custom shapes for the labels
-          pointStyle: "circle", // specify the shape of the labels
           padding: 15, // padding for labels
           color: "#b0b8c4",
-          pointStyleWidth: 17,
         },
       },
     },
