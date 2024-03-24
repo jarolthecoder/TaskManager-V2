@@ -88,13 +88,13 @@ export default function Dashboard() {
             <div className={styles.chart_stats}>
               <div className={styles.chart_stats_card}>
                 <p>{tasks.length}</p>
-                <h3>Number of tasks</h3>
+                <h3>Total tasks</h3>
               </div>
               <div className={styles.chart_stats_card}>
                 <p>
                   {tasks.filter((task) => task.status === "completed").length}
                 </p>
-                <h3>Tasks Completed</h3>
+                <h3>Tasks completed</h3>
               </div>
               <div className={styles.chart_stats_card}>
                 <p>
@@ -103,7 +103,13 @@ export default function Dashboard() {
                     tasks.length
                   ).toFixed(2)}
                 </p>
-                <h3>Productivity average</h3>
+                <h3>Prod. average</h3>
+              </div>
+              <div className={styles.chart_stats_card}>
+                <p className={styles.working_hours_num}>
+                  1267,89
+                </p>
+                <h3>Working hours</h3>
               </div>
             </div>
             <div className={styles.chart_container}>

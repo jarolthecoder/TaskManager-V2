@@ -70,7 +70,7 @@ export const ProjectsBarChart = () => {
     const completedTasks = tasksForMonth.filter(
       (task) => task.status === "completed"
     );
-    return (completedTasks.length / tasksForMonth.length) * 10;
+    return (completedTasks.length / tasksForMonth.length);
   };
 
   const data = {
@@ -181,6 +181,6 @@ export const ProjectsBarChart = () => {
   };
 
   return (
-    <Chart type="bar" data={data} options={options} height={window.innerWidth < 600 && 350}/>
+    <Chart type="bar" data={data} options={options} height={window.innerWidth < 475 && 350}/>
   );
 };

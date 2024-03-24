@@ -52,8 +52,8 @@
   border-left: 1px dashed var(--clr-border-light);
 }
 
-.chart_stats_card:last-child {
-  border-right: 1px dashed var(--clr-border-light);
+.chart_stats_card:first-child {
+  border-left: none;
 }
 
 .chart_stats_card h3 {
@@ -66,12 +66,17 @@
   color: var(--clr-text-primary);
 }
 
+.chart_stats_card .working_hours_num {
+  color: #73dce9;
+}
+
 .chart_container {
   width: calc(100% - 3.4rem);
   height: 100%;
   margin: auto;
   /* padding: 0 1.7rem; */
 }
+
 
 .table_card_header,
 .table_select_btn {
@@ -115,7 +120,8 @@
   }
 
   .chart_stats {
-    flex-wrap: wrap;
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
   }
 
   .chart_container {
