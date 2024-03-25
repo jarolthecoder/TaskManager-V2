@@ -7,24 +7,6 @@ export const ProductivityPanel = ({ tasks }) => {
     <>
       <div className={styles.panel_header}>
         <h2>Productivity</h2>
-        <RenderWhen condition={window.innerWidth > 600}>
-          <div className={styles.chart_legend}>
-            <div className={styles.legend_item}>
-              <div
-                className={styles.legend_color}
-                style={{ backgroundColor: "rgb(133, 114, 238)" }}
-              ></div>
-              <p>Tasks created</p>
-            </div>
-            <div className={styles.legend_item}>
-              <div
-                className={styles.legend_color}
-                style={{ backgroundColor: "#2599ef" }}
-              ></div>
-              <p>Tasks completed</p>
-            </div>
-          </div>
-        </RenderWhen>
       </div>
       {/* <div className={styles.chart_stats}>
         <div className={styles.chart_stats_card}>
@@ -51,7 +33,6 @@ export const ProductivityPanel = ({ tasks }) => {
       </div> */}
       <div className={styles.chart_container}>
         <ProjectsBarChart />
-        <RenderWhen condition={window.innerWidth < 600}>
           <div className={styles.chart_legend}>
             <div className={styles.legend_item}>
               <div
@@ -68,7 +49,6 @@ export const ProductivityPanel = ({ tasks }) => {
               <p>Tasks completed</p>
             </div>
           </div>
-        </RenderWhen>
       </div>
     </>
   );
