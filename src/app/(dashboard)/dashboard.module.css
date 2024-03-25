@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.table_card {
+  overflow-x: hidden;
+}
+
 .tables_container {
   margin-top: 1.5rem;
   display: grid;

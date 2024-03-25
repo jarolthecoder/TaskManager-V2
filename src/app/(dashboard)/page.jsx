@@ -64,7 +64,7 @@ export default function Dashboard() {
           <Card className={styles.table_card} color="dark" padding="none">
             <div className={styles.table_card_header}>
               <h2>Active projects</h2>
-              <Select
+              {/* <Select
                 value={filterValue}
                 startIcon={<MatIcon iconName="filter_list" />}
                 endIcon="none"
@@ -78,10 +78,12 @@ export default function Dashboard() {
                     <p>{option}</p>
                   </MenuItem>
                 ))}
-              </Select>
+              </Select> */}
             </div>
             {/* <TasksTable tasks={filteredTasks} /> */}
-            <ProjectsTable />
+            <div className={styles.table_container}>
+              <ProjectsTable />
+            </div>
           </Card>
           <Card padding="none">
             <ProductivityPanel tasks={tasks} />

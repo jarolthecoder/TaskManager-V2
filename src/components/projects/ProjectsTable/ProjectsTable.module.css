@@ -95,6 +95,18 @@
 
 @media (max-width: 600px) {
   .table_container {
+    overflow-x: auto;
+  }
+  
+  .table_main {
+    width: 500px;
+  }
+
+  /* .table_footer {
+    justify-content: center;
+  } */
+
+  .pagination_text {
     display: none;
   }
 }
