@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import styles from "./ProjectsTable.module.css";
 import { formatDate } from "@/utils/helpers";
 import { Badge, MatIcon, ProgressBar } from "@/components/ui";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTable } from "@/hooks";
 
 const tableColumns = ["Project", "Status", "Tasks", "Progress", "Due Date"];
@@ -13,34 +13,47 @@ const formattedToday = formatDate(new Date(), "PP");
 export const ProjectsTable = () => {
   const projects = useSelector(selectAllProjects);
 
+  const projectsData = useMemo(() => {
+    return projects
+      .filter((project) => project.title !== "Unassigned")
+      .map((project) => {
+        const numOfTasks = project.tasks.length;
+        const numOfCompletedTasks = project.tasks.filter(
+          (task) => task.status === "completed"
+        ).length;
 
+        const progressPercentage = (numOfCompletedTasks / numOfTasks) * 100 || 0;
 
-  const projectsData = projects
-    .filter((project) => project.title !== "Unassigned")
-    .map((project) => {
-      const numOfTasks = project.tasks.length;
-      const numOfCompletedTasks = project.tasks.filter(
-        (task) => task.status === "completed"
-      ).length;
-      const progressPercentage = (numOfCompletedTasks / numOfTasks) * 100 || 0;
+        return {
+          title: project.title,
+          status: project.status,
+          tasks: numOfTasks,
+          progress: progressPercentage,
+          dueDate: project.dueDate,
+        };
+      });
+  }, [projects]);
 
-      return {
-        title: project.title,
-        status: project.status,
-        tasks: numOfTasks,
-        progress: progressPercentage,
-        dueDate: project.dueDate,
-      };
-    });
-
+  const rowsPerPage = 6;
     const [page, setPage] = useState(1);
-    const { slice, range } = useTable(projectsData, page, 4);
+    const { slicedData, tableRange } = useTable(projectsData, page, rowsPerPage);
+
+    const handlePrevPage = () => {
+      if (page === 1) return;
+      setPage(page - 1);
+    }
+
+    const handleNextPage = () => {
+      if(page === tableRange[tableRange.length - 1]) return;
+      setPage(page + 1);
+    }
+
 
      useEffect(() => {
-       if (slice.length < 1 && page !== 1) {
+       if (slicedData.length < 1 && page !== 1) {
          setPage(page - 1);
        }
-     }, [slice, page, setPage]);
+     }, [slicedData, page, setPage]);
 
   return (
     <div className={styles.table_container}>
@@ -55,8 +68,8 @@ export const ProjectsTable = () => {
           </tr>
         </thead>
         <tbody className={styles.table_body}>
-          {slice.map((project, index) => (
-            <tr key={project.id}>
+          {slicedData.map((project, index) => (
+            <tr key={project.title}>
               <td align="left">{project.title}</td>
               <td align="left">
                 <Badge
@@ -84,16 +97,16 @@ export const ProjectsTable = () => {
       </table>
       <div className={styles.table_footer}>
         <p>
-          Showing {slice.length} out of {projectsData.length} projects
+          Showing {slicedData.length} out of {projectsData.length} projects
         </p>
         <div className={styles.pagination_btn_container}>
           <button
             className={styles.pagination_control_btn}
-            // onClick={() => setPage(el)}
+            onClick={handlePrevPage}
           >
             <MatIcon iconName="chevron_left" />
           </button>
-          {range.map((el, index) => (
+          {tableRange.map((el, index) => (
             <button
               key={index}
               className={`${styles.pagination_btn} ${
@@ -103,7 +116,10 @@ export const ProjectsTable = () => {
               {el}
             </button>
           ))}
-          <button className={styles.pagination_control_btn}>
+          <button  
+            className={styles.pagination_control_btn}
+            onClick={handleNextPage}
+          >
             <MatIcon iconName="chevron_right" />
           </button> 
         </div>

@@ -1,38 +1,11 @@
-.table_container {
-  /* max-height: 300px;
-  overflow: auto; */
-}
-
-
-.table_container::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-.table_container::-webkit-scrollbar-track {
-  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.487);  */
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: var(--clr-scrollbar-track);
-}
-
-/* Handle */
-.table_container::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: var(--clr-scrollbar-thumb);
-  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  */
-}
-
-
 .table_main {
   border-collapse: collapse;
   width: 100%;
 }
 
-.table_main>:not(caption)>*>* {
-    padding: .75rem .6rem;
-    border-bottom-width: 1px;
+.table_main > :not(caption) > * > * {
+  padding: 0.75rem 0.6rem;
+  border-bottom-width: 1px;
 }
 
 .table_head {
@@ -42,13 +15,13 @@
   border-bottom: 1px solid var(--clr-border-light);
 }
 
-.table_head th{
+.table_head th {
   font-size: var(--fs-body);
 }
 
 .table_body td,
 .table_head th {
-  color: var(--clr-text-secondary)
+  color: var(--clr-text-secondary);
 }
 
 .table_body td {
@@ -73,7 +46,6 @@
   padding: 0 1.75rem;
   /* background: var(--clr-bg-card-secondary);
   border-top: 1px solid var(--clr-border-light); */
-
 }
 
 .pagination_btn_container {
@@ -87,7 +59,7 @@
 .pagination_btn {
   border-radius: var(--br-small);
   border: 1px solid var(--clr-border-dark);
-  transition: background var(--transition-default);
+  /* transition: background var(--transition-default); */
   cursor: pointer;
   padding: 0.25rem 0.5rem;
   font-size: var(--fs-body);
@@ -97,18 +69,22 @@
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .pagination_btn:hover,
 .pagination_control_btn:hover {
   background: rgba(95, 116, 141, 0.137);
+  transition: background var(--transition-default);
 }
 
 .activeButton,
 .activeButton:hover {
-  color: #fff;
+  /* color: #fff;
   background: var(--clr-primary-main);
+  border-color: var(--clr-primary-main); */
+  /* color: var(--clr-primary-light); */
+  background: var(--clr-primary-opacity);
   border-color: var(--clr-primary-main);
 }
 
