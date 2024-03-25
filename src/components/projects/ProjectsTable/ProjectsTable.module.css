@@ -32,6 +32,11 @@
   border-bottom: 1px solid var(--clr-border-light);
 }
 
+.table_body tr:hover {
+  background: var(--clr-bg-card-secondary);
+  cursor: pointer;
+}
+
 .table_head th:first-child,
 .table_body td:first-child {
   padding-left: 1.75rem;

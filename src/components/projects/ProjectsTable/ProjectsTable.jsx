@@ -6,6 +6,7 @@ import { formatDate } from "@/utils/helpers";
 import { Badge, MatIcon, ProgressBar } from "@/components/ui";
 import { useEffect, useMemo, useState } from "react";
 import { useTable } from "@/hooks";
+import { useRouter } from "next/navigation";
 
 const tableColumns = [
   { title: "Project Name" },
@@ -17,6 +18,7 @@ const tableColumns = [
 const formattedToday = formatDate(new Date(), "PP");
 
 export const ProjectsTable = () => {
+  const router = useRouter();
   const projects = useSelector(selectAllProjects);
   const projectsData = useMemo(() => {
     return projects
@@ -31,6 +33,7 @@ export const ProjectsTable = () => {
           (numOfCompletedTasks / numOfTasks) * 100 || 0;
 
         return {
+          id: project.id,
           title: project.title,
           status: project.status,
           tasks: numOfTasks,
@@ -53,6 +56,10 @@ export const ProjectsTable = () => {
     if (page === tableRange[tableRange.length - 1]) return;
     setPage(page + 1);
   };
+
+  const handleNavigateToProject = (id) => {
+    router.push(`/projects/${id}`);
+  }
 
   useEffect(() => {
     if (slicedData.length < 1 && page !== 1) {
@@ -79,7 +86,7 @@ export const ProjectsTable = () => {
           </thead>
           <tbody className={styles.table_body}>
             {slicedData.map((project) => (
-              <tr key={project.title}>
+              <tr key={project.title} onClick={() => handleNavigateToProject(project.id)}>
                 <td>{project.title}</td>
                 <td>{project.tasks}</td>
                 <td colSpan={2}>
