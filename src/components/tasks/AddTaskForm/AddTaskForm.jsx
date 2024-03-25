@@ -102,6 +102,8 @@ export const AddTaskForm = () => {
         description: "Unassigned tasks",
         creationDate: formattedToday,
         dueDate: "",
+        startDate: "",
+        endDate: "",
         status: "",
         priority: "",
         tasks: [newTask],

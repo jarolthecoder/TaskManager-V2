@@ -3,13 +3,17 @@ import { selectAllProjects } from "@/redux/features/projects";
 import { useSelector } from "react-redux";
 import styles from "./ProjectsTable.module.css";
 import { formatDate } from "@/utils/helpers";
-import { Badge, ProgressBar } from "@/components/ui";
+import { Badge, MatIcon, ProgressBar } from "@/components/ui";
+import { useEffect, useState } from "react";
+import { useTable } from "@/hooks";
 
 const tableColumns = ["Project", "Status", "Tasks", "Progress", "Due Date"];
 const formattedToday = formatDate(new Date(), "PP");
 
 export const ProjectsTable = () => {
   const projects = useSelector(selectAllProjects);
+
+
 
   const projectsData = projects
     .filter((project) => project.title !== "Unassigned")
@@ -29,6 +33,15 @@ export const ProjectsTable = () => {
       };
     });
 
+    const [page, setPage] = useState(1);
+    const { slice, range } = useTable(projectsData, page, 4);
+
+     useEffect(() => {
+       if (slice.length < 1 && page !== 1) {
+         setPage(page - 1);
+       }
+     }, [slice, page, setPage]);
+
   return (
     <div className={styles.table_container}>
       <table className={styles.table_main}>
@@ -42,7 +55,7 @@ export const ProjectsTable = () => {
           </tr>
         </thead>
         <tbody className={styles.table_body}>
-          {projectsData.map((project, index) => (
+          {slice.map((project, index) => (
             <tr key={project.id}>
               <td align="left">{project.title}</td>
               <td align="left">
@@ -57,18 +70,44 @@ export const ProjectsTable = () => {
                 >
                   {project.status}
                 </Badge>
-                </td>
-                <td>{project.tasks}</td>
-                <td>
-                  <ProgressBar progress={project.progress} showLabel />
-                </td>
-                <td align="left">
+              </td>
+              <td>{project.tasks}</td>
+              <td>
+                <ProgressBar progress={project.progress} showLabel />
+              </td>
+              <td align="left">
                 {project.dueDate === formattedToday ? "Today" : project.dueDate}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className={styles.table_footer}>
+        <p>
+          Showing {slice.length} out of {projectsData.length} projects
+        </p>
+        <div className={styles.pagination_btn_container}>
+          <button
+            className={styles.pagination_control_btn}
+            // onClick={() => setPage(el)}
+          >
+            <MatIcon iconName="chevron_left" />
+          </button>
+          {range.map((el, index) => (
+            <button
+              key={index}
+              className={`${styles.pagination_btn} ${
+                page === el && styles.activeButton }`}
+              onClick={() => setPage(el)}
+            >
+              {el}
+            </button>
+          ))}
+          <button className={styles.pagination_control_btn}>
+            <MatIcon iconName="chevron_right" />
+          </button> 
+        </div>
+      </div>
     </div>
   );
 };
